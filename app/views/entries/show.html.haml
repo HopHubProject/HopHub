@@ -1,0 +1,79 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1
+      -if @entry.is_offer?
+        =t('offer')
+      -else
+        =t('request')
+
+      ="(" + t(@entry.direction) + ")"
+
+    %table.table.table-striped
+      %tbody
+        %tr
+          %th= t('activerecord.fields.entry.name')
+          %td= @entry.name
+
+        -unless @entry.phone.blank?
+          %tr
+            %th= t('activerecord.fields.entry.phone')
+            %td= @entry.phone
+
+        %tr
+          %th= t('activerecord.fields.entry.date')
+          %td= l @entry.date, format: :long
+
+        %tr
+          %th= t('simple_form.labels.entry.transport')
+          %td
+            %i.mx-1{class: icon_class_for_transport(@entry.transport)}
+            =t("transport.#{@entry.transport}")
+
+        %tr
+          -if @entry.is_way_there?
+            %th=t('simple_form.labels.entry.starting-point')
+          -else
+            %th=t('simple_form.labels.entry.destination')
+
+          %td= @entry.location
+
+        %tr
+          %th= t('activerecord.fields.entry.seats')
+          %td= @entry.seats
+
+        %tr
+          %th= t('activerecord.fields.entry.notes')
+          %td= @entry.notes
+
+    =turbo_frame_tag 'entry_contact' do
+      =simple_form_for [@event, @entry, @contact_email] do |f|
+        %h2=t('entry_contact.title')
+        %p= t('entry_contact.text', name: @entry.name)
+
+        =f.input :name, hint: t('simple_form.hints.contact_email.name', name: @entry.name)
+        =f.input :from, hint: t('simple_form.hints.contact_email.from', name: @entry.name)
+        =f.input :text, as: :text,
+          input_html: { rows: 5 },
+          hint: t('simple_form.hints.contact_email.text', name: @entry.name)
+
+        .row.mb-3
+          .col-sm-3
+          .col-sm-9
+            %altcha-widget{ challengeurl: altcha_url() }
+            =f.error :altcha, class: 'small text-danger mt-1'
+
+        .row.mb-3
+          .col-sm-3
+          .col-sm-9
+            %small= accept_tos_text
+
+        .row.mb-3
+          .col-sm-3
+          .col-sm-9.col-lg-3
+            =f.submit t('entry_contact.send'), class: 'btn btn-primary w-100 mt-1'
+
+          .col-sm-9.col-lg-3
+            =link_to event_entries_path(@entry.event, entry_type: @entry.entry_type, direction: @entry.direction),
+              class: 'btn btn-default btn-outline-primary w-100 mt-1', role: 'button' do
+              %i.bi.bi-arrow-left
+              =@event.name

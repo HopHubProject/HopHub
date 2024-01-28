@@ -1,0 +1,79 @@
+.row.mb-3
+  .col-sm-12
+    .map-container
+      #map{ style: "height: 520px", 'data-apikey': ENV['MAPTILER_API_KEY'] }
+
+=turbo_frame_tag "entry_form" do
+  =simple_form_for [@event, @entry] do |f|
+    =f.hidden_field :entry_type
+    =f.hidden_field :direction
+    =f.hidden_field :latitude
+    =f.hidden_field :longitude
+    =f.hidden_field :token, value: params[:token]
+
+    =f.input :transport, as: :radio_buttons,
+      collection: Entry::TRANSPORTS.map { |v| [t("transport.#{v}"), v] },
+      label: t('simple_form.labels.entry.transport'),
+      hint: t('simple_form.hints.entry.transport')
+    =f.input :name
+    -if method == :new
+      =f.input :email
+    =f.input :phone
+    =f.input :location,
+      label: @entry.is_way_there? ? t('simple_form.labels.entry.starting-point') : t('simple_form.labels.entry.destination'),
+      hint: @entry.is_way_there?  ? t('simple_form.hints.entry.starting-point')  : t('simple_form.hints.entry.destination')
+    =f.input :seats,
+      hint: @entry.is_offer? ? t('simple_form.hints.entry.seats-available') : t('simple_form.hints.entry.seats-needed')
+    =f.input :date,
+      as: :string,
+      input_html: { value: @entry.date&.strftime('%d/%m/%Y %H:%M') }
+    =f.input :notes, input_html: { rows: 5 }
+
+    -if method == :new
+      .row.mb-3
+        .col-sm-3
+        .col-sm-9
+          %altcha-widget{ challengeurl: altcha_url() }
+          =f.error :altcha, class: 'small text-danger mt-1'
+
+      .row.mb-3
+        .col-sm-3
+        .col-sm-9
+          %small= accept_tos_text
+
+    .row.mb-3
+      .col-sm-3
+      .col-sm-9.col-lg-3
+        =f.submit submit_text, class: 'btn btn-primary w-100 mt-1'
+
+      .col-sm-9.col-lg-3
+        -if method == :new
+          =link_to t('cancel'), event_entries_path(@event, entry_type: @entry.entry_type, direction: @entry.direction),
+            class: 'btn btn-default btn-light w-100', role: 'button'
+        -else
+          =link_to t('entry_delete.title'),
+            event_entry_destroy_path(@entry.event, @entry, token: params[:token], method: :delete),
+            class: 'btn btn-default btn-danger w-100 mt-1',
+            role: 'button',
+            data: { turbo_method: :delete, turbo_confirm: t('entry_delete.confirmation') }
+
+:javascript
+  init_entry_timepicker = (e) => {
+    const date = document.getElementById('entry_date');
+
+    if (date !== null) {
+      new tempusDominus.TempusDominus(date, {
+        restrictions: {
+          minDate: new Date(),
+          maxDate: new Date('#{ escape_javascript(@event.end_date) }'),
+        },
+        localization: {
+          locale: '#{ I18n.locale }',
+          format: 'dd/MM/yyyy HH:mm',
+        },
+      });
+    }
+  };
+
+  document.addEventListener('turbo:load', init_entry_timepicker);
+  document.addEventListener('turbo:frame-load', init_entry_timepicker);

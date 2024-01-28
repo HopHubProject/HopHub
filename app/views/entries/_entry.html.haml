@@ -1,0 +1,44 @@
+.row
+  .col-12.col-md-12
+    %hr
+
+.row
+  .col-12.col-md-3
+    %span
+      %b=entry.name
+      -unless [:bicycle, :foot].include? entry.transport.to_sym or entry.seats == 0
+        –
+        %span=pluralize(entry.seats, t('seat.one'), t('seat.other'))
+    %br
+    %span.d-lg-none
+      =t('simple_form.labels.entry.transport') + ':'
+    %span
+      %i.mx-1{class: icon_class_for_transport(entry.transport)}
+      =t("transport.#{entry.transport}")
+
+  .col-12.col-md-3
+    %span=l entry.date, format: :long
+  .col-12.col-md-5
+    %span.d-lg-none
+      -if entry.is_way_there?
+        =t('simple_form.labels.entry.starting-point') + ':'
+      -else
+        =t('simple_form.labels.entry.destination') + ':'
+    %span=entry.location
+  .col-12.col-md-1
+    =link_to t('entry_contact.title'), event_entry_path(entry.event, entry), class: 'btn btn-outline-primary btn-sm w-100', role: 'button'
+
+.accordion-collapse.collapse{
+  id: "entry-#{entry.id}",
+  "aria-labelledby": "headingTwo",
+  "data-bs-parent": "#accordionExample"}
+  .accordion-body
+    -unless entry.phone.blank?
+      %span
+        =t('activerecord.fields.entry.phone') + ':'
+        =entry.phone
+      %br
+    %span
+      =t('activerecord.fields.entry.notes') + ':'
+      =entry.notes
+    %br

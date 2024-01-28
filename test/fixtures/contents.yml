@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+de:
+  name: name
+  locale: de
+  fallback: false
+  content: TextDe
+
+en:
+  name: name
+  locale: en
+  fallback: true
+  content: TextEn

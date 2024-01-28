@@ -1,0 +1,80 @@
+.row.justify-content-center
+  .col-12.col-lg-12
+    %h1= @event.name
+
+=turbo_frame_tag 'entries' do
+  .row
+    .col-12.col-lg-12
+      .container.d-flex.align-items-center.justify-content-center.py-3
+        .btn-group
+          %a.btn{ href: event_entries_path(@event, direction: :way_there, entry_type: @entry_type), class: @direction.to_sym == :way_there ? 'active btn-primary' : 'btn-outline-primary', data: { turbo_frame: 'entries' } }
+            %i.me-1{ class: icon_class_for_entry_type(@entry_type) }
+            =t("way_there_" + @entry_type + ".other")
+            %span.badge.bg-secondary.text-light
+              = @way_there_count
+          %a.btn{ href: event_entries_path(@event, direction: :way_back, entry_type: @entry_type), class: @direction.to_sym == :way_back ? 'active btn-primary' : 'btn-outline-primary', data: { turbo_frame: 'entries' } }
+            %i.me-1{ class: icon_class_for_entry_type(@entry_type) }
+            =t("way_back_" + @entry_type + ".other")
+            %span.badge.bg-secondary.text-light
+              = @way_back_count
+
+      .map-container
+        #map{ style: "height: 500px",
+          'data-url': event_geojson_path(@event, entry_type: @entry_type, direction: @direction, format: :json),
+          'data-apiKey': ENV['MAPTILER_API_KEY'] }
+
+  =turbo_frame_tag 'entries_table' do
+    .row.justify-content-center
+      .col-12.col-lg-12
+        .container.d-flex.align-items-center.justify-content-center.py-3
+          = link_to new_event_entry_path(@event, direction: @direction, entry_type: :offer), class: 'btn btn-primary mx-2', role: 'button' do
+            %i.me-1{class: icon_class_for_entry_type(:offer) }
+            - if @direction.to_sym == :way_there
+              = t('add_request_way_there')
+            - elsif @direction.to_sym == :way_back
+              = t('add_request_way_back')
+
+          = link_to new_event_entry_path(@event, direction: @direction, entry_type: :request), class: 'btn btn-primary mx-2', role: 'button' do
+            %i.me-1{class: icon_class_for_entry_type(:request) }
+            - if @direction.to_sym == :way_there
+              = t('add_request_way_there')
+            - elsif @direction.to_sym == :way_back
+              = t('add_request_way_back')
+
+    .row.justify-content-center
+      .col-12.col-lg-12
+        .container.d-flex.align-items-center.justify-content-center.py-3
+          =link_to event_path(@event), class: 'btn btn-default btn-outline-primary mx-2', role: 'button' do
+            %i.bi.bi-arrow-left
+            =@event.name
+
+        .container.justify-content-center.py-3
+          .row
+            %form{ action: event_entries_path(@event), method: :get, class: "row g-3" }
+              %input{ type: :hidden, name: :direction, value: @direction }
+              %input{ type: :hidden, name: :entry_type, value: @entry_type }
+              %input{ type: :hidden, name: :locale, value: I18n.locale }
+              .col-12.col-lg-9
+                %input{ type: :text, class: "form-control", name: :q, value: params[:q], placeholder: t('entries.search.placeholder') }
+              .col-12.col-lg-3
+                %button{ type: :submit, class: "btn btn-sm btn-outline-primary" }
+                  %i.bi.bi-filter.me-1
+                  =t('entries.filter')
+                =link_to event_entries_path(@event, entry_type: @entry_type, direction: @direction),
+                  class: 'btn btn-sm btn-outline-primary', role: 'button' do
+                  %i.bi.bi-x.me-1
+                  =t('entries.reset')
+
+        - if @paginated_entries.any?
+          #entry-table
+            =render @paginated_entries
+        - else
+          .text-center
+            %p
+              %i.bi.bi-heartbreak.me-1
+              =t('entries.none')
+
+        .container.d-flex.align-items-center.justify-content-center.py-3
+          =paginate @paginated_entries, theme: 'bootstrap-5',
+            pagination_class: "pagination flex-wrap justify-content-center",
+            nav_class: "d-inline-block"

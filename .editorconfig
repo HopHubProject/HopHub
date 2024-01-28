@@ -1,0 +1,13 @@
+[*]
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+charset = utf-8
+indent_style = space
+
+[*.{js,jsx,ts,tsx,css,erb,haml,rb,rake}]
+indent_size = 2
+max_line_length = 120
+
+[{package.json,*.yml,*.cjson}]
+indent_size = 2

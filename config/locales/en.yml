@@ -1,31 +1,326 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  language: English
+  flagicon: 🇬🇧
+
+  languages: Languages
+  github_project: GitHub project
+  legal_notice: Legal notice
+  imprint: Imprint
+  privacy_policy: Privacy policy
+  tos: Terms of service
+  theme: Theme
+
+  accept_terms: |
+    By using this website and acknowledging that you are not a robot,
+    you agree to our %{tos} and our %{privacy_policy}.
+
+  not_a_human: Please confirm that you are not a robot.
+
+  welcome:
+    title: What is this?
+    text:
+      - |
+        HopHub is a ride sharing platform that aims to simplify common arrival to events
+        and thereby make the world a little bit better. No matter if you fill up your car,
+        share a train ticket, arrive by bus, plan a bike tour or walk.
+
+  how-it-works:
+    title: How does this work?
+    create-event:
+      title: Create an event
+      text: |
+        You create a new event and share the link with potential attendees.
+        Only people with the link can see the event.
+    add-offer:
+      title: Add an offer
+      text: |
+        People that want to propose a ride can now add an offer. This works for free seats in
+        a car as well for a common train ride, a bus trip, a bike tour or a walk.
+        No login is required, only an email address. As soon as the email address is
+        confirmed, the offer is shown on the website so others can see it.
+    add-request:
+      title: Add a request
+      text: |
+        People who are looking for a ride but don't see a matching offer yet
+        can add a request. Also here, no login is required, only an email address.
+    match:
+      title: Get in touch
+      text: |
+        When two parties match, they can get in touch with each other using a form
+        on the website. The email address of the person reaching out is used as the
+        Reply-To address, so the recipient can reply directly for further coordination.
+    cleanup:
+      title: Leave no traces
+      text: |
+        Offers, requests and events that are no longer valid are automatically and permanently
+        removed from the database.
+
+  hosting-an-event:
+    title: Create your own event
+    text: |
+      You know of an even where many people plan to arrive jointly?
+      Then create an event and share the link with the participants.
+
+  about:
+    title: The project
+    text:
+      - |
+        HopHub is an open source project developed by a small team of volunteers.
+        We are not a company and we don't have any commercial interests.
+        We don't annoy you with ads, don't share any data with third parties and
+        don't use any trackers. We only store the data that is absolutely necessary
+        for the operation of the platform. More about this in our %{privacy_policy} and %{tos}.
+      - |
+        If you want to support us, you can find the source code on %{github_project}.
+      - |
+        HopHub is completely free and will always be.
+
+  cancel: Cancel
+
+  transport:
+    car: Car
+    train: Train
+    bus: Bus
+    bicycle: Bicycle
+    foot: Foot
+    other: Other
+
+  offer: Offer
+  offers: Offers
+
+  request: Request
+  requests: Requests
+
+  way_there: Way there
+  way_back: Way back
+
+  no_entries: No entries yet.
+
+  way_back_request:
+    one: Request (way back)
+    other: Requests (way back)
+
+  way_there_request:
+    one: Request (way there)
+    other: Requests (way there)
+
+  way_back_offer:
+    one: Offer (way back)
+    other: Offers (way back)
+
+  way_there_offer:
+    one: Offer (way there)
+    other: Offers (way there)
+
+  add_offer_way_there: Add a new offer (way there)
+  add_offer_way_back: Add a new offer (way back)
+  add_request_way_there: Add a new request (way there)
+  add_request_way_back: Add a new request (way back)
+
+  admin: Admin
+
+  event: Event
+  seat:
+    one: seat
+    other: seats
+
+  create_event:
+    title: Create event
+    text: |
+      Please enter the details to customize your event. You will receive an email with
+      a link to the administration page to change some of these details later.
+
+  edit_event:
+    title: Edit event
+    text: |
+      Please enter the details to customize your event.
+
+  update_event:
+    title: Update event
+
+  event_delete:
+    title: Delete event
+    confirmation: |
+      Are you sure you want to delete this event?
+      All requests and offers will be deleted permanently as well.
+      This action cannot be undone.
+
+  entry_delete:
+    title: Delete entry
+    confirmation: |
+      Are you sure you want to delete this entry?
+      This action cannot be undone.
+
+  create_new_request:
+    title: Create new request
+    text: |
+      If you are looking for a ride, please fill in the form below and select the location
+      where you want to be picked up or dropped, respectively. The location doesn't have
+      to be exact, but it should give others an idea on how to plan their route.
+      People who have a matching offer will be able to contact you through the web site once
+      you have confirmed your email address.
+
+  create_new_offer:
+    title: Create new offer
+    text: |
+      If you have one or more free seats in your vehicle, please fill in the form below and
+      select the location where you want to pick up or drop off passengers, respectively.
+      People who have a matching request will be able to contact you through the web site once
+      you have confirmed your email address.
+
+  update_request:
+    title: Update request
+
+  update_offer:
+    title: Update offer
+
+  entries:
+    text: |
+      Here you can see all %{type} for this event.
+
+    none: No entries found
+
+    search:
+      placeholder: Search for entries
+    filter: Filter
+    reset: Clear
+
+  entry_contact:
+    title: Contact
+    send: Send message
+    text: |
+      Please fill in the form to contact %{name}.
+      This information will be sent to %{name} via email. We do not store it in our database.
+
+  views:
+    pagination:
+      previous: "‹"
+      next: "›"
+      first: "«"
+      last: "»"
+      truncate: "&hellip;"
+
+  mail:
+    event:
+      created:
+        subject: "HopHub: Please confirm your event"
+
+      confirmed:
+        subject: "HopHub: Your event is now active"
+
+    entry:
+      created:
+        subject: "HopHub: Please confirm your entry"
+
+      confirmed:
+        subject: "HopHub: Your entry is now active"
+
+      contact:
+        subject: "HopHub: New message"
+
+  flash:
+    event_created: Event created. You will receive an email with a link to confirm.
+    event_updated: Event updated.
+    event_deleted: Event deleted.
+    event_not_found: Event not found.
+    event_confirmed: Your email address has been confirmed. The event is now active.
+    event_already_confirmed: Your email address has already been confirmed.
+
+    entry_created: Your entry was created. You will receive an email with a link to confirm.
+    entry_updated: Your entry was updated.
+    entry_deleted: Your entry was deleted.
+    entry_not_found: Entry not found.
+    entry_confirmed: Your email address has been confirmed.
+    entry_already_confirmed: Your email address has already been confirmed.
+    entry_contacted: Your message has been sent.
+
+  activerecord:
+    models:
+      event: Event
+      entry: Entry
+    fields:
+      event:
+        name: Name
+        description: Description
+        admin_email: Admin e-mail
+        end_date: End date
+      entry:
+        name: Name
+        email: E-mail address
+        phone: Phone number
+        date: Time
+        starting-point: Start
+        destination: Destination
+        seats: Seats
+        notes: Additional notes
+
+  simple_form:
+    yes: Yes
+    no: No
+    required:
+      text: required
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      event:
+        name: Event name
+        description: Description
+        admin_email: Admin email
+        end_date: End date
+
+      entry:
+        name: Your name
+        email: Your email address
+        phone: Your phone number
+        date: Time
+        transport: Transport type
+        starting-point: Start
+        destination: Destination
+        seats: Number of seats
+        notes: Additional notes
+
+      contact_email:
+        from: Your email address
+        text: Your message
+
+    hints:
+      event:
+        name: |
+          This is the name of the event that will be displayed on the event page.
+          We will also use it to genereate a unique URL for the event.
+        description: |
+          The description will also be shown on the event page and may give visitors some context on the event.
+          You can use %{markdown} to format the text and add links, images etc.
+        admin_email: This email address will be used to send you a confirmation and an administration link.
+        end_date: The event and all requests and offers will be deleted permanently after this date.
+
+      entry:
+        name: Your name, as is will be shown on the web site.
+        transport: The type of transport you are using.
+        email: |
+          Your email address will not be visible to anyone. We'll use it to send you an email once somebody wants to contact you.
+          You'll have to confirm your email address before your entry is shown on the web site.
+        phone: A phone number is optional. If you fill it in, it will be shown to others.
+        date: The date and time you want to start your trip.
+        starting-point: Where would you like to start?
+        destination: What is your destination?
+        seats-available: |
+          The number of seats you have available.
+          In case you are going by bike or foot, you can leave this field empty.
+        seats-needed: The number of seats you need.
+        notes: Any additional notes you want to share with others.
+
+      contact_email:
+        name: |
+          Your name will be shown in the email that %{name} receives. We do not store it in our database.
+        from: |
+          Your email address will be used as the Reply-to address, so %{name}
+          can reply to your message directly.
+        text: |
+          Your message to %{name}. Please be polite and provide all necessary information.
+
+    errors:
+      entry:
+        location:
+          invalid: Please put a marker on the map to select a location.

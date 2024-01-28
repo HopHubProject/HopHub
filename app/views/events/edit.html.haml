@@ -1,0 +1,6 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1= t("edit_event.title")
+    %p= t("edit_event.text")
+
+    =render partial: "form", locals: { submit_text: t('update_event.title'), method: :update }

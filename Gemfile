@@ -8,9 +8,6 @@ gem "rails", "~> 7.1.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
@@ -23,14 +20,11 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
-
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+#gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
+gem "redis", ">= 4.0.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -43,6 +37,26 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+
+gem "haml"
+gem 'bootstrap', '~> 5.3', '>= 5.3.2'
+gem 'dartsass-rails', '~> 0.5.0'
+gem 'dartsass-sprockets', '~> 3.1'
+gem 'simple_form'
+gem 'activeadmin'
+gem 'base64'
+gem 'redcarpet'
+
+gem 'cuber'
+gem 'exception_notification'
+
+gem 'altcha-rails'
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
+
+gem 'rails-i18n'
+
+gem 'faker'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -59,12 +73,22 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
+  # Use sqlite3 as the database for Active Record
+  gem "sqlite3", "~> 1.4"
+
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener'
+  gem 'brakeman', require: false
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'simplecov', require: false
+end
+
+group :production do
+  gem 'pg'
 end

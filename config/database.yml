@@ -22,4 +22,11 @@ test:
 
 production:
   <<: *default
-  database: storage/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['HOPHUB_DATABASE_NAME'] %>
+  pool: 5
+  username: <%= ENV['HOPHUB_DATABASE_USERNAME'] %>
+  password: <%= ENV['HOPHUB_DATABASE_PASSWORD'] %>
+  host: <%= ENV['HOPHUB_DATABASE_HOST'] %>
+  port: <%= ENV['HOPHUB_DATABASE_PORT'] %>

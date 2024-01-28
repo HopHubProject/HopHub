@@ -1,0 +1,349 @@
+de:
+  language: Deutsch
+  flagicon: 🇩🇪
+
+  languages: Sprachen
+  github_project: GitHub-Projekt
+  legal_notice: Rechtliches
+  imprint: Impressum
+  privacy_policy: Datenschutzbestimmungen
+  tos: Nutzungsbedingungen
+  theme: Design
+
+  accept_terms: |
+    Durch die Nutzung dieser Website und der Bestätigung dass Du kein Roboter bist,
+    stimmst du unseren %{tos} und unseren %{privacy_policy} zu.
+
+  not_a_human: Bitte bestätige, dass du kein Roboter bist.
+
+  welcome:
+    title: Was ist das?
+    text:
+      - |
+        HopHub ist eine Mitfahr-Plattform, die gemeinesames Anreisen zu Veranstaltungen
+        vereinfachen und damit die Welt ein bisschen besser machen will. Ganz egal ob
+        ihr das Auto vollmacht, euch ein Zugticket teilt, gemeinsam Bus fahrt, eine
+        Fahrradtour plant oder zu Fuß geht.
+
+  how-it-works:
+    title: Wie funktioniert das?
+    create-event:
+      title: Erstelle ein Event
+      text: |
+        Du erstellst ein neues Event und teilst den Link mit potentiell Teilnehmenden.
+        Nur Personen mit dem Link können das Event sehen.
+    add-offer:
+      title: Biete eine Mitfahrgelegenheit an
+      text: |
+        Personen, die eine Mitfahrgelegenheit anbieten wollen, können jetzt ein Angebot
+        einstellen. Das gilt für Plätze im Auto, aber auch für gemeinesames Reisen mit
+        dem Zug, Bus, Fahrrad oder zu Fuß.
+        Dafür ist keine Anmeldung erforderlich, nur eine E-Mail-Adresse, an die wir eine
+        Bestätigungmail senden. Nach erfolgter Bestätigung wird der Eintrag angezeigt.
+    add-request:
+      title: Suche eine Mitfahrgelegenheit
+      text: |
+        Personen, die eine Mitfahrgelegenheit suchen, aber noch kein passendes Angebot sehen,
+        können ein Gesuch hinzufügen.
+        Auch dafür ist keine Anmeldung erforderlich, nur eine E-Mail-Adresse.
+    match:
+      title: Kontakt aufnehmen
+      text: |
+        Bei einem Match können Personen mittels eines Webformulars auf der Website in Kontakt
+        treten. Die E-Mail-Adresse des Kontaktaufnehmenden wird als Antwortadresse verwendet,
+        damit die Empfängerin direkt antworten kann.
+    cleanup:
+      title: Keine Spuren hinterlassen
+      text: |
+        Angebote, Gesuche und Events werden automatisch aus der Datenbank entfernt
+        sobald deren Gültigkeit vorrüber ist.
+
+  hosting-an-event:
+    title: Erstelle dein eigenes Event
+    text: |
+      Du weißt von einer Veranstaltung, zu der Leute gemeinsam anreisen wollen?
+      Dann erstelle ein Event und teile den Link mit den Teilnehmenden.
+
+  about:
+    title: Das Projekt
+    text:
+      - |
+        HopHub ist ein Open-Source-Projekt, die von Freiwilligen entwickelt wird.
+        Wir sind keine Firma und haben keine kommerziellen Interessen.
+        Wir nerven euch nicht mit Werbung, geben keine Daten an Dritte weiter und
+        verwenden keine Tracker. Es werden nur die Daten gespeichert, die für den Betrieb der
+        Plattform absolut notwendig sind. Mehr dazu in unseren %{privacy_policy} und %{tos}.
+      - |
+        Wenn du uns unterstützen möchtest, findest du den Quellcode auf %{github_project}.
+      - |
+        HopHub ist komplett kostenlos und wird es auch immer bleiben.
+
+  cancel: Abbrechen
+
+  transport:
+    car: Auto
+    train: Zug
+    bus: Bus
+    bicycle: Fahrrad
+    foot: Zu Fuß
+    other: Sonstiges
+
+  offer: Angebot
+  offers: Angebote
+
+  request: Gesuch
+  requests: Gesuche
+
+  way_there: Hinweg
+  way_back: Rückweg
+
+  way_back_request:
+    one: Gesuch (Rückweg)
+    other: Gesuche (Rückweg)
+  way_back_offer:
+    one: Angebot (Rückweg)
+    other: Angebote (Rückweg)
+  way_there_request:
+    one: Gesuch (Hinweg)
+    other: Gesuche (Hinweg)
+  way_there_offer:
+    one: Angebot (Hinweg)
+    other: Angebote (Hinweg)
+
+  add_offer_way_there: Neues Angebot hinzufügen (Hinweg)
+  add_offer_way_back: Neues Angebot hinzufügen (Rückweg)
+  add_request_way_there: Neues Gesuch hinzufügen (Hinweg)
+  add_request_way_back: Neues Gesuch hinzufügen (Rückweg)
+
+  admin: Administrator
+  event: Event
+  seat:
+    one: Platz
+    other: Plätze
+
+  create_event:
+    title: Event erstellen
+    text: |
+      Bitte gib die Details ein zu deinem Event ein. Du erhältst eine E-Mail mit
+      einem Link zur Administrationsseite, um einige dieser Details später zu ändern.
+
+  edit_event:
+    title: Event bearbeiten
+    text: |
+      Bitte gib die Details ein, um dein Event anzupassen.
+
+  update_event:
+    title: Event aktualisieren
+
+  event_delete:
+    title: Event löschen
+    confirmation: |
+      Bist du sicher, dass du dieses Event löschen möchtest?
+      Alle Gesuche und Angebote werden ebenfalls dauerhaft gelöscht.
+      Diese Aktion kann nicht rückgängig gemacht werden.
+
+  entry_delete:
+    title: Eintrag löschen
+    confirmation: |
+      Bist du sicher, dass du diesen Eintrag löschen möchtest?
+      Diese Aktion kann nicht rückgängig gemacht werden.
+
+  create_new_request:
+    title: Neues Gesuch erstellen
+    text: |
+      Wenn du nach einer Mitfahrgelegenheit suchst, fülle bitte das unten stehende Formular aus
+      und wähle einen Punkt auf der Karte aus an dem du abgeholt oder abgesetzt werden möchtest.
+      Dieser Ort muss nicht genau sein, aber er sollte anderen eine Möglichkeit geben, ihre Route
+      zu planen.
+      Personen mit passendem Angebot können über die Website Kontakt mit dir aufnehmen sobald du
+      deine E-Mail-Adresse bestätigt hast.
+
+  create_new_offer:
+    title: Neues Angebot erstellen
+    text: |
+      Wenn du in deinem Fahrzeug einen oder mehrere freie Plätze hast, fülle bitte das Formular unten aus
+      und wähle einen Punkt auf der Karte aus an dem du Mifahrende abholen oder absetzten möchtest.
+      Personen mit passender Anfrage können über die Website Kontakt mit dir aufnehmen sobald du
+      deine E-Mail-Adresse bestätigt hast.
+
+  update_request:
+    title: Gesuch aktualisieren
+
+  update_offer:
+    title: Angebot aktualisieren
+
+  entries:
+    text: |
+      Hier findest du alle %{type} für dieses Event.
+
+    none: Keine Einträge gefunden
+
+    search:
+      placeholder: Suche nach Einträgen
+    filter: Filtern
+    reset: Zurücksetzen
+
+  entry_contact:
+    title: Kontakt
+    send: Mail senden
+    text: |
+      Bitte fülle das Formular aus, um %{name} zu kontaktieren.
+      Diese Informationen werden an %{name} gesendet und nicht in der Datenbank gespeichert.
+
+  views:
+    pagination:
+      previous: "‹"
+      next: "›"
+      first: "«"
+      last: "»"
+      truncate: "&hellip;"
+
+  mail:
+    event:
+      created:
+        subject: "HopHub: Bitte bestätige dein Event"
+      confirmed:
+        subject: "HopHub: Dein Event ist jetzt freigeschaltet"
+    entry:
+      created:
+        subject: "HopHub: Bitte bestätige deinen Eintrag"
+      confirmed:
+        subject: "HopHub: Dein Eintrag ist jetzt freigeschaltet"
+      contact:
+        subject: "HopHub: Neue Nachricht"
+
+  flash:
+    event_created: Event erstellt. Du erhältst gleich eine E-Mail mit einem Link zur Bestätigung.
+    event_updated: Event aktualisiert.
+    event_deleted: Event gelöscht.
+    event_not_found: Event nicht gefunden.
+    event_confirmed: Deine E-Mail-Adresse wurde bestätigt. Das Event ist jetzt aktiv.
+    event_already_confirmed: Deine E-Mail-Adresse wurde bereits bestätigt.
+
+    entry_created: Dein Eintrag wurde erstellt. Du erhältst gleich eine E-Mail mit einem Link zur Bestätigung.
+    entry_updated: Dein Eintrag wurde aktualisiert.
+    entry_deleted: Dein Eintrag wurde gelöscht.
+    entry_not_found: Eintrag nicht gefunden.
+    entry_confirmed: Deine E-Mail-Adresse wurde bestätigt. Der Eintrag ist jetzt aktiv.
+    entry_already_confirmed: Deine E-Mail-Adresse wurde bereits bestätigt.
+    entry_contacted: Deine Nachricht wurde gesendet. Der Empfänger wird sich bei dir melden.
+
+  activerecord:
+    models:
+      event: Event
+      entry: Eintrag
+    fields:
+      event:
+        id: ID
+        name: Name
+        description: Beschreibung
+        admin_email: Admin-E-Mail
+        end_date: Enddatum
+      entry:
+        name: Name
+        email: E-Mail-Adresse
+        phone: Telefonnummer
+        date: Zeitpunkt
+        starting-point: Start
+        destination: Ziel
+        seats: Plätze
+        notes: Zusätzliche Notizen
+    errors:
+      models:
+        event:
+          attributes:
+            id:
+              blank: darf nicht leer sein
+              invalid: ist keine gültige ID
+              taken: ist bereits vergeben
+            name:
+              blank: darf nicht leer sein
+              invalid: ist ungültig
+            description:
+              blank: darf nicht leer sein
+              invalid: ist ungültig
+            admin_email:
+              blank: darf nicht leer sein
+              invalid: ist ungültig
+            end_date:
+              blank: darf nicht leer sein
+              invalid: ist ungültig
+
+  simple_form:
+    yes: 'Ja'
+    no: 'Nein'
+    required:
+      text: Pflichtfeld
+      mark: '*'
+    error_notification:
+      default_message: "Bitte überprüfe die unten stehenden Probleme:"
+    labels:
+      event:
+        name: Name des Events
+        description: Beschreibung
+        admin_email: Admin-E-Mail
+        end_date: Enddatum
+
+      entry:
+        name: Dein Name
+        email: Deine E-Mail-Adresse
+        phone: Deine Telefonnummer
+        date: Datum und Uhrzeit
+        transport: Verkehrsmittel
+        starting-point: Start
+        destination: Ziel
+        seats: Anzahl der Plätze
+        notes: Zusätzliche Notizen
+
+      contact_email:
+        from: Deine E-Mail-Adresse
+        text: Deine Nachricht
+
+    hints:
+      event:
+        name: |
+          Dies ist der Name des Events, der auf der Eventseite angezeigt wird.
+          Wir verwenden ihn auch, um die URL des Events zu generieren.
+        description: |
+          Die Beschreibung wird auch auf der Eventseite angezeigt und kann den Besuchern etwas Kontext zum Event geben.
+          Du kannst %{markdown} verwenden, um den Text zu formatieren und Links oder Bilder anzuzeigen.
+        admin_email: Diese E-Mail-Adresse wird verwendet, um dir eine Bestätigung und einen Administrationslink zu senden.
+        end_date: Das Event und alle Gesuche und Angebote werden nach diesem Datum dauerhaft gelöscht.
+
+      entry:
+        name: Dein Name, wie er auf der Website angezeigt wird.
+        transport: Das Verkehrsmittel, das du benutzen wirst.
+        email: |
+          Deine E-Mail-Adresse ist für niemanden sichtbar.
+          Wir verwenden sie, um dir eine E-Mail zu senden, sobald jemand Kontakt mit dir aufnehmen möchte.
+          Du musst deine E-Mail-Adresse bestätigen, bevor dein Eintrag auf der Website angezeigt wird.
+        phone: Eine Telefonnummer ist optional. Wenn du sie angibst, wird sie anderen angezeigt.
+        date: Datum und Uhrzeit, zu der du deine Reise beginnen möchtest.
+        starting-point: Wo möchtest du starten?
+        destination: Was ist dein Ziel?
+        seats-available: |
+          Die Anzahl der verfügbaren Plätze.
+          Falls Du mit dem Fahrrad fährst oder zu Fuß gehst, ist dieses Feld optional.
+        seats-needed: Die Anzahl der benötigten Plätze.
+        notes: Alle zusätzlichen Notizen, die du mit anderen teilen möchtest.
+
+      contact_email:
+        name: |
+          Dein Name wird in der E-Mail angezeigt, die %{name} erhält.
+        from: |
+          Deine E-Mail-Adresse wird als Antwortadresse verwendet, damit %{name} dir direkt antworten kann.
+        text: |
+          Deine Nachricht an %{name}. Sei freundlich und gib so viele Informationen wie möglich an.
+
+    errors:
+      entry:
+        location:
+          invalid: Bitte setze einen Marker auf der Karte, um einen Ort auszuwählen.
+
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      short: "%d.%m. %H:%M"
+      long: "%d. %B %Y %H:%M"
+  date:
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]

@@ -1,0 +1,18 @@
+Hi <%= @entry.name %>,
+
+Thanks a lot for using HopHub!
+
+Your <%= t(@entry.entry_type).downcase %> for the event "<%= @entry.event.name %>" has been confirmed and is now active and visible here:
+
+    <%= event_entry_url(@entry.event, @entry) %>
+
+If you want to edit or delete your <%= t(@entry.entry_type).downcase %>, please use the following link which is only accessible to you:
+
+    <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
+
+Your entry will automatically be deleted after the date you set, or when the event ends.
+
+Happy sharing, you are awesome!
+
+
+Kind regards from the HopHub platform.

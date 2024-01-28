@@ -1,0 +1,146 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title HopHub
+    %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application.bootstrap", "data-turbo-track": "reload"
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css"
+    = stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@maptiler/sdk@1.2.1/dist/maptiler-sdk.min.css", "data-turbo-track": "reload"
+    = stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/fontawesome.min.css", "data-turbo-track": "reload"
+    = stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css", "data-turbo-track": "reload"
+
+    %script{async: "", src: "https://ga.jspm.io/npm:es-module-shims@1.8.2/dist/es-module-shims.js"}
+    = javascript_importmap_tags
+
+    = stylesheet_link_tag "https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/style.css"
+    %script{async: "", src: "https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/maptilersdk.umd.js"}
+  %body
+    %nav.navbar.bg-body-tertiary.navbar-expand-sm
+      .container-fluid
+        =link_to root_path, class: "navbar-brand" do
+          =image_tag('outline.png', alt: 'logo', height: '32px', class: 'd-inline-block align-text-top')
+          BETA
+
+        %button.navbar-toggler{ type: 'button', "data-bs-toggle" => 'collapse', "data-bs-target" => '#navBarNav', "aria-controls" => 'navBarNav', "aria-expanded" => 'false', "aria-label" => 'Toggle navigation' }
+          %i.bi.bi-list
+
+        #navBarNav.collapse.navbar-collapse.text-end
+          %ul.navbar-nav.ms-auto.mb-2.mb-sm-0
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#", role: "button"}
+                .navbar-icon
+                  %i.bi.bi-translate
+                %span.d-lg-none
+                  =t('languages')
+              %ul.dropdown-menu.dropdown-menu-end.me-auto.text-end
+                -I18n.available_locales.each do |locale|
+                  %li
+                    =link_to url_for(url_params.merge(locale: locale)), class: "dropdown-item" do
+                      =t('flagicon', locale: locale)
+                      =t('language', locale: locale)
+
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#", role: "button"}
+                .navbar-icon
+                  %i.bi.bi-info-square
+                %span.d-lg-none
+                  =t('legal_notice')
+              %ul.dropdown-menu.dropdown-menu-end.me-auto.text-end
+                %li
+                  =link_to t('imprint'), imprint_path, class: "dropdown-item"
+                %li
+                  =link_to t('privacy_policy'), privacy_path, class: "dropdown-item"
+                %li
+                  =link_to t('tos'), tos_path, class: "dropdown-item"
+
+            %li.nav-item
+              =link_to "https://github.com/HopHubProject/HopHub", target: '_new', class: "nav-link" do
+                .navbar-icon
+                  %i.bi.bi-github
+                %span.d-lg-none
+                  =t('github_project')
+
+            %li.nav-item
+              =link_to "https://23.social/@hophub", target: '_new', class: "nav-link" do
+                .navbar-icon
+                  %i.bi.bi-mastodon
+                %span.d-lg-none
+                  Mastodon
+
+            %li.nav-item
+              =link_to "#", class: "nav-link", id: "darkMode" do
+                .navbar-icon
+                  %i.bi.bi-moon#darkModeIcon
+                %span.d-lg-none
+                  =t('theme')
+
+    .container
+      -if flash.any?
+        .row
+          .col-md-12
+            .flash
+              -flash.each do |msg_type, message|
+                %div{ class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible fade show", role: "alert" }
+                  %button.btn-close{type: 'button', "data-bs-dismiss": 'alert', "aria-label": "Close"}
+                  %span=message
+
+      #content
+        = yield
+
+:javascript
+  document.addEventListener('turbo:load', () => {
+    function fadeOutEffect(fadeTarget) {
+        var fadeEffect = setInterval(function () {
+            if (!fadeTarget.style.opacity) {
+                fadeTarget.style.opacity = 1;
+            }
+            if (fadeTarget.style.opacity > 0) {
+                fadeTarget.style.opacity -= 0.2;
+            } else {
+                clearInterval(fadeEffect);
+                fadeTarget.remove();
+            }
+        }, 200);
+    }
+
+    const flash = document.querySelector('.flash');
+    if (flash) {
+      setTimeout(() => {
+        fadeOutEffect(flash);
+      }, 3000);
+    }
+
+    const success_flash = document.querySelector('.alert-primary');
+    if (success_flash)
+      confetti();
+  });
+
+  document.updateDarkModeIcon = () => {
+    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
+      document.getElementById('darkModeIcon').classList.remove('bi-moon');
+      document.getElementById('darkModeIcon').classList.add('bi-sun');
+    } else {
+      document.getElementById('darkModeIcon').classList.remove('bi-sun');
+      document.getElementById('darkModeIcon').classList.add('bi-moon');
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.updateDarkModeIcon();
+  });
+
+  document.getElementById('darkMode').addEventListener('click', (e) => {
+    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
+        document.documentElement.setAttribute('data-bs-theme', 'light')
+    } else {
+        document.documentElement.setAttribute('data-bs-theme', 'dark')
+    }
+
+    e.preventDefault();
+    document.updateDarkModeIcon();
+  });

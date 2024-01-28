@@ -39,4 +39,9 @@
 
 /node_modules
 /vendor/bundle
+/vendor/gems
+
+/.cuber
+/deploy
+/coverage
 

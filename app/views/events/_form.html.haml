@@ -1,0 +1,61 @@
+=turbo_frame_tag "event_form" do
+  = simple_form_for @event do |f|
+    =f.input :name
+    =f.input :description, input_html: { rows: 5 },
+      hint: t('simple_form.hints.event.description',
+        markdown: link_to('Markdown', 'https://www.markdownguide.org/basic-syntax/', target: '_new')).html_safe
+    -if method == :new
+      =f.input :admin_email
+    =f.input :end_date,
+      as: :string,
+      input_html: { value: @event.end_date&.strftime('%d/%m/%Y') }
+
+    -if method == :new
+      .row.mb-3
+        .col-sm-3
+        .col-sm-9
+          %altcha-widget{ challengeurl: altcha_url() }
+          =f.error :altcha, class: 'small text-danger mt-1'
+
+      .row.mb-3
+        .col-sm-3
+        .col-sm-9
+          %small= accept_tos_text
+
+    .row.mb-3
+      .col-sm-3
+      .col-sm-9.col-lg-3
+        =f.submit submit_text, class: 'btn btn-primary w-100 mt-1'
+
+      -unless method == :new
+        .col-sm-9.col-lg-3
+          =link_to t('event_delete.title'),
+            event_destroy_path(@event, admin_token: params[:admin_token], method: :delete),
+            class: 'btn btn-default btn-danger w-100 mt-1',
+            role: 'button',
+            data: { turbo_method: :delete, turbo_confirm: t('event_delete.confirmation') }
+
+:javascript
+  init_event_timepicker = (e) => {
+    const end_date = document.getElementById('event_end_date')
+    if (end_date !== null) {
+      const picker = new tempusDominus.TempusDominus(end_date, {
+        display: {
+          components: {
+            date: true,
+            clock: false,
+          },
+        },
+        restrictions: {
+          minDate: new Date(),
+        },
+        localization: {
+          locale: '#{ I18n.locale }',
+          format: 'dd/MM/yyyy',
+        },
+      });
+    }
+  }
+
+  document.addEventListener('turbo:load', init_event_timepicker);
+  document.addEventListener('turbo:frame-load', init_event_timepicker);

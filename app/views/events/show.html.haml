@@ -1,0 +1,40 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1= @event.name
+    #descriptiom
+      =@description.html_safe
+
+    %hr
+
+    .row
+      .col-12.col-lg-6.text-center.mt-3
+        %h3 Got a ride to share?
+
+        %p
+          If you have a ride to share, first check whether someone is looking for a ride to the event
+          and contact them directly. Otherwise, you can create a new offer.
+
+        %a.btn.btn-primary.btn-lg.w-100{
+          href: event_entries_path(@event, entry_type: :request,
+                                   direction: @event.requests_way_there.count > @event.requests_way_back.count ? :way_there : :way_back),
+          role: "button"}
+          %i.me-1{class: icon_class_for_entry_type(:request)}
+          =t('requests')
+          %span.badge.bg-secondary.text-light
+            = @event.requests.count
+
+      .col-12.col-lg-6.text-center.mt-3
+        %h3 Need a ride?
+
+        %p
+          If you need a ride, first check whether someone is offering a ride to the event and
+          contact them directly. Otherwise, you can create a new request.
+
+        %a.btn.btn-primary.btn-lg.w-100{
+          href: event_entries_path(@event, entry_type: :offer,
+                                   direction: @event.offers_way_there.count > @event.offers_way_back.count ? :way_there : :way_back),
+          role: "button"}
+          %i.me-1{class: icon_class_for_entry_type(:offer)}
+          =t('offers')
+          %span.badge.bg-secondary.text-light
+            = @event.offers.count

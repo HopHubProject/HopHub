@@ -1,0 +1,58 @@
+.row.justify-content-center.align-items-center
+  .col-12.col-lg-4.text-center
+    =image_tag('logo.png', alt: 'logo', height: '250', width: '', id: 'logo', class: 'd-inline-block align-text-top')
+
+  .col-12.col-lg-4.text-center
+    =image_tag('outline.png', alt: 'logo-outline', width: '300', id: 'logo-outline', class: 'd-inline-block align-text-top')
+
+%br
+
+.row.justify-content-center
+  .col-12.col-lg-9
+    .text-center
+      =link_to new_event_path, class: "btn btn-primary btn-lg" do
+        %i.bi.bi-calendar-plus.me-1
+        = t("create_event.title")
+
+  .col-12.col-lg-9
+    %h1= t('welcome.title')
+    -t('welcome.text').each do |text|
+      %p= text
+
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1= t('how-it-works.title')
+
+    .how-it-works
+      %h2
+        %i.bi.bi-calendar-plus
+        = t('how-it-works.create-event.title')
+      %p= t('how-it-works.create-event.text')
+
+      %h2
+        %i{class: icon_class_for_entry_type(:offer)}
+        = t('how-it-works.add-offer.title')
+      %p= t('how-it-works.add-offer.text')
+
+      %h2
+        %i{class: icon_class_for_entry_type(:request)}
+        = t('how-it-works.add-request.title')
+      %p= t('how-it-works.add-request.text')
+
+      %h2
+        %i.bi.bi-envelope
+        = t('how-it-works.match.title')
+      %p= t('how-it-works.match.text')
+
+      %h2
+        %i.bi.bi-trash
+        = t('how-it-works.cleanup.title')
+      %p= t('how-it-works.cleanup.text')
+
+  .col-12.col-lg-9
+    %h1= t('about.title')
+    -t('about.text',
+       tos: link_to(t('tos'), tos_path),
+       privacy_policy: link_to(t('privacy_policy'), privacy_path),
+       github_project: link_to('GitHub', 'https://github.com/HopHubProject/rails')).each do |text|
+      %p= text.html_safe

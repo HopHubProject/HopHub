@@ -1,0 +1,19 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1
+      -if @entry.is_offer?
+        =t('create_new_offer.title')
+      -else
+        =t('create_new_request.title')
+
+      ="(" + t(@entry.direction) + ")"
+
+    -if @entry.is_offer?
+      = t('create_new_offer.text')
+    -else
+      = t('create_new_request.text')
+
+    -if @entry.is_offer?
+      =render partial: "form", locals: { submit_text: t('create_new_offer.title'), method: :new }
+    -else
+      =render partial: "form", locals: { submit_text: t('create_new_request.title'), method: :new }

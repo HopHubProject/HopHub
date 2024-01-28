@@ -1,0 +1,20 @@
+Hi,
+
+Thanks a lot for using HopHub!
+
+The event "<%= @event.name %>" has been confirmed and is now active.
+
+Please share the following link with potential participants:
+
+    <%= event_url(@event) %>
+
+If you want to update or delete the event, please use the following link which is only accessible to you:
+
+    <%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>
+
+The event and all its offers and requests will automatically be deleted after the configured end date (<%= l @event.end_date, format: :long, locale: I18n.locale %>).
+
+Happy sharing, you are awesome!
+
+
+Kind regards from the HopHub platform.
