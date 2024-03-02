@@ -1,0 +1,17 @@
+one:
+  id: "one"
+  name: "Event one"
+  description: "Event one description"
+  admin_email: "foo@example.com"
+  admin_token: "token1"
+  end_date: <%= 1.week.from_now.to_date %>
+  confirmed_at: <%= 1.day.ago %>
+
+two:
+  id: "two"
+  name: "Event two"
+  description: "Event two description"
+  admin_email: "foo2@example.com"
+  admin_token: "token2"
+  end_date: <%= 2.weeks.from_now.to_date %>
+  confirmed_at: <%= 2.day.ago %>

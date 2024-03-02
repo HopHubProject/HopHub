@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+imprint_de:
+  name: imprint
+  locale: de
+  fallback: false
+  content: Imprint DE
+
+imprint_en:
+  name: imprint
+  locale: en
+  fallback: true
+  content: Imprint EN
+
+tos_de:
+  name: tos
+  locale: de
+  fallback: false
+  content: TOS DE
+
+tos_en:
+  name: tos
+  locale: en
+  fallback: true
+  content: TOS EN
+
+privacy_de:
+  name: privacy
+  locale: de
+  fallback: false
+  content: Privacy DE
+
+privacy_en:
+  name: privacy
+  locale: en
+  fallback: true
+  content: Privacy EN

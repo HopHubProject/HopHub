@@ -1,0 +1,41 @@
+app 'hophub'
+
+# Get the code from this Git repository
+repo '.'
+
+dockerfile 'Dockerfile'
+
+# Publish the Docker image in a registry
+image File.read('deploy/docker.repo').strip
+
+# Connect to this Kubernetes cluster
+kubeconfig ENV['KUBECONFIG']
+
+migrate 'bundle exec rails db:migrate'
+
+env 'SECRET_KEY_BASE', File.read('deploy/secrets/secret_key_base').strip, secret: true
+env 'ALTCHA_HMAC_KEY', File.read('deploy/secrets/altcha.hmac_key').strip, secret: true
+env 'MAPTILER_API_KEY', File.read('deploy/secrets/maptiler.api_key').strip, secret: true
+
+env 'HOPHUB_BASE_URL', File.read('deploy/config/base_url').strip
+env 'HOPHUB_DATABASE_USERNAME', File.read('deploy/config/db.username').strip
+env 'HOPHUB_DATABASE_PASSWORD', File.read('deploy/secrets/db.password').strip, secret: true
+env 'HOPHUB_DATABASE_HOST', File.read('deploy/config/db.host').strip
+env 'HOPHUB_DATABASE_PORT', File.read('deploy/config/db.port').strip
+env 'HOPHUB_DATABASE_NAME', File.read('deploy/config/db.name').strip
+env 'HOPHUB_MAIL_SERVER', File.read('deploy/config/mail.server').strip
+env 'HOPHUB_MAIL_PORT', File.read('deploy/config/mail.port').strip
+env 'HOPHUB_MAIL_FROM', File.read('deploy/config/mail.from').strip
+env 'HOPHUB_MAIL_DOMAIN', File.read('deploy/config/mail.domain').strip
+env 'HOPHUB_MAIL_EVENT_CONFIRMED_BCC', File.read('deploy/config/mail.event_confirmed_bcc').strip
+env 'HOPHUB_MAIL_GDRP_RESPONSE_BCC', File.read('deploy/config/mail.gdrp_response_bcc').strip
+env 'EXCEPTION_NOTIFIER_SENDER', File.read('deploy/config/exception_notifier.sender_address').strip
+env 'EXCEPTION_NOTIFIER_RECIPIENT', File.read('deploy/config/exception_notifier.recipient').strip
+
+# Run and scale any command on Kubernetes
+proc :web, 'bundle exec rails s', scale: 8
+proc :metrics, 'bundle exec rails s', scale: 1
+
+health File.read('deploy/config/base_url').strip + '/up'
+
+cron :cleanup, '@hourly', 'bundle exec rails hophub:cleanup'

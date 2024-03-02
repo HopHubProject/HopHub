@@ -1,0 +1,22 @@
+Hallo <%= @entry.name %>,
+
+<%= @name %> hat dir eine Nachricht auf HopHub geschickt, und das ist der Inhalt:
+
+----------------------------------------
+<%= @text %>
+----------------------------------------
+
+Du kannst auf diese Nachricht antworten, um direkt mit <%= @name %> zu kommunizieren.
+
+Dein <%= t(@entry.entry_type) %> für das Event "<%= @entry.event.name %>" ist weiterhin aktiv und hier sichtbar:
+
+    <%= event_entry_url(@entry.event, @entry) %>
+
+Falls dein <%= t(@entry.entry_type) %> nicht mehr aktuell ist, benutze bitte den folgenden Link, um es zu bearbeiten oder zu löschen:
+
+    <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: @entry.locale) %>
+
+Viel Spaß bei der gemeinsamen Fahrt, du bist toll!
+
+
+Liebe Grüße vom HopHub-Team.

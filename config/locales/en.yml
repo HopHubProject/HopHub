@@ -1,0 +1,389 @@
+en:
+  language: English
+  flagicon: 🇬🇧
+
+  languages: Languages
+  github_project: GitHub project
+  legal_notice: Legal notice
+  imprint: Imprint
+  privacy_policy: Privacy policy
+  tos: Terms of service
+  theme: Theme
+
+  terms_and_conditions:
+    prompt: |
+      I have read the %{tos} and %{privacy_policy} and agree to them.
+      Also, I ensure that I am not a robot.
+    accepted: |
+      The %{tos} and %{privacy_policy} have been read and accepted.
+      You're also not a robot. Awesome.
+    error: |
+      Please confirm that you have read and accepted the terms and data privacy.
+      Also, please check again whether you are not a robot.
+
+  welcome:
+    title: What is this?
+    text:
+      - |
+        HopHub is a ride sharing platform that aims to simplify common commutes to and from events
+        and thereby make the world a little bit better. No matter if you fill up your car,
+        share a train ticket, arrive by bus, plan a bike tour or walk.
+
+  how-it-works:
+    title: How does this work?
+    create-event:
+      title: Create an event
+      text: |
+        You create a new event and share the link with potential attendees.
+        Only people with the link can see the event.
+    add-offer:
+      title: Add an offer
+      text: |
+        People that want to propose a ride can now add an offer. This works for free seats in
+        a car as well for a common train ride, a bus trip, a bike tour or a walk.
+        No login is required, only an email address. As soon as the email address is
+        confirmed, the offer is shown on the website so others can see it.
+    add-request:
+      title: Add a request
+      text: |
+        People who are looking for a ride but don't see a matching offer yet
+        can add a request. Also here, no login is required, only an email address.
+    match:
+      title: Get in touch
+      text: |
+        When two parties match, they can get in touch with each other using a form
+        on the website. The email address of the person reaching out is used as the
+        Reply-To address, so the recipient can reply directly for further coordination.
+    cleanup:
+      title: Leave no traces
+      text: |
+        Offers, requests and events are automatically and permanently removed
+        from the database after they have expired.
+
+  hosting-an-event:
+    title: Create your own event
+    text: |
+      You know of an even where many people plan to arrive jointly?
+      Then create an event and share the link with the participants.
+
+  about:
+    title: The project
+    text:
+      - |
+        HopHub is an open source project developed by a small team of volunteers.
+        We are not a company and we don't have any commercial interests.
+        We don't annoy you with ads, don't share any data with third parties.
+        We only store the data that is absolutely necessary for the operation
+        of the platform. More about this in our %{privacy_policy} and %{tos}.
+      - |
+        If you want to report a bug, suggest a feature, add a translation or submit a PR,
+        you can find the source code on %{github_project}.
+      - |
+        HopHub is completely free and will always be.
+
+  cancel: Cancel
+
+  transport:
+    car: Car
+    train: Train
+    bus: Bus
+    bicycle: Bicycle
+    foot: Foot
+    other: Other
+
+  offer: Offer
+  offers: Offers
+
+  request: Request
+  requests: Requests
+
+  way_there: Way there
+  way_back: Way back
+
+  driver-needed: This ride needs a driver!
+  driver-offer: |
+    %{name} offers to drive a car
+
+  no_entries: No entries yet.
+
+  add_offer:
+    title: Add a new offer
+    offer_yourself: |
+      Are you organizing a ride yourself?
+    current_requests:
+      one: There is currently one request for this event!
+      other: There are currently %{count} requests for this event!
+    search_for_people: |
+      Search for people who need a ride
+    no_matching_request: |
+      Can't find a matching request? Add an offer!
+
+  show_offers:
+    title: Show offers
+    text: |
+      Rather join a ride than offer one yourself?
+    current_offers:
+      one: There is currently one offer for this event!
+      other: There are currently %{count} offers for this event!
+
+  add_request:
+    title: Add a new request
+    no_matching_offer: |
+      Can't find a matching offer? Add a request!
+
+  event: Event
+  seat:
+    one: seat
+    other: seats
+
+  create_event:
+    title: Create event
+    text: |
+      Please enter the details to customize your event. You will receive an email with
+      a link to the administration page to change some of these details later.
+
+  event_valid_until: Event runs until %{date}
+
+  edit_event:
+    title: Edit event
+    text: |
+      Please enter the details to customize your event.
+
+  update_event:
+    title: Update event
+
+  event_delete:
+    title: Delete event
+    confirmation: |
+      Are you sure you want to delete this event?
+      All requests and offers will be deleted permanently as well.
+      This action cannot be undone.
+
+  entry_delete:
+    title: Delete entry
+    confirmation: |
+      Are you sure you want to delete this entry?
+      This action cannot be undone.
+
+  create_new_request:
+    title: Create new request
+    text: |
+      If you are looking for a ride, please fill in the form below and select the location
+      where you want to be picked up or dropped, respectively. The location doesn't have
+      to be exact, but it should give others an idea on how to plan their route.
+      People who have a matching offer will be able to contact you through the web site once
+      you have confirmed your email address.
+
+  create_new_offer:
+    title: Create new offer
+    text: |
+      If you have one or more free seats in your vehicle, please fill in the form below and
+      select the location where you want to pick up or drop off passengers, respectively.
+      People who have a matching request will be able to contact you through the web site once
+      you have confirmed your email address.
+
+  update_request:
+    title: Update request
+
+  update_offer:
+    title: Update offer
+
+  entries:
+    text: |
+      Here you can see all %{type} for this event.
+
+    none: No entries found
+
+    search:
+      placeholder: Search for entries
+    filter: Filter
+    reset: Clear
+
+  entry_contact:
+    title: Contact
+    send: Send message
+    text: |
+      Please fill in the form to contact %{name}.
+    warning: |
+      This information will be sent to %{name} via email. We do not store it in our database.
+      HopHub has no control over what %{name} does with this information.
+
+  gdrp_inquiry:
+    title: GDPR inquiry
+    text:
+      - |
+        HopHub only stores data that is necessary for the operation of the platform.
+        All data is automatically deleted once it is no longer needed. Specifically,
+        this means that events including all requests and offers are permanently deleted
+        after the end date of the event. Offers and requests are also deleted once they
+        are no longer valid.
+      - |
+        If you wish to have a copy of your data or have your data deleted, please fill out the form.
+        We will send you an email with all information stored in our database with this email address
+        and link to delete it.
+      - |
+        The email address you provide here will only be used for answering your inquiry and then be deleted.
+    links: |
+      Find more information in our %{privacy_policy} and %{tos}.
+    send: Send inquiry
+
+  views:
+    pagination:
+      previous: "‹"
+      next: "›"
+      first: "«"
+      last: "»"
+      truncate: "&hellip;"
+
+  mail:
+    event:
+      created:
+        subject: "HopHub: Please confirm your event"
+
+      confirmed:
+        subject: "HopHub: Your event is now active"
+
+    entry:
+      created:
+        subject: "HopHub: Please confirm your entry"
+
+      confirmed:
+        subject: "HopHub: Your entry is now active"
+
+      contact:
+        subject: "HopHub: New message"
+
+    gdrp_inquiry:
+      response:
+        subject: "HopHub: GDPR inquiry response"
+
+  flash:
+    event_created: Event created. You will receive an email with a link to confirm.
+    event_updated: Event updated.
+    event_deleted: Event deleted.
+    event_not_found: Event not found.
+    event_confirmed: Your email address has been confirmed. The event is now active.
+    event_already_confirmed: Your email address has already been confirmed.
+
+    entry_created: Your entry was created. You will receive an email with a link to confirm.
+    entry_updated: Your entry was updated.
+    entry_deleted: Your entry was deleted.
+    entry_not_found: Entry not found.
+    entry_confirmed: Your email address has been confirmed.
+    entry_already_confirmed: Your email address has already been confirmed.
+    entry_contacted: Your message has been sent.
+
+    gdrp_inquiry_created: Your inquiry has been sent. You will receive an email with further information shortly.
+
+  activerecord:
+    models:
+      event: Event
+      entry: Entry
+    fields:
+      event:
+        name: Name
+        description: Description
+        admin_email: Admin e-mail
+        end_date: End date
+      entry:
+        name: Name
+        email: E-mail address
+        phone: Phone number
+        date: Time
+        starting-point: Start
+        destination: Destination
+        seats: Seats
+        notes: Additional notes
+
+  simple_form:
+    yes: Yes
+    no: No
+    required:
+      text: required
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      event:
+        name: Event name
+        description: Description
+        admin_email: Admin email
+        end_date: End date
+
+      entry:
+        name: Your name
+        email: Your email address
+        phone: Your phone number
+        date: Time
+        transport: Transport type
+        direction: Direction
+        starting-point: Start
+        destination: Destination
+        seats: Number of seats
+        driver-needed: Driver needed?
+        driver-offer: Offering to drive?
+        notes: Additional notes
+
+      contact_email:
+        from: Your email address
+        text: Your message
+
+    hints:
+      event:
+        name: |
+          This is the name of the event that will be displayed on the event page.
+          We will also use it to genereate a unique URL for the event.
+        description: |
+          The description will also be shown on the event page and may give visitors some context on the event.
+        admin_email: |
+          This email address will be used to send you a confirmation and an administration link.
+          It will not be shown on the web site. We only save it as long as the event is active.
+          After the event has ended, the email address will be deleted permanently.
+        end_date: |
+          All details about the event, including your email address as well as
+          all requests and offers of the event will be deleted permanently after this date.
+
+      entry:
+        name: |
+          Your name, as is will be publicly shown on the web site.
+          This doesn't have to be your real name, a pseudonym is totally fine.
+        transport: The type of transport you want to use.
+        email: |
+          Your email address will not be visible to anyone. We'll use it to send you an email once somebody wants to contact you.
+          You'll have to confirm your email address before your entry is shown on the web site.
+        phone: A phone number is optional. If you fill it in, it will be shown to others.
+        date: The date and time you want to start your trip.
+        direction: The direction of your journey.
+        location: |
+          The location where you want to start or where you want to go.
+          You can put a marker on the map to select a location.
+        seats-available: The number of seats you have available.
+        seats-needed: The number of seats you need.
+        driver-needed: |
+          If you are looking for a driver for this ride, please check this box.
+        driver-offer: |
+          Would you offer to drive the car? Please check this box.
+
+        notes: Any additional notes you want to share with others.
+
+      contact_email:
+        name: |
+          Your name will be shown in the email that %{name} receives. We do not store it in our database.
+        from: |
+          Your email address will be used as the Reply-to address, so %{name}
+          can reply to your message directly.
+        text: |
+          Your message to %{name}. Please be polite and provide all necessary information.
+
+    errors:
+      entry:
+        location:
+          invalid: Please put a marker on the map to select a location.
+
+  time:
+    formats:
+      time: "%H:%M"
+
+  date:
+    formats:
+      long_with_dow: "%A, %d. %B %Y"

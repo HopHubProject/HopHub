@@ -1,0 +1,51 @@
+Hola,
+
+Gracias por tu solicitud de información sobre la RGPD.
+
+<% if @events.any? || @entries.any? %>
+En respuesta a tu solicitud de información sobre <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %>, te confirmamos que nosotros,
+como responsable, almacenamos y procesamos los siguientes datos
+asociados con tu dirección de correo electrónico:
+
+<% @events.each do |event| %>
+* Evento "<%= event.name %>" (<%= event.id %>), creado el <%= l event.created_at.to_date, format: :long, locale: I18n.locale %>
+  Para borrar este evento, por favor utiliza el siguiente enlace: <%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>
+
+<% end %>
+
+<% @entries.each do |entry| %>
+* Entrada del <%= l entry.created_at.to_date, format: :long, locale: I18n.locale %>
+  Transporte: <%= entry.transport %>
+  Lugar: <%= entry.location %>
+
+  Para borrar esta entrada, por favor utiliza el siguiente enlace: <%= edit_event_entry_url(entry.event, entry, token: entry.token, locale: I18n.locale) %>
+
+<% end %>
+
+Procesamos estos datos para cumplir con los siguientes propósitos:
+
+<% @events.each do |event| %>
+- Organización del evento "<%= event.name %>" (<%= event.id %>)
+<% end %>
+
+<% @entries.each do |entry| %>
+- Organización de la entrada "<%= entry.name %>" (<%= entry.id %>)
+<% end %>
+
+Como sujeto de datos, tienes el derecho de solicitarnos que corrijamos
+tus datos de acuerdo con el Art. 16 del RGPD y de solicitar la eliminación
+de tus datos de acuerdo con el Art. 17 del RGPD y el § 35 del BDSG.
+Por favor, utiliza los enlaces mencionados anteriormente para este fin.
+
+También tienes el derecho de restringir el procesamiento de tus datos
+de acuerdo con el Art. 18 del RGPD. Dado que HopHub solo almacena los datos
+que son necesarios para la ejecución del servicio, una restricción del
+procesamiento solo es posible mediante la eliminación de los datos.
+
+<% else %>
+En respuesta a tu solicitud de información sobre <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %>, te confirmamos que nosotros,
+como responsable, no almacenamos ni procesamos ningún dato asociado con tu dirección de correo electrónico.
+<% end %>
+
+Saludos,
+El equipo de HopHub.

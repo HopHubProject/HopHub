@@ -1,0 +1,9 @@
+Hola <%= @entry.name %>,
+
+Por favor confirma tu <%= t(@entry.entry_type) %> para el evento "<%= @entry.event.name %>" haciendo clic en el siguiente enlace:
+
+   <%= event_entry_confirm_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
+
+Si no sabes de qué se trata este correo, simplemente ignóralo y sigue con tu vida.
+
+Saludos del equipo de HopHub.

@@ -1,0 +1,68 @@
+rwt1:
+  event_id: one
+  name: "person a"
+  email: "a@example.com"
+  phone: "123456789"
+  entry_type: "request"
+  direction: "way_there"
+  seats: 1
+  driver: true
+  date: <%= 1.week.from_now.to_datetime %>
+  confirmed_at: <%= 1.day.ago %>
+  token: "rwt1-token"
+  location: "a"
+  transport: "bicycle"
+  notes: "this is rwt1"
+  longitude: 1.0
+  latitude: 1.0
+
+rwb1:
+  event_id: one
+  name: "person b"
+  email: "b@example.com"
+  phone: "123456789"
+  entry_type: "request"
+  direction: "way_back"
+  seats: 1
+  date: <%= 1.week.from_now.to_datetime %>
+  confirmed_at: <%= 1.day.ago %>
+  token: "rwb1-token"
+  location: "b"
+  transport: "bus"
+  notes: "this is rwb1"
+  longitude: 2.0
+  latitude: 2.0
+
+owt1:
+  event_id: one
+  name: "person c"
+  email: "c@example.com"
+  phone: "123456789"
+  entry_type: "offer"
+  direction: "way_there"
+  seats: 1
+  date: <%= 1.week.from_now.to_datetime %>
+  confirmed_at: <%= 1.day.ago %>
+  token: "owt1-token"
+  location: "c"
+  transport: "car"
+  notes: "this is owt1"
+  longitude: 3.0
+  latitude: 3.0
+
+owb1:
+  event_id: one
+  name: "person d"
+  email: "d@example.com"
+  phone: "123456789"
+  entry_type: "offer"
+  direction: "way_back"
+  seats: 1
+  date: <%= 1.week.from_now.to_datetime %>
+  confirmed_at: <%= 1.day.ago %>
+  token: "owb1-token"
+  location: "d"
+  transport: "train"
+  notes: "this is owb1"
+  longitude: 4.0
+  latitude: 4.0

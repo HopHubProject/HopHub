@@ -1,0 +1,411 @@
+es:
+  language: Español
+  flagicon: 🇪🇸
+
+  languages: Idiomas
+  github_project: Proyecto de GitHub
+  legal_notice: Aviso legal
+  imprint: Imprint
+  privacy_policy: Política de privacidad
+  tos: Términos de servicio
+  theme: Tema
+
+  terms_and_conditions:
+    prompt: |
+      ¿Has leído los %{tos} y la %{privacy_policy}?
+      También, asegúrate de que no eres un robot.
+    accepted: |
+      Los %{tos} y la %{privacy_policy} han sido leídos y aceptados.
+      Tampoco eres un robot. Genial.
+    error: |
+      Por favor, confirma que has leído y aceptado los términos de servicio y la política de privacidad.
+      Tambien asegúrate de que no eres un robot.
+
+  welcome:
+    title: ¿Qué es esto?
+    text:
+      - |
+        HopHub es una plataforma de viajes compartidos que facilita el viaje conjunto a eventos
+        y con ello pretende hacer un mundo un poco mejor. No importa si llenas el coche, compartes
+        un billete de tren, viajas en autobús, planeas un paseo en bicicleta o caminas.
+
+  how-it-works:
+    title: ¿Cómo funciona?
+    create-event:
+      title: Crea un evento
+      text: |
+        Creas un nuevo evento y compartes el enlace con posibles participantes.
+        Solo las personas con el enlace pueden ver el evento.
+    add-offer:
+      title: Ofrece un viaje compartido
+      text: |
+        Las personas que deseen ofrecer un viaje compartido pueden publicar una oferta.
+        Esto se aplica a plazas en coche, pero también a viajes compartidos en tren, autobús, bicicleta o a pie.
+        No es necesario registrarse, solo se requiere una dirección de correo electrónico a
+        la que enviaremos un correo electrónico de confirmación.
+        Una vez confirmado, la entrada se mostrará.
+    add-request:
+      title: Busca un viaje compartido
+      text: |
+        Las personas que buscan un viaje compartido, pero aún no ven una oferta adecuada, pueden agregar una solicitud.
+        Tampoco se requiere registro, solo una dirección de correo electrónico.
+    match:
+      title: Contactar
+      text: |
+        En caso de coincidencia, las personas pueden ponerse en contacto a través de un formulario web en el sitio web.
+        La dirección de correo electrónico del contacto se utiliza como dirección de respuesta para que el
+        destinatario pueda responder directamente.
+    cleanup:
+      title: No dejar rastro
+      text: |
+        Las ofertas, solicitudes y eventos se eliminan automáticamente de la base de datos
+        una vez que su validez ha expirado.
+
+  hosting-an-event:
+    title: Crea tu propio evento
+    text: |
+      ¿Sabes de un evento al que la gente quiere ir en grupo?
+      Entonces crea un evento y comparte el enlace con los participantes.
+
+  about:
+    title: El proyecto
+    text:
+      - |
+        HopHub es un proyecto de código abierto desarrollado por voluntarios.
+        No somos una empresa y no tenemos intereses comerciales.
+        No te molestamos con publicidad y no compartimos datos con terceros.
+        Solo se almacenan los datos absolutamente necesarios para el funcionamiento de la plataforma.
+        Más información en nuestra %{privacy_policy} y %{tos}.
+      - |
+        Si deseas informar un error, sugerir una función, agregar una traducción o enviar un PR,
+        puedes encontrar el código fuente en %{github_project}.
+      - |
+        HopHub es completamente gratuito y siempre lo será.
+
+  cancel: Cancelar
+
+  transport:
+    car: Coche
+    train: Tren
+    bus: Autobús
+    bicycle: Bicicleta
+    foot: A pie
+    other: Otro
+
+  offer: Oferta
+  offers: Ofertas
+
+  request: Solicitud
+  requests: Solicitudes
+
+  way_there: Ida
+  way_back: Vuelta
+
+  driver-needed: Este viaje busca un conductor
+  driver-offer: |
+    %{name} ofrece conducir un coche
+
+  add_offer:
+    title: Agregar nueva oferta
+    offer_yourself: |
+      ¿Quieres organizar el viaje tú mismo?
+    current_requests:
+      one: Hay una solicitud para este evento!
+      other: Hay %{count} solicitudes para este evento!
+    search_for_people: Buscar compañeros de viaje
+    no_matching_request: |
+      ¿No encontraste una solicitud adecuada? ¡Añade una oferta!
+
+  add_request:
+    title: Agregar nueva solicitud
+    no_matching_offer: |
+      ¿No encontraste una oferta adecuada? ¡Añade una solicitud!
+
+  show_offers:
+    title: Mostrar ofertas
+    text: |
+      ¿Preferirías unirte a otros en lugar de crear una oferta tú mismo?
+    current_offers:
+      one: Hay una oferta para este evento!
+      other: Hay %{count} ofertas para este evento!
+
+  event: Evento
+  seat:
+    one: Asiento
+    other: Asientos
+
+  create_event:
+    title: Crear evento
+    text: |
+      Por favor, introduce los detalles de tu evento. Recibirás un correo electrónico con
+      un enlace a la página de administración para cambiar algunos de estos detalles más tarde.
+
+  event_valid_until: Evento corriendo hasta %{date}
+
+  edit_event:
+    title: Editar evento
+    text: |
+      Por favor, introduce los detalles para modificar tu evento.
+
+  update_event:
+    title: Actualizar evento
+
+  event_delete:
+    title: Eliminar evento
+    confirmation: |
+      ¿Estás seguro de que quieres eliminar este evento?
+      Todas las solicitudes y ofertas también se eliminarán permanentemente.
+      Esta acción no se puede deshacer.
+
+  entry_delete:
+    title: Eliminar entrada
+    confirmation: |
+      ¿Estás seguro de que quieres eliminar esta entrada?
+      Esta acción no se puede deshacer.
+
+  create_new_request:
+    title: Crear nueva solicitud
+    text: |
+      Si buscas un viaje compartido, completa el formulario a continuación
+      y selecciona un punto en el mapa donde te gustaría ser recogido o dejado.
+      Este lugar no tiene que ser exacto, pero debería dar a otros la posibilidad de planificar su ruta.
+      Las personas con una oferta adecuada pueden ponerse en contacto contigo a través del sitio web una vez que
+      hayas confirmado tu dirección de correo electrónico.
+
+  create_new_offer:
+    title: Crear nueva oferta
+    text: |
+      Si tienes uno o más asientos libres en tu vehículo, completa el formulario a continuación
+      y selecciona un punto en el mapa donde te gustaría recoger o dejar a los pasajeros.
+      Las personas con una solicitud adecuada pueden ponerse en contacto contigo a través del sitio web una vez que
+      hayas confirmado tu dirección de correo electrónico.
+
+  update_request:
+    title: Actualizar solicitud
+
+  update_offer:
+    title: Actualizar oferta
+
+  entries:
+    text: |
+      Aquí encontrarás todas las %{type} para este evento.
+
+    none: No se encontraron entradas
+
+    search:
+      placeholder: Buscar entradas
+    filter: Filtrar
+    reset: Restablecer
+
+  entry_contact:
+    title: Contacto
+    send: Enviar correo
+    text: |
+      Por favor, completa el formulario para contactar a %{name}.
+    warning: |
+      Esta información se enviará a %{name} y no se almacenará en la base de datos.
+      HopHub no tiene control sobre lo que %{name} hace con esta información.
+
+  gdrp_inquiry:
+    title: Solicitud de GDPR
+    text:
+      - |
+        HopHub solo almacena datos que son necesarios para el funcionamiento de la plataforma.
+        Todos los datos se eliminan automáticamente una vez que ya no son necesarios. Específicamente,
+        esto significa que los eventos, incluidas todas las solicitudes y ofertas, se eliminan permanentemente
+        después de la fecha de finalización del evento. Las ofertas y solicitudes también se eliminan una vez
+        que ya no son válidas.
+      - |
+        Si deseas tener una copia de tus datos o que se eliminen tus datos, por favor completa el formulario.
+        Te enviaremos un correo electrónico con toda la información almacenada en nuestra base de datos con
+        esta dirección de correo electrónico y enlaces para eliminar tus datos.
+      - |
+        La dirección de correo electrónico que proporciones aquí solo se utilizará para responder a tu consulta
+        y luego se eliminará.
+    links: |
+      Más información en nuestra %{privacy_policy} y %{tos}.
+    send: Enviar solicitud
+
+  views:
+    pagination:
+      previous: "‹"
+      next: "›"
+      first: "«"
+      last: "»"
+      truncate: "&hellip;"
+
+  mail:
+    event:
+      created:
+        subject: "HopHub: Confirma tu evento"
+      confirmed:
+        subject: "HopHub: Tu evento ya está activo"
+    entry:
+      created:
+        subject: "HopHub: Confirma tu entrada"
+      confirmed:
+        subject: "HopHub: Tu entrada ya está activa"
+      contact:
+        subject: "HopHub: Nuevo mensaje"
+    gdrp_inquiry:
+      response:
+        subject: "HopHub: Solicitud de GDPR"
+
+  flash:
+    event_created: Evento creado. Recibirás un correo electrónico con un enlace para confirmar.
+    event_updated: Evento actualizado.
+    event_deleted: Evento eliminado.
+    event_not_found: Evento no encontrado.
+    event_confirmed: Tu dirección de correo electrónico ha sido confirmada. El evento ya está activo.
+    event_already_confirmed: Tu dirección de correo electrónico ya ha sido confirmada.
+
+    entry_created: Tu entrada ha sido creada. Recibirás un correo electrónico con un enlace para confirmar.
+    entry_updated: Tu entrada ha sido actualizada.
+    entry_deleted: Tu entrada ha sido eliminada.
+    entry_not_found: Entrada no encontrada.
+    entry_confirmed: Tu dirección de correo electrónico ha sido confirmada. La entrada ya está activa.
+    entry_already_confirmed: Tu dirección de correo electrónico ya ha sido confirmada.
+    entry_contacted: Tu mensaje ha sido enviado. El destinatario se pondrá en contacto contigo.
+
+    gdrp_inquiry_created: Tu solicitud ha sido enviada. Recibirás un correo electrónico con más información en breve.
+
+  activerecord:
+    models:
+      event: Evento
+      entry: Entrada
+    fields:
+      event:
+        id: ID
+        name: Nombre
+        description: Descripción
+        admin_email: Correo electrónico del administrador
+        end_date: Fecha de finalización
+      entry:
+        name: Nombre
+        email: Correo electrónico
+        phone: Teléfono
+        date: Fecha
+        starting-point: Punto de partida
+        destination: Destino
+        seats: Asientos
+        notes: Notas adicionales
+    errors:
+      models:
+        event:
+          attributes:
+            id:
+              blank: no puede estar en blanco
+              invalid: no es una ID válida
+              taken: ya está en uso
+            name:
+              blank: no puede estar en blanco
+              invalid: no es válido
+            description:
+              blank: no puede estar en blanco
+              invalid: no es válido
+            admin_email:
+              blank: no puede estar en blanco
+              invalid: no es válido
+            end_date:
+              blank: no puede estar en blanco
+              invalid: no es válido
+
+  simple_form:
+    yes: 'Sí'
+    no: 'No'
+    required:
+      text: Campo obligatorio
+      mark: '*'
+    error_notification:
+      default_message: "Por favor, revisa los problemas a continuación:"
+    labels:
+      event:
+        name: Nombre del evento
+        description: Descripción
+        admin_email: Correo electrónico del administrador
+        end_date: Fecha de finalización
+
+      entry:
+        name: Tu nombre
+        email: Tu dirección de correo electrónico
+        phone: Tu número de teléfono
+        date: Fecha y hora
+        transport: Medio de transporte
+        direction: Dirección
+        location: Punto de partida o destino
+        seats: Número de asientos
+        driver-needed: ¿Buscas conductor?
+        driver-offer: ¿Ofreces conducir?
+        notes: Notas adicionales
+
+      contact_email:
+        from: Tu dirección de correo electrónico
+        text: Tu mensaje
+
+    hints:
+      event:
+        name: |
+          Este es el nombre del evento que se mostrará en la página del evento.
+          También lo usamos para generar la URL del evento.
+        description: |
+          La descripción también se mostrará en la página del evento y puede dar a los visitantes algo de contexto sobre el evento.
+        admin_email: |
+          Esta dirección de correo electrónico se utiliza para enviarte una confirmación y un enlace de administración.
+          No se mostrará en el sitio web. Solo lo guardamos mientras el evento esté activo.
+          Después de que el evento haya finalizado, la dirección de correo electrónico se eliminará permanentemente.
+        end_date: |
+          Todas las detalles sobre el evento, incluyendo tu dirección de correo electrónico así como
+          todas las solicitudes y ofertas del evento se eliminarán permanentemente después de esta fecha.
+      entry:
+
+        name: |
+          Tu nombre, tal como se mostrará públicamente en el sitio web.
+          No tiene que ser tu nombre real, un seudónimo está totalmente bien.
+        transport: El medio de transporte que utilizarás.
+        email: |
+          Tu dirección de correo electrónico no es visible para nadie.
+          La usamos para enviarte un correo electrónico una vez que alguien quiera ponerse en contacto contigo.
+          Debes confirmar tu dirección de correo electrónico antes de que tu entrada se muestre en el sitio web.
+        phone: Un número de teléfono es opcional. Si lo proporcionas, se mostrará a otros.
+        date: Fecha y hora en la que quieres comenzar tu viaje.
+        direction: La dirección en la que quieres viajar.
+        location: |
+          ¿Dónde quieres comenzar o ser recogido?
+          Coloca un marcador en el mapa para seleccionar un lugar.
+        destination: |
+          ¿Dónde quieres ir o ser dejado?
+          Coloca un marcador en el mapa para seleccionar un lugar.
+        seats-available: El número de asientos disponibles.
+        seats-needed: El número de asientos necesarios.
+        driver-needed: |
+          Si buscas un conductor para este viaje, marca esta casilla.
+        driver-offer: |
+          Si ofreces conducir a otras personas, marca esta casilla.
+
+        notes: Cualquier nota adicional que quieras compartir con otros.
+
+      contact_email:
+        name: |
+          Tu nombre se mostrará en el correo electrónico que %{name} recibirá.
+        from: |
+          Tu dirección de correo electrónico se utilizará como dirección de respuesta para que %{name} pueda responderte directamente.
+        text: |
+          Tu mensaje a %{name}. Sé amable y proporciona tanta información como sea posible.
+
+    errors:
+      entry:
+        location:
+          invalid: Por favor, coloca un marcador en el mapa para seleccionar un lugar.
+
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      short: "%d.%m. %H:%M"
+      long: "%d. %B %Y %H:%M"
+      time: "%H:%M"
+
+  date:
+    formats:
+      long_with_dow: "%A, %d. %B %Y"
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+
