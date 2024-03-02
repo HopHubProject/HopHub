@@ -1,0 +1,18 @@
+Hallo <%= @entry.name %>,
+
+Vielen Dank dass du HopHub benutzt!
+
+Dein <%= t(@entry.entry_type) %> für das Event "<%= @entry.event.name %>" wurde bestätigt und ist jetzt aktiv und hier zu sehen:
+
+    <%= event_entry_url(@entry.event, @entry) %>
+
+Wenn du dein <%= t(@entry.entry_type) %> bearbeiten oder löschen möchtest, benutze bitte den folgenden Link, der nur für dich zugänglich ist:
+
+    <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
+
+Dein Eintrag wird automatisch nach dem von dir gesetzten Datum gelöscht, oder wenn das Event endet.
+
+Viel Spaß beim Mitfahren, du bist toll!
+
+
+Liebe Grüße vom HopHub-Team.

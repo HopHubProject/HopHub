@@ -1,0 +1,53 @@
+Hallo,
+
+Vielen Dank für deine DSGVO-Anfrage.
+
+<% if @events.any? || @entries.any? %>
+Auf Dein Auskunftsverlangen vom <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %> bestätigen wir Dir,
+dass wir als Verantwortliche die folgenden mit deiner Emailaddresse
+verbundenen Daten speichern und verarbeiten:
+
+<% @events.each do |event| %>
+* Event "<%= event.name %>" (<%= event.id %>), angelegt am <%= l event.created_at.to_date, format: :long, locale: I18n.locale %>
+  Um dieses Event zu löschen, benutze bitte den folgenden Link: <%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>
+
+<% end %>
+
+<% @entries.each do |entry| %>
+* Eintrag vom <%= l entry.created_at.to_date, format: :long, locale: I18n.locale %>
+  Transportmittel: <%= entry.transport %>
+  Ort: <%= entry.location %>
+
+  Um diesen Eintrag zu löschen, benutze bitte den folgenden Link: <%= edit_event_entry_url(entry.event, entry, token: entry.token, locale: I18n.locale) %>
+
+<% end %>
+
+Wir verarbeiten diese Daten, um die folgenden Zwecke zu erfüllen:
+
+<% @events.each do |event| %>
+- Organisation des Events "<%= event.name %>" (<%= event.id %>)
+<% end %>
+
+<% @entries.each do |entry| %>
+- Organisation des Eintrags "<%= entry.name %>" (<%= entry.id %>)
+<% end %>
+
+Als betroffene Person hast Du das Recht, uns gegenüber nach Maßgabe des
+Art. 16 DSGVO eine Berichtigung und nach Maßgabe des Art. 17 DSGVO und
+§ 35 BDSG die Löschung Deiner Daten zu verlangen.
+Benutze dazu bitte die oben genannten Links.
+
+Du hast außerdem das Recht, nach Maßgabe des Art. 18 DSGVO die
+Verarbeitung Deiner Daten einschränken zu lassen. Da HopHub nur die
+Daten speichert, die für die Ausführung der Dienstleistung notwendig
+sind, ist eine Einschränkung der Verarbeitung nur durch Löschung der
+Daten möglich.
+
+<% else %>
+Auf Dein Auskunftsverlangen vom <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %> bestätigen wir Dir,
+dass wir als Verantwortliche keine mit deiner Emailaddresse verbundenen
+Daten speichern oder verarbeiten.
+<% end %>
+
+Mit freundlichen Grüßen,
+Das HopHub-Team.

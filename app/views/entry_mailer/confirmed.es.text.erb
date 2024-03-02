@@ -1,0 +1,20 @@
+# translate to spanish!
+
+Hola <%= @entry.name %>,
+
+¡Gracias por usar HopHub!
+
+Tu <%= t(@entry.entry_type) %> para el evento "<%= @entry.event.name %>" ha sido confirmado y ahora está activo y se puede ver aquí:
+
+    <%= event_entry_url(@entry.event, @entry) %>
+
+Si deseas editar o eliminar tu <%= t(@entry.entry_type) %>, por favor usa el siguiente enlace, que es solo para ti:
+
+    <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
+
+Tu entrada se eliminará automáticamente después de la fecha que hayas establecido, o cuando el evento termine.
+
+¡Disfruta del viaje, eres genial!
+
+
+Saludos del equipo de HopHub.

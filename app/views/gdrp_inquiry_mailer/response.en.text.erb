@@ -1,0 +1,52 @@
+Hi,
+
+Thanks a lot for your GDRP inquiry request.
+
+<% if @events.any? || @entries.any? %>
+In response to your request for information on <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %>, we confirm that we,
+as the responsible party, store and process the following data
+associated with your email address:
+
+<% @events.each do |event| %>
+* Event "<%= event.name %>" (<%= event.id %>), created on <%= l event.created_at.to_date, format: :long, locale: I18n.locale %>
+  To delete this event, please use the following link: <%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>
+
+<% end %>
+
+<% @entries.each do |entry| %>
+* Entry from <%= l entry.created_at.to_date, format: :long, locale: I18n.locale %>
+  Transport: <%= entry.transport %>
+  Location: <%= entry.location %>
+
+  To delete this entry, please use the following link: <%= edit_event_entry_url(entry.event, entry, token: entry.token, locale: I18n.locale) %>
+
+<% end %>
+
+We process this data to fulfill the following purposes:
+
+<% @events.each do |event| %>
+- Organization of the event "<%= event.name %>" (<%= event.id %>)
+<% end %>
+
+<% @entries.each do |entry| %>
+- Organization of the entry "<%= entry.name %>" (<%= entry.id %>)
+<% end %>
+
+As the data subject, you have the right to request us to correct your
+data in accordance with Art. 16 GDPR and to request the deletion of
+your data in accordance with Art. 17 GDPR and § 35 BDSG.
+Please use the links mentioned above for this purpose.
+
+You also have the right to restrict the processing of your data in
+accordance with Art. 18 GDPR. Since HopHub only stores the data that
+is necessary for the execution of the service, a restriction of
+processing is only possible by deleting the data.
+
+<% else %>
+In response to your request for information on <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %>, we confirm that we,
+as the responsible party, do not store or process any data associated with your email address.
+<% end %>
+
+Kind regards,
+The HopHub team.
+

@@ -1,0 +1,14 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1
+      -if @entry.is_offer?
+        =t('update_offer.title')
+      -else
+        =t('update_request.title')
+
+      ="(" + t(@entry.direction) + ")"
+
+    -if @entry.is_offer?
+      =render partial: "form", locals: { submit_text: t('update_offer.title'), method: :update }
+    -else
+      =render partial: "form", locals: { submit_text: t('update_request.title'), method: :update }

@@ -1,0 +1,171 @@
+body, html {
+  height: 100%;
+}
+
+#content {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  min-height: 100vh;
+}
+
+footer a {
+  text-decoration: none;
+  display: block;
+}
+
+.how-it-works {
+  .row {
+    margin-top: 2rem;
+  }
+
+  i {
+    color: #ff8a02;
+    padding-right: 0.5rem;
+  }
+
+  .col-1 {
+    padding-right: 20px;
+    text-align: center;
+  }
+}
+
+label {
+  font-weight: bold;
+}
+
+.field-description {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h2 {
+  padding-top: 1rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+h3 {
+    padding-top: 1rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+h4 {
+padding-top: 1rem;
+text-transform: uppercase;
+font-size: 1rem;
+font-weight: bold;
+}
+
+abbr[title] {
+  text-decoration: none !important;
+  color: #aaa
+}
+
+.navbar-icon {
+  width: 20px;
+  margin-left: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.dropdown-menu-end {
+  right: auto; /* Reset the right position */
+  left: 0; /* Align to the left */
+}
+
+#content {
+  margin-top: 1rem;
+}
+
+#logo-hophub {
+  margin-bottom: 2rem;
+}
+
+#entry-table hr {
+  margin-top: 1rem;
+}
+
+#entry-table a.btn {
+  margin-top: 4px;
+}
+
+.map-container {
+  margin-top: 1rem;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.maplibregl-popup-content b,
+.maplibregl-popup-content p,
+.maplibregl-popup-content span{
+  color: #000;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  background-image: linear-gradient(to right, #ff3af1, #ff8b02);
+}
+
+.btn-danger {
+    background-image: linear-gradient(to right, #dc3545, #972430);
+  }
+
+.btn {
+  box-shadow: 0 3px 10px 0 rgba(137, 156, 156, 0.75);
+}
+
+:root {
+  --altcha-border-width: var(--bs-border-width);
+  --altcha-border-radius: var(--bs-border-radius);
+  --altcha-color-base: var(--bs-form-color);
+  --altcha-color-border: var(--bs-border-color);
+  --altcha-color-text: currentColor;
+  --altcha-color-border-focus: currentColor;
+  --altcha-color-error-text: var(--bs-form-invalid-color);
+  --altcha-color-footer-bg: var(--bs-body-bg);
+  --altcha-max-width: 100%;
+}
+
+.altcha-label label {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.altcha-label {
+  padding-left: 1rem;
+}
+
+.altcha-main {
+    margin-left: 0.7rem;
+  }
+
+.altcha-error {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--bs-form-invalid-color);
+}
+

@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+if ENV["RAILS_ENV"] == "test"
+  require 'simplecov'
+
+  SimpleCov.start :rails do
+    add_filter "app/admin"
+    add_filter "app/channels"
+    add_filter "app/jobs"
+    add_filter "app/models/concerns/"
+    add_filter "config"
+    add_filter "db"
+    add_filter "lib/tasks"
+    add_filter "test"
+    add_filter "vendor"
+  end
+end
+
+APP_PATH = File.expand_path("../config/application", __dir__)
+require_relative "../config/boot"
+require "rails/commands"

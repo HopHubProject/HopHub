@@ -1,0 +1,30 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+
+    %h1
+      =t('gdrp_inquiry.title')
+
+    -t('gdrp_inquiry.text').each do |line|
+      %p= line
+
+    %p= t('gdrp_inquiry.links',
+            tos: link_to(t('tos'), tos_path),
+            privacy_policy: link_to(t('privacy_policy'), privacy_path)).html_safe
+
+    =turbo_frame_tag 'gdrp_inquiry' do
+      =simple_form_for @inquiry do |f|
+        =f.input :email
+
+        .row.mb-3
+          .col-sm-3
+          .col-sm-9
+            =render 'altcha/widget',
+              label: terms_and_conditions_prompt,
+              verified: terms_and_conditions_accepted,
+              error: @inquiry.errors[:altcha].any?
+            =f.error :altcha, class: 'altcha-error'
+
+        .row.mb-3
+          .col-sm-3
+          .col-sm-9
+            =f.submit t('gdrp_inquiry.send'), class: 'btn btn-primary'

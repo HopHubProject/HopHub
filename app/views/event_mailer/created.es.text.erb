@@ -1,0 +1,10 @@
+
+¡Hola!
+
+Has creado un nuevo evento en HopHub. Para confirmar el evento "<%= @event.name %>" haz clic en el siguiente enlace:
+
+   <%= event_confirm_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>
+
+Si no sabes de qué va esto, ignora este mensaje y haz otra cosa.
+
+Saludos del equipo de HopHub.

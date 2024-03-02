@@ -1,0 +1,6 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1= t("create_event.title")
+    %p= t("create_event.text")
+
+    =render partial: "form", locals: { submit_text: t("create_event.title"), method: :new }

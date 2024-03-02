@@ -1,0 +1,22 @@
+Hi <%= @entry.name %>,
+
+<%= @name %> has sent you a message on HopHub, and this is what they said:
+
+----------------------------------------
+<%= @text %>
+----------------------------------------
+
+You can reply to this message to answer directly to <%= @name %>.
+
+Your <%= t(@entry.entry_type).downcase %> for the event "<%= @entry.event.name %>" is still active and visible here:
+
+    <%= event_entry_url(@entry.event, @entry) %>
+
+In case your <%= t(@entry.entry_type).downcase %> is no longer up to date or relevant, please use the following link to edit or delete it:
+
+    <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: @entry.locale) %>
+
+Happy sharing, you are awesome!
+
+
+Kind regards from the HopHub platform.
