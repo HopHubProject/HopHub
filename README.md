@@ -2,9 +2,9 @@
 
 # HopHub
 
-<img src="app/assets/images/graffiti.png" />
+<img src="app/assets/images/hophub.png" />
 
-HopHub is a ride sharing platform that aims to simplify common arrival to events
+HopHub is a ride sharing platform that aims to simplify common commutes to and from events
 and thereby make the world a little bit better. No matter if you fill up your car,
 share a train ticket, arrive by bus, plan a bike tour or walk.
 
