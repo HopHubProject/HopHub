@@ -65,9 +65,9 @@
           =t('show_offers.title')
       .col-12.col-lg-3
 
-  .row.justify-content-center
-    .col-12.col-lg-12
-      - if @paginated_entries.any?
+  -if @entries.any?
+    .row.justify-content-center
+      .col-12.col-lg-12
         #entry-table
           -last_date = nil
           -@paginated_entries.each do |entry|
@@ -82,18 +82,14 @@
                   %h2.mt-3=l entry.date.to_date, format: :long_with_dow
 
             =render entry
-      - else
-        .text-center
-          %p
-            %i.bi.bi-heartbreak.me-1
-            =t('entries.none')
 
-    .col-12.col-lg-12
-      .container.d-flex.align-items-center.justify-content-center.py-3
-        =paginate @paginated_entries, theme: 'bootstrap-5',
-          pagination_class: "pagination flex-wrap justify-content-center",
-          nav_class: "d-inline-block"
+      .col-12.col-lg-12
+        .container.d-flex.align-items-center.justify-content-center.py-3
+          =paginate @paginated_entries, theme: 'bootstrap-5',
+            pagination_class: "pagination flex-wrap justify-content-center",
+            nav_class: "d-inline-block"
 
+  .row.justify-content-center
     .col-12.col-lg-3
     .col-12.col-lg-3.text-center
       -if @entry_type.to_sym == :offer
@@ -101,7 +97,7 @@
         = link_to new_event_entry_path(@event, entry_type: :request), class: 'btn btn-primary w-100 mt-2 mb-2', role: 'button' do
           %i.bi.bi-plus-lg
           =t('add_request.title')
-      -else
+      -elsif @entries.any?
         %span= t('add_offer.no_matching_request')
         = link_to new_event_entry_path(@event, entry_type: :offer), class: 'btn btn-primary w-100 mt-2 mb-2', role: 'button' do
           %i.bi.bi-plus-lg
