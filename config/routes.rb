@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
-  get "imprint" => "home#imprint"
-  get "privacy" => "home#privacy"
-  get "tos"     => "home#tos"
+  get "imprint" => "contents#imprint"
+  get "privacy" => "contents#privacy"
+  get "tos"     => "contents#tos"
 
   resources :gdrp_inquiries, only: [:new, :create]
   get "gdrp" => "gdrp_inquiries#new"

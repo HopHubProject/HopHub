@@ -120,6 +120,58 @@ Similarily, the the `/metrics` and `/up` paths are probably also something you w
 bundle exec rails test
 ```
 
+## Micro CMS
+
+The project features a very minimalistic content management system for static text rendering with [Markdown](https://daringfireball.net/projects/markdown/). These texts are stored in a model called 'Content' and are rendered by the `ContentsController`. The content is stored in the database and can most easily be edited through the admin interface. Each entry has a unique key that is used to identify the content in the view and a locale attribute that is used to determine the language of the content. A fallback flag can be set to determine if the content should be used as a fallback for other languages.
+
+The following keys are used in the project:
+
+- `tos`: Terms of Service
+- `privacy`: Data privacy policy
+- `imprint`: Imprint
+
+## Data privacy
+
+If you host the project yourself you should be aware of the data privacy implications and legal requirements in your jurisdiction.
+
+Consider the following aspects when crafting the privacy policy for your instance:
+
+- The project does not use any cookies except for the session cookie that is required for the functionality of the website.
+- The project does not use any tracking or analytics tools.
+- For events, the following data is stored in the database:
+  - The title of the event
+  - The ID of the event, derived from the title
+  - The description of the event
+  - The end date and time of the event
+  - The email address of the creator of the event
+- Events are automatically deleted from the database after they have passed
+- Events can be deleted manually by their creators
+- For entries (offers and requests), the following data is stored in the database:
+  - The ID of the entry
+  - The email address of the creator of the entry
+  - The name/pseudonym of the creator of the entry
+  - The optional phone number of the creator of the entry
+  - The event ID of the event the entry belongs to
+  - The type of the entry (offer or request)
+  - The number of seats available or needed
+  - The mode of transportation (car, train, bus, bike, walk)
+  - The departure/arrival location
+  - The departure/arrival date and time
+  - The departure/arrival latitude and longitude
+  - The message of the creator of the entry
+  - The "clean driver" flag
+- Entries are automatically deleted from the database after they have passed
+- Entries can be deleted manually by their creators
+- When a user contacts another user through the platform, the email address of the sender is used as the Reply-To address in the email. Neither the email address of the sender nor the text they write is stored in the database.
+- The GDRP information tool allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events, offers and requests that are associated with the email address with links to delete the data.
+- Maptiler is used to display offers and requests on a map. The browser of the client sends a request to the Maptiler API to retrieve the map tiles. The IP address of the client is sent to the Maptiler API. More information can be found in the [Maptiler privacy policy](https://www.maptiler.com/privacy-policy).
+- JsDelivr is used to deliver JavaScript files of the project. The browser of the client sends a request to the JsDelivr API to retrieve the files which transmits their IP address to the JsDelivr API. More information can be found in the [JsDelivr privacy policy](https://www.jsdelivr.com/privacy-policy-jsdelivr-net).
+
+## Metrics
+
+The `/metrics` route can be used to query statistical data from the HopHub instance in a format suitable for consumption by [Prometheus](https://prometheus.io/).
+The `/up` route can be used for healt checks of the instance with something like [Kubernetes](https://kubernetes.io/).
+
 ## Contributing
 
 ### Reporting issues
@@ -142,11 +194,6 @@ If you want to add a new language, please follow these steps:
 2. Create new mailer views in the `app/views/event_mailer` and `app/views/entry_mailer` directories. The file names must contain the language code (e.g. `de` for German). The content should be the same as for the `en` versions.
 3. Add the new language to `I18n.available_locales` in the `config/locales.rb` file.
 4. Open a pull request.
-
-## Metrics
-
-The `/metrics` route can be used to query statistical data from the HopHub instance in a format suitable for consumption by [Prometheus](https://prometheus.io/).
-The `/up` route can be used for healt checks of the instance with something like [Kubernetes](https://kubernetes.io/).
 
 ## License
 
