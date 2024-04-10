@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   before_action :find_event!, only: [ :show, :edit, :update, :destroy, :confirm ]
   before_action :check_confirmed!, only: [ :show ]
   before_action :authenticate_user!, only: [ :edit, :update, :destroy, :confirm ]
+  before_action :set_noindex, only: [ :show, :edit, :update, :destroy, :confirm, :geojson ]
+  before_action :set_title
 
   def show
     respond_to do |format|
@@ -113,6 +115,15 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def set_title
+    super
+    @title.push @event.name unless @event.nil?
+  end
+
+  def set_noindex
+    @noindex = true
+  end
 
   def verify_altcha
     return true if Rails.env.test?

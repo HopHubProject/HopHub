@@ -26,6 +26,13 @@ class GdrpInquiriesController < ApplicationController
     redirect_to root_path, flash: { success: t('flash.gdrp_inquiry_created') }
   end
 
+  private
+
+  def set_title
+    super
+    @title.push t('gdrp_inquiry.title')
+  end
+
   def verify_altcha
     return true if Rails.env.test?
 

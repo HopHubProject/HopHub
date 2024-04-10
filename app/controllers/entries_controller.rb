@@ -4,6 +4,8 @@ class EntriesController < ApplicationController
   before_action :check_entry_type!, only: [ :new, :create ]
   before_action :check_confirmed!, only: [ :show, :popup ]
   before_action :authenticate_user!, only: [ :edit, :update, :destroy, :confirm ]
+  before_action :set_title
+  before_action :set_noindex
 
   def index
     redirect_to @event
@@ -120,6 +122,16 @@ class EntriesController < ApplicationController
   end
 
   private
+
+  def set_title
+    super
+    @title.push @event.name unless @event.nil?
+    @title.push @entry.name unless @entry.nil?
+  end
+
+  def set_noindex
+    @noindex = true
+  end
 
   def verify_altcha
     return true if Rails.env.test?

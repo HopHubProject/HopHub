@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
+  before_action :set_title
+
+  def set_title
+    @title = [ "HopHub" ]
+  end
 
   def set_locale
     I18n.locale = locale_for_request
