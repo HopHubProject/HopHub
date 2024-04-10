@@ -7,7 +7,7 @@ class ContentsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
 
       c = Content.for(:imprint, locale)
-      assert @response.body.include?(c)
+      assert @response.body.include?(c.content)
     end
 
     define_method("test_should_get_privacy_#{locale}") do
@@ -15,7 +15,7 @@ class ContentsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
 
       c = Content.for(:privacy, locale)
-      assert @response.body.include?(c)
+      assert @response.body.include?(c.content)
     end
 
     define_method("test_should_get_tos_#{locale}") do
@@ -23,7 +23,7 @@ class ContentsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
 
       c = Content.for(:tos, locale)
-      assert @response.body.include?(c)
+      assert @response.body.include?(c.content)
     end
   end
 end
