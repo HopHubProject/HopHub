@@ -265,7 +265,7 @@ es:
     entry_not_found: Entrada no encontrada.
     entry_confirmed: Tu dirección de correo electrónico ha sido confirmada. La entrada ya está activa.
     entry_already_confirmed: Tu dirección de correo electrónico ya ha sido confirmada.
-    entry_contacted: Tu mensaje ha sido enviado. El destinatario se pondrá en contacto contigo.
+    entry_contacted: Tu mensaje ha sido enviado. El destinatario ahora puede responder directamente.
 
     gdpr_inquiry_created: Tu solicitud ha sido enviada. Recibirás un correo electrónico con más información en breve.
 

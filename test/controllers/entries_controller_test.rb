@@ -351,7 +351,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         locale: locale
       }
 
-      assert_redirected_to event_entry_url(x.event, x, locale: locale)
+      assert_redirected_to event_url(x.event, locale: locale)
 
       assert_equal 1, ActionMailer::Base.deliveries.size
       mail = ActionMailer::Base.deliveries.last

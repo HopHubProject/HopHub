@@ -271,7 +271,7 @@ en:
     entry_not_found: Entry not found.
     entry_confirmed: Your email address has been confirmed.
     entry_already_confirmed: Your email address has already been confirmed.
-    entry_contacted: Your message has been sent.
+    entry_contacted: Your message has been sent. The recipient can now contact you directly.
 
     gdpr_inquiry_created: Your inquiry has been sent. You will receive an email with further information shortly.
 

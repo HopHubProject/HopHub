@@ -118,7 +118,7 @@ class EntriesController < ApplicationController
           text: @contact_email.text).contact.deliver
     end
 
-    redirect_to event_entry_path(@event, @entry), flash: { success: t('flash.entry_contacted') }
+    redirect_to event_path(@event), flash: { success: t('flash.entry_contacted') }
   end
 
   private

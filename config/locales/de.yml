@@ -269,7 +269,7 @@ de:
     entry_not_found: Eintrag nicht gefunden.
     entry_confirmed: Deine E-Mail-Adresse wurde bestätigt. Der Eintrag ist jetzt aktiv.
     entry_already_confirmed: Deine E-Mail-Adresse wurde bereits bestätigt.
-    entry_contacted: Deine Nachricht wurde gesendet. Der Empfänger wird sich bei dir melden.
+    entry_contacted: Deine Nachricht wurde gesendet. Der Empfänger kann sich jetzt bei dir melden.
 
     gdpr_inquiry_created: Deine Anfrage wurde gesendet. Du erhältst gleich eine E-Mail mit weiteren Informationen.
 
