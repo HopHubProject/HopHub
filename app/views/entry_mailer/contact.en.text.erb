@@ -12,9 +12,7 @@ Your <%= t(@entry.entry_type).downcase %> for the event "<%= @entry.event.name %
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-In case your <%= t(@entry.entry_type).downcase %> is no longer up to date or relevant, please use the following link to edit or delete it:
-
-    <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: @entry.locale) %>
+In case your <%= t(@entry.entry_type).downcase %> is no longer up to date or relevant, please use the secret link from your confirmation email to edit or delete it.
 
 Happy sharing, you are awesome!
 

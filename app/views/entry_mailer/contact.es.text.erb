@@ -12,9 +12,7 @@ Tu <%= t(@entry.entry_type) %> para el evento "<%= @entry.event.name %>" sigue a
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-Si tu <%= t(@entry.entry_type) %> ya no es válido, por favor usa el siguiente enlace para editarlo o eliminarlo:
-
-    <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: @entry.locale) %>
+Si tu <%= t(@entry.entry_type) %> ya no es válido, por favor usa el enlace secreto de tu correo de confirmación para editarlo o eliminarlo.
 
 ¡Disfruta del viaje, eres genial!
 

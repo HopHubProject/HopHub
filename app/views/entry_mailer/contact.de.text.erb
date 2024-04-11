@@ -12,9 +12,7 @@ Dein <%= t(@entry.entry_type) %> für das Event "<%= @entry.event.name %>" ist w
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-Falls dein <%= t(@entry.entry_type) %> nicht mehr aktuell ist, benutze bitte den folgenden Link, um es zu bearbeiten oder zu löschen:
-
-    <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: @entry.locale) %>
+Falls dein <%= t(@entry.entry_type) %> nicht mehr aktuell ist, benutze bitte den geheimen Link aus deiner Bestätigungsmail, um ihn zu bearbeiten oder zu löschen.
 
 Viel Spaß bei der gemeinsamen Fahrt, du bist toll!
 

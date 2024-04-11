@@ -360,7 +360,6 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       assert_match name, mail.body.to_s
       assert_match text, mail.body.to_s
       assert_match event_entry_url(x.event, x), mail.body.to_s
-      assert_match edit_event_entry_url(x.event, x, locale: x.locale, token: x.token), mail.body.to_s
     end
   end
 end
