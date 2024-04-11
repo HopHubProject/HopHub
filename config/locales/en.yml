@@ -364,7 +364,10 @@ en:
         driver-offer: |
           Would you offer to drive the car? Please check this box.
 
-        notes: Any additional notes you want to share with others.
+        notes: |
+          Any additional notes you want to share with others.
+          You can use this field to share your phone number, preferred way of contact, etc.
+          Please note that this information will be publicly shown on the web site.
 
       contact_email:
         name: |

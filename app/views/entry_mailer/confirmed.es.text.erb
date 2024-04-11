@@ -8,7 +8,8 @@ Tu <%= t(@entry.entry_type) %> para el evento "<%= @entry.event.name %>" ha sido
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-Si deseas editar o eliminar tu <%= t(@entry.entry_type) %>, por favor usa el siguiente enlace, que es solo para ti:
+Si deseas editar o eliminar tu <%= t(@entry.entry_type) %>, por favor usa el siguiente enlace secreto.
+Por favor, mantén este enlace para ti y no lo compartas con otros:
 
     <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
 

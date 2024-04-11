@@ -383,7 +383,11 @@ de:
           Wenn du nach einem Fahrer für diese Fahrt suchst, setze bitte dieses Häkchen.
         driver-offer: |
           Könntest du dir vorstellen, das Auto zu fahren?
-        notes: Alle zusätzlichen Notizen, die du mit anderen teilen möchtest.
+        notes: |
+          Alle zusätzlichen Notizen, die du mit anderen öffentlich teilen möchtest.
+          Du kannst hier auch deine Telefonnummer, bevorzugte Kontaktaufnahme oder
+          andere Informationen angeben. Beachte bitte, dass alles was du hier angibst
+          öffentlich sichtbar ist.
 
       contact_email:
         name: |
