@@ -130,6 +130,17 @@ The following keys are used in the project:
 - `privacy`: Data privacy policy
 - `imprint`: Imprint
 
+## Cleanup task
+
+The project features a cleanup task that has to be run periodically to remove old events, offers and requests from the database.
+The task is defined in the `lib/tasks/cleanup.rake` file and can be executed with the following command:
+
+```sh
+bundle exec rails hophub:cleanup
+```
+
+The Kubernetes deployment will add a cronjob that runs this task every hour.
+
 ## Data privacy
 
 If you host the project yourself you should be aware of the data privacy implications and legal requirements in your jurisdiction.
