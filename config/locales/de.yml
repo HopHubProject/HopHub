@@ -25,8 +25,8 @@ de:
     title: Was ist das?
     text:
       - |
-        HopHub ist eine Mitfahr-Plattform, die gemeinesames Anreisen zu Veranstaltungen
-        vereinfachen und damit die Welt ein bisschen besser machen will. Ganz egal ob
+        HopHub ist eine Mitfahr-Plattform, die gemeinsames Anreisen zu Veranstaltungen
+        vereinfachen und damit die Welt ein bisschen besser machen will. Ganz egal, ob
         ihr das Auto vollmacht, euch ein Zugticket teilt, gemeinsam Bus fahrt, eine
         Fahrradtour plant oder zu Fuß geht.
 
@@ -41,10 +41,10 @@ de:
       title: Biete eine Mitfahrgelegenheit an
       text: |
         Personen, die eine Mitfahrgelegenheit anbieten wollen, können jetzt ein Angebot
-        einstellen. Das gilt für Plätze im Auto, aber auch für gemeinesames Reisen mit
+        einstellen. Das gilt für Plätze im Auto, aber auch für gemeinsames Reisen mit
         dem Zug, Bus, Fahrrad oder zu Fuß.
         Dafür ist keine Anmeldung erforderlich, nur eine E-Mail-Adresse, an die wir eine
-        Bestätigungmail senden. Nach erfolgter Bestätigung wird der Eintrag angezeigt.
+        Bestätigungsmail senden. Nach erfolgter Bestätigung wird der Eintrag angezeigt.
     add-request:
       title: Suche eine Mitfahrgelegenheit
       text: |
@@ -61,7 +61,7 @@ de:
       title: Keine Spuren hinterlassen
       text: |
         Angebote, Gesuche und Events werden automatisch aus der Datenbank entfernt
-        nachdem deren Gültigkeit vorrüber ist.
+        nachdem deren Gültigkeit vorüber ist.
 
   hosting-an-event:
     title: Erstelle dein eigenes Event
@@ -139,7 +139,7 @@ de:
   create_event:
     title: Event erstellen
     text: |
-      Bitte gib die Details ein zu deinem Event ein. Du erhältst eine E-Mail mit
+      Bitte gib die Details zu deinem Event ein. Du erhältst eine E-Mail mit
       einem Link zur Administrationsseite, um einige dieser Details später zu ändern.
 
   event_valid_until: Event geht bis %{date}
@@ -169,18 +169,18 @@ de:
     title: Neues Gesuch erstellen
     text: |
       Wenn du nach einer Mitfahrgelegenheit suchst, fülle bitte das unten stehende Formular aus
-      und wähle einen Punkt auf der Karte aus an dem du abgeholt oder abgesetzt werden möchtest.
+      und wähle einen Punkt auf der Karte aus, an dem du abgeholt oder abgesetzt werden möchtest.
       Dieser Ort muss nicht genau sein, aber er sollte anderen eine Möglichkeit geben, ihre Route
       zu planen.
-      Personen mit passendem Angebot können über die Website Kontakt mit dir aufnehmen sobald du
+      Personen mit passendem Angebot können über die Website Kontakt mit dir aufnehmen, sobald du
       deine E-Mail-Adresse bestätigt hast.
 
   create_new_offer:
     title: Neues Angebot erstellen
     text: |
       Wenn du in deinem Fahrzeug einen oder mehrere freie Plätze hast, fülle bitte das Formular unten aus
-      und wähle einen Punkt auf der Karte aus an dem du Mifahrende abholen oder absetzten möchtest.
-      Personen mit passender Anfrage können über die Website Kontakt mit dir aufnehmen sobald du
+      und wähle einen Punkt auf der Karte aus, an dem du Mifahrende abholen oder absetzen möchtest.
+      Personen mit passender Anfrage können über die Website Kontakt mit dir aufnehmen, sobald du
       deine E-Mail-Adresse bestätigt hast.
 
   update_request:
@@ -356,7 +356,7 @@ de:
           Die Beschreibung wird auch auf der Eventseite angezeigt und kann den Besuchern etwas Kontext zum Event geben.
         admin_email: |
           Diese E-Mail-Adresse wird verwendet, um dir eine Bestätigung und einen Administrationslink zu senden.
-          Sie wird nicht auf der Website angezeigt. Wir speichern Sie nur solange der Event aktiv ist,
+          Sie wird nicht auf der Website angezeigt. Wir speichern sie nur, solange der Event aktiv ist,
           danach wird sie dauerhaft gelöscht.
         end_date: |
           Alle Details zu diesem Event inklusive der angegebenen E-Mail-Adresse sowie
