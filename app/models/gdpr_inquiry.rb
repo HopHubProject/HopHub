@@ -1,4 +1,4 @@
-class GdrpInquiry
+class GdprInquiry
   include ActiveModel::Validations
 
   attr_accessor :email

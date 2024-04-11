@@ -1,10 +1,10 @@
-class GdrpInquiriesController < ApplicationController
+class GdprInquiriesController < ApplicationController
   def new
-    @inquiry = GdrpInquiry.new
+    @inquiry = GdprInquiry.new
   end
 
   def create
-    @inquiry = GdrpInquiry.new
+    @inquiry = GdprInquiry.new
     @inquiry.email = inquiry_params[:email]
 
     altcha_ok = verify_altcha
@@ -21,16 +21,16 @@ class GdrpInquiriesController < ApplicationController
     @events = Event.where("admin_email LIKE ?", @inquiry.email)
     @entries = Entry.where("email LIKE ?", @inquiry.email)
 
-    GdrpInquiryMailer.with(inquiry: @inquiry, events: @events, entries: @entries).response.deliver
+    GdprInquiryMailer.with(inquiry: @inquiry, events: @events, entries: @entries).response.deliver
 
-    redirect_to root_path, flash: { success: t('flash.gdrp_inquiry_created') }
+    redirect_to root_path, flash: { success: t('flash.gdpr_inquiry_created') }
   end
 
   private
 
   def set_title
     super
-    @title.push t('gdrp_inquiry.title')
+    @title.push t('gdpr_inquiry.title')
   end
 
   def verify_altcha
@@ -40,7 +40,7 @@ class GdrpInquiriesController < ApplicationController
   end
 
   def inquiry_params
-    params.require(:gdrp_inquiry).permit(:email)
+    params.require(:gdpr_inquiry).permit(:email)
   end
 
   def altcha_params

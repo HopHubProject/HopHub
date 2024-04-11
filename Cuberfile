@@ -28,7 +28,7 @@ env 'HOPHUB_MAIL_PORT', File.read('deploy/config/mail.port').strip
 env 'HOPHUB_MAIL_FROM', File.read('deploy/config/mail.from').strip
 env 'HOPHUB_MAIL_DOMAIN', File.read('deploy/config/mail.domain').strip
 env 'HOPHUB_MAIL_EVENT_CONFIRMED_BCC', File.read('deploy/config/mail.event_confirmed_bcc').strip
-env 'HOPHUB_MAIL_GDRP_RESPONSE_BCC', File.read('deploy/config/mail.gdrp_response_bcc').strip
+env 'HOPHUB_MAIL_GDPR_RESPONSE_BCC', File.read('deploy/config/mail.gdpr_response_bcc').strip
 env 'EXCEPTION_NOTIFIER_SENDER', File.read('deploy/config/exception_notifier.sender_address').strip
 env 'EXCEPTION_NOTIFIER_RECIPIENT', File.read('deploy/config/exception_notifier.recipient').strip
 

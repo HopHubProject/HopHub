@@ -163,7 +163,7 @@ Consider the following aspects when crafting the privacy policy for your instanc
 - Entries are automatically deleted from the database after they have passed
 - Entries can be deleted manually by their creators
 - When a user contacts another user through the platform, the email address of the sender is used as the Reply-To address in the email. Neither the email address of the sender nor the text they write is stored in the database.
-- The GDRP information tool allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events, offers and requests that are associated with the email address with links to delete the data.
+- The GDPR information tool allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events, offers and requests that are associated with the email address with links to delete the data.
 - Maptiler is used to display offers and requests on a map. The browser of the client sends a request to the Maptiler API to retrieve the map tiles. The IP address of the client is sent to the Maptiler API. More information can be found in the [Maptiler privacy policy](https://www.maptiler.com/privacy-policy).
 - JsDelivr is used to deliver JavaScript files of the project. The browser of the client sends a request to the JsDelivr API to retrieve the files which transmits their IP address to the JsDelivr API. More information can be found in the [JsDelivr privacy policy](https://www.jsdelivr.com/privacy-policy-jsdelivr-net).
 

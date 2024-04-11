@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get "privacy" => "contents#privacy"
   get "tos"     => "contents#tos"
 
-  resources :gdrp_inquiries, only: [:new, :create]
-  get "gdrp" => "gdrp_inquiries#new"
+  resources :gdpr_inquiries, only: [:new, :create]
+  get "gdpr" => "gdpr_inquiries#new"
 
   resources :events, path: :e do
     get 'geojson'

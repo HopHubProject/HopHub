@@ -2,16 +2,16 @@
   .col-12.col-lg-9
 
     %h1
-      =t('gdrp_inquiry.title')
+      =t('gdpr_inquiry.title')
 
-    -t('gdrp_inquiry.text').each do |line|
+    -t('gdpr_inquiry.text').each do |line|
       %p= line
 
-    %p= t('gdrp_inquiry.links',
+    %p= t('gdpr_inquiry.links',
             tos: link_to(t('tos'), tos_path),
             privacy_policy: link_to(t('privacy_policy'), privacy_path)).html_safe
 
-    =turbo_frame_tag 'gdrp_inquiry' do
+    =turbo_frame_tag 'gdpr_inquiry' do
       =simple_form_for @inquiry do |f|
         =f.input :email
 
@@ -27,4 +27,4 @@
         .row.mb-3
           .col-sm-3
           .col-sm-9
-            =f.submit t('gdrp_inquiry.send'), class: 'btn btn-primary'
+            =f.submit t('gdpr_inquiry.send'), class: 'btn btn-primary'

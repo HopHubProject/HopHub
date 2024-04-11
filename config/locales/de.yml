@@ -209,7 +209,7 @@ de:
       Diese Informationen werden an %{name} gesendet und nicht in der Datenbank von HopHub gespeichert.
       HopHub hat keine Kontrolle darüber, was %{name} mit diesen Informationen macht.
 
-  gdrp_inquiry:
+  gdpr_inquiry:
     title: DSGVO-Anfrage
     text:
       - |
@@ -251,7 +251,7 @@ de:
         subject: "HopHub: Dein Eintrag ist jetzt freigeschaltet"
       contact:
         subject: "HopHub: Neue Nachricht"
-    gdrp_inquiry:
+    gdpr_inquiry:
       response:
         subject: "HopHub: Deine DSGVO-Anfrage"
 
@@ -271,7 +271,7 @@ de:
     entry_already_confirmed: Deine E-Mail-Adresse wurde bereits bestätigt.
     entry_contacted: Deine Nachricht wurde gesendet. Der Empfänger wird sich bei dir melden.
 
-    gdrp_inquiry_created: Deine Anfrage wurde gesendet. Du erhältst gleich eine E-Mail mit weiteren Informationen.
+    gdpr_inquiry_created: Deine Anfrage wurde gesendet. Du erhältst gleich eine E-Mail mit weiteren Informationen.
 
   activerecord:
     models:

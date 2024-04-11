@@ -208,7 +208,7 @@ en:
       This information will be sent to %{name} via email. We do not store it in our database.
       HopHub has no control over what %{name} does with this information.
 
-  gdrp_inquiry:
+  gdpr_inquiry:
     title: GDPR inquiry
     text:
       - |
@@ -253,7 +253,7 @@ en:
       contact:
         subject: "HopHub: New message"
 
-    gdrp_inquiry:
+    gdpr_inquiry:
       response:
         subject: "HopHub: GDPR inquiry response"
 
@@ -273,7 +273,7 @@ en:
     entry_already_confirmed: Your email address has already been confirmed.
     entry_contacted: Your message has been sent.
 
-    gdrp_inquiry_created: Your inquiry has been sent. You will receive an email with further information shortly.
+    gdpr_inquiry_created: Your inquiry has been sent. You will receive an email with further information shortly.
 
   activerecord:
     models:

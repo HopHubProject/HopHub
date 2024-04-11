@@ -1,18 +1,18 @@
 require "test_helper"
 
-class GdrpControllerTest < ActionDispatch::IntegrationTest
+class GdprControllerTest < ActionDispatch::IntegrationTest
   I18n.available_locales.each do |locale|
     define_method("test_should_get_form_#{locale}") do
-      get gdrp_url(locale: locale)
+      get gdpr_url(locale: locale)
       assert_response :success
 
-      get new_gdrp_inquiry_url(locale: locale)
+      get new_gdpr_inquiry_url(locale: locale)
       assert_response :success
     end
 
-    define_method("test_should_not_create_gdrp_response#{locale}") do
-      post gdrp_inquiries_url, params: {
-        gdrp_inquiry: {
+    define_method("test_should_not_create_gdpr_response#{locale}") do
+      post gdpr_inquiries_url, params: {
+        gdpr_inquiry: {
           email: "x",
         },
         locale: locale
@@ -21,11 +21,11 @@ class GdrpControllerTest < ActionDispatch::IntegrationTest
       assert_response :unprocessable_entity
     end
 
-    define_method("test_should_create_negative_gdrp_#{locale}") do
+    define_method("test_should_create_negative_gdpr_#{locale}") do
       email = "x@nonexistant.foo"
 
-      post gdrp_inquiries_url, params: {
-        gdrp_inquiry: {
+      post gdpr_inquiries_url, params: {
+        gdpr_inquiry: {
           email: email,
         },
         locale: locale
@@ -38,11 +38,11 @@ class GdrpControllerTest < ActionDispatch::IntegrationTest
       assert_equal [email], mail.to
     end
 
-    define_method("test_should_create_positive_event_gdrp_#{locale}") do
+    define_method("test_should_create_positive_event_gdpr_#{locale}") do
       event = events(:one)
 
-      post gdrp_inquiries_url, params: {
-        gdrp_inquiry: {
+      post gdpr_inquiries_url, params: {
+        gdpr_inquiry: {
           email: event.admin_email,
         },
         locale: locale
@@ -57,11 +57,11 @@ class GdrpControllerTest < ActionDispatch::IntegrationTest
       assert_match edit_event_url(event, locale: locale, admin_token: event.admin_token), mail.body.to_s
     end
 
-    define_method("test_should_create_positive_entry_gdrp_#{locale}") do
+    define_method("test_should_create_positive_entry_gdpr_#{locale}") do
       entry = entries(:rwt1)
 
-      post gdrp_inquiries_url, params: {
-        gdrp_inquiry: {
+      post gdpr_inquiries_url, params: {
+        gdpr_inquiry: {
           email: entry.email,
         },
         locale: locale

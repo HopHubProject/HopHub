@@ -206,7 +206,7 @@ es:
       Esta información se enviará a %{name} y no se almacenará en la base de datos.
       HopHub no tiene control sobre lo que %{name} hace con esta información.
 
-  gdrp_inquiry:
+  gdpr_inquiry:
     title: Solicitud de GDPR
     text:
       - |
@@ -247,7 +247,7 @@ es:
         subject: "HopHub: Tu entrada ya está activa"
       contact:
         subject: "HopHub: Nuevo mensaje"
-    gdrp_inquiry:
+    gdpr_inquiry:
       response:
         subject: "HopHub: Solicitud de GDPR"
 
@@ -267,7 +267,7 @@ es:
     entry_already_confirmed: Tu dirección de correo electrónico ya ha sido confirmada.
     entry_contacted: Tu mensaje ha sido enviado. El destinatario se pondrá en contacto contigo.
 
-    gdrp_inquiry_created: Tu solicitud ha sido enviada. Recibirás un correo electrónico con más información en breve.
+    gdpr_inquiry_created: Tu solicitud ha sido enviada. Recibirás un correo electrónico con más información en breve.
 
   activerecord:
     models:
