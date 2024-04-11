@@ -14,11 +14,6 @@
           %th= t('activerecord.fields.entry.name')
           %td= @entry.name
 
-        -unless @entry.phone.blank?
-          %tr
-            %th= t('activerecord.fields.entry.phone')
-            %td= @entry.phone
-
         %tr
           %th= t('activerecord.fields.entry.date')
           %td= l @entry.date, format: :long

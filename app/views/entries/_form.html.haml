@@ -30,7 +30,6 @@
         hint: @entry.is_offer? ? t('simple_form.hints.entry.driver-needed') : t('simple_form.hints.entry.driver-offer')
       =f.input :seats,
         hint: @entry.is_offer? ? t('simple_form.hints.entry.seats-available') : t('simple_form.hints.entry.seats-needed')
-    =f.input :phone
     =f.input :location
     =f.input :date,
       as: :string,
