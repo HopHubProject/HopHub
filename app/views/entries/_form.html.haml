@@ -10,6 +10,7 @@
     =f.hidden_field :longitude
     =f.hidden_field :token, value: params[:token]
 
+    =f.input :location
     =f.input :name
     -if method == :new
       =f.input :email
@@ -30,7 +31,6 @@
         hint: @entry.is_offer? ? t('simple_form.hints.entry.driver-needed') : t('simple_form.hints.entry.driver-offer')
       =f.input :seats,
         hint: @entry.is_offer? ? t('simple_form.hints.entry.seats-available') : t('simple_form.hints.entry.seats-needed')
-    =f.input :location
     =f.input :date,
       as: :string,
       input_html: { value: @entry.date&.strftime('%d/%m/%Y %H:%M') }
