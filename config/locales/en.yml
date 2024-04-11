@@ -84,6 +84,7 @@ en:
   cancel: Cancel
 
   transport:
+    any: Any
     car: Car
     train: Train
     bus: Bus

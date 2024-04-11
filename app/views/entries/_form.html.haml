@@ -19,8 +19,8 @@
       label: t('simple_form.labels.entry.direction'),
       hint: t('simple_form.hints.entry.direction')
     =f.input :transport, as: :select,
-      collection: Entry::TRANSPORTS.map { |v| [t("transport.#{v}"), v] },
-      include_blank: true,
+      collection: @transport_types.map { |v| [t("transport.#{v}"), v] },
+      include_blank: @entry.is_offer?,
       blank: t('simple_form.labels.entry.transport'),
       label: t('simple_form.labels.entry.transport'),
       hint: t('simple_form.hints.entry.transport')

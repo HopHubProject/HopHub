@@ -40,6 +40,8 @@ module ApplicationHelper
 
   def icon_class_for_transport(t)
     case t.to_sym
+    when :any
+      'bi bi-asterisk'
     when :car
       'bi bi-car-front'
     when :train

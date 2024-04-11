@@ -87,6 +87,7 @@ de:
   cancel: Abbrechen
 
   transport:
+    any: Egal
     car: Auto
     train: Zug
     bus: Bus

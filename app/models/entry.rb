@@ -1,7 +1,7 @@
 class Entry < ActiveRecord::Base
   belongs_to :event
 
-  TRANSPORTS = %w(car train bus bicycle foot other)
+  TRANSPORTS = %w(any car train bus bicycle foot other)
   DIRECTIONS = %w(way_there way_back)
   TYPES = %w(request offer)
 

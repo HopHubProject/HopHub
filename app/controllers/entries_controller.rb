@@ -34,12 +34,14 @@ class EntriesController < ApplicationController
     @entry = @event.entries.new
     @entry.entry_type = params.permit(:entry_type)[:entry_type]
     @entry.seats = 1
+    set_transport_types
   end
 
   def create
     @event = Event.find(params[:event_id])
     @entry = @event.entries.new(entry_params)
     @entry.locale = I18n.locale.to_s
+    @entry.valid?
 
     unless verify_altcha
       @entry.errors.add(:altcha, t('terms_and_conditions.error'))
@@ -55,6 +57,7 @@ class EntriesController < ApplicationController
         @entry.errors.add(:location, t('simple_form.errors.entry.location.invalid'))
       end
 
+      set_transport_types
       render :new, status: :unprocessable_entity
     end
   end
@@ -68,6 +71,7 @@ class EntriesController < ApplicationController
   end
 
   def edit
+    set_transport_types
   end
 
   def confirm
@@ -131,6 +135,14 @@ class EntriesController < ApplicationController
 
   def set_noindex
     @noindex = true
+  end
+
+  def set_transport_types
+    if @entry.entry_type.to_sym == :request
+      @transport_types = Entry::TRANSPORTS
+    else
+      @transport_types = Entry::TRANSPORTS - [ :any ]
+    end
   end
 
   def verify_altcha

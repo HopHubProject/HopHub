@@ -85,6 +85,7 @@ es:
   cancel: Cancelar
 
   transport:
+    any: Cualquiera
     car: Coche
     train: Tren
     bus: Autobús
