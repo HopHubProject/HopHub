@@ -206,6 +206,12 @@ If you want to add a new language, please follow these steps:
 3. Add the new language to `I18n.available_locales` in the `config/locales.rb` file.
 4. Open a pull request.
 
+## Donations
+
+If you like the project and want to support its development, you can donate through Ko-fi:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E5WTMM4)
+
 ## License
 
 This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details
