@@ -8,7 +8,8 @@ Bitte teile den folgenden Link mit potenziell Teilnehmenden:
 
     <%= event_url(@event) %>
 
-Falls du das Event aktualisieren oder löschen möchtest, benutze bitte den folgenden Link, der nur für dich zugänglich ist:
+Falls du das Event aktualisieren oder löschen möchtest, benutze bitte den folgenden geheimen Link.
+Bitte behalte diesen Link für dich und teile ihn nicht mit anderen:
 
     <%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>
 

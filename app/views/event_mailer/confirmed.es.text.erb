@@ -8,7 +8,8 @@ Por favor comparte el siguiente enlace con posibles participantes:
 
     <%= event_url(@event) %>
 
-Si deseas actualizar o eliminar el evento, utiliza el siguiente enlace, que es solo para ti:
+Si deseas actualizar o eliminar el evento, utiliza el siguiente enlace secreto.
+Por favor, mantén este enlace para ti y no lo compartas con otros:
 
     <%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>
 
