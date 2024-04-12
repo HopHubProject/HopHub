@@ -67,6 +67,8 @@
     const date = document.getElementById('entry_date');
 
     if (date !== null) {
+      tempusDominus.extend(window.tempusDominus.plugins.bi_one.load);
+
       new tempusDominus.TempusDominus(date, {
         restrictions: {
           minDate: new Date(),

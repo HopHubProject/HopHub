@@ -6,6 +6,7 @@ import "controllers"
 import "popper"
 import "bootstrap"
 import "tempus-dominus";
+import "tempus-dominus-bi-one";
 import "altcha"
 import "confetti"
 import "maptiler"
