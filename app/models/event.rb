@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :admin_email
   validates_format_of :admin_email, with: /\A[\w\-\.]+@([\w-]+\.)+[\w-]{2,}\z/
 
-  default_scope { order(created_at: :asc) }
+  default_scope { order(created_at: :desc) }
 
   scope :confirmed, -> { where("confirmed_at IS NOT NULL") }
   scope :unconfirmed, -> { where("confirmed_at IS NULL") }

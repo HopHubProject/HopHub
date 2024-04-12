@@ -116,7 +116,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
 
       assert_redirected_to root_url(locale: locale)
 
-      e = Event.last
+      e = Event.first
       assert_equal 1, ActionMailer::Base.deliveries.size
       mail = ActionMailer::Base.deliveries.last
       assert_equal [e.admin_email], mail.to
