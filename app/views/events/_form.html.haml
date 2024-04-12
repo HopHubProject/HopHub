@@ -36,6 +36,8 @@
   init_event_timepicker = (e) => {
     const end_date = document.getElementById('event_end_date')
     if (end_date !== null) {
+      tempusDominus.extend(window.tempusDominus.plugins.bi_one.load);
+
       const picker = new tempusDominus.TempusDominus(end_date, {
         display: {
           components: {
