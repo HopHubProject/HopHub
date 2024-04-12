@@ -6,7 +6,8 @@
       -else
         =t('request')
 
-      ="(" + t(@entry.direction) + ")"
+      ="(" + t(@entry.direction) + ") — "
+      =@entry.name
 
     %table.table.table-striped
       %tbody

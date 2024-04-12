@@ -14,6 +14,10 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       x = entries(:rwt1)
       get event_entry_url(x.event, x)
       assert_response :success
+
+      assert_match x.name, @response.body
+      assert_match x.location, @response.body
+      assert_match x.event.name, @response.body
     end
 
     define_method("test_should_get_popup_content_for_a_confirmed_entry_#{locale}") do
