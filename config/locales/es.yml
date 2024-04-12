@@ -55,6 +55,12 @@ es:
         En caso de coincidencia, las personas pueden ponerse en contacto a través de un formulario web en el sitio web.
         La dirección de correo electrónico del contacto se utiliza como dirección de respuesta para que el
         destinatario pueda responder directamente.
+    no-indexing:
+      title: No indexar por motores de búsqueda
+      text: |
+        Motores de búsqueda como Google o Bing no indexan los eventos
+        y las ofertas y solicitudes correspondientes utilizando etiquetas especiales.
+        Solo las personas con el enlace pueden ver los eventos.
     cleanup:
       title: No dejar rastro
       text: |

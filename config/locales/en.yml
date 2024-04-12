@@ -54,6 +54,12 @@ en:
         When two parties match, they can get in touch with each other using a form
         on the website. The email address of the person reaching out is used as the
         Reply-To address, so the recipient can reply directly for further coordination.
+    no-indexing:
+      title: No indexing by search engines
+      text: |
+        Search engines like Google or Bing are instructed not to index the events
+        and the corresponding offers and requests using special tags.
+        Only people with the link can see the events.
     cleanup:
       title: Leave no traces
       text: |

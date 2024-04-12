@@ -57,6 +57,12 @@ de:
         Bei einem Match können Personen mittels eines Webformulars auf der Website in Kontakt
         treten. Die E-Mail-Adresse des Kontaktaufnehmenden wird als Antwortadresse verwendet,
         damit die Empfängerin direkt antworten kann.
+    no-indexing:
+      title: Keine Indizierung durch Suchmaschinen
+      text: |
+        Suchmachinen wie Google oder Bing werden mithilfe von speziellen Tags angewiesen,
+        die Events und die dazugehörigen Angebote und Gesuche nicht zu indizieren.
+        Nur Personen mit dem Link können die Events sehen.
     cleanup:
       title: Keine Spuren hinterlassen
       text: |
