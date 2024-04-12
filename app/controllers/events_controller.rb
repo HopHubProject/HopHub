@@ -42,6 +42,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_create_params)
+    @event.valid?
 
     unless verify_altcha
       @event.errors.add(:altcha, t('terms_and_conditions.error'))
