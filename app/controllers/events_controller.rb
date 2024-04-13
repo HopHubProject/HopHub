@@ -64,6 +64,11 @@ class EventsController < ApplicationController
   end
 
   def confirm
+    if @event.is_confirmed?
+      redirect_to event_path(@event), flash: { error: t('flash.event_already_confirmed') }
+      return
+    end
+
     @event.confirmed_at = Time.now
     @event.save
     EventMailer.with(event: @event).confirmed.deliver

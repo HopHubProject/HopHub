@@ -155,6 +155,11 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       assert_equal [e.admin_email], mail.to
       assert_match event_url(e), mail.body.to_s
       assert_match edit_event_url(e, locale: locale, admin_token: e.admin_token), mail.body.to_s
+
+      # No email should be sent when confirming an already confirmed event
+      assert_no_difference('ActionMailer::Base.deliveries.size') do
+        get event_url(e)
+      end
     end
 
     define_method("test_should_not_get_edit_without_token_#{locale}") do
