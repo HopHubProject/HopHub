@@ -1,5 +1,7 @@
 =turbo_frame_tag "event_form" do
   =simple_form_for @event do |f|
+    =f.hidden_field :admin_token, value: params[:admin_token]
+
     =f.input :name
     =f.input :description, input_html: { rows: 5 },
       hint: t('simple_form.hints.event.description')

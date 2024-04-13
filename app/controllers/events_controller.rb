@@ -152,7 +152,9 @@ class EventsController < ApplicationController
   end
 
   def authenticate_user!
-    if params[:admin_token] != @event.admin_token
+    token = params[:admin_token] || params.dig(:event, :admin_token)
+
+    if token != @event.admin_token
       redirect_to event_path(@event)
     end
   end
