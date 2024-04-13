@@ -12,7 +12,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
 
-    define_method("test_should_be_redirected_to_root_for_an_unconfirmed_event_#{locale}") do
+    define_method("test_should_be_redirected_to_root_for_unconfirmed_event_#{locale}") do
       e = events(:two)
       e.update(confirmed_at: nil)
 
@@ -30,7 +30,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       assert @response.body.include?("FeatureCollection")
     end
 
-    define_method("test_should_not_get_geojson_#{locale}") do
+    define_method("test_should_not_get_geojson_for_unconfirmed_event_#{locale}") do
       e = events(:two)
       e.update(confirmed_at: nil)
 
@@ -123,7 +123,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       assert_match event_confirm_url(e, locale: locale, admin_token: e.admin_token), mail.body.to_s
     end
 
-    define_method("test_should_not_get_confirm_#{locale}") do
+    define_method("test_should_not_get_confirm_for_nonexistant_event_#{locale}") do
       get event_confirm_url("non-existing", admin_token: "non-existing", locale: locale)
       assert_redirected_to root_path(locale: locale)
     end
