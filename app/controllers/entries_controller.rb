@@ -43,6 +43,8 @@ class EntriesController < ApplicationController
     @entry.locale = I18n.locale.to_s
     @entry.valid?
 
+    set_transport_types
+
     unless verify_altcha
       @entry.errors.add(:altcha, t('terms_and_conditions.error'))
       render 'new', status: :unprocessable_entity
@@ -57,7 +59,6 @@ class EntriesController < ApplicationController
         @entry.errors.add(:location, t('simple_form.errors.entry.location.invalid'))
       end
 
-      set_transport_types
       render :new, status: :unprocessable_entity
     end
   end
