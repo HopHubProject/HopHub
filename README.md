@@ -129,6 +129,7 @@ The following keys are used in the project:
 - `tos`: Terms of Service
 - `privacy`: Data privacy policy
 - `imprint`: Imprint
+- `instance-info`: Information about the instance, displayed on the landing page
 
 ## Cleanup task
 

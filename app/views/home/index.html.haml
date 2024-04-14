@@ -62,3 +62,9 @@
         privacy_policy: link_to(t('privacy_policy'), privacy_path),
         github_project: link_to('GitHub', 'https://github.com/HopHubProject')).each do |text|
         %p= text.html_safe
+
+  -if @instance_info_text.present?
+    .col-12.col-lg-9
+      .shadow.p-3.mb-5.bg-body.rounded
+        %h1= @instance_info_title
+        = @instance_info_text.html_safe

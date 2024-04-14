@@ -35,3 +35,10 @@ privacy_en:
   locale: en
   fallback: true
   content: Privacy EN
+
+instance_info_en:
+  name: instance-info
+  title: Instance Info
+  locale: en
+  fallback: true
+  content: Instance Info EN

@@ -5,6 +5,10 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     define_method("test_should_get_index_#{locale}") do
       get root_url, params: { locale: locale }
       assert_response :success
+
+      c = Content.for('instance-info', locale)
+      assert_match c.content, @response.body
+      assert_match c.title, @response.body
     end
 
     define_method("test_should_get_imprint_#{locale}") do
