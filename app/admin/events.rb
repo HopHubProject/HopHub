@@ -129,4 +129,17 @@ ActiveAdmin.register Event do
       end
     end
   end
+
+  form do |f|
+    f.inputs "Event Details" do
+      f.input :id
+      f.input :name
+      f.input :description
+      f.input :end_date
+      f.input :admin_email
+      f.input :shadow_banned
+      f.input :confirmed_at
+    end
+    f.actions
+  end
 end
