@@ -41,6 +41,11 @@ class EventsController < ApplicationController
   end
 
   def create
+    if ENV['HOPHUB_SINGLE_EVENT_ID'].present?
+      redirect_to root_path
+      return
+    end
+
     @event = Event.new(event_create_params)
     @event.valid?
 
