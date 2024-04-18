@@ -1,6 +1,15 @@
 ActiveAdmin.register Entry do
   permit_params :id, :entry_id, :email, :entry_type, :direction, :seats, :date, :location, :notes, :confirmed_at, :token
 
+  scope :all, default: true
+  scope :in_future
+  scope :confirmed
+  scope :unconfirmed
+  scope :request
+  scope :offer
+  scope :way_there
+  scope :way_back
+
   member_action :unconfirm, method: :post do
     entry = Entry.find(params[:id])
     entry.update(confirmed_at: nil)

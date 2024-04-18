@@ -1,6 +1,10 @@
 ActiveAdmin.register Event do
   permit_params :id, :name, :description, :end_date, :admin_email, :admin_token, :shadow_banned, :confirmed_at
 
+  scope :all, default: true
+  scope :confirmed
+  scope :unconfirmed
+
   member_action :unconfirm, method: :post do
     event = Event.find(params[:id])
     event.update(confirmed_at: nil)
