@@ -101,9 +101,15 @@
               %i.bi.bi-github.mx-1
               =t('github_project')
 
-            =link_to "https://23.social/@hophub", target: '_new', class: "text-body" do
-              %i.bi.bi-mastodon.mx-1
-              Mastodon
+            -if ENV['HOPHUB_INSTANCE_MASTODON_LINK'].present?
+              =link_to ENV['HOPHUB_INSTANCE_MASTODON_LINK'], target: '_new', class: "text-body" do
+                %i.bi.bi-mastodon.mx-1
+                Mastodon
+
+            -if ENV['HOPHUB_INSTANCE_PROJECT_HOME'].present?
+              =link_to ENV['HOPHUB_INSTANCE_PROJECT_HOME'], target: '_new', class: "text-body" do
+                %i.bi.bi-house.mx-1
+                =t('home')
 
           / Fourth Column
           .col-md-3.col-lg-3.col-xl-3.mx-auto.mt-3

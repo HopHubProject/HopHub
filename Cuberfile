@@ -16,7 +16,6 @@ migrate 'bundle exec rails db:migrate'
 env 'SECRET_KEY_BASE', File.read("#{ENV['CONFIG_ROOT']}/secrets/secret_key_base").strip, secret: true
 env 'ALTCHA_HMAC_KEY', File.read("#{ENV['CONFIG_ROOT']}/secrets/altcha.hmac_key").strip, secret: true
 env 'MAPTILER_API_KEY', File.read("#{ENV['CONFIG_ROOT']}/secrets/maptiler.api_key").strip, secret: true
-
 env 'HOPHUB_BASE_URL', File.read("#{ENV['CONFIG_ROOT']}/config/base_url").strip
 env 'HOPHUB_DATABASE_USERNAME', File.read("#{ENV['CONFIG_ROOT']}/config/db.username").strip
 env 'HOPHUB_DATABASE_PASSWORD', File.read("#{ENV['CONFIG_ROOT']}/secrets/db.password").strip, secret: true
@@ -29,6 +28,9 @@ env 'HOPHUB_MAIL_FROM', File.read("#{ENV['CONFIG_ROOT']}/config/mail.from").stri
 env 'HOPHUB_MAIL_DOMAIN', File.read("deploy/config/mail.domain").strip
 env 'HOPHUB_MAIL_EVENT_CONFIRMED_BCC', File.read("#{ENV['CONFIG_ROOT']}/config/mail.event_confirmed_bcc").strip
 env 'HOPHUB_MAIL_GDPR_RESPONSE_BCC', File.read("#{ENV['CONFIG_ROOT']}/config/mail.gdpr_response_bcc").strip
+env 'HOPHUB_SINGLE_EVENT_ID', File.read("#{ENV['CONFIG_ROOT']}/config/single_event_id").strip
+env 'HOPHUB_INSTANCE_MASTODON_LINK', File.read("#{ENV['CONFIG_ROOT']}/config/mastodon_link").strip
+env 'HOPHUB_INSTANCE_PROJECT_HOME', File.read("#{ENV['CONFIG_ROOT']}/config/home_link").strip
 env 'EXCEPTION_NOTIFIER_SENDER', File.read("#{ENV['CONFIG_ROOT']}/config/exception_notifier.sender_address").strip
 env 'EXCEPTION_NOTIFIER_RECIPIENT', File.read("#{ENV['CONFIG_ROOT']}/config/exception_notifier.recipient").strip
 
