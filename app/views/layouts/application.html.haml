@@ -14,6 +14,9 @@
     =stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/fontawesome.min.css", "data-turbo-track": "reload"
     =stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css", "data-turbo-track": "reload"
 
+    -if ENV['PLAUSIBLE_DOMAIN'].present? and ENV['PLAUSIBLE_SRC'].present?
+      %script{defer: "", "data-domain": ENV['PLAUSIBLE_DOMAIN'], src: ENV['PLAUSIBLE_SRC']}
+
     %script{async: "", src: "https://cdn.jsdelivr.net/npm/es-module-shims@1.8.3/dist/es-module-shims.min.js"}
     =javascript_importmap_tags
 
