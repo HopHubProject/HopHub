@@ -37,6 +37,9 @@ env 'EXCEPTION_NOTIFIER_RECIPIENT', File.read("#{ENV['CONFIG_ROOT']}/config/exce
 env 'PLAUSIBLE_DOMAIN', File.read("#{ENV['CONFIG_ROOT']}/config/plausible.domain").strip rescue nil
 env 'PLAUSIBLE_SRC', File.read("#{ENV['CONFIG_ROOT']}/config/plausible.src").strip rescue nil
 
+# Don't create a load balancer for the web service
+ingress true
+
 # Run and scale any command on Kubernetes
 proc :web, 'bundle exec rails s', scale: 8
 proc :metrics, 'bundle exec rails s', scale: 1
