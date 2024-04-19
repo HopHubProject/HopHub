@@ -25,14 +25,17 @@ env 'HOPHUB_DATABASE_NAME', File.read("#{ENV['CONFIG_ROOT']}/config/db.name").st
 env 'HOPHUB_MAIL_SERVER', File.read("#{ENV['CONFIG_ROOT']}/config/mail.server").strip
 env 'HOPHUB_MAIL_PORT', File.read("#{ENV['CONFIG_ROOT']}/config/mail.port").strip
 env 'HOPHUB_MAIL_FROM', File.read("#{ENV['CONFIG_ROOT']}/config/mail.from").strip
-env 'HOPHUB_MAIL_DOMAIN', File.read("deploy/config/mail.domain").strip
-env 'HOPHUB_MAIL_EVENT_CONFIRMED_BCC', File.read("#{ENV['CONFIG_ROOT']}/config/mail.event_confirmed_bcc").strip
-env 'HOPHUB_MAIL_GDPR_RESPONSE_BCC', File.read("#{ENV['CONFIG_ROOT']}/config/mail.gdpr_response_bcc").strip
-env 'HOPHUB_SINGLE_EVENT_ID', File.read("#{ENV['CONFIG_ROOT']}/config/single_event_id").strip
-env 'HOPHUB_INSTANCE_MASTODON_LINK', File.read("#{ENV['CONFIG_ROOT']}/config/mastodon_link").strip
-env 'HOPHUB_INSTANCE_PROJECT_HOME', File.read("#{ENV['CONFIG_ROOT']}/config/home_link").strip
-env 'EXCEPTION_NOTIFIER_SENDER', File.read("#{ENV['CONFIG_ROOT']}/config/exception_notifier.sender_address").strip
-env 'EXCEPTION_NOTIFIER_RECIPIENT', File.read("#{ENV['CONFIG_ROOT']}/config/exception_notifier.recipient").strip
+env 'HOPHUB_MAIL_DOMAIN', File.read("#{ENV['CONFIG_ROOT']}/config/mail.domain").strip
+
+env 'HOPHUB_MAIL_EVENT_CONFIRMED_BCC', File.read("#{ENV['CONFIG_ROOT']}/config/mail.event_confirmed_bcc").strip rescue nil
+env 'HOPHUB_MAIL_GDPR_RESPONSE_BCC', File.read("#{ENV['CONFIG_ROOT']}/config/mail.gdpr_response_bcc").strip rescue nil
+env 'HOPHUB_SINGLE_EVENT_ID', File.read("#{ENV['CONFIG_ROOT']}/config/single_event_id").strip rescue nil
+env 'HOPHUB_INSTANCE_MASTODON_LINK', File.read("#{ENV['CONFIG_ROOT']}/config/mastodon_link").strip rescue nil
+env 'HOPHUB_INSTANCE_PROJECT_HOME', File.read("#{ENV['CONFIG_ROOT']}/config/home_link").strip rescue nil
+env 'EXCEPTION_NOTIFIER_SENDER', File.read("#{ENV['CONFIG_ROOT']}/config/exception_notifier.sender_address").strip rescue nil
+env 'EXCEPTION_NOTIFIER_RECIPIENT', File.read("#{ENV['CONFIG_ROOT']}/config/exception_notifier.recipient").strip rescue nil
+env 'PLAUSIBLE_DOMAIN', File.read("#{ENV['CONFIG_ROOT']}/config/plausible.domain").strip rescue nil
+env 'PLAUSIBLE_SRC', File.read("#{ENV['CONFIG_ROOT']}/config/plausible.src").strip rescue nil
 
 # Run and scale any command on Kubernetes
 proc :web, 'bundle exec rails s', scale: 8
