@@ -41,7 +41,7 @@ env 'PLAUSIBLE_SRC', File.read("#{ENV['CONFIG_ROOT']}/config/plausible.src").str
 ingress true
 
 # Run and scale any command on Kubernetes
-proc :web, 'bundle exec rails s', scale: 8
+proc :web, 'bundle exec rails s', scale: 4
 proc :metrics, 'bundle exec rails s', scale: 1
 
 health File.read('deploy/config/base_url').strip + '/up'
