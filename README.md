@@ -107,6 +107,8 @@ to deploy on k8s.
 | `HOPHUB_SINGLE_EVENT_ID`          | Optional ID of a single event that is always shown on the landing page          |
 | `EXCEPTION_NOTIFIER_SENDER`       | Optional sender for notification emails                                         |
 | `EXCEPTION_NOTIFIER_RECIPIENT`    | Optional addresses of recipients for exception notification emails              |
+| `PLAUSIBLE_DOMAIN`                | The domain of the Plausible instance for the privacy policy                     |
+| `PLAUSIBLE_SRC`                   | The source of the JavaScript script for Plausible                               |
 
 ### HTTP routes
 
@@ -131,6 +133,16 @@ The following keys are used in the project:
 - `privacy`: Data privacy policy
 - `imprint`: Imprint
 - `instance-info`: Information about the instance, displayed on the landing page
+
+## Single event deployment
+
+If you want to deploy the project with a single event that is always shown on the landing page, you can set the `HOPHUB_SINGLE_EVENT_ID` environment variable to the ID of the event. Request to the landing page will then be redirected to the event page of the event with the given ID.
+
+Note that the creation of events is not possible in this mode. The event with the given ID must be created manually through the admin interface or the Rails console.
+
+## Plausible analytics
+
+The project features an integration with [Plausible](https://plausible.io/) for privacy-friendly analytics. Plausible is a lightweight and open-source web analytics tool that doesn’t use cookies and is fully compliant with GDPR, CCPA and PECR. The application scaffold includes the Plausible JavaScript script with the domain and source that are set in the `PLAUSIBLE_DOMAIN` and `PLAUSIBLE_SRC` environment variables. If these variables are not set, the Plausible script is not included in the application layout.
 
 ## Cleanup task
 
@@ -179,6 +191,11 @@ Consider the following aspects when crafting the privacy policy for your instanc
 - The GDPR information tool allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events, offers and requests that are associated with the email address with links to delete the data.
 - Maptiler is used to display offers and requests on a map. The browser of the client sends a request to the Maptiler API to retrieve the map tiles. The IP address of the client is sent to the Maptiler API. More information can be found in the [Maptiler privacy policy](https://www.maptiler.com/privacy-policy).
 - JsDelivr is used to deliver JavaScript files of the project. The browser of the client sends a request to the JsDelivr API to retrieve the files which transmits their IP address to the JsDelivr API. More information can be found in the [JsDelivr privacy policy](https://www.jsdelivr.com/privacy-policy-jsdelivr-net).
+- If you use the Plausible analytics integration, you should inform your users about the data that is collected by Plausible. More information can be found in the [Plausible privacy policy](https://plausible.io/privacy-policy).
+
+## GDPR information tool
+
+The project features a GDPR information tool that allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events, offers and requests that are associated with the email address with links to delete the data.
 
 ## Metrics
 
