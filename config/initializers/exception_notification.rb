@@ -20,8 +20,8 @@ ExceptionNotification.configure do |config|
 
   # Email notifier sends notifications by email.
   config.add_notifier :email, {
-    email_prefix: '[ERROR] ',
-    sender_address: ENV['EXCEPTION_NOTIFIER_SENDER']&.gsub('"', '\"'),
+    email_prefix: '[HopHub ERROR] ',
+    sender_address: ENV['EXCEPTION_NOTIFIER_SENDER'],
     exception_recipients: %w{ ENV['EXCEPTION_NOTIFIER_RECIPIENT'] }
   }
 
