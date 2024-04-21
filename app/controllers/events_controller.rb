@@ -26,7 +26,7 @@ class EventsController < ApplicationController
           description: @event.description,
           end_date: @event.end_date,
           entries_current: @event.entries.confirmed.count,
-          entries_added_total: @event.entries_added
+          seats_added_total: @event.seats_added_total
         }
       end
     end

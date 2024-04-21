@@ -57,7 +57,7 @@ class Event < ActiveRecord::Base
 
   def self.ransackable_attributes(auth_object = nil)
     ["admin_email", "admin_token", "confirmed_at", "created_at", "description",
-     "end_date", "id", "id_value", "name", "shadow_banned", "updated_at", "entries_added"]
+     "end_date", "id", "id_value", "name", "shadow_banned", "updated_at", "seats_added_total"]
   end
 
   def create_id

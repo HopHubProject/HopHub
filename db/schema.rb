@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_193619) do
     t.datetime "confirmed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "entries_added", default: 0, null: false
+    t.integer "seats_added_total", default: 0, null: false
   end
 
   add_foreign_key "entries", "events"

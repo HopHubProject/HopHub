@@ -37,7 +37,7 @@ ActiveAdmin.register Event do
       row :created_at
       row :updated_at
       row :confirmed_at
-      row :entries_added
+      row :seats_added_total
       row :current_entries do |event|
         event.entries.count
       end

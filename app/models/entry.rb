@@ -79,7 +79,7 @@ class Entry < ActiveRecord::Base
   end
 
   def increase_event_entries_count
-    event.increment!(:entries_added)
+    event.increment!(:seats_added_total, self.seats)
   end
 
   def create_id
