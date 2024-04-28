@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/zonque/cuber-gem.git
-  revision: 3314d4794d4ef968923ca80d39cff6b53c181e3a
+  revision: 081fb666948a42f7e21dfb607de8c40978b32515
   specs:
     cuber (1.9.0)
 
