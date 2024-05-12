@@ -47,7 +47,7 @@ gem 'activeadmin', "4.0.0.beta6"
 gem 'base64'
 gem 'redcarpet'
 
-gem 'cuber', git: 'https://github.com/zonque/cuber-gem.git'
+gem 'cuber', git: 'https://github.com/zonque/cuber-gem.git', branch: 'k3s'
 gem 'exception_notification'
 
 gem 'altcha-rails'

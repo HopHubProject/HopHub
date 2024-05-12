@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/zonque/cuber-gem.git
-  revision: 081fb666948a42f7e21dfb607de8c40978b32515
+  revision: 17fdc789e656d5fc6a9837a726fe96a45a46bf2c
+  branch: k3s
   specs:
     cuber (1.9.0)
 
