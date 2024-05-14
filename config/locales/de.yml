@@ -388,7 +388,7 @@ de:
         seats-available: Die Anzahl der verfügbaren Plätze.
         seats-needed: Die Anzahl der benötigten Plätze.
         driver-needed: |
-          Wenn du nach einem Fahrer für diese Fahrt suchst, setze bitte dieses Häkchen.
+          Wird für diese Fahrt noch eine Person gesucht die das Auto fährt? Dann setze bitte dieses Häkchen.
         driver-offer: |
           Könntest du dir vorstellen, das Auto zu fahren?
         notes: |
