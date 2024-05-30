@@ -59,7 +59,7 @@ This project takes care to be as data protection friendly as possible. It only s
 
 ### Requirements
 
-- Ruby 3.2
+- Ruby 3.3
 - Rails 7
 
 ### Setup
