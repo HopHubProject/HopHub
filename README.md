@@ -104,6 +104,8 @@ to deploy on k8s.
 | `HOPHUB_MAIL_PORT`                | The port of the SMTP service                                                    |
 | `HOPHUB_MAIL_FROM`                | The email address to be used as `From` address in outgoing emails               |
 | `HOPHUB_MAIL_DOMAIN`              | The domain to be used in outgoing emails                                        |
+| `HOPHUB_MAIL_USERNAME`            | If your mail server requires authentication, set the username in this setting   |
+| `HOPHUB_MAIL_PASSWORD`            | If your mail server requires authentication, set the password in this setting   |
 | `HOPHUB_SINGLE_EVENT_ID`          | Optional ID of a single event that is always shown on the landing page          |
 | `EXCEPTION_NOTIFIER_SENDER`       | Optional sender for notification emails                                         |
 | `EXCEPTION_NOTIFIER_RECIPIENT`    | Optional addresses of recipients for exception notification emails              |

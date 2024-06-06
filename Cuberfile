@@ -27,6 +27,8 @@ env 'HOPHUB_MAIL_PORT', File.read("#{ENV['CONFIG_ROOT']}/config/mail.port").stri
 env 'HOPHUB_MAIL_FROM', File.read("#{ENV['CONFIG_ROOT']}/config/mail.from").strip
 env 'HOPHUB_MAIL_DOMAIN', File.read("#{ENV['CONFIG_ROOT']}/config/mail.domain").strip
 
+env 'HOPHUB_MAIL_USERNAME', File.read("#{ENV['CONFIG_ROOT']}/config/mail.username").strip rescue nil
+env 'HOPHUB_MAIL_PASSWORD', File.read("#{ENV['CONFIG_ROOT']}/config/mail.password").strip rescue nil
 env 'HOPHUB_MAIL_EVENT_CONFIRMED_BCC', File.read("#{ENV['CONFIG_ROOT']}/config/mail.event_confirmed_bcc").strip rescue nil
 env 'HOPHUB_MAIL_GDPR_RESPONSE_BCC', File.read("#{ENV['CONFIG_ROOT']}/config/mail.gdpr_response_bcc").strip rescue nil
 env 'HOPHUB_SINGLE_EVENT_ID', File.read("#{ENV['CONFIG_ROOT']}/config/single_event_id").strip rescue nil

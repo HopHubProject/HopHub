@@ -106,5 +106,7 @@ Rails.application.configure do
     :port => ENV["HOPHUB_MAIL_PORT"],
     :domain => ENV["HOPHUB_MAIL_DOMAIN"],
     :openssl_verify_mode => 'none',
+    :user_name => ENV["HOPHUB_MAIL_USERNAME"],
+    :password => ENV["HOPHUB_MAIL_PASSWORD"],
   }
 end
