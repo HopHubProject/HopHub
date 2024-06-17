@@ -5,6 +5,18 @@ ActiveAdmin.register Event do
   scope :confirmed
   scope :unconfirmed
 
+  member_action :confirm, method: :post do
+    event = Event.find(params[:id])
+    event.update(confirmed_at: Time.now)
+    redirect_to admin_event_path(event)
+  end
+
+  action_item :confirm, only: :show do
+    if resource.confirmed_at.nil?
+      link_to "Confirm", confirm_admin_event_path(resource), method: :post, class: "action-item-button"
+    end
+  end
+
   member_action :unconfirm, method: :post do
     event = Event.find(params[:id])
     event.update(confirmed_at: nil)
@@ -12,7 +24,9 @@ ActiveAdmin.register Event do
   end
 
   action_item :unconfirm, only: :show do
-    link_to "Unconfirm", unconfirm_admin_event_path(resource), method: :post, class: "action-item-button"
+    unless resource.confirmed_at.nil?
+      link_to "Unconfirm", unconfirm_admin_event_path(resource), method: :post, class: "action-item-button"
+    end
   end
 
   member_action :resend_confirmation, method: :post do

@@ -10,14 +10,30 @@ ActiveAdmin.register Entry do
   scope :way_there
   scope :way_back
 
+  member_action :confirm, method: :post do
+    entry = Entry.find(params[:id])
+    entry.update(confirmed_at: Time.now)
+    entry.save(validate: false)
+    redirect_to admin_entry_path(entry)
+  end
+
+  action_item :confirm, only: :show do
+    if resource.confirmed_at.nil?
+      link_to "Confirm", confirm_admin_entry_path(resource), method: :post, class: "action-item-button"
+    end
+  end
+
   member_action :unconfirm, method: :post do
     entry = Entry.find(params[:id])
     entry.update(confirmed_at: nil)
+    entry.save(validate: false)
     redirect_to admin_entry_path(entry)
   end
 
   action_item :unconfirm, only: :show do
-    link_to "Unconfirm", unconfirm_admin_entry_path(resource), method: :post, class: "action-item-button"
+    unless resource.confirmed_at.nil?
+      link_to "Unconfirm", unconfirm_admin_entry_path(resource), method: :post, class: "action-item-button"
+    end
   end
 
   member_action :resend_confirmation, method: :post do
