@@ -14,7 +14,8 @@ de:
   terms_and_conditions:
     prompt: |
       Ich habe die %{tos} und %{privacy_policy} gelesen und stimme diesen zu.
-      Außerdem bestätige ich, dass ich kein Roboter bin.
+      Außerdem bestätige ich, dass ich kein Roboter bin. Je nach Endgerät kann
+      die Überprüfung einen Moment dauern.
     accepted: |
       Die %{tos} und %{privacy_policy} wurden gelesen und akzeptiert.
       Ein Roboter bist du auch nicht. Prima.
@@ -53,7 +54,7 @@ de:
         können ein Gesuch aufgeben.
         Auch dafür ist keine Anmeldung erforderlich, nur eine E-Mail-Adresse.
     match:
-      title: Kontakt aufnehmen
+      title: Nimm Kontakt auf
       text: |
         Bei einem Match können Personen mittels eines Webformulars auf der Website in Kontakt
         treten. Die E-Mail-Adresse des Kontaktaufnehmenden wird als Antwortadresse verwendet,
@@ -65,7 +66,7 @@ de:
         die Events und die dazugehörigen Angebote und Gesuche nicht zu indizieren.
         Nur Personen mit dem Link können die Events sehen.
     cleanup:
-      title: Keine Spuren hinterlassen
+      title: Hinterlasse keine Spuren
       text: |
         Angebote, Gesuche und Events werden automatisch aus der Datenbank entfernt
         nachdem deren Gültigkeit vorüber ist.
@@ -115,6 +116,14 @@ de:
   driver-offer: |
     %{name} bietet an, das Auto zu fahren.
 
+  no_entries:
+    title: Noch keine Angebote oder Gesuche
+    text: |
+      Es gibt derzeit keine Angebote oder Gesuche für dieses Event.
+      Wenn du eine Mitfahrgelegenheit suchst, kannst du hier ein Gesuch hinzufügen.
+      Und wenn du eine Mitfahrgelegenheit anbieten möchtest, kannst du hier ein Angebot erstellen
+      damit andere dich finden können.
+
   add_offer:
     title: Neues Angebot aufgeben
     offer_yourself: |
@@ -135,9 +144,9 @@ de:
       other: Es gibt derzeit %{count} Angebote für dieses Event!
 
   add_request:
-    title: Neues Gesuch hinzufügen
+    title: Neues Gesuch aufgeben
     no_matching_offer: |
-      Kein passendes Angebot gefunden? Füge ein Gesuch hinzu!
+      Kein passendes Angebot gefunden? Gib ein Gesuch auf!
 
   event: Event
   seat:

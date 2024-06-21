@@ -14,7 +14,8 @@ en:
   terms_and_conditions:
     prompt: |
       I have read the %{tos} and %{privacy_policy} and agree to them.
-      Also, I ensure that I am not a robot.
+      Also, I ensure that I am not a robot. Depending on your device,
+      the verification process might take a little while.
     accepted: |
       The %{tos} and %{privacy_policy} have been read and accepted.
       You're also not a robot. Awesome.
@@ -31,7 +32,7 @@ en:
         share a train ticket, arrive by bus, plan a bike tour or walk.
 
   how-it-works:
-    title: How does this work?
+    title: How does it work?
     create-event:
       title: Create an event
       text: |
@@ -112,7 +113,13 @@ en:
   driver-offer: |
     %{name} offers to drive a car
 
-  no_entries: No entries yet.
+  no_entries:
+    title: No offers or requests yet
+    text: |
+      There are currently no offers or requests for this event.
+      If you are looking for a ride, you can add a request, and
+      if you planning a ride yourself, you can add an offer so
+      others can find you.
 
   add_offer:
     title: Add a new offer

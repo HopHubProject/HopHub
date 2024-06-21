@@ -15,6 +15,7 @@ es:
     prompt: |
       ¿Has leído los %{tos} y la %{privacy_policy}?
       También, asegúrate de que no eres un robot.
+      Según tu dispositivo, el proceso de verificación puede tomar un poco de tiempo.
     accepted: |
       Los %{tos} y la %{privacy_policy} han sido leídos y aceptados.
       Tampoco eres un robot. Genial.
@@ -112,6 +113,14 @@ es:
   driver-needed: Este viaje busca un conductor
   driver-offer: |
     %{name} ofrece conducir un coche
+
+  no_entries:
+    title: No hay ofertas o solicitudes aún
+    text: |
+      Actualmente no hay ofertas ni solicitudes para este evento.
+      Si estás buscando un viaje, puedes agregar una solicitud, y
+      si planeas hacer un viaje, puedes agregar una oferta para que
+      otros puedan encontrarte.
 
   add_offer:
     title: Agregar nueva oferta
