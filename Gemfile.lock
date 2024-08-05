@@ -127,7 +127,7 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     csv (3.3.0)
-    dartsass-rails (0.5.0)
+    dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
     dartsass-sprockets (3.1.0)
@@ -154,7 +154,7 @@ GEM
     formtastic_i18n (0.7.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.27.1-x86_64-linux)
+    google-protobuf (4.27.3-x86_64-linux)
       bigdecimal
       rake (>= 13)
     haml (6.3.0)
@@ -230,7 +230,7 @@ GEM
     public_suffix (6.0.0)
     puma (6.4.2)
       nio4r (~> 2.0)
-    racc (1.8.0)
+    racc (1.8.1)
     rack (3.1.7)
     rack-session (2.0.0)
       rack (>= 3.0.0)
@@ -293,8 +293,8 @@ GEM
       strscan
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    sass-embedded (1.77.5-x86_64-linux-gnu)
-      google-protobuf (>= 3.25, < 5.0)
+    sass-embedded (1.77.8-x86_64-linux-gnu)
+      google-protobuf (~> 4.26)
     sassc-embedded (1.76.0)
       sass-embedded (~> 1.76)
     selenium-webdriver (4.23.0)
@@ -361,7 +361,7 @@ DEPENDENCIES
   brakeman
   capybara
   cuber!
-  dartsass-rails (~> 0.5.0)
+  dartsass-rails (~> 0.5.1)
   dartsass-sprockets (~> 3.1)
   debug
   exception_notification
