@@ -40,7 +40,7 @@ gem "bootsnap", require: false
 
 gem "haml"
 gem 'bootstrap', '~> 5.3', '>= 5.3.2'
-gem 'dartsass-rails', '~> 0.5.0'
+gem 'dartsass-rails', '~> 0.5.1'
 gem 'dartsass-sprockets', '~> 3.1'
 gem 'simple_form'
 gem 'activeadmin', "4.0.0.beta8"
