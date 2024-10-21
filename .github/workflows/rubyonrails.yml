@@ -27,10 +27,10 @@ jobs:
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # Add or replace dependency steps here
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@70da3bbf44ac06db1b0547ce2acc9380a5270d1e
+        uses: ruby/setup-ruby@7bae1d00b5db9166f4f0fc47985a3a5702cb58f0
         with:
           bundler-cache: true
       # Add or replace database setup steps here
@@ -44,9 +44,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@70da3bbf44ac06db1b0547ce2acc9380a5270d1e
+        uses: ruby/setup-ruby@7bae1d00b5db9166f4f0fc47985a3a5702cb58f0
         with:
           bundler-cache: true
       - name: Security audit application code
