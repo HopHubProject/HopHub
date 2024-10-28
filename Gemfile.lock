@@ -284,7 +284,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.8)
+    rexml (3.3.9)
     rubyzip (2.3.2)
     sass-embedded (1.80.3-x86_64-linux-gnu)
       google-protobuf (~> 4.28)
