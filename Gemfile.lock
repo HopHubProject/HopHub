@@ -292,7 +292,7 @@ GEM
     sassc-embedded (1.80.1)
       sass-embedded (~> 1.80)
     securerandom (0.3.1)
-    selenium-webdriver (4.26.0)
+    selenium-webdriver (4.27.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
