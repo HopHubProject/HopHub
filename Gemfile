@@ -43,7 +43,7 @@ gem 'bootstrap', '~> 5.3', '>= 5.3.2'
 gem 'dartsass-rails', '~> 0.5.0'
 gem 'dartsass-sprockets', '~> 3.1'
 gem 'simple_form'
-gem 'activeadmin', "4.0.0.beta13"
+gem 'activeadmin', "4.0.0.beta15"
 gem 'base64'
 gem 'redcarpet'
 
@@ -75,7 +75,7 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Use sqlite3 as the database for Active Record
-  gem "sqlite3", "~> 1.7"
+  gem "sqlite3", "~> 2.5"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
