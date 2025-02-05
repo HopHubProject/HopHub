@@ -1,0 +1,40 @@
+volumes:
+  db:
+
+services:
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: hophub
+      POSTGRES_PASSWORD: dbpassword
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  app:
+    image: ghcr.io/hophubproject/hophub:main
+    command: bundle exec rails s
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: create-a-new-key
+      ALTCHA_HMAC_KEY: create-a-new-key
+      HOPHUB_DATABASE_PASSWORD: dbpassword
+      MAPTILER_API_KEY: your-api-key
+      HOPHUB_MAIL_USERNAME: your-mail-username
+      HOPHUB_MAIL_PASSWORD: your-mail-password
+      HOPHUB_BASE_URL: https://your-domain
+      HOPHUB_DATABASE_HOST: db
+      HOPHUB_DATABASE_NAME: hophub
+      HOPHUB_DATABASE_PORT: "5432"
+      HOPHUB_DATABASE_USERNAME: hophub
+      HOPHUB_MAIL_DOMAIN: your-mail-domain
+      HOPHUB_MAIL_FROM: HopHub <noreply@hophub.xyz>
+      HOPHUB_MAIL_PORT: "587"
+      HOPHUB_MAIL_SERVER: your-mail-server
