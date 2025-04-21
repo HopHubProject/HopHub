@@ -39,7 +39,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 gem "haml"
-gem 'bootstrap', '~> 5.3', '>= 5.3.2'
+gem 'bootstrap', '~> 5.3'
 gem 'dartsass-rails', '~> 0.5.0'
 gem 'dartsass-sprockets', '~> 3.1'
 gem 'simple_form'
