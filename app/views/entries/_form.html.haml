@@ -107,3 +107,53 @@
 
   document.addEventListener('turbo:load', init_collapse);
   document.addEventListener('turbo:frame-load', init_collapse);
+
+  geocoder = (e) => {
+    console.log('Geocoding entry zip code: ' + e.target.value);
+
+    // Remove existing dropdown if it exists
+    const existingDropdown = document.getElementById('zip-dropdown');
+    if (existingDropdown) {
+      existingDropdown.remove();
+    }
+
+    if (e.target.value.length === 5) {
+      fetch(`http://localhost:8000/geocode?nominatim=de&zip=${encodeURIComponent(e.target.value)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (!data || data.length === 0) {
+            return;
+          }
+
+          const dropdown = document.createElement('ul');
+          dropdown.id = 'zip-dropdown';
+          dropdown.className = 'dropdown-menu show';
+
+          data.forEach(result => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.className = 'dropdown-item';
+            a.innerHTML = '<b>' + result.postal_code + '</b> ' + result.place_name;
+            a.addEventListener('click', (event) => {
+              event.preventDefault();
+              const v = result.postal_code + ' ' + result.place_name;
+              document.getElementById('entry_location').value = v;
+              document.getElementById('entry_latitude').value = result.latitude;
+              document.getElementById('entry_longitude').value = result.longitude;
+              dropdown.remove();
+            });
+            li.appendChild(a);
+            dropdown.appendChild(li);
+          });
+
+          // Append dropdown as children of the zip input's parent element
+          const zipInput = document.getElementById('entry_location');
+          zipInput?.parentElement?.appendChild(dropdown);
+        })
+        .catch(error => {
+          console.error('Error fetching zip lookup:', error);
+        });
+    }
+  };
+
+  document.getElementById('entry_location')?.addEventListener('input', geocoder);
