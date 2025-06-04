@@ -2,11 +2,11 @@ Hallo <%= @entry.name %>,
 
 Vielen Dank dass du HopHub benutzt!
 
-Dein <%= t(@entry.entry_type) %> für das Event "<%= @entry.event.name %>" wurde bestätigt und ist jetzt aktiv und hier zu sehen:
+Dein Angebot für das Event "<%= @entry.event.name %>" wurde bestätigt und ist jetzt aktiv und hier zu sehen:
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-Wenn du dein <%= t(@entry.entry_type) %> bearbeiten oder löschen möchtest, benutze bitte den folgenden geheimen Link.
+Wenn du dein Angebot bearbeiten oder löschen möchtest, benutze bitte den folgenden geheimen Link.
 Bitte behalte diesen Link für dich und teile ihn nicht mit anderen:
 
     <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>

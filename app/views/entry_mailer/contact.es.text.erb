@@ -8,11 +8,11 @@ Hola <%= @entry.name %>,
 
 Puedes responder a este mensaje para comunicarte directamente con <%= @name %>.
 
-Tu <%= t(@entry.entry_type) %> para el evento "<%= @entry.event.name %>" sigue activo y visible aquí:
+Tu oferta para el evento "<%= @entry.event.name %>" sigue activo y visible aquí:
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-Si tu <%= t(@entry.entry_type) %> ya no es válido, por favor usa el enlace secreto de tu correo de confirmación para editarlo o eliminarlo.
+Si tu oferta ya no es válido, por favor usa el enlace secreto de tu correo de confirmación para editarlo o eliminarlo.
 
 ¡Disfruta del viaje, eres genial!
 

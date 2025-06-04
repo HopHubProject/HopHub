@@ -8,11 +8,11 @@ Hi <%= @entry.name %>,
 
 You can reply to this message to answer directly to <%= @name %>.
 
-Your <%= t(@entry.entry_type).downcase %> for the event "<%= @entry.event.name %>" is still active and visible here:
+Your offer for the event "<%= @entry.event.name %>" is still active and visible here:
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-In case your <%= t(@entry.entry_type).downcase %> is no longer up to date or relevant, please use the secret link from your confirmation email to edit or delete it.
+In case your offer is no longer up to date or relevant, please use the secret link from your confirmation email to edit or delete it.
 
 Happy sharing, you are awesome!
 

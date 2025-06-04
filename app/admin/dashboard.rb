@@ -30,7 +30,6 @@ ActiveAdmin.register_page "Dashboard" do
         column :date
         column :location
         column :direction
-        column :entry_type
       end
     end
 

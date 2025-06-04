@@ -2,11 +2,11 @@ Hi <%= @entry.name %>,
 
 Thanks a lot for using HopHub!
 
-Your <%= t(@entry.entry_type).downcase %> for the event "<%= @entry.event.name %>" has been confirmed and is now active and visible here:
+Your offer for the event "<%= @entry.event.name %>" has been confirmed and is now active and visible here:
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-If you want to edit or delete your <%= t(@entry.entry_type).downcase %>, please use the following secret link.
+If you want to edit or delete your offer, please use the following secret link.
 Please keep this link to yourself and do not share it with others:
 
     <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>

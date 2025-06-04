@@ -5,7 +5,6 @@
 
 =turbo_frame_tag "entry_form" do
   =simple_form_for [@event, @entry] do |f|
-    =f.hidden_field :entry_type
     =f.hidden_field :latitude
     =f.hidden_field :longitude
     =f.hidden_field :token, value: params[:token]
@@ -21,16 +20,16 @@
       hint: t('simple_form.hints.entry.direction')
     =f.input :transport, as: :select,
       collection: @transport_types.map { |v| [t("transport.#{v}"), v] },
-      include_blank: @entry.is_offer?,
+      include_blank: true,
       blank: t('simple_form.labels.entry.transport'),
       label: t('simple_form.labels.entry.transport'),
       hint: t('simple_form.hints.entry.transport')
     .collapse#carInputs
       =f.input :driver, as: :boolean,
-        label: @entry.is_offer? ? t('simple_form.labels.entry.driver-needed') : t('simple_form.labels.entry.driver-offer'),
-        hint: @entry.is_offer? ? t('simple_form.hints.entry.driver-needed') : t('simple_form.hints.entry.driver-offer')
+        label: t('simple_form.labels.entry.driver-needed'),
+        hint: t('simple_form.hints.entry.driver-needed')
       =f.input :seats,
-        hint: @entry.is_offer? ? t('simple_form.hints.entry.seats-available') : t('simple_form.hints.entry.seats-needed')
+        hint: t('simple_form.hints.entry.seats-available')
     =f.input :date,
       as: :string,
       input_html: { value: @entry.date&.strftime('%d/%m/%Y %H:%M') }
@@ -53,7 +52,7 @@
 
       .col-sm-9.col-lg-3
         -if method == :new
-          =link_to t('cancel'), event_entries_path(@event, entry_type: @entry.entry_type, direction: @entry.direction),
+          =link_to t('cancel'), event_entries_path(@event, direction: @entry.direction),
             class: 'btn btn-default btn-light w-100 mt-1', role: 'button'
         -else
           =link_to t('entry_delete.title'),

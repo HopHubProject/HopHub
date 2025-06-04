@@ -8,15 +8,11 @@ class EventsController < ApplicationController
   def show
     respond_to do |format|
       format.html do
-        @entry_type = params.permit(:entry_type)[:entry_type] || :offer
+        @way_there_count = @event.entries.confirmed.where(direction: :way_there).count
+        @way_back_count = @event.entries.confirmed.where(direction: :way_back).count
+        @offers_count = @event.entries.confirmed.count
 
-        @way_there_count = @event.entries.confirmed.where(entry_type: @entry_type, direction: :way_there).count
-        @way_back_count = @event.entries.confirmed.where(entry_type: @entry_type, direction: :way_back).count
-
-        @offers_count = @event.entries.confirmed.where(entry_type: :offer).count
-        @requests_count = @event.entries.confirmed.where(entry_type: :request).count
-
-        @entries = @event.entries.confirmed.where(entry_type: @entry_type)
+        @entries = @event.entries.confirmed
         @paginated_entries = @entries.page(params[:page])
       end
 
@@ -95,16 +91,15 @@ class EventsController < ApplicationController
 
   def geojson
     @event = Event.find(params[:event_id])
-    @entry_type = params.permit(:entry_type)[:entry_type]
     @direction = params.permit(:direction)[:direction]
 
-    if @event.nil? || !@event.is_confirmed? || @entry_type.nil? || @direction.nil?
+    if @event.nil? || !@event.is_confirmed? || @direction.nil?
       render json: { error: 'Not found' }, status: :not_found
       return
     end
 
     @entries = @event.entries.confirmed
-      .where(entry_type: @entry_type, direction: @direction)
+      .where(direction: @direction)
 
     features = @entries.map do |entry|
       {

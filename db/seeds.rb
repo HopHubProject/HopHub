@@ -31,7 +31,6 @@ end
 
     entry = event.entries.create(
       transport: Entry::TRANSPORTS.sample,
-      entry_type: Entry::TYPES.sample,
       direction: Entry::DIRECTIONS.sample,
       name: Faker::Name.name,
       email: Faker::Internet.email,

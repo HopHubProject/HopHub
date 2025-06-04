@@ -116,32 +116,6 @@ ActiveAdmin.register Event do
         column :notes
       end
     end
-
-    panel "Requests (way there)" do
-      table_for event.requests_way_there do
-        column :id do |entry|
-          link_to entry.id, admin_entry_path(entry)
-        end
-        column :name
-        column :seats
-        column :date
-        column :location
-        column :notes
-      end
-    end
-
-    panel "Requests (way back)" do
-      table_for event.requests_way_back do
-        column :id do |entry|
-          link_to entry.id, admin_entry_path(entry)
-        end
-        column :name
-        column :seats
-        column :date
-        column :location
-        column :notes
-      end
-    end
   end
 
   form do |f|

@@ -23,7 +23,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     define_method("test_should_get_geojson_#{locale}") do
       e = events(:two)
 
-      get event_geojson_url(e, entry_type: "offer", direction: "way_there", locale: locale)
+      get event_geojson_url(e, direction: "way_there", locale: locale)
 
       assert_response :success
       assert @response.headers["Content-Type"].include?("application/json")
@@ -34,7 +34,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       e = events(:two)
       e.update(confirmed_at: nil)
 
-      get event_geojson_url(e, entry_type: "offer", direction: "way_there", locale: locale)
+      get event_geojson_url(e, direction: "way_there", locale: locale)
 
       assert_response :not_found
       assert @response.headers["Content-Type"].include?("application/json")

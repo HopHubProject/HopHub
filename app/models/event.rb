@@ -23,27 +23,15 @@ class Event < ActiveRecord::Base
   end
 
   def offers
-    entries.confirmed.offer
-  end
-
-  def requests
-    entries.confirmed.request
-  end
-
-  def requests_way_there
-    entries.confirmed.in_future.request.way_there
+    entries.confirmed
   end
 
   def offers_way_there
-    entries.confirmed.in_future.offer.way_there
-  end
-
-  def requests_way_back
-    entries.confirmed.in_future.request.way_back
+    entries.confirmed.in_future.way_there
   end
 
   def offers_way_back
-    entries.confirmed.in_future.offer.way_back
+    entries.confirmed.in_future.way_back
   end
 
   before_create :create_admin_token

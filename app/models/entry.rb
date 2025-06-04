@@ -3,7 +3,6 @@ class Entry < ActiveRecord::Base
 
   TRANSPORTS = %w(any car train bus bicycle foot other)
   DIRECTIONS = %w(way_there way_back)
-  TYPES = %w(request offer)
 
   validates_presence_of :event_id
   validates_presence_of :name
@@ -13,9 +12,6 @@ class Entry < ActiveRecord::Base
 
   validates_presence_of :transport
   validates_inclusion_of :transport, in: TRANSPORTS
-
-  validates_presence_of :entry_type
-  validates_inclusion_of :entry_type, in: TYPES
 
   validates_presence_of :direction
   validates_inclusion_of :direction, in: DIRECTIONS
@@ -41,21 +37,11 @@ class Entry < ActiveRecord::Base
   scope :in_future,   -> { where("date >= ?", Time.now-3.hours) }
   scope :confirmed,   -> { where("confirmed_at IS NOT NULL") }
   scope :unconfirmed, -> { where("confirmed_at IS NULL") }
-  scope :request,     -> { where(entry_type: :request) }
-  scope :offer,       -> { where(entry_type: :offer) }
   scope :way_there,   -> { where(direction: :way_there) }
   scope :way_back,    -> { where(direction: :way_back) }
 
   def is_confirmed?
     confirmed_at.present?
-  end
-
-  def is_offer?
-    entry_type.to_sym == :offer
-  end
-
-  def is_request?
-    entry_type.to_sym == :request
   end
 
   def is_way_there?
@@ -73,7 +59,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["confirmed_at", "created_at", "date", "direction", "email", "entry_type",
+    ["confirmed_at", "created_at", "date", "direction", "email",
      "event_id", "id", "id_value", "transport", "longitude", "latitude", "location",
      "driver", "name", "notes", "phone", "seats", "token", "locale", "updated_at"]
   end

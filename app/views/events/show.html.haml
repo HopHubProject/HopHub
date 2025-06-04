@@ -13,24 +13,21 @@
   .row.justify-content-center
     .col-12.col-lg-9
       %h2
-        -if @entry_type.to_sym == :request
-          =t('requests')
-        -else
-          =t('offers')
+        =t('offers')
 
   .row.justify-content-center
     .col-12.col-lg-9
       .map-container
         #map{ style: "height: 400px",
-          'data-waythereurl': event_geojson_path(@event, entry_type: @entry_type, direction: :way_there, format: :json),
-          'data-waybackurl': event_geojson_path(@event, entry_type: @entry_type, direction: :way_back, format: :json),
+          'data-waythereurl': event_geojson_path(@event, direction: :way_there, format: :json),
+          'data-waybackurl': event_geojson_path(@event, direction: :way_back, format: :json),
           'data-direction': @way_there_count > @way_back_count ? "way_there" : "way_back",
           'data-apiKey': ENV['MAPTILER_API_KEY'],
           'data-waythere': t('way_there'),
           'data-wayback': t('way_back')
         }
 
-  -if @event.offers.count == 0 && @event.requests.count == 0
+  -if @event.offers.count == 0
     .row.justify-content-center
       .col-12.col-lg-9
         %h2= t('no_entries.title')
@@ -38,13 +35,9 @@
 
     .row.justify-content-center.mb-2
       .col-12.col-lg-9.text-center
-        =link_to new_event_entry_path(@event, entry_type: :offer), class: 'btn btn-primary mx-2 my-2', role: 'button' do
-          %i{class: icon_class_for_entry_type(:offer)}
+        =link_to new_event_entry_path(@event), class: 'btn btn-primary mx-2 my-2', role: 'button' do
+          %i{class: 'bi bi-gift'}
           =t('add_offer.title')
-
-        = link_to new_event_entry_path(@event, entry_type: :request), class: 'btn btn-primary mx-2 my-2', role: 'button' do
-          %i{class: icon_class_for_entry_type(:request)}
-          =t('add_request.title')
 
   -else
     = render 'entries'

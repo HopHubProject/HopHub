@@ -1,7 +1,6 @@
 class EntriesController < ApplicationController
   before_action :find_event!
   before_action :find_entry!, only: [ :show, :edit, :update, :popup, :destroy, :confirm, :contact_emails ]
-  before_action :check_entry_type!, only: [ :new, :create ]
   before_action :check_confirmed!, only: [ :show, :popup ]
   before_action :authenticate_user!, only: [ :edit, :update, :destroy, :confirm ]
   before_action :set_title
@@ -32,7 +31,6 @@ class EntriesController < ApplicationController
   def new
     @event = Event.find(params[:event_id])
     @entry = @event.entries.new
-    @entry.entry_type = params.permit(:entry_type)[:entry_type]
     @entry.seats = 1
     set_transport_types
   end
@@ -139,11 +137,7 @@ class EntriesController < ApplicationController
   end
 
   def set_transport_types
-    if @entry.entry_type.to_sym == :request
-      @transport_types = Entry::TRANSPORTS
-    else
-      @transport_types = Entry::TRANSPORTS - [ :any ]
-    end
+    @transport_types = Entry::TRANSPORTS - [ :any ]
   end
 
   def verify_altcha
@@ -174,14 +168,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  def check_entry_type!
-    @entry_type = params.permit(:entry_type)[:entry_type] || params.dig(:entry, :entry_type)
-
-    if @entry_type.nil? || !Entry::TYPES.include?(@entry_type)
-      redirect_to @event
-    end
-  end
-
   def authenticate_user!
     token = params[:token] || params.dig(:entry, :token)
 
@@ -191,7 +177,7 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.require(:entry).permit(:name, :email, :transport, :phone, :entry_type, :driver,
+    params.require(:entry).permit(:name, :email, :transport, :phone, :driver,
                                   :direction, :date, :location, :latitude, :longitude, :seats, :notes)
   end
 

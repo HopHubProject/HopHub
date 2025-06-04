@@ -1,6 +1,6 @@
 Hi <%= @entry.name %>,
 
-Please confirm your <%= t(@entry.entry_type).downcase %> for the event "<%= @entry.event.name %>" by clicking on the following link:
+Please confirm your offer for the event "<%= @entry.event.name %>" by clicking on the following link:
 
    <%= event_entry_confirm_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
 

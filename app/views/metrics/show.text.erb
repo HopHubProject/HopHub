@@ -7,9 +7,7 @@ num_events{status="unconfirmed"} <%= @events[:unconfirmed] %> <%= @timestamp %>
 # TYPE num_entries gauge
 num_entries{status="unconfirmed"}                  <%= @entries[:unconfirmed] %>        <%= @timestamp %>
 num_entries{type="offer", direction="way_there"}   <%= @entries[:offers_way_there] %>   <%= @timestamp %>
-num_entries{type="request", direction="way_there"} <%= @entries[:requests_way_there] %> <%= @timestamp %>
 num_entries{type="offer", direction="way_back"}    <%= @entries[:offers_way_back] %>    <%= @timestamp %>
-num_entries{type="request", direction="way_back"}  <%= @entries[:requests_way_back] %>  <%= @timestamp %>
 
 # HELP num_altcha_solutions Total number of altcha solutions
 # TYPE num_altcha_solutions gauge

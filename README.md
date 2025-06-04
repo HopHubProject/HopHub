@@ -25,10 +25,6 @@ a car as well for a common train ride, a bus trip, a bike tour or a walk.
 No login is required, only an email address. As soon as the email address is
 confirmed, the offer is shown on the website so others can see it.
 
-### Add a request
-People who are looking for a ride but don't see a matching offer yet
-can add a request. Also here, no login is required, only an email address.
-
 ### Get in touch
 When two parties match, they can get in touch with each other using a form
 on the website. The email address of the person reaching out is used as the

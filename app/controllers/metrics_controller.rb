@@ -9,10 +9,8 @@ class MetricsController < ApplicationController
 
     @entries = {
       unconfirmed: Entry.unconfirmed.count,
-      offers_way_there: Entry.offer.way_there.confirmed.count,
-      requests_way_there: Entry.request.way_there.confirmed.count,
-      offers_way_back: Entry.offer.way_back.confirmed.count,
-      requests_way_back: Entry.request.way_back.confirmed.count,
+      offers_way_there: Entry.way_there.confirmed.count,
+      offers_way_back: Entry.way_back.confirmed.count,
     }
 
     @altcha_solutions = AltchaSolution.count

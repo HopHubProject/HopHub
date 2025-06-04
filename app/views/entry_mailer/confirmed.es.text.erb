@@ -4,11 +4,11 @@ Hola <%= @entry.name %>,
 
 ¡Gracias por usar HopHub!
 
-Tu <%= t(@entry.entry_type) %> para el evento "<%= @entry.event.name %>" ha sido confirmado y ahora está activo y se puede ver aquí:
+Tu oferta para el evento "<%= @entry.event.name %>" ha sido confirmado y ahora está activo y se puede ver aquí:
 
     <%= event_entry_url(@entry.event, @entry) %>
 
-Si deseas editar o eliminar tu <%= t(@entry.entry_type) %>, por favor usa el siguiente enlace secreto.
+Si deseas editar o eliminar tu oferta, por favor usa el siguiente enlace secreto.
 Por favor, mantén este enlace para ti y no lo compartas con otros:
 
     <%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
