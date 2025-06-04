@@ -46,6 +46,9 @@ gem 'simple_form'
 gem 'activeadmin', "4.0.0.beta15"
 gem 'base64'
 gem 'redcarpet'
+gem 'geokit-rails'
+gem 'rest-client'
+gem 'dalli'
 
 gem 'cuber', git: 'https://github.com/zonque/cuber-gem.git', branch: 'k3s'
 gem 'exception_notification'

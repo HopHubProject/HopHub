@@ -46,11 +46,6 @@ es:
         No es necesario registrarse, solo se requiere una dirección de correo electrónico a
         la que enviaremos un correo electrónico de confirmación.
         Una vez confirmado, la entrada se mostrará.
-    add-request:
-      title: Busca un viaje compartido
-      text: |
-        Las personas que buscan un viaje compartido, pero aún no ven una oferta adecuada, pueden agregar una solicitud.
-        Tampoco se requiere registro, solo una dirección de correo electrónico.
     match:
       title: Contactar
       text: |
@@ -104,9 +99,6 @@ es:
   offer: Oferta
   offers: Ofertas
 
-  request: Solicitud
-  requests: Solicitudes
-
   way_there: Ida
   way_back: Vuelta
 
@@ -115,28 +107,17 @@ es:
     %{name} ofrece conducir un coche
 
   no_entries:
-    title: No hay ofertas o solicitudes aún
+    title: No hay ofertas aún
     text: |
-      Actualmente no hay ofertas ni solicitudes para este evento.
-      Si estás buscando un viaje, puedes agregar una solicitud, y
-      si planeas hacer un viaje, puedes agregar una oferta para que
-      otros puedan encontrarte.
+      Parece que nadie ha añadido una oferta para este evento todavía.
+      No te preocupes, esto es normal para eventos nuevos.
+      Puedes esperar a que otros añadan una oferta o agregar una tú mismo.
 
   add_offer:
     title: Agregar nueva oferta
     offer_yourself: |
       ¿Quieres organizar el viaje tú mismo?
-    current_requests:
-      one: Hay una solicitud para este evento!
-      other: Hay %{count} solicitudes para este evento!
     search_for_people: Buscar compañeros de viaje
-    no_matching_request: |
-      ¿No encontraste una solicitud adecuada? ¡Añade una oferta!
-
-  add_request:
-    title: Agregar nueva solicitud
-    no_matching_offer: |
-      ¿No encontraste una oferta adecuada? ¡Añade una solicitud!
 
   show_offers:
     title: Mostrar ofertas
@@ -171,7 +152,7 @@ es:
     title: Eliminar evento
     confirmation: |
       ¿Estás seguro de que quieres eliminar este evento?
-      Todas las solicitudes y ofertas también se eliminarán permanentemente.
+      Todas las ofertas también se eliminarán permanentemente.
       Esta acción no se puede deshacer.
 
   entry_delete:
@@ -180,25 +161,11 @@ es:
       ¿Estás seguro de que quieres eliminar esta entrada?
       Esta acción no se puede deshacer.
 
-  create_new_request:
-    title: Crear nueva solicitud
-    text: |
-      Si buscas un viaje compartido, completa el formulario a continuación
-      y selecciona un punto en el mapa donde te gustaría ser recogido o dejado.
-      Este lugar no tiene que ser exacto, pero debería dar a otros la posibilidad de planificar su ruta.
-      Las personas con una oferta adecuada pueden ponerse en contacto contigo a través del sitio web una vez que
-      hayas confirmado tu dirección de correo electrónico.
-
   create_new_offer:
     title: Crear nueva oferta
     text: |
-      Si tienes uno o más asientos libres en tu vehículo, completa el formulario a continuación
-      y selecciona un punto en el mapa donde te gustaría recoger o dejar a los pasajeros.
-      Las personas con una solicitud adecuada pueden ponerse en contacto contigo a través del sitio web una vez que
-      hayas confirmado tu dirección de correo electrónico.
-
-  update_request:
-    title: Actualizar solicitud
+      Por favor, introduce los detalles de tu oferta. Recibirás un correo electrónico con
+      un enlace para confirmar tu oferta. Una vez confirmado, la oferta se mostrará en el sitio web.
 
   update_offer:
     title: Actualizar oferta
@@ -209,10 +176,13 @@ es:
 
     none: No se encontraron entradas
 
-    search:
-      placeholder: Buscar entradas
-    filter: Filtrar
-    reset: Restablecer
+    filter:
+      title: Filtrar
+      apply: Aplicar filtro
+      clear: Limpiar
+      text: Filtra las ofertas para este evento por ubicación y radio.
+      active: |
+        El filtro coincide con %{n} de %{total} ofertas.
 
   entry_contact:
     title: Contacto
@@ -229,8 +199,8 @@ es:
       - |
         HopHub solo almacena datos que son necesarios para el funcionamiento de la plataforma.
         Todos los datos se eliminan automáticamente una vez que ya no son necesarios. Específicamente,
-        esto significa que los eventos, incluidas todas las solicitudes y ofertas, se eliminan permanentemente
-        después de la fecha de finalización del evento. Las ofertas y solicitudes también se eliminan una vez
+        esto significa que los eventos, incluidas todas las ofertas, se eliminan permanentemente
+        después de la fecha de finalización del evento. Las ofertas también se eliminan una vez
         que ya no son válidas.
       - |
         Si deseas tener una copia de tus datos o que se eliminen tus datos, por favor completa el formulario.
@@ -349,7 +319,8 @@ es:
         date: Fecha y hora
         transport: Medio de transporte
         direction: Dirección
-        location: Punto de partida o destino
+        location: Ubicación (código postal)
+        country: País
         seats: Número de asientos
         driver-needed: ¿Buscas conductor?
         driver-offer: ¿Ofreces conducir?
@@ -366,15 +337,18 @@ es:
           También lo usamos para generar la URL del evento.
         description: |
           La descripción también se mostrará en la página del evento y puede dar a los visitantes algo de contexto sobre el evento.
+          Puedes usar la sintaxis %{markdown} para dar formato al texto.
         admin_email: |
           Esta dirección de correo electrónico se utiliza para enviarte una confirmación y un enlace de administración.
           No se mostrará en el sitio web. Solo lo guardamos mientras el evento esté activo.
           Después de que el evento haya finalizado, la dirección de correo electrónico se eliminará permanentemente.
         end_date: |
           Todas las detalles sobre el evento, incluyendo tu dirección de correo electrónico así como
-          todas las solicitudes y ofertas del evento se eliminarán permanentemente después de esta fecha.
-      entry:
+          todas las ofertas del evento se eliminarán permanentemente después de esta fecha.
+        default_country:
+          Este es el país predeterminado para nuevas ofertas que se utilizará para búsquedas de códigos postales.
 
+      entry:
         name: |
           Tu nombre, tal como se mostrará públicamente en el sitio web.
           No tiene que ser tu nombre real, un seudónimo está totalmente bien.
@@ -382,16 +356,12 @@ es:
         email: |
           Tu dirección de correo electrónico no es visible para nadie.
           La usamos para enviarte un correo electrónico una vez que alguien quiera ponerse en contacto contigo.
-          Debes confirmar tu dirección de correo electrónico antes de que tu entrada se muestre en el sitio web.
+          Debes confirmar tu dirección de correo electrónico antes de que tu oferta se muestre en el sitio web.
         phone: Un número de teléfono es opcional. Si lo proporcionas, se mostrará a otros.
         date: Fecha y hora en la que quieres comenzar tu viaje.
         direction: La dirección en la que quieres viajar.
-        location: |
-          ¿Dónde quieres comenzar o ser recogido?
-          Coloca un marcador en el mapa para seleccionar un lugar.
-        destination: |
-          ¿Dónde quieres ir o ser dejado?
-          Coloca un marcador en el mapa para seleccionar un lugar.
+        location: El código postal donde quieres comenzar (ida) o donde quieres ir (vuelta).
+        country: El país donde se encuentra el código postal.
         seats-available: El número de asientos disponibles.
         seats-needed: El número de asientos necesarios.
         driver-needed: |
@@ -417,10 +387,25 @@ es:
         text: |
           Tu mensaje a %{name}. Sé amable y proporciona tanta información como sea posible.
 
+    placeholders:
+      event:
+        name: Tu nombre o seudónimo
+        email: Tu dirección de correo electrónico
+        admin_email: Ingresa tu dirección de correo electrónico
+        end_date: ¿Cuándo finalizará el evento?
+      entry:
+        name: Ingresa tu nombre
+        email: Ingresa tu dirección de correo electrónico
+        location: Ingresa un código postal
+        date: Selecciona la fecha y hora de tu viaje
+        notes: ¿Tienes alguna nota adicional? Compártela aquí.
+      entries_filter:
+        location: Código postal
+
     errors:
       entry:
         location:
-          invalid: Por favor, coloca un marcador en el mapa para seleccionar un lugar.
+          invalid: Por favor, introduce un código postal válido.
 
   time:
     formats:

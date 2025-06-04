@@ -1,8 +1,8 @@
 class EntriesController < ApplicationController
   before_action :find_event!
-  before_action :find_entry!, only: [ :show, :edit, :update, :popup, :destroy, :confirm, :contact_emails ]
-  before_action :check_entry_type!, only: [ :new, :create ]
-  before_action :check_confirmed!, only: [ :show, :popup ]
+  before_action :find_entry!, only: [ :show, :edit, :update, :destroy, :confirm, :contact_emails ]
+  before_action :set_geonames, only: [ :new, :create, :edit ]
+  before_action :check_confirmed!, only: [ :show ]
   before_action :authenticate_user!, only: [ :edit, :update, :destroy, :confirm ]
   before_action :set_title
   before_action :set_noindex
@@ -15,26 +15,11 @@ class EntriesController < ApplicationController
     @contact_email = ContactEmail.new
   end
 
-  def popup
-    if @event.nil?
-      head :not_found
-      return
-    end
-
-    if @entry.nil? || !@entry.is_confirmed?
-      head :not_found
-      return
-    end
-
-    render layout: false
-  end
-
   def new
     @event = Event.find(params[:event_id])
     @entry = @event.entries.new
-    @entry.entry_type = params.permit(:entry_type)[:entry_type]
     @entry.seats = 1
-    set_transport_types
+    @entry.country = @event.default_country
   end
 
   def create
@@ -42,8 +27,6 @@ class EntriesController < ApplicationController
     @entry = @event.entries.new(entry_params)
     @entry.locale = I18n.locale.to_s
     @entry.valid?
-
-    set_transport_types
 
     unless verify_altcha
       @entry.errors.add(:altcha, t('terms_and_conditions.error'))
@@ -59,6 +42,8 @@ class EntriesController < ApplicationController
         @entry.errors.add(:location, t('simple_form.errors.entry.location.invalid'))
       end
 
+      @entry.country ||= @event.default_country
+
       render :new, status: :unprocessable_entity
     end
   end
@@ -69,10 +54,6 @@ class EntriesController < ApplicationController
     else
       render 'edit', status: :unprocessable_entity
     end
-  end
-
-  def edit
-    set_transport_types
   end
 
   def confirm
@@ -138,18 +119,14 @@ class EntriesController < ApplicationController
     @noindex = true
   end
 
-  def set_transport_types
-    if @entry.entry_type.to_sym == :request
-      @transport_types = Entry::TRANSPORTS
-    else
-      @transport_types = Entry::TRANSPORTS - [ :any ]
-    end
-  end
-
   def verify_altcha
     return true if Rails.env.test?
 
     AltchaSolution.verify_and_save(altcha_params[:altcha])
+  end
+
+  def set_geonames
+    @countries = helpers.get_countries(I18n.locale.to_s)
   end
 
   def find_event!
@@ -174,14 +151,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  def check_entry_type!
-    @entry_type = params.permit(:entry_type)[:entry_type] || params.dig(:entry, :entry_type)
-
-    if @entry_type.nil? || !Entry::TYPES.include?(@entry_type)
-      redirect_to @event
-    end
-  end
-
   def authenticate_user!
     token = params[:token] || params.dig(:entry, :token)
 
@@ -191,7 +160,7 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.require(:entry).permit(:name, :email, :transport, :phone, :entry_type, :driver,
+    params.require(:entry).permit(:name, :email, :transport, :phone, :driver,
                                   :direction, :date, :location, :latitude, :longitude, :seats, :notes)
   end
 

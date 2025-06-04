@@ -11,7 +11,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method("test_should_get_show_for_a_confirmed_entry_#{locale}") do
-      x = entries(:rwt1)
+      x = entries(:owt1)
       get event_entry_url(x.event, x)
       assert_response :success
 
@@ -20,17 +20,8 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       assert_match x.event.name, @response.body
     end
 
-    define_method("test_should_get_popup_content_for_a_confirmed_entry_#{locale}") do
-      x = entries(:rwt1)
-      get event_entry_popup_url(x.event, x)
-      assert_response :success
-      assert_match x.name, @response.body
-      assert_match x.location, @response.body
-      assert_match x.event.name, @response.body
-    end
-
     define_method("test_should_be_redirected_to_root_for_an_unconfirmed_entry_#{locale}") do
-      x = entries(:rwt1)
+      x = entries(:owt1)
       x.update(confirmed_at: nil)
       x.save
 
@@ -44,14 +35,14 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to event_path(e, locale: locale)
     end
 
-    define_method("test_should_not_get_new_without_parameters_#{locale}") do
-      e = events(:one)
-      get new_event_entry_url(e, locale: locale)
-      assert_redirected_to event_path(e, locale: locale)
-    end
+    # define_method("test_should_not_get_new_without_parameters_#{locale}") do
+    #   e = events(:one)
+    #   get new_event_entry_url(e, locale: locale)
+    #   assert_redirected_to event_path(e, locale: locale)
+    # end
 
     define_method("test_should_get_new_#{locale}") do
-      get new_event_entry_url(events(:one), params: { entry_type: :offer, direction: :way_there })
+      get new_event_entry_url(events(:one), params: { direction: :way_there })
       assert_response :success
     end
 
@@ -63,7 +54,6 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         entry: {
           name: "",
           email: "foo@bla.com",
-          entry_type: "offer",
           direction: "way_there",
           date: Time.now + 1.day,
         }
@@ -76,7 +66,6 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         entry: {
           name: "name",
           email: "",
-          entry_type: "offer",
           direction: "way_there",
           date: Time.now + 1.day,
           seats: 4,
@@ -86,27 +75,11 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :unprocessable_entity
 
-      # no entry_type
-      post event_entries_url(e), params: {
-        entry: {
-          name: "name",
-          email: "foo@bla.com",
-          direction: "way_there",
-          date: Time.now + 1.day,
-          seats: 4,
-          location: "location",
-        },
-        locale: locale
-      }
-
-      assert_redirected_to event_path(e, locale: locale)
-
       # no direction
       post event_entries_url(e), params: {
         entry: {
           name: "name",
           email: "foo@bla.com",
-          entry_type: "offer",
           date: Time.now + 1.day,
           seats: 4,
           location: "location",
@@ -121,7 +94,6 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         entry: {
           name: "name",
           email: "foo@bla.com",
-          entry_type: "offer",
           direction: "way_there",
           seats: 4,
           location: "location",
@@ -135,7 +107,6 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         entry: {
           name: "name",
           email: "foo@bla.com",
-          entry_type: "offer",
           direction: "way_there",
           date: Time.now + 1.day,
           location: "location",
@@ -149,7 +120,6 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         entry: {
           name: "name",
           email: "foo@bla.com",
-          entry_type: "offer",
           direction: "way_there",
           date: Time.now + 1.day,
           location: "location",
@@ -169,7 +139,6 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         entry: {
           name: "name",
           email: "foo@bla.com",
-          entry_type: "offer",
           direction: "way_there",
           date: Time.now + 1.day,
           seats: 4,
@@ -198,7 +167,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method "test_should_not_get_edit_with_wrong_token_#{locale}" do
-      x = entries(:rwt1)
+      x = entries(:owt1)
       x.update(confirmed_at: nil)
 
       # no token
@@ -211,7 +180,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method "test_should_get_edit_with_token_#{locale}" do
-      x = entries(:rwt1)
+      x = entries(:owt1)
       x.update(confirmed_at: nil)
 
       get edit_event_entry_url(x.event, x, params: { token: x.token })
@@ -219,7 +188,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method "test_should_confirm_entry_#{locale}" do
-      x = entries(:rwt1)
+      x = entries(:owt1)
       x.update(confirmed_at: nil)
 
       get event_entry_confirm_url(x.event, x), params: { token: x.token, locale: locale }
@@ -235,7 +204,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method "test_should_update_entry_${locale}" do
-      a = entries(:rwt1)
+      a = entries(:owt1)
       b = entries(:owb1)
 
       put event_entry_url(a.event, a, params:{
@@ -271,7 +240,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method "test_should_not_destroy_nonexistant_entry_#{locale}" do
-      x = entries(:rwt1)
+      x = entries(:owt1)
       delete event_entry_url(x.event, "non-existing", locale: locale)
       assert_redirected_to event_url(x.event, locale: locale)
 
@@ -280,7 +249,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method "test_should_not_destroy_entry_with_wrong_token_#{locale}" do
-      x = entries(:rwt1)
+      x = entries(:owt1)
       delete event_entry_url(x.event, x, params: { token: "wrong" }, locale: locale)
       assert_redirected_to event_url(x.event, locale: locale)
 
@@ -289,7 +258,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method "test_should_destroy_entry_#{locale}" do
-      x = entries(:rwt1)
+      x = entries(:owt1)
       x.update(confirmed_at: nil)
 
       delete event_entry_url(x.event, x, params: { token: x.token, locale: locale })

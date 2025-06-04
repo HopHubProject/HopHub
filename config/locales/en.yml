@@ -45,11 +45,6 @@ en:
         a car as well for a common train ride, a bus trip, a bike tour or a walk.
         No login is required, only an email address. As soon as the email address is
         confirmed, the offer is shown on the website so others can see it.
-    add-request:
-      title: Add a request
-      text: |
-        People who are looking for a ride but don't see a matching offer yet
-        can add a request. Also here, no login is required, only an email address.
     match:
       title: Get in touch
       text: |
@@ -60,12 +55,12 @@ en:
       title: No indexing by search engines
       text: |
         Search engines like Google or Bing are instructed not to index the events
-        and the corresponding offers and requests using special tags.
+        and the corresponding offers using special tags.
         Only people with the link can see the events.
     cleanup:
       title: Leave no traces
       text: |
-        Offers, requests and events are automatically and permanently removed
+        Offers and events are automatically and permanently removed
         from the database after they have expired.
 
   hosting-an-event:
@@ -103,9 +98,6 @@ en:
   offer: Offer
   offers: Offers
 
-  request: Request
-  requests: Requests
-
   way_there: Way there
   way_back: Way back
 
@@ -114,24 +106,16 @@ en:
     %{name} offers to drive a car
 
   no_entries:
-    title: No offers or requests yet
+    title: No offers yet
     text: |
-      There are currently no offers or requests for this event.
-      If you are looking for a ride, you can add a request, and
-      if you planning a ride yourself, you can add an offer so
-      others can find you.
+      It seems that nobody has added an offer for this event yet.
+      Don't worry, this is normal for new events.
+      You can either wait for others to add an offer or add one yourself.
 
   add_offer:
     title: Add a new offer
     offer_yourself: |
       Are you organizing a ride yourself?
-    current_requests:
-      one: There is currently one request for this event!
-      other: There are currently %{count} requests for this event!
-    search_for_people: |
-      Search for people who need a ride
-    no_matching_request: |
-      Can't find a matching request? Add an offer!
 
   show_offers:
     title: Show offers
@@ -140,11 +124,6 @@ en:
     current_offers:
       one: There is currently one offer for this event!
       other: There are currently %{count} offers for this event!
-
-  add_request:
-    title: Add a new request
-    no_matching_offer: |
-      Can't find a matching offer? Add a request!
 
   event: Event
   seat:
@@ -171,7 +150,7 @@ en:
     title: Delete event
     confirmation: |
       Are you sure you want to delete this event?
-      All requests and offers will be deleted permanently as well.
+      All offers will be deleted permanently as well.
       This action cannot be undone.
 
   entry_delete:
@@ -180,25 +159,12 @@ en:
       Are you sure you want to delete this entry?
       This action cannot be undone.
 
-  create_new_request:
-    title: Create new request
-    text: |
-      If you are looking for a ride, please fill in the form below and select the location
-      where you want to be picked up or dropped, respectively. The location doesn't have
-      to be exact, but it should give others an idea on how to plan their route.
-      People who have a matching offer will be able to contact you through the web site once
-      you have confirmed your email address.
-
   create_new_offer:
     title: Create new offer
     text: |
-      If you have one or more free seats in your vehicle, please fill in the form below and
-      select the location where you want to pick up or drop off passengers, respectively.
-      People who have a matching request will be able to contact you through the web site once
+      Please fill in the form below and.
+      People will be able to contact you through the web site once
       you have confirmed your email address.
-
-  update_request:
-    title: Update request
 
   update_offer:
     title: Update offer
@@ -209,10 +175,13 @@ en:
 
     none: No entries found
 
-    search:
-      placeholder: Search for entries
-    filter: Filter
-    reset: Clear
+    filter:
+      title: Filter
+      apply: Apply filter
+      clear: Clear
+      text: Filter offers for this event by location and radius.
+      active: |
+        Filter matches %{n} offers out of %{total}.
 
   entry_contact:
     title: Contact
@@ -229,8 +198,8 @@ en:
       - |
         HopHub only stores data that is necessary for the operation of the platform.
         All data is automatically deleted once it is no longer needed. Specifically,
-        this means that events including all requests and offers are permanently deleted
-        after the end date of the event. Offers and requests are also deleted once they
+        this means that events including all offers are permanently deleted
+        after the end date of the event. Offers are also deleted once they
         are no longer valid.
       - |
         If you wish to have a copy of your data or have your data deleted, please fill out the form.
@@ -318,6 +287,7 @@ en:
       mark: '*'
     error_notification:
       default_message: "Please review the problems below:"
+
     labels:
       event:
         name: Event name
@@ -333,7 +303,8 @@ en:
         transport: Transport type
         direction: Direction
         starting-point: Start
-        destination: Destination
+        location: Location (zip code)
+        country: Country
         seats: Number of seats
         driver-needed: Driver needed?
         driver-offer: Offering to drive?
@@ -350,13 +321,17 @@ en:
           We will also use it to genereate a unique URL for the event.
         description: |
           The description will also be shown on the event page and may give visitors some context on the event.
+          You can use %{markdown} syntax to format the text.
         admin_email: |
           This email address will be used to send you a confirmation and an administration link.
           It will not be shown on the web site. We only save it as long as the event is active.
           After the event has ended, the email address will be deleted permanently.
         end_date: |
           All details about the event, including your email address as well as
-          all requests and offers of the event will be deleted permanently after this date.
+          all offers of the event will be deleted permanently after this date.
+        default_country: |
+          This is the default country for new offers and the filter box that will be used for
+          zip code lookups.
 
       entry:
         name: |
@@ -365,13 +340,12 @@ en:
         transport: The type of transport you want to use.
         email: |
           Your email address will not be visible to anyone. We'll use it to send you an email once somebody wants to contact you.
-          You'll have to confirm your email address before your entry is shown on the web site.
+          You'll have to confirm your email address before your offer is shown on the web site.
         phone: A phone number is optional. If you fill it in, it will be shown to others.
         date: The date and time you want to start your trip.
         direction: The direction of your journey.
-        location: |
-          The location where you want to start or where you want to go.
-          You can put a marker on the map to select a location.
+        location: The zip code where you want to start (way there) or where you want to go (way back).
+        country: The country of the zip code.
         seats-available: The number of seats you have available.
         seats-needed: The number of seats you need.
         driver-needed: |
@@ -393,10 +367,25 @@ en:
         text: |
           Your message to %{name}. Please be polite and provide all necessary information.
 
+    placeholders:
+      event:
+        name: Give your event a name
+        description: What is the event about?
+        admin_email: Enter your email address
+        end_date: When will the event end?
+      entry:
+        name: Your name or pseudonym
+        email: Your email address
+        location: Enter a zip code
+        date: Select the date and time of your trip
+        notes: Got any additional notes? Share them here.
+      entries_filter:
+        location: Enter a zip code
+
     errors:
       entry:
         location:
-          invalid: Please put a marker on the map to select a location.
+          invalid: Please enter a valid zip code.
 
   time:
     formats:

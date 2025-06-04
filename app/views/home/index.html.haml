@@ -1,7 +1,4 @@
 .row.justify-content-center.align-items-center
-  .col-12.col-lg-4.text-center
-    =image_tag('logo.png', alt: 'logo', height: '250', width: '', id: 'logo', class: 'd-inline-block align-text-top')
-
   .col-12.col-lg-4.text-center.pt-4
     =image_tag('hophub.png', alt: 'logo-hophub', width: '300', id: 'logo-hophub', class: 'd-inline-block align-text-top')
 
@@ -30,14 +27,9 @@
         %p=t('how-it-works.create-event.text')
 
         %h2
-          %i{class: icon_class_for_entry_type(:offer)}
+          %i{class: "bi bi-gift"}
           =t('how-it-works.add-offer.title')
         %p=t('how-it-works.add-offer.text')
-
-        %h2
-          %i{class: icon_class_for_entry_type(:request)}
-          =t('how-it-works.add-request.title')
-        %p=t('how-it-works.add-request.text')
 
         %h2
           %i.bi.bi-chat-dots

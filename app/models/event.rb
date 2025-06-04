@@ -11,7 +11,9 @@ class Event < ActiveRecord::Base
   validate :end_date_in_future
 
   validates_presence_of :admin_email
-  validates_format_of :admin_email, with: /\A[\w\-\.]+@([\w-]+\.)+[\w-]{2,}\z/
+  validates_format_of :admin_email, with: /\A[\w\-\.\+]+@([\w-]+\.)+[\w-]{2,}\z/
+
+  validates_presence_of :default_country
 
   default_scope { order(created_at: :desc) }
 
@@ -23,27 +25,15 @@ class Event < ActiveRecord::Base
   end
 
   def offers
-    entries.confirmed.offer
-  end
-
-  def requests
-    entries.confirmed.request
-  end
-
-  def requests_way_there
-    entries.confirmed.in_future.request.way_there
+    entries.confirmed
   end
 
   def offers_way_there
-    entries.confirmed.in_future.offer.way_there
-  end
-
-  def requests_way_back
-    entries.confirmed.in_future.request.way_back
+    entries.confirmed.in_future.way_there
   end
 
   def offers_way_back
-    entries.confirmed.in_future.offer.way_back
+    entries.confirmed.in_future.way_back
   end
 
   before_create :create_admin_token
@@ -56,7 +46,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["admin_email", "admin_token", "confirmed_at", "created_at", "description",
+    ["admin_email", "admin_token", "confirmed_at", "created_at", "description", "default_country",
      "end_date", "id", "id_value", "name", "shadow_banned", "updated_at", "seats_added_total"]
   end
 

@@ -1,6 +1,6 @@
 Hallo <%= @entry.name %>,
 
-Bitte bestätige deinen <%= t(@entry.entry_type) %> für das event "<%= @entry.event.name %>" indem du auf den folgenden Link klickst:
+Bitte bestätige dein Angebot für das event "<%= @entry.event.name %>" indem du auf den folgenden Link klickst:
 
    <%= event_entry_confirm_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
 

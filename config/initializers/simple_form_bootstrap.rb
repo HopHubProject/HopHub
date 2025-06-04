@@ -352,6 +352,21 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { class: 'form-text' }
   end
 
+  config.wrappers :horizontal_form_no_validation, class: 'row mb-3' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: 'col-sm-3 col-form-label'
+    b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
+      ba.use :input, class: 'form-control'
+      ba.use :full_error, wrap_with: { class: 'invalid-feedback' }
+      ba.use :hint, wrap_with: { class: 'form-text' }
+    end
+  end
 
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :horizontal_form

@@ -26,13 +26,9 @@
         =entry.location
     -if entry.transport.to_sym == :car && entry.driver?
       %p
-        -if entry.is_offer?
-          %b
-            %i.bi.bi-exclamation-triangle
-            =t('driver-needed')
-        -else
-          %i.bi.bi-heart
-          =t('driver-offer', name: entry.name)
+        %b
+          %i.bi.bi-exclamation-triangle
+          =t('driver-needed')
   .col-12.col-md-2
     =link_to t('entry_contact.title'), event_entry_path(entry.event, entry), class: 'btn btn-outline-primary btn-sm w-100', role: 'button'
 

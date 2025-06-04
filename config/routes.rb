@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "privacy" => "contents#privacy"
   get "tos"     => "contents#tos"
 
+  get 'postal_code_search'=> 'geonames#postal_code_search'
+
   resources :gdpr_inquiries, only: [:new, :create]
   get "gdpr" => "gdpr_inquiries#new"
 
@@ -23,7 +25,6 @@ Rails.application.routes.draw do
     delete 'destroy'
 
     resources :entries, path: :x do
-      get 'popup'
       get 'confirm'
       delete 'destroy'
       post 'contact_emails'

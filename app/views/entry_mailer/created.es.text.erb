@@ -1,6 +1,6 @@
 Hola <%= @entry.name %>,
 
-Por favor confirma tu <%= t(@entry.entry_type) %> para el evento "<%= @entry.event.name %>" haciendo clic en el siguiente enlace:
+Por favor confirma tu oferta para el evento "<%= @entry.event.name %>" haciendo clic en el siguiente enlace:
 
    <%= event_entry_confirm_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>
 

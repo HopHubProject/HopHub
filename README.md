@@ -25,17 +25,13 @@ a car as well for a common train ride, a bus trip, a bike tour or a walk.
 No login is required, only an email address. As soon as the email address is
 confirmed, the offer is shown on the website so others can see it.
 
-### Add a request
-People who are looking for a ride but don't see a matching offer yet
-can add a request. Also here, no login is required, only an email address.
-
 ### Get in touch
 When two parties match, they can get in touch with each other using a form
 on the website. The email address of the person reaching out is used as the
 Reply-To address, so the recipient can reply directly for further coordination.
 
 ### Leave no traces
-Offers, requests and events that are no longer valid are automatically and permanently
+Offers and events that are no longer valid are automatically and permanently
 removed from the database.
 
 ## Features
@@ -44,14 +40,14 @@ This project takes care to be as data protection friendly as possible. It only s
 
 - Users can create events
 - Users can see events if they are provided with the link
-- Users can add offers and requests to events
-- Users can see the offers and requests of an event
+- Users can add offers to events
+- Users can see the offers of an event
 - Users can contact other users through the platform via email
-- "Clean driver" feature: Offers by car can be set to "driver needed", and requests can be set to "offering to drive"
-- Events, offers and requests are automatically deleted after they have passed
-- Maptiler is used to display offers and requests on a map
-- Admins can see all users, events, offers and requests
-- Admins can delete users, events, offers and requests
+- "Clean driver" feature: Offers by car can be set to "driver needed"
+- Events and offers are automatically deleted after they have passed
+- Geonames is used to resolve locations to latitude and longitude
+- Admins can see all users, events and offers
+- Admins can delete users, events and offers
 - [Altcha](https://altcha.org) is integrated as captcha for all forms
 - Localization
 
@@ -93,7 +89,7 @@ to deploy on k8s.
 |-----------------------------------|---------------------------------------------------------------------------------|
 | `SECRET_KEY_BASE`                 | A secret string for the Rails application. Generate it with `rails secret`      |
 | `ALTCHA_HMAC_KEY`                 | A secret string for the Altcha HMAC algorithm. Generate it with `rails secret`  |
-| `MAPTILER_API_KEY`                | A MapTiler API key. Obtain one from https://cloud.maptiler.com                  |
+| `GEONAMES_USERNAME`               | A Geonames username. Obtain one from https://www.geonames.org/login             |
 | `HOPHUB_BASE_URL`                 | The base URL for the Rails installation                                         |
 | `HOPHUB_DATABASE_USERNAME`        | The username for the SQL database                                               |
 | `HOPHUB_DATABASE_PASSWORD`        | The passwort for the SQL database                                               |
@@ -107,6 +103,7 @@ to deploy on k8s.
 | `HOPHUB_MAIL_USERNAME`            | If your mail server requires authentication, set the username in this setting   |
 | `HOPHUB_MAIL_PASSWORD`            | If your mail server requires authentication, set the password in this setting   |
 | `HOPHUB_SINGLE_EVENT_ID`          | Optional ID of a single event that is always shown on the landing page          |
+| `HOPHUB_REDIS_CACHE`              | Optional Redis instance for caching                                             |
 | `EXCEPTION_NOTIFIER_SENDER`       | Optional sender for notification emails                                         |
 | `EXCEPTION_NOTIFIER_RECIPIENT`    | Optional addresses of recipients for exception notification emails              |
 | `PLAUSIBLE_DOMAIN`                | The domain of the Plausible instance for the privacy policy                     |
@@ -124,6 +121,14 @@ Similarily, the the `/metrics` and `/up` paths are probably also something you w
 ```sh
 bundle exec rails test
 ```
+
+## Geonames
+
+The project uses the [Geonames](https://www.geonames.org/) API to resolve locations to latitude and longitude. You need to create a Geonames account and set the `GEONAMES_USERNAME` environment variable to your username. The Geonames API is called with the location name and the Geonames username. The communication with the Geonames API is done through the Rails backend, hence the IP address of the client is not sent to the Geonames API. This means that the Geonames API does not track the IP address of the client, which is a privacy-friendly approach.
+
+## Caching
+
+The project uses the Rails cache to store the results of expensive operations, such as geocoding locations. The cache can be configured with the `HOPHUB_REDIS_CACHE` environment variable, which should point to a Redis instance. If this variable is not set, the cache is not used.
 
 ## Micro CMS
 
@@ -148,7 +153,7 @@ The project features an integration with [Plausible](https://plausible.io/) for 
 
 ## Cleanup task
 
-The project features a cleanup task that has to be run periodically to remove old events, offers and requests from the database.
+The project features a cleanup task that has to be run periodically to remove old events and offers from the database.
 The task is defined in the `lib/tasks/cleanup.rake` file and can be executed with the following command:
 
 ```sh
@@ -173,13 +178,13 @@ Consider the following aspects when crafting the privacy policy for your instanc
   - The email address of the creator of the event
 - Events are automatically deleted from the database after they have passed
 - Events can be deleted manually by their creators
-- For entries (offers and requests), the following data is stored in the database:
-  - The ID of the entry
-  - The email address of the creator of the entry
-  - The name/pseudonym of the creator of the entry
-  - The optional phone number of the creator of the entry
-  - The event ID of the event the entry belongs to
-  - The type of the entry (offer or request)
+- For offers, the following data is stored in the database:
+  - The ID of the offer
+  - The email address of the creator of the offer
+  - The name/pseudonym of the creator of the offer
+  - The optional phone number of the creator of the offer
+  - The event ID of the event the offer belongs to
+  - The type of the offer
   - The number of seats available or needed
   - The mode of transportation (car, train, bus, bike, walk)
   - The departure/arrival location
@@ -190,14 +195,14 @@ Consider the following aspects when crafting the privacy policy for your instanc
 - Entries are automatically deleted from the database after they have passed
 - Entries can be deleted manually by their creators
 - When a user contacts another user through the platform, the email address of the sender is used as the Reply-To address in the email. Neither the email address of the sender nor the text they write is stored in the database.
-- The GDPR information tool allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events, offers and requests that are associated with the email address with links to delete the data.
-- Maptiler is used to display offers and requests on a map. The browser of the client sends a request to the Maptiler API to retrieve the map tiles. The IP address of the client is sent to the Maptiler API. More information can be found in the [Maptiler privacy policy](https://www.maptiler.com/privacy-policy).
+- The GDPR information tool allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events and offers that are associated with the email address with links to delete the data.
+- Geonames is used to resolve locations to latitude and longitude. The Geonames API is called with the location name and the Geonames username. The IP address of the client is not sent to the Geonames API. More information can be found in the [Geonames privacy policy](https://www.geonames.org/export/privacy.html).
 - JsDelivr is used to deliver JavaScript files of the project. The browser of the client sends a request to the JsDelivr API to retrieve the files which transmits their IP address to the JsDelivr API. More information can be found in the [JsDelivr privacy policy](https://www.jsdelivr.com/privacy-policy-jsdelivr-net).
 - If you use the Plausible analytics integration, you should inform your users about the data that is collected by Plausible. More information can be found in the [Plausible privacy policy](https://plausible.io/privacy-policy).
 
 ## GDPR information tool
 
-The project features a GDPR information tool that allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events, offers and requests that are associated with the email address with links to delete the data.
+The project features a GDPR information tool that allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events and offers that are associated with the email address with links to delete the data.
 
 ## Metrics
 

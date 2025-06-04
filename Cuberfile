@@ -15,7 +15,7 @@ migrate 'bundle exec rails db:migrate'
 
 env 'SECRET_KEY_BASE', File.read("#{ENV['CONFIG_ROOT']}/secrets/secret_key_base").strip, secret: true
 env 'ALTCHA_HMAC_KEY', File.read("#{ENV['CONFIG_ROOT']}/secrets/altcha.hmac_key").strip, secret: true
-env 'MAPTILER_API_KEY', File.read("#{ENV['CONFIG_ROOT']}/secrets/maptiler.api_key").strip, secret: true
+env 'GEONAMES_USERNAME', File.read("#{ENV['CONFIG_ROOT']}/secrets/geonames.username").strip, secret: true
 env 'HOPHUB_BASE_URL', File.read("#{ENV['CONFIG_ROOT']}/config/base_url").strip
 env 'HOPHUB_DATABASE_USERNAME', File.read("#{ENV['CONFIG_ROOT']}/config/db.username").strip
 env 'HOPHUB_DATABASE_PASSWORD', File.read("#{ENV['CONFIG_ROOT']}/secrets/db.password").strip, secret: true

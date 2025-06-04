@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_10_193619) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_15_165327) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -49,7 +49,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_193619) do
   create_table "entries", id: :string, force: :cascade do |t|
     t.string "event_id", null: false
     t.string "transport"
-    t.string "entry_type"
     t.string "direction"
     t.string "name"
     t.string "email"
@@ -80,6 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_193619) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "seats_added_total", default: 0, null: false
+    t.string "default_country"
   end
 
   add_foreign_key "entries", "events"

@@ -1,11 +1,10 @@
 ActiveAdmin.register Entry do
-  permit_params :id, :entry_id, :email, :entry_type, :direction, :seats, :date, :location, :notes, :confirmed_at, :token
+  permit_params :id, :entry_id, :email, :direction, :seats, :date, :location, :notes, :confirmed_at, :token
 
   scope :all, default: true
   scope :in_future
   scope :confirmed
   scope :unconfirmed
-  scope :request
   scope :offer
   scope :way_there
   scope :way_back
@@ -58,7 +57,6 @@ ActiveAdmin.register Entry do
     column :location
     column :transport
     column :seats
-    column :entry_type
     column :direction
   end
 

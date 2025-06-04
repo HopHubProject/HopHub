@@ -1,0 +1,132 @@
+- filter_active = @filter.active?
+.row.justify-content-center.mt-2
+  .col-12.col-lg-12
+    .accordion#filterAccordion
+      .accordion-item
+        %h2.accordion-header.pt-0#filterHeading
+          %button.accordion-button{type: "button", "data-bs-toggle": "collapse", "data-bs-target": "#filterCollapse", "aria-expanded": filter_active, "aria-controls": "filterCollapse", class: ("collapsed" unless filter_active)}
+            %h3.pt-2= t('entries.filter.title')
+        #filterCollapse.accordion-collapse.collapse{class: ("show" if filter_active), "aria-labelledby": "filterHeading", "data-bs-parent": "#filterAccordion"}
+          .accordion-body
+            %p
+              =t('entries.filter.text')
+
+            =simple_form_for @filter, url: event_path(@event), method: :get, html: { class: 'mb-1' } do |f|
+              =hidden_field_tag :locale, I18n.locale
+              =f.hidden_field :latitude
+              =f.hidden_field :longitude
+
+              .row
+                .col-12.col-md-3
+                  =f.input :location,
+                    class: 'form-control',
+                    label: false,
+                    wrapper: :horizontal_form_no_validation,
+                    required: false,
+                    novalidate: true,
+                    input_html: { required: false, novalidate: true }
+
+                .col-12.col-md-3
+                  =f.input :country,
+                    as: :select,
+                    class: 'form-control',
+                    label: false,
+                    collection: @countries,
+                    wrapper: :horizontal_form_no_validation,
+                    include_blank: false,
+                    required: false,
+                    novalidate: true,
+                    input_html: { required: false, novalidate: true }
+
+                .col-12.col-md-3
+                  =f.input :radius,
+                    as: :select,
+                    class: 'form-control',
+                    label: false,
+                    collection: EntriesFilter::RADIUSES,
+                    wrapper: :horizontal_form_no_validation,
+                    include_blank: false,
+                    novalidate: true,
+                    input_html: { required: false, novalidate: true },
+                    required: false
+
+                .col-12.col-md-3.text-center
+                  =f.submit t('entries.filter.apply'), class: 'btn btn-primary mx-2', formnovalidate: true
+
+                  %button.btn.btn-secondary#clear-filter-form{ type: "button" }
+                    =t('entries.filter.clear')
+
+              -if @filter.active?
+                .col-12.col-md-12.text-center
+                  .row
+                    %p.mt-3.mb-0.text-muted
+                      =t('entries.filter.active', n: @filtered_entries.count, total: @entries.count)
+
+:javascript
+  window.filterGeocodeHandlerAdded = false;
+
+  add_geocode_handler = () => {
+    console.log('Adding geocode handler');
+
+    if (window.filterGeocodeHandlerAdded === true) {
+      console.log('Geocode handler already added');
+      return;
+    }
+
+    const config = {
+      url: '#{j postal_code_search_path}',
+    };
+
+    const elements = {
+      locationInput: document.getElementById('entries_filter_location'),
+      latitudeInput: document.getElementById('entries_filter_latitude'),
+      longitudeInput: document.getElementById('entries_filter_longitude'),
+      countryInput: document.getElementById('entries_filter_country'),
+    };
+
+    if (!elements.locationInput || !elements.latitudeInput || !elements.longitudeInput) {
+      console.warn('Geocoding elements not found');
+      return;
+    }
+
+    elements.locationInput.addEventListener('input', (e) => {
+      resolveZipCode(elements.locationInput.value, elements, config);
+    });
+
+    elements.countryInput.addEventListener('input', (e) => {
+      elements.latitudeInput.value = '';
+      elements.longitudeInput.value = '';
+      elements.locationInput.value = '';
+    });
+
+    console.log('Geocode handler added');
+
+    window.filterGeocodeHandlerAdded = true;
+  };
+
+  add_clear_form_handler = () => {
+    const clearButton = document.getElementById('clear-filter-form');
+    if (clearButton) {
+      clearButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const form = clearButton.closest('form');
+        if (form) {
+          console.log('Clearing filter form ' + form.id);
+
+          document.getElementById('entries_filter_latitude').value = '';
+          document.getElementById('entries_filter_longitude').value = '';
+          document.getElementById('entries_filter_location').value = '';
+          document.getElementById('entries_filter_country').value = '';
+
+          Turbo.navigator.submitForm(form);
+        }
+      });
+    }
+  };
+
+  document.addEventListener('turbo:load', add_geocode_handler);
+  document.addEventListener('turbo:load', add_clear_form_handler);
+
+  document.addEventListener('turbo:frame-load', add_geocode_handler);
+  document.addEventListener('turbo:frame-load', add_clear_form_handler);

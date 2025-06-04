@@ -2,7 +2,7 @@ require "test_helper"
 
 class EntryTest < ActiveSupport::TestCase
   test "should create entry" do
-    a = entries(:rwt1).attributes
+    a = entries(:owt1).attributes
     entry = Entry.new(a)
     assert entry.save
 
@@ -12,7 +12,7 @@ class EntryTest < ActiveSupport::TestCase
 
   test "controller should increment seats_added_total" do
     event = events(:one)
-    entry = entries(:rwt1)
+    entry = entries(:owt1)
 
     assert_difference("event.seats_added_total", 5) do
       Entry.create!(entry.attributes.merge(event_id: event.id, seats: 5))

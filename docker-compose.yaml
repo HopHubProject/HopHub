@@ -26,7 +26,7 @@ services:
       SECRET_KEY_BASE: create-a-new-key
       ALTCHA_HMAC_KEY: create-a-new-key
       HOPHUB_DATABASE_PASSWORD: dbpassword
-      MAPTILER_API_KEY: your-api-key
+      GEONAMES_USERNAME: your-geonames-username
       HOPHUB_MAIL_USERNAME: your-mail-username
       HOPHUB_MAIL_PASSWORD: your-mail-password
       HOPHUB_BASE_URL: https://your-domain

@@ -1,74 +1,24 @@
-.row.justify-content-center.my-4
-  .col-12.col-lg-3
-  .col-12.col-lg-3.text-center
-    -if @entry_type.to_sym == :offer
-      %span= t('add_offer.offer_yourself')
-      -if @requests_count == 1
-        %span= t('add_offer.current_requests.one')
-      -elsif @requests_count > 1
-        %span= t('add_offer.current_requests.other', count: @requests_count)
-
-      =link_to event_path(@event, entry_type: :request), class: 'btn btn-primary w-100 my-2', role: 'button' do
-        %i{class: icon_class_for_entry_type(:request)}
-        =t('add_offer.search_for_people')
-    -else
-      %span= t('add_offer.no_matching_request')
-      =link_to new_event_entry_path(@event, entry_type: :offer), class: 'btn btn-primary w-100 my-2', role: 'button' do
-        %i.bi.bi-plus-lg
-        =t('add_offer.title')
-  .col-12.col-lg-3
-
--if @entry_type.to_sym == :request
-  .row.justify-content-center.mb-2
-    .col-12.col-lg-3
-    .col-12.col-lg-3.text-center
-      %span= t('show_offers.text')
-      -if @offers_count == 1
-        %span= t('show_offers.current_offers.one')
-      -elsif @offers_count > 1
-        %span= t('show_offers.current_offers.other', count: @offers_count)
-
-      =link_to event_path(@event, entry_type: :offer), class: 'btn btn-primary w-100 my-2', role: 'button' do
-        %i{class: icon_class_for_entry_type(:offer)}
-        =t('show_offers.title')
-    .col-12.col-lg-3
-
--if @entries.any?
-  .row.justify-content-center
-    .col-12.col-lg-12
-      #entry-table
-        -last_date = nil
-        -@paginated_entries.each do |entry|
-          -if last_date == entry.date.to_date
-            .row
-              .col-12.col-md-12
-                %hr
-          -else
-            -last_date = entry.date.to_date
-            .row
-              .col-12.col-md-12
-                %h2.mt-3=l entry.date.to_date, format: :long_with_dow
-
-          =render entry
-
-    .col-12.col-lg-12
-      .container.d-flex.align-items-center.justify-content-center.py-3
-        =paginate @paginated_entries, theme: 'bootstrap-5',
-          pagination_class: "pagination flex-wrap justify-content-center",
-          nav_class: "d-inline-block"
-
 .row.justify-content-center
-  .col-12.col-lg-3
-  .col-12.col-lg-3.text-center
-    -if @entry_type.to_sym == :offer
-      %span= t('add_request.no_matching_offer')
-      = link_to new_event_entry_path(@event, entry_type: :request), class: 'btn btn-primary w-100 mt-2 mb-2', role: 'button' do
-        %i.bi.bi-plus-lg
-        =t('add_request.title')
-    -elsif @entries.any?
-      %span= t('add_offer.no_matching_request')
-      = link_to new_event_entry_path(@event, entry_type: :offer), class: 'btn btn-primary w-100 mt-2 mb-2', role: 'button' do
-        %i.bi.bi-plus-lg
-        =t('add_offer.title')
+  .col-12.col-lg-12
+    #entry-table
+      -last_date = nil
+      -@paginated_entries.each do |entry|
+        -if last_date == entry.date.to_date
+          .row
+            .col-12.col-md-12
+              %hr
+        -else
+          -last_date = entry.date.to_date
+          .row
+            .col-12.col-md-12
+              %h2.mt-3=l entry.date.to_date, format: :long_with_dow
 
-  .col-12.col-lg-3
+        =render entry
+
+  .col-12.col-lg-12
+    .container.d-flex.align-items-center.justify-content-center.py-3
+      =paginate @paginated_entries, theme: 'bootstrap-5',
+        pagination_class: "pagination flex-wrap justify-content-center",
+        nav_class: "d-inline-block"
+
+.col-12.col-lg-3

@@ -12,6 +12,4 @@ pin "tempus-dominus", to: "https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus
 pin "tempus-dominus-bi-one", to: "https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.11/dist/plugins/bi-one.js"
 pin "altcha", to: "https://cdn.jsdelivr.net/npm/altcha@1.1.1/+esm"
 pin "confetti", to: "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
-pin "maptilersdk", to: "https://cdn.jsdelivr.net/npm/@maptiler/sdk@1.2.1/dist/maptiler-sdk.umd.js"
-pin "maptilersdk-maptiler-geocoder", to: "https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/maptilersdk.umd.js"
-pin "maptiler"
+pin "geonames"

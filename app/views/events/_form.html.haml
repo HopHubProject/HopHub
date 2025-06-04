@@ -4,12 +4,18 @@
 
     =f.input :name
     =f.input :description, input_html: { rows: 5 },
-      hint: t('simple_form.hints.event.description')
+      hint: t('simple_form.hints.event.description', markdown: link_to('Markdown', 'https://www.markdownguide.org/basic-syntax/')).html_safe
     -if method == :new
       =f.input :admin_email
     =f.input :end_date,
       as: :string,
       input_html: { value: @event.end_date&.strftime('%d/%m/%Y') }
+
+    =f.input :default_country,
+      as: :select,
+      class: 'form-control',
+      collection: @countries,
+      include_blank: true
 
     -if method == :new
       .row.mb-3
@@ -53,7 +59,7 @@
         localization: {
           locale: '#{ I18n.locale }',
           format: 'dd/MM/yyyy',
-          startOfTheWeek: 1,      
+          startOfTheWeek: 1,
         },
       });
     }

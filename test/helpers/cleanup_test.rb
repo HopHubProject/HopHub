@@ -12,7 +12,7 @@ class CleanupTest < ActionDispatch::IntegrationTest
   end
 
   test "should remove outdated entries" do
-    entry = entries(:rwt1)
+    entry = entries(:owt1)
     entry.date = DateTime.now-4.hours
     entry.save(validate: false)
 
@@ -33,7 +33,7 @@ class CleanupTest < ActionDispatch::IntegrationTest
   end
 
   test "should remove unconfirmed entries" do
-    entry = entries(:rwt1)
+    entry = entries(:owt1)
     entry.created_at = DateTime.now-1.days
     entry.confirmed_at = nil
     entry.save

@@ -10,7 +10,6 @@
     =stylesheet_link_tag "application.bootstrap", "data-turbo-track": "reload"
     =stylesheet_link_tag "application", "data-turbo-track": "reload"
     =stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css"
-    =stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@maptiler/sdk@1.2.1/dist/maptiler-sdk.min.css", "data-turbo-track": "reload"
     =stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/fontawesome.min.css", "data-turbo-track": "reload"
     =stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css", "data-turbo-track": "reload"
 
@@ -19,9 +18,6 @@
 
     %script{async: "", src: "https://cdn.jsdelivr.net/npm/es-module-shims@1.8.3/dist/es-module-shims.min.js"}
     =javascript_importmap_tags
-
-    =stylesheet_link_tag "https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/style.css"
-    %script{async: "", src: "https://cdn.maptiler.com/maptiler-geocoding-control/v1.2.0/maptilersdk.umd.js"}
 
     -if @noindex == true
       %meta{content: "noindex, nofollow", name: "robots"}

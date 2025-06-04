@@ -5,46 +5,27 @@
       %i.bi.bi-calendar
       =t('event_valid_until', date: l(@event.end_date.to_date, format: :long_with_dow))
 
-    .shadow.p-3.mb-3.bg-body.rounded.mt-3
-      -@event.description.split("\n").each do |p|
-        %p= p
+    .shadow.p-3.mb-3.bg-body.rounded.mt-3.pb-1
+      .event-description
+        =@description.html_safe
 
 =turbo_frame_tag 'entry' do
-  .row.justify-content-center
-    .col-12.col-lg-9
-      %h2
-        -if @entry_type.to_sym == :request
-          =t('requests')
-        -else
-          =t('offers')
+  .row.justify-content-center.my-4
+    .col-12.col-lg-3
+    .col-12.col-lg-3.text-center
+      %span= t('add_offer.offer_yourself')
+      =link_to new_event_entry_path(@event), class: 'btn btn-primary w-100 my-2', role: 'button' do
+        %i.bi.bi-plus-lg
+        =t('add_offer.title')
+    .col-12.col-lg-3
 
-  .row.justify-content-center
-    .col-12.col-lg-9
-      .map-container
-        #map{ style: "height: 400px",
-          'data-waythereurl': event_geojson_path(@event, entry_type: @entry_type, direction: :way_there, format: :json),
-          'data-waybackurl': event_geojson_path(@event, entry_type: @entry_type, direction: :way_back, format: :json),
-          'data-direction': @way_there_count > @way_back_count ? "way_there" : "way_back",
-          'data-apiKey': ENV['MAPTILER_API_KEY'],
-          'data-waythere': t('way_there'),
-          'data-wayback': t('way_back')
-        }
+  -if @entries.any?
+    =render 'filter_form', event: @event
 
-  -if @event.offers.count == 0 && @event.requests.count == 0
+    -if @filtered_entries.any?
+      =render 'entries'
+  -else
     .row.justify-content-center
       .col-12.col-lg-9
         %h2= t('no_entries.title')
         %p= t('no_entries.text')
-
-    .row.justify-content-center.mb-2
-      .col-12.col-lg-9.text-center
-        =link_to new_event_entry_path(@event, entry_type: :offer), class: 'btn btn-primary mx-2 my-2', role: 'button' do
-          %i{class: icon_class_for_entry_type(:offer)}
-          =t('add_offer.title')
-
-        = link_to new_event_entry_path(@event, entry_type: :request), class: 'btn btn-primary mx-2 my-2', role: 'button' do
-          %i{class: icon_class_for_entry_type(:request)}
-          =t('add_request.title')
-
-  -else
-    = render 'entries'

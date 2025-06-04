@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  permit_params :id, :name, :description, :end_date, :admin_email, :admin_token, :shadow_banned, :confirmed_at
+  permit_params :id, :name, :description, :end_date, :default_country, :admin_email, :admin_token, :shadow_banned, :confirmed_at
 
   scope :all, default: true
   scope :confirmed
@@ -45,6 +45,7 @@ ActiveAdmin.register Event do
       row :name
       row :description
       row :end_date
+      row :default_country
       row :admin_email
       row :admin_token
       row :shadow_banned
@@ -85,9 +86,6 @@ ActiveAdmin.register Event do
     column :offers do |event|
       event.offers.count
     end
-    column :requests do |event|
-      event.requests.count
-    end
   end
 
   show do
@@ -106,32 +104,6 @@ ActiveAdmin.register Event do
 
     panel "Offers (way back)" do
       table_for event.offers_way_back do
-        column :id do |entry|
-          link_to entry.id, admin_entry_path(entry)
-        end
-        column :name
-        column :seats
-        column :date
-        column :location
-        column :notes
-      end
-    end
-
-    panel "Requests (way there)" do
-      table_for event.requests_way_there do
-        column :id do |entry|
-          link_to entry.id, admin_entry_path(entry)
-        end
-        column :name
-        column :seats
-        column :date
-        column :location
-        column :notes
-      end
-    end
-
-    panel "Requests (way back)" do
-      table_for event.requests_way_back do
         column :id do |entry|
           link_to entry.id, admin_entry_path(entry)
         end

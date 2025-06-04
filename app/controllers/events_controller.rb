@@ -2,34 +2,28 @@ class EventsController < ApplicationController
   before_action :find_event!, only: [ :show, :edit, :update, :destroy, :confirm ]
   before_action :check_confirmed!, only: [ :show ]
   before_action :authenticate_user!, only: [ :edit, :update, :destroy, :confirm ]
-  before_action :set_noindex, only: [ :show, :edit, :update, :destroy, :confirm, :geojson ]
+  before_action :set_noindex, only: [ :show, :edit, :update, :destroy, :confirm ]
   before_action :set_title
+  before_action :set_geonames, only: [ :new, :edit, :create, :show ]
 
   def show
-    respond_to do |format|
-      format.html do
-        @entry_type = params.permit(:entry_type)[:entry_type] || :offer
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
 
-        @way_there_count = @event.entries.confirmed.where(entry_type: @entry_type, direction: :way_there).count
-        @way_back_count = @event.entries.confirmed.where(entry_type: @entry_type, direction: :way_back).count
+    @description = markdown.render(@event.description)
 
-        @offers_count = @event.entries.confirmed.where(entry_type: :offer).count
-        @requests_count = @event.entries.confirmed.where(entry_type: :request).count
+    @way_there_count = @event.entries.confirmed.where(direction: :way_there).count
+    @way_back_count = @event.entries.confirmed.where(direction: :way_back).count
+    @offers_count = @event.entries.confirmed.count
 
-        @entries = @event.entries.confirmed.where(entry_type: @entry_type)
-        @paginated_entries = @entries.page(params[:page])
-      end
+    p = params.fetch(:entries_filter, ActionController::Parameters.new).permit(:location, :latitude, :longitude, :radius)
+    @filter = EntriesFilter.new(p)
+    @filter.country ||= @event.default_country
 
-      format.json do
-        render json: {
-          name: @event.name,
-          description: @event.description,
-          end_date: @event.end_date,
-          entries_current: @event.entries.confirmed.count,
-          seats_added_total: @event.seats_added_total
-        }
-      end
-    end
+    Rails.logger.info "Filter params: #{p.inspect}"
+
+    @entries = @event.entries.confirmed
+    @filtered_entries = @filter.apply(@entries)
+    @paginated_entries = @filtered_entries.page(params[:page])
   end
 
   def index
@@ -93,38 +87,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def geojson
-    @event = Event.find(params[:event_id])
-    @entry_type = params.permit(:entry_type)[:entry_type]
-    @direction = params.permit(:direction)[:direction]
-
-    if @event.nil? || !@event.is_confirmed? || @entry_type.nil? || @direction.nil?
-      render json: { error: 'Not found' }, status: :not_found
-      return
-    end
-
-    @entries = @event.entries.confirmed
-      .where(entry_type: @entry_type, direction: @direction)
-
-    features = @entries.map do |entry|
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [entry.longitude, entry.latitude]
-        },
-        properties: {
-          url: event_entry_popup_path(@event, entry),
-        }
-      }
-    end
-
-    render json: {
-      type: 'FeatureCollection',
-      features: features
-    }
-  end
-
   private
 
   def set_title
@@ -156,6 +118,10 @@ class EventsController < ApplicationController
     end
   end
 
+  def set_geonames
+    @countries = helpers.get_countries(I18n.locale.to_s)
+  end
+
   def authenticate_user!
     token = params[:admin_token] || params.dig(:event, :admin_token)
 
@@ -165,11 +131,11 @@ class EventsController < ApplicationController
   end
 
   def event_create_params
-    params.require(:event).permit(:name, :description, :admin_email, :end_date)
+    params.require(:event).permit(:name, :description, :admin_email, :end_date, :default_country)
   end
 
   def event_update_params
-    params.require(:event).permit(:name, :description, :end_date)
+    params.require(:event).permit(:name, :description, :end_date, :default_country)
   end
 
   def altcha_params

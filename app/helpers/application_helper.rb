@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def url_params
-    params.permit(:locale, :direction, :entry_type, :admin_token)
+    params.permit(:locale, :direction, :admin_token)
   end
 
   def terms_and_conditions_prompt
@@ -25,17 +25,6 @@ module ApplicationHelper
       tos: link_to(t('tos'), tos_path),
       privacy_policy: link_to(t('privacy_policy'), privacy_path)
     ).html_safe
-  end
-
-  def icon_class_for_entry_type(t)
-    case t.to_sym
-    when :offer
-      'bi bi-gift'
-    when :request
-      'bi bi-search'
-    else
-      raise "Unknown entry type: #{t}"
-    end
   end
 
   def icon_class_for_transport(t)

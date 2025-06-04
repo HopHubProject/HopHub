@@ -65,7 +65,13 @@ Rails.application.configure do
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "warn")
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  config.action_controller.perform_caching = true
+
+  if ENV["HOPHUB_REDIS_CACHE"].present?
+    config.cache_store = :redis_cache_store, { url: ENV["HOPHUB_REDIS_CACHE"], expires_in: 10.days }
+  else
+    config.cache_store = :mem_cache_store
+  end
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque

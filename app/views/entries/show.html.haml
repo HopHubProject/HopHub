@@ -1,10 +1,7 @@
 .row.justify-content-center
   .col-12.col-lg-9
     %h1
-      -if @entry.is_offer?
-        =t('offer')
-      -else
-        =t('request')
+      =t('offer')
 
       ="(" + t(@entry.direction) + ") — "
       =@entry.name
@@ -28,13 +25,9 @@
             -if @entry.transport.to_sym == :car
               -if @entry.driver?
                 %br
-                -if @entry.is_offer?
-                  %b
-                    %i.bi.bi-exclamation-triangle.mx-1
-                    =t('driver-needed')
-                -else
-                  %i.bi.bi-heart.mx-1
-                  =t('driver-offer')
+                %b
+                  %i.bi.bi-exclamation-triangle.mx-1
+                  =t('driver-needed')
 
         %tr
           -if @entry.is_way_there?
@@ -82,7 +75,7 @@
             =f.submit t('entry_contact.send'), class: 'btn btn-primary w-100 mt-1'
 
           .col-sm-9.col-lg-3
-            =link_to event_entries_path(@entry.event, entry_type: @entry.entry_type, direction: @entry.direction),
+            =link_to event_entries_path(@entry.event, direction: @entry.direction),
               class: 'btn btn-default btn-outline-primary w-100 mt-1', role: 'button' do
               %i.bi.bi-arrow-left
               =@event.name

@@ -9,7 +9,7 @@ import "tempus-dominus";
 import "tempus-dominus-bi-one";
 import "altcha"
 import "confetti"
-import "maptiler"
+import "geonames"
 
 document.addEventListener("turbo:frame-missing", (event) => {
   console.log("turbo:frame-missing", event)

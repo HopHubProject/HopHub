@@ -20,38 +20,6 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       assert_redirected_to root_path(locale: locale)
     end
 
-    define_method("test_should_get_geojson_#{locale}") do
-      e = events(:two)
-
-      get event_geojson_url(e, entry_type: "offer", direction: "way_there", locale: locale)
-
-      assert_response :success
-      assert @response.headers["Content-Type"].include?("application/json")
-      assert @response.body.include?("FeatureCollection")
-    end
-
-    define_method("test_should_not_get_geojson_for_unconfirmed_event_#{locale}") do
-      e = events(:two)
-      e.update(confirmed_at: nil)
-
-      get event_geojson_url(e, entry_type: "offer", direction: "way_there", locale: locale)
-
-      assert_response :not_found
-      assert @response.headers["Content-Type"].include?("application/json")
-      assert @response.body.include?("error")
-    end
-
-    define_method("test_should_get_json_for_event_#{locale}") do
-      e = events(:one)
-
-      get event_url(e, format: :json, locale: locale)
-
-      assert_response :success
-      assert @response.headers["Content-Type"].include?("application/json")
-      assert @response.body.include?(e.name)
-      assert @response.body.include?(e.seats_added_total.to_s)
-    end
-
     define_method("test_should_get_redirect_to_root_for_a_non-existing_event_#{locale}") do
       get event_url("non-existing", locale: locale)
       assert_redirected_to root_path(locale: locale)
@@ -82,6 +50,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
           description: "description",
           admin_email: "foo@bla.com",
           end_date: Time.now + 1.day,
+          default_country: 'DE',
         }
       }
 
@@ -93,6 +62,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
           name: "name",
           admin_email: "foo@bla.com",
           end_date: Time.now + 1.day,
+          default_country: 'DE',
         }
       }
 
@@ -101,6 +71,19 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
         event: {
           name: "name",
           description: "description",
+          end_date: Time.now + 1.day,
+          default_country: 'DE',
+        }
+      }
+
+      assert_response :unprocessable_entity
+
+      # no default country
+      post events_url, params: {
+        event: {
+          name: "name",
+          description: "description",
+          admin_email: "foo@bla.com",
           end_date: Time.now + 1.day,
         }
       }
@@ -118,6 +101,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
             description: "description",
             admin_email: "foo@bla.com",
             end_date: Time.now + 1.day,
+            default_country: 'DE',
           },
           locale: locale
         }

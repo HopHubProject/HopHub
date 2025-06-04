@@ -58,7 +58,7 @@ class GdprControllerTest < ActionDispatch::IntegrationTest
     end
 
     define_method("test_should_create_positive_entry_gdpr_#{locale}") do
-      entry = entries(:rwt1)
+      entry = entries(:owt1)
 
       post gdpr_inquiries_url, params: {
         gdpr_inquiry: {

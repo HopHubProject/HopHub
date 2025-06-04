@@ -1,36 +1,34 @@
-.row.mb-3
-  .col-sm-12
-    .map-container
-      #map{ style: "height: 400px", 'data-apikey': ENV['MAPTILER_API_KEY'] }
-
 =turbo_frame_tag "entry_form" do
   =simple_form_for [@event, @entry] do |f|
-    =f.hidden_field :entry_type
     =f.hidden_field :latitude
     =f.hidden_field :longitude
     =f.hidden_field :token, value: params[:token]
 
-    =f.input :location
     =f.input :name
     -if method == :new
       =f.input :email
     =f.input :direction, as: :select,
-      collection: Entry::DIRECTIONS.map { |v| [t(v), v] },
-      default: @entry.direction,
-      label: t('simple_form.labels.entry.direction'),
-      hint: t('simple_form.hints.entry.direction')
+      collection: Entry::DIRECTIONS.map { |v| [t(v), v] }
+    =f.input :location
+    =f.input :country,
+      as: :select,
+      class: 'form-control',
+      collection: @countries,
+      wrapper: :horizontal_form_no_validation,
+      include_blank: false,
+      novalidate: true,
+      input_html: { required: false, novalidate: true }
+
     =f.input :transport, as: :select,
-      collection: @transport_types.map { |v| [t("transport.#{v}"), v] },
-      include_blank: @entry.is_offer?,
-      blank: t('simple_form.labels.entry.transport'),
-      label: t('simple_form.labels.entry.transport'),
-      hint: t('simple_form.hints.entry.transport')
+      collection: Entry::TRANSPORTS.map { |v| [t("transport.#{v}"), v] },
+      include_blank: true,
+      blank: t('simple_form.labels.entry.transport')
     .collapse#carInputs
       =f.input :driver, as: :boolean,
-        label: @entry.is_offer? ? t('simple_form.labels.entry.driver-needed') : t('simple_form.labels.entry.driver-offer'),
-        hint: @entry.is_offer? ? t('simple_form.hints.entry.driver-needed') : t('simple_form.hints.entry.driver-offer')
+        label: t('simple_form.labels.entry.driver-needed'),
+        hint: t('simple_form.hints.entry.driver-needed')
       =f.input :seats,
-        hint: @entry.is_offer? ? t('simple_form.hints.entry.seats-available') : t('simple_form.hints.entry.seats-needed')
+        hint: t('simple_form.hints.entry.seats-available')
     =f.input :date,
       as: :string,
       input_html: { value: @entry.date&.strftime('%d/%m/%Y %H:%M') }
@@ -53,7 +51,7 @@
 
       .col-sm-9.col-lg-3
         -if method == :new
-          =link_to t('cancel'), event_entries_path(@event, entry_type: @entry.entry_type, direction: @entry.direction),
+          =link_to t('cancel'), event_entries_path(@event, direction: @entry.direction),
             class: 'btn btn-default btn-light w-100 mt-1', role: 'button'
         -else
           =link_to t('entry_delete.title'),
@@ -106,5 +104,47 @@
     }
   };
 
+  add_geocode_handler = () => {
+    console.log('Adding geocode handler');
+
+    if (window.entryGeocodeHandlerAdded === true) {
+      console.log('Geocode handler already added');
+      return;
+    }
+
+    const config = {
+      url: '#{j postal_code_search_path}',
+    };
+
+    const elements = {
+      locationInput: document.getElementById('entry_location'),
+      latitudeInput: document.getElementById('entry_latitude'),
+      longitudeInput: document.getElementById('entry_longitude'),
+      countryInput: document.getElementById('entry_country'),
+    };
+
+    if (!elements.locationInput || !elements.latitudeInput || !elements.longitudeInput) {
+      console.warn('Geocoding elements not found');
+      return;
+    }
+
+    elements.locationInput.addEventListener('input', (e) => {
+      resolveZipCode(elements.locationInput.value, elements, config);
+    });
+
+    elements.countryInput.addEventListener('input', (e) => {
+      elements.latitudeInput.value = '';
+      elements.longitudeInput.value = '';
+      elements.locationInput.value = '';
+    });
+
+    console.log('Geocode handler added');
+
+    window.entryGeocodeHandlerAdded = true;
+  };
+
   document.addEventListener('turbo:load', init_collapse);
   document.addEventListener('turbo:frame-load', init_collapse);
+
+  document.addEventListener('turbo:load', add_geocode_handler);
+  document.addEventListener('turbo:frame-load', add_geocode_handler);
