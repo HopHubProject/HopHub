@@ -9,7 +9,7 @@ class Entry < ActiveRecord::Base
   validates_presence_of :name
 
   validates_presence_of :email
-  validates_format_of :email, with: /\A[\w\-\.]+@([\w-]+\.)+[\w-]{2,}\z/
+  validates_format_of :email, with: /\A[\w\-\.\+]+@([\w-]+\.)+[\w-]{2,}\z/
 
   validates_presence_of :transport
   validates_inclusion_of :transport, in: TRANSPORTS
