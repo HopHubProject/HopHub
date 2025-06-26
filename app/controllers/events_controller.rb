@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
     Rails.logger.info "Filter params: #{p.inspect}"
 
-    @entries = @event.entries.confirmed
+    @entries = @event.entries.confirmed.in_future
     @filtered_entries = @filter.apply(@entries)
     @paginated_entries = @filtered_entries.page(params[:page])
   end
