@@ -381,6 +381,9 @@ en:
         notes: Got any additional notes? Share them here.
       entries_filter:
         location: Enter a zip code
+      contact_email:
+        name: Name or pseudonym
+        from: Email address
 
     errors:
       entry:

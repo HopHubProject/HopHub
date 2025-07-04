@@ -401,6 +401,9 @@ es:
         notes: ¿Tienes alguna nota adicional? Compártela aquí.
       entries_filter:
         location: Código postal
+      contact_email:
+        name: Nombre o seudónimo
+        from: Dirección de correo electrónico
 
     errors:
       entry:

@@ -402,6 +402,9 @@ de:
         notes: Noch irgendwas zu sagen? Hier ist Platz dafür.
       entries_filter:
         location: Postleitzahl
+        contact_email:
+          name: Name oder Pseudonym
+          from: E-Mail-Adresse
 
     errors:
       entry:
