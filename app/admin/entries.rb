@@ -5,7 +5,6 @@ ActiveAdmin.register Entry do
   scope :in_future
   scope :confirmed
   scope :unconfirmed
-  scope :offer
   scope :way_there
   scope :way_back
 
