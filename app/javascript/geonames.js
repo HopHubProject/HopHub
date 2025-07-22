@@ -8,7 +8,11 @@ export function resolveZipCode(s, elements, config) {
   elements.latitudeInput.value = '';
   elements.longitudeInput.value = '';
 
-  if (s.length > 3) {
+  s = s.trim();
+  const match = s.match(/\d{4,}/);
+  s = match ? match[0] : '';
+
+  if (s.length > 0) {
     const countryCode = elements.countryInput.value;
     const url = `${config.url}&postal_code=${encodeURIComponent(s)}&country_code=${encodeURIComponent(countryCode)}`;
 
