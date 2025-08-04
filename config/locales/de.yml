@@ -11,6 +11,14 @@ de:
   theme: Design
   home: Startseite
 
+  meta:
+    description:
+      default: HopHub ist eine Mitfahr-Plattform für Veranstaltungen.
+      event: |
+        Mitfahr-Angebote für %{event_name} auf HopHub.
+      entry: |
+        Mitfahr-Angebot von %{name} für %{event_name} auf HopHub.
+
   terms_and_conditions:
     prompt: |
       Ich habe die %{tos} und %{privacy_policy} gelesen und stimme diesen zu.

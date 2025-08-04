@@ -22,12 +22,16 @@
     -if @noindex == true
       %meta{content: "noindex, nofollow", name: "robots"}
 
-    %meta{content: "Social ride sharing for events", property: "og:description"}
-    %meta{content: "Social ride sharing for events", property: "description"}
-    %meta{content: image_url('hophub-og.png'), property: "og:image"}
-    %meta{content: "https://hophub.xyz", property: "og:url"}
-    %meta{content: "HopHub", property: "og:site_name"}
+    %meta{content: meta_description(), property: "og:description"}
+    %meta{content: meta_description(), property: "description"}
+
+    %meta{content: "HopHub", property: "title"}
     %meta{content: "HopHub", property: "og:title"}
+
+    %meta{content: image_url('hophub-og.png'), property: "og:image"}
+    %meta{content: ENV["HOPHUB_BASE_URL"], property: "og:url"}
+    %meta{content: "HopHub", property: "og:site_name"}
+
     %meta{content: "website", property: "og:type"}
   %body
     %nav.navbar.bg-body-tertiary.navbar-expand-sm
