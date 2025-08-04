@@ -13,6 +13,14 @@ module ApplicationHelper
     params.permit(:locale, :direction, :admin_token)
   end
 
+  def meta_description
+    if @meta_description
+      @meta_description
+    else
+      t('meta.description.default')
+    end
+  end
+
   def terms_and_conditions_prompt
     t('terms_and_conditions.prompt',
       tos: link_to(t('tos'), tos_path),

@@ -11,6 +11,14 @@ es:
   theme: Tema
   home: Inicio
 
+  meta:
+    description:
+      default: HopHub es una plataforma de viajes compartidos para eventos.
+      event: |
+        Ofertas de viaje para %{event_name} en HopHub.
+      entry: |
+        Oferta de viaje de %{name} para %{event_name} en HopHub.
+
   terms_and_conditions:
     prompt: |
       ¿Has leído los %{tos} y la %{privacy_policy}?

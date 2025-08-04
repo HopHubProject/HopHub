@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
   before_action :check_confirmed!, only: [ :show ]
   before_action :authenticate_user!, only: [ :edit, :update, :destroy, :confirm ]
   before_action :set_title
-  before_action :set_noindex
+  before_action :set_meta_tags
 
   def index
     redirect_to @event
@@ -115,8 +115,9 @@ class EntriesController < ApplicationController
     @title.push @entry.name unless @entry.nil?
   end
 
-  def set_noindex
+  def set_meta_tags
     @noindex = true
+    @meta_description = t('meta.description.entry', name: @entry.name, event_name: @event.name) if @entry
   end
 
   def verify_altcha

@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :find_event!, only: [ :show, :edit, :update, :destroy, :confirm ]
   before_action :check_confirmed!, only: [ :show ]
   before_action :authenticate_user!, only: [ :edit, :update, :destroy, :confirm ]
-  before_action :set_noindex, only: [ :show, :edit, :update, :destroy, :confirm ]
+  before_action :set_meta_tags, only: [ :show, :edit, :update, :destroy, :confirm ]
   before_action :set_title
   before_action :set_geonames, only: [ :new, :edit, :create, :show ]
 
@@ -94,8 +94,9 @@ class EventsController < ApplicationController
     @title.push @event.name unless @event.nil?
   end
 
-  def set_noindex
+  def set_meta_tags
     @noindex = true
+    @meta_description = t('meta.description.event', event_name: @event.name)
   end
 
   def verify_altcha

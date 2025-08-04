@@ -11,6 +11,14 @@ en:
   theme: Theme
   home: Home
 
+  meta:
+    description:
+      default: HopHub is a ride sharing platform for events.
+      event: |
+        Ride offers for %{event_name} on HopHub.
+      entry: |
+        Ride offer from %{name} for %{event_name} on HopHub.
+
   terms_and_conditions:
     prompt: |
       I have read the %{tos} and %{privacy_policy} and agree to them.
