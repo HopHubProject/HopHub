@@ -1,14 +1,16 @@
 # HELP num_events Total number of events
 # TYPE num_events gauge
-num_events{status="confirmed"}   <%= @events[:confirmed] %>   <%= @timestamp %>
-num_events{status="unconfirmed"} <%= @events[:unconfirmed] %> <%= @timestamp %>
+num_events{status="confirmed"}   <%= Event.confirmed.count %>   <%= @timestamp %>
+num_events{status="unconfirmed"} <%= Event.unconfirmed.count %> <%= @timestamp %>
 
-# HELP num_entries Total number of entries
+# HELP num_entries Number of entries per confirmed event and status
 # TYPE num_entries gauge
-num_entries{status="unconfirmed"}                  <%= @entries[:unconfirmed] %>        <%= @timestamp %>
-num_entries{type="offer", direction="way_there"}   <%= @entries[:offers_way_there] %>   <%= @timestamp %>
-num_entries{type="offer", direction="way_back"}    <%= @entries[:offers_way_back] %>    <%= @timestamp %>
+<% Event.confirmed.each do |e| %>
+num_entries{event_id="<%= e.id %>", status="unconfirmed"}                      <%= e.entries.unconfirmed.count %>         <%= @timestamp %>
+num_entries{event_id="<%= e.id %>", status="confirmed", direction="way_there"} <%= e.entries.confirmed.way_there.count %> <%= @timestamp %>
+num_entries{event_id="<%= e.id %>", status="confirmed", direction="way_back"}  <%= e.entries.confirmed.way_back.count %>  <%= @timestamp %>
+<% end %>
 
 # HELP num_altcha_solutions Total number of altcha solutions
 # TYPE num_altcha_solutions gauge
-num_altcha_solutions <%= @altcha_solutions %> <%= @timestamp %>
+num_altcha_solutions <%= AltchaSolution.count %> <%= @timestamp %>
