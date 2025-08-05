@@ -2,7 +2,7 @@
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title= @title.join(' | ')
+    %title= title()
     %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
     =csrf_meta_tags
     =csp_meta_tag
@@ -25,8 +25,8 @@
     %meta{content: meta_description(), property: "og:description"}
     %meta{content: meta_description(), property: "description"}
 
-    %meta{content: "HopHub", property: "title"}
-    %meta{content: "HopHub", property: "og:title"}
+    %meta{content: title(), property: "title"}
+    %meta{content: title(), property: "og:title"}
 
     %meta{content: image_url('hophub-og.png'), property: "og:image"}
     %meta{content: ENV["HOPHUB_BASE_URL"], property: "og:url"}

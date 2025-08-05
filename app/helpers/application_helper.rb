@@ -13,6 +13,10 @@ module ApplicationHelper
     params.permit(:locale, :direction, :admin_token)
   end
 
+  def title
+    @title.join(" | ")
+  end
+
   def meta_description
     if @meta_description
       @meta_description
