@@ -14,7 +14,7 @@ class GdprInquiriesController < ApplicationController
         @inquiry.errors.add(:altcha, t('terms_and_conditions.error'))
       end
 
-      render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_content
       return
     end
 

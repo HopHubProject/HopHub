@@ -46,7 +46,7 @@ class EventsController < ApplicationController
 
     unless verify_altcha
       @event.errors.add(:altcha, t('terms_and_conditions.error'))
-      render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_content
       return
     end
 
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
       EventMailer.with(event: @event).created.deliver
       redirect_to root_path, flash: { success: t('flash.event_created') }
     else
-      render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_content
     end
   end
 
@@ -84,7 +84,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event, flash: { success: 'Event was successfully updated.' }
     else
-      render 'edit', status: :unprocessable_entity
+      render 'edit', status: :unprocessable_content
     end
   end
 

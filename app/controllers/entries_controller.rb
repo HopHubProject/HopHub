@@ -30,7 +30,7 @@ class EntriesController < ApplicationController
 
     unless verify_altcha
       @entry.errors.add(:altcha, t('terms_and_conditions.error'))
-      render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_content
       return
     end
 
@@ -44,7 +44,7 @@ class EntriesController < ApplicationController
 
       @entry.country ||= @event.default_country
 
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -52,7 +52,7 @@ class EntriesController < ApplicationController
     if @entry.update(entry_update_params)
       redirect_to event_entry_path(@event, @entry), flash: { success: t('flash.entry_updated') }
     else
-      render 'edit', status: :unprocessable_entity
+      render 'edit', status: :unprocessable_content
     end
   end
 
@@ -92,7 +92,7 @@ class EntriesController < ApplicationController
           @contact_email.errors.add(:altcha, t('terms_and_conditions.error'))
         end
 
-        render 'show', status: :unprocessable_entity
+        render 'show', status: :unprocessable_content
       return
     end
 

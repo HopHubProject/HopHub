@@ -42,7 +42,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
         locale: locale
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no name
       post events_url, params: {
@@ -50,11 +50,11 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
           description: "description",
           admin_email: "foo@bla.com",
           end_date: Time.now + 1.day,
-          default_country: 'DE',
+          default_country: "DE",
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no description
       post events_url, params: {
@@ -62,7 +62,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
           name: "name",
           admin_email: "foo@bla.com",
           end_date: Time.now + 1.day,
-          default_country: 'DE',
+          default_country: "DE",
         }
       }
 
@@ -72,11 +72,11 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
           name: "name",
           description: "description",
           end_date: Time.now + 1.day,
-          default_country: 'DE',
+          default_country: "DE",
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no default country
       post events_url, params: {
@@ -88,7 +88,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
     end
 
     define_method("test_should_get_email_after_create_#{locale}") do
@@ -101,7 +101,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
             description: "description",
             admin_email: "foo@bla.com",
             end_date: Time.now + 1.day,
-            default_country: 'DE',
+            default_country: "DE",
           },
           locale: locale
         }

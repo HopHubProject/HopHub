@@ -18,7 +18,7 @@ class GdprControllerTest < ActionDispatch::IntegrationTest
         locale: locale
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
     end
 
     define_method("test_should_create_negative_gdpr_#{locale}") do

@@ -59,7 +59,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no email
       post event_entries_url(e), params: {
@@ -73,7 +73,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no direction
       post event_entries_url(e), params: {
@@ -87,7 +87,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         locale: locale
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no date
       post event_entries_url(e), params: {
@@ -100,7 +100,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no seats
       post event_entries_url(e), params: {
@@ -113,7 +113,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # non-numeric seats
       post event_entries_url(e), params: {
@@ -127,7 +127,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
     end
 
     define_method "test_should_create_entry_#{locale}" do
@@ -280,7 +280,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no from
       post event_entry_contact_emails_url(x.event, x), params: {
@@ -291,7 +291,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       # no text
       post event_entry_contact_emails_url(x.event, x), params: {
@@ -302,7 +302,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
     end
 
     define_method "test_should_send_contact_mail_#{locale}" do
