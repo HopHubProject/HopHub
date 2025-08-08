@@ -7,9 +7,10 @@ class EventsController < ApplicationController
   before_action :set_geonames, only: [ :new, :edit, :create, :show ]
 
   def show
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
-
-    @description = markdown.render(@event.description)
+    renderer = Redcarpet::Render::HTML.new(no_styles: true, hard_wrap: true, filter_html: true)
+    markdown = Redcarpet::Markdown.new(renderer, autolink: true, tables: true)
+    description = markdown.render(@event.description)
+    @description = ActionController::Base.helpers.sanitize(description)
 
     @way_there_count = @event.entries.confirmed.where(direction: :way_there).count
     @way_back_count = @event.entries.confirmed.where(direction: :way_back).count

@@ -2,11 +2,13 @@ class ContentsController < ApplicationController
   private
 
   def method_missing(method, *args, &block)
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+    renderer = Redcarpet::Render::HTML.new(no_styles: true, hard_wrap: true, filter_html: true)
+    markdown = Redcarpet::Markdown.new(renderer, autolink: true, tables: true)
     c = Content.for(args.first, I18n.locale)
 
     unless c.nil?
-      @content = markdown.render(c.content)
+      rendered = markdown.render(c.content)
+      @content = ActionController::Base.helpers.sanitize(rendered)
       @title.push c.title
     else
       @content = ""
