@@ -71,7 +71,7 @@ h4 {
   font-weight: bold;
 }
 
-.event-description {
+.event-description > * {
   transform: scale(0.9);
   transform-origin: top left;
   overflow: hidden;
