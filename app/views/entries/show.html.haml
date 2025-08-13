@@ -39,7 +39,7 @@
 
         %tr
           %th= t('activerecord.fields.entry.notes')
-          %td= @entry.notes
+          %td= auto_link @entry.notes
 
     =turbo_frame_tag 'entry_contact' do
       =simple_form_for [@event, @entry, @contact_email] do |f|

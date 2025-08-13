@@ -46,6 +46,7 @@ gem 'simple_form'
 gem 'activeadmin', "4.0.0.beta16"
 gem 'base64'
 gem 'redcarpet'
+gem 'rails_autolink'
 gem 'geokit-rails'
 gem 'rest-client'
 gem 'dalli'

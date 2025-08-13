@@ -277,6 +277,10 @@ GEM
     rails-i18n (8.0.1)
       i18n (>= 0.7, < 2)
       railties (>= 8.0.0, < 9)
+    rails_autolink (1.1.8)
+      actionview (> 3.1)
+      activesupport (> 3.1)
+      railties (> 3.1)
     railties (8.0.2.1)
       actionpack (= 8.0.2.1)
       activesupport (= 8.0.2.1)
@@ -396,6 +400,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0)
   rails-i18n
+  rails_autolink
   redcarpet
   redis (>= 4.0.1)
   rest-client

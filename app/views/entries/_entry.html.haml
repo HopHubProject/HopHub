@@ -46,9 +46,10 @@
             =t('activerecord.fields.entry.phone') + ':'
             =entry.phone
           %br
-        %span
-          =t('activerecord.fields.entry.notes') + ':'
-          =entry.notes
+        -unless entry.notes.blank?
+          %span
+            =t('activerecord.fields.entry.notes') + ':'
+            =auto_link entry.notes
 
   .col-12.col-md-2
     =link_to t('entry_contact.title'), event_entry_path(entry.event, entry), class: 'btn btn-outline-primary btn-sm w-100', role: 'button'
