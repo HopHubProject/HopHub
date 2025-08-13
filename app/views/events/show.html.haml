@@ -5,7 +5,7 @@
       %i.bi.bi-calendar
       =t('event_valid_until', date: l(@event.end_date.to_date, format: :long_with_dow))
 
-    .shadow.p-3.mb-3.bg-body.rounded.mt-3.pb-1
+    .shadow.pt-3.px-3.bg-body.rounded.mt-3
       .event-description
         =@description.html_safe
 
