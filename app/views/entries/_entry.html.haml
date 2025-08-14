@@ -1,56 +1,64 @@
 .row
-  .col-10.col-md-10{id: "entry-#{entry.id}"}
+  .col-12.col-md-3
     %button.accordion-button.collapsed{
       type: 'button',
       data: {bs_toggle: 'collapse', bs_target: "#entry-details-#{entry.id}"},
       aria: {expanded: 'false', controls: "entry-#{entry.id}"},
     }
-      .col-12.col-md-3
-        %span
-          %b=entry.name
-          -unless [:bicycle, :foot].include? entry.transport.to_sym or entry.seats == 0
-            –
-            %span=pluralize(entry.seats, t('seat.one'), t('seat.other'))
-        %br
-        %span.d-lg-none
-          =t('simple_form.labels.entry.transport') + ':'
-        %span
-          %i.mx-1{class: icon_class_for_transport(entry.transport)}
-          =t("transport.#{entry.transport}")
+      %span
+        %b=entry.name
+        -unless [:bicycle, :foot].include? entry.transport.to_sym or entry.seats == 0
+          –
+          %span=pluralize(entry.seats, t('seat.one'), t('seat.other'))
+      %br
+      %span.d-lg-none
+        =t('simple_form.labels.entry.transport') + ':'
+      %span
+        %i.mx-1{class: icon_class_for_transport(entry.transport)}
+        =t("transport.#{entry.transport}")
 
-      .col-12.col-md-1
-        %span=l entry.date, format: :time
-      .col-12.col-md-6
-        %span
-          -if entry.is_way_there?
-            =entry.location
-            →
-            %b=entry.event.name
-          -else
-            %b=entry.event.name
-            →
-            =entry.location
-        -if entry.transport.to_sym == :car && entry.driver?
-          %p
-            %b
-              %i.bi.bi-exclamation-triangle
-              =t('driver-needed')
-
-    .accordion-collapse.collapse{
-      id: "entry-details-#{entry.id}",
-      "aria-labelledby": "entry-#{entry.id}",
-      "data-bs-parent": "#entry-#{entry.id}"}
-      .accordion-body.py-2
-        -unless entry.phone.blank?
-          %span
-            %i.bi.bi-telephone.mx-2
-            =entry.phone
-          %br
-        -unless entry.notes.blank?
-          %span
-            %i.bi.bi-info-circle.mx-2
-            =auto_link entry.notes
+  .col-12.col-md-1
+    %button.accordion-button.collapsed{
+      type: 'button',
+      data: {bs_toggle: 'collapse', bs_target: "#entry-details-#{entry.id}"},
+      aria: {expanded: 'false', controls: "entry-#{entry.id}"},
+    }
+      %span=l entry.date, format: :time
+  .col-12.col-md-6
+    %button.accordion-button.collapsed{
+      type: 'button',
+      data: {bs_toggle: 'collapse', bs_target: "#entry-details-#{entry.id}"},
+      aria: {expanded: 'false', controls: "entry-#{entry.id}"},
+    }
+      %span
+        -if entry.is_way_there?
+          =entry.location
+          →
+          %b=entry.event.name
+        -else
+          %b=entry.event.name
+          →
+          =entry.location
+    -if entry.transport.to_sym == :car && entry.driver?
+      %p
+        %b
+          %i.bi.bi-exclamation-triangle
+          =t('driver-needed')
 
   .col-12.col-md-2
     =link_to t('entry_contact.title'), event_entry_path(entry.event, entry), class: 'btn btn-outline-primary btn-sm w-100', role: 'button'
 
+.row.accordion-collapse.collapse{
+  id: "entry-details-#{entry.id}",
+  "aria-labelledby": "entry-#{entry.id}",
+  "data-bs-parent": "#entry-#{entry.id}"}
+  .accordion-body.py-2
+    -unless entry.phone.blank?
+      %span
+        %i.bi.bi-telephone.mx-2
+        =entry.phone
+      %br
+    -unless entry.notes.blank?
+      %span
+        %i.bi.bi-info-circle.mx-2
+        =auto_link entry.notes
