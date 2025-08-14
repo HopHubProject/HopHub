@@ -43,12 +43,12 @@
       .accordion-body.py-2
         -unless entry.phone.blank?
           %span
-            =t('activerecord.fields.entry.phone') + ':'
+            %i.bi.bi-telephone.mx-2
             =entry.phone
           %br
         -unless entry.notes.blank?
           %span
-            =t('activerecord.fields.entry.notes') + ':'
+            %i.bi.bi-info-circle.mx-2
             =auto_link entry.notes
 
   .col-12.col-md-2
