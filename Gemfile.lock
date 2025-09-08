@@ -233,7 +233,7 @@ GEM
     nio4r (2.7.4)
     nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
-    pg (1.6.1-x86_64-linux)
+    pg (1.6.2-x86_64-linux)
     popper_js (2.11.8)
     pp (0.6.2)
       prettyprint
