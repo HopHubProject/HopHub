@@ -155,7 +155,7 @@ GEM
       rails (>= 3.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.32.0-x86_64-linux-gnu)
+    google-protobuf (4.32.1-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
     haml (6.3.0)
@@ -211,7 +211,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.0.4)
+    marcel (1.1.0)
     matrix (0.4.3)
     mime-types (3.7.0)
       logger
@@ -231,7 +231,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.4)
-    nokogiri (1.18.9-x86_64-linux-gnu)
+    nokogiri (1.18.10-x86_64-linux-gnu)
       racc (~> 1.4)
     pg (1.6.2-x86_64-linux)
     popper_js (2.11.8)
@@ -242,7 +242,7 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (7.0.2)
+    puma (7.0.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.1)
@@ -302,7 +302,7 @@ GEM
       redis-client (>= 0.22.0)
     redis-client (0.25.3)
       connection_pool
-    regexp_parser (2.11.2)
+    regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
     responders (3.1.1)
