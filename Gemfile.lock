@@ -54,7 +54,7 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activeadmin (4.0.0.beta18)
+    activeadmin (4.0.0.beta19)
       arbre (~> 2.0)
       csv
       formtastic (>= 5.0)
@@ -222,7 +222,7 @@ GEM
       mime-types-data (~> 3.2025, >= 3.2025.0507)
     mime-types-data (3.2025.0924)
     mini_mime (1.1.5)
-    minitest (5.26.1)
+    minitest (5.26.2)
     msgpack (1.8.0)
     net-imap (0.5.12)
       date
@@ -383,7 +383,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activeadmin (= 4.0.0.beta18)
+  activeadmin (= 4.0.0.beta19)
   altcha-rails
   base64
   bootsnap
