@@ -110,6 +110,31 @@ abbr[title] {
   margin-top: 4px;
 }
 
+.entry-summary-grid {
+  display: grid;
+  width: 100%;
+  text-align: left;
+  gap: 0.25rem 1rem;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "name  name"
+    "time  route";
+
+  @media (min-width: 768px) {
+    grid-template-columns: 3fr auto 6fr;
+    grid-template-areas: "name time route";
+    align-items: center;
+  }
+}
+
+.entry-name  { grid-area: name; }
+.entry-time  { grid-area: time; white-space: nowrap; }
+.entry-route { grid-area: route; }
+
+.entry-row + .entry-row {
+  margin-top: 0.5rem;
+}
+
 a {
   text-decoration: none;
 }
