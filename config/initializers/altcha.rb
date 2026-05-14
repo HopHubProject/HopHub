@@ -6,6 +6,6 @@ Altcha.setup do |config|
   else
     config.max_number = 2
   end
-  config.timeout = 5.minutes
+  config.timeout = 24.hours
   config.hmac_key = ENV['ALTCHA_HMAC_KEY'] || 'altcha'
 end
