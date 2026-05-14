@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
   private
 
   def self.ransackable_associations(auth_object = nil)
-    ["entries"]
+    ["entries", "ride_requests"]
   end
 
   def self.ransackable_attributes(auth_object = nil)
