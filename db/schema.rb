@@ -89,6 +89,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_14_140000) do
     t.index ["event_id"], name: "index_ride_requests_on_event_id"
   end
 
-  add_foreign_key "entries", "events"
   add_foreign_key "ride_requests", "events"
 end

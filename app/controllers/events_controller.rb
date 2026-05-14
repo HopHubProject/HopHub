@@ -151,6 +151,7 @@ class EventsController < ApplicationController
     RideRequest::DIRECTIONS.each_with_object({}) do |direction, hash|
       scoped = requests.where(direction: direction)
       origins = scoped
+        .unscope(:order)
         .group(:location, :country)
         .count
         .map { |(location, country), count|
