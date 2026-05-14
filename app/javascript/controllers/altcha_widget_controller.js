@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import "altcha"
 
 // Installs altcha v3 i18n strings that contain HTML (rendered by Rails as
 // trusted i18n) and then patches the rendered <altcha-widget> labels in

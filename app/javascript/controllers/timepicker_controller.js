@@ -1,4 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
+import "tempus-dominus"
+import "tempus-dominus-bi-one"
 
 // Wraps a text input in a Tempus Dominus date/time picker. Loaded via
 // data-controller="timepicker" on the input element. Optional values:

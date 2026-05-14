@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import "confetti"
 
 // Fades the flash container out after a delay and removes it from the DOM.
 // If the flash contains a success alert (the controller's element has a child
