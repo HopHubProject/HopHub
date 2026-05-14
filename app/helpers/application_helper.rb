@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def url_params
-    params.permit(:locale, :direction, :admin_token)
+    params.slice(:locale, :direction, :admin_token).permit!
   end
 
   def title
