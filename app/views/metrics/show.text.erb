@@ -10,3 +10,11 @@ num_entries{event_id="<%= e.id %>", status="unconfirmed"}                      <
 num_entries{event_id="<%= e.id %>", status="confirmed", direction="way_there"} <%= e.entries.confirmed.way_there.count %> <%= @timestamp %>
 num_entries{event_id="<%= e.id %>", status="confirmed", direction="way_back"}  <%= e.entries.confirmed.way_back.count %>  <%= @timestamp %>
 <% end %>
+
+# HELP num_ride_requests Number of ride requests per confirmed event and status
+# TYPE num_ride_requests gauge
+<% Event.confirmed.each do |e| %>
+num_ride_requests{event_id="<%= e.id %>", status="unconfirmed"}                      <%= e.ride_requests.unconfirmed.count %>         <%= @timestamp %>
+num_ride_requests{event_id="<%= e.id %>", status="confirmed", direction="way_there"} <%= e.ride_requests.confirmed.way_there.count %> <%= @timestamp %>
+num_ride_requests{event_id="<%= e.id %>", status="confirmed", direction="way_back"}  <%= e.ride_requests.confirmed.way_back.count %>  <%= @timestamp %>
+<% end %>
