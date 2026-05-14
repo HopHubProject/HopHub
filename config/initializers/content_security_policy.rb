@@ -29,6 +29,12 @@ Rails.application.configure do
     policy.form_action     :self
     policy.frame_ancestors :none
 
+    # Violations are POSTed to CspReportsController, which logs them to the
+    # Rails log. Without this directive the browser warns that report-only
+    # mode "cannot report violations" and the policy effectively just sits
+    # in the developer's own DevTools console.
+    policy.report_uri "/csp-reports"
+
     # Plausible analytics: the script is served from PLAUSIBLE_SRC and reports
     # back to the same host. Both fetches need to be allowed when configured.
     if ENV["PLAUSIBLE_SRC"].present?

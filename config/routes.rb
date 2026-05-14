@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "metrics" => "metrics#show", defaults: { format: 'txt' }
 
+  # Browser-posted CSP violation reports (see config/initializers/content_security_policy.rb).
+  post "csp-reports" => "csp_reports#create"
+
   # Defines the root path route ("/")
   root "home#index"
 
