@@ -4,3 +4,7 @@
 //= link_tree ../builds
 //= link application.css
 //= link application.bootstrap.css
+//= link bootstrap-icons.css
+//= link tempus-dominus.css
+//= link bootstrap-icons.woff2
+//= link bootstrap-icons.woff

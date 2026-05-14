@@ -133,6 +133,43 @@ The application itself does not manage user accounts and roles, and without exte
 
 Similarily, the the `/metrics` and `/up` paths are probably also something you want to protect.
 
+## Updating vendored JavaScript and CSS
+
+Third-party JS, CSS, and fonts are vendored under `vendor/javascript/` and
+`vendor/assets/`. JS deps are pinned in `config/importmap.rb` with a
+`# @<version>` comment recording the version of the file currently on disk.
+CSS deps have no pin file — the version is recorded in the table below and in
+git history. The file on disk *is* the pin: nothing reaches out to a CDN at
+runtime, and a vendored file only changes when you re-download.
+
+To upgrade a dependency:
+
+1. Re-download the new version into the matching directory below.
+2. For JS deps: update the `# @<version>` comment in `config/importmap.rb`.
+3. Run `bin/rails test` and start the app to verify nothing broke.
+
+Source URLs (replace `<ver>` to upgrade):
+
+| File                                              | Source                                                                                                          |
+|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| `vendor/javascript/bootstrap.js`                  | `https://cdn.jsdelivr.net/npm/bootstrap@<ver>/dist/js/bootstrap.min.js`                                         |
+| `vendor/javascript/popper.js`                     | `https://cdn.jsdelivr.net/npm/@popperjs/core@<ver>/dist/umd/popper.min.js`                                      |
+| `vendor/javascript/tempus-dominus.js`             | `https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@<ver>/dist/js/tempus-dominus.min.js`                     |
+| `vendor/javascript/tempus-dominus-bi-one.js`      | `https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@<ver>/dist/plugins/bi-one.js`                            |
+| `vendor/javascript/altcha.js`                     | `https://cdn.jsdelivr.net/npm/altcha@<ver>/+esm`                                                                |
+| `vendor/javascript/confetti.js`                   | `https://cdn.jsdelivr.net/npm/canvas-confetti@<ver>/dist/confetti.browser.min.js`                               |
+| `vendor/javascript/es-module-shims.js`            | `https://cdn.jsdelivr.net/npm/es-module-shims@<ver>/dist/es-module-shims.min.js`                                |
+| `vendor/assets/stylesheets/tempus-dominus.css`    | `https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@<ver>/dist/css/tempus-dominus.min.css`                   |
+| `vendor/assets/stylesheets/bootstrap-icons.css.erb` | `https://cdn.jsdelivr.net/npm/bootstrap-icons@<ver>/font/bootstrap-icons.min.css` *(after download, replace the `url("fonts/...")` references with `<%= asset_path("bootstrap-icons.woff2") %>` / `.woff`)* |
+| `vendor/assets/fonts/bootstrap-icons.woff2`       | `https://cdn.jsdelivr.net/npm/bootstrap-icons@<ver>/font/fonts/bootstrap-icons.woff2`                           |
+| `vendor/assets/fonts/bootstrap-icons.woff`        | `https://cdn.jsdelivr.net/npm/bootstrap-icons@<ver>/font/fonts/bootstrap-icons.woff`                            |
+
+Once vendored, these files are served by Sprockets from `/assets/<name>-<hash>.<ext>`
+with fingerprinted filenames, so cache busting on upgrade is automatic.
+Subresource-Integrity (SRI) hashes are computed by Sprockets and emitted by
+`stylesheet_link_tag ..., integrity: true` and by importmap-rails for JS pins,
+so the browser will refuse to execute or apply a tampered file.
+
 ## Run tests
 
 ```sh
@@ -232,7 +269,7 @@ Consider the following aspects when crafting the privacy policy for your instanc
 - When a user contacts another user through the platform, the email address of the sender is used as the Reply-To address in the email. Neither the email address of the sender nor the text they write is stored in the database.
 - The GDPR information tool allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events and offers that are associated with the email address with links to delete the data.
 - Geonames is used to resolve locations to latitude and longitude. The Geonames API is called with the location name and the Geonames username. The IP address of the client is not sent to the Geonames API. More information can be found in the [Geonames privacy policy](https://www.geonames.org/export/privacy.html).
-- JsDelivr is used to deliver JavaScript files of the project. The browser of the client sends a request to the JsDelivr API to retrieve the files which transmits their IP address to the JsDelivr API. More information can be found in the [JsDelivr privacy policy](https://www.jsdelivr.com/privacy-policy-jsdelivr-net).
+- All third-party JavaScript, CSS, and fonts are vendored under `vendor/javascript/` and `vendor/assets/` and served from the same host as the application. The browser does not contact any third-party CDN at runtime.
 - If you use the Plausible analytics integration, you should inform your users about the data that is collected by Plausible. More information can be found in the [Plausible privacy policy](https://plausible.io/privacy-policy).
 
 ## GDPR information tool
