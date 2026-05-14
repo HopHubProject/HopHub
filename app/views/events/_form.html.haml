@@ -7,9 +7,9 @@
       hint: t('simple_form.hints.event.description', markdown: link_to('Markdown', 'https://www.markdownguide.org/basic-syntax/')).html_safe
     -if method == :new
       =f.input :admin_email
-    =f.input :end_date,
-      as: :string,
-      input_html: { value: @event.end_date&.strftime('%d/%m/%Y') }
+    =f.input :end_date, as: :string,
+      input_html: { value: @event.end_date&.strftime('%d/%m/%Y'),
+                    data: { controller: "timepicker", "timepicker-locale-value": I18n.locale, "timepicker-format-value": "dd/MM/yyyy", "timepicker-date-only-value": "true" } }
 
     =f.input :default_country,
       as: :select,
@@ -39,31 +39,3 @@
             class: 'btn btn-default btn-danger w-100 mt-1',
             role: 'button',
             data: { turbo_method: :delete, turbo_confirm: t('event_delete.confirmation') }
-
-:javascript
-  init_event_timepicker = (e) => {
-    const end_date = document.getElementById('event_end_date')
-    if (end_date !== null) {
-      tempusDominus.extend(window.tempusDominus.plugins.bi_one.load);
-
-      const picker = new tempusDominus.TempusDominus(end_date, {
-        display: {
-          components: {
-            date: true,
-            clock: false,
-          },
-        },
-        restrictions: {
-          minDate: new Date(),
-        },
-        localization: {
-          locale: '#{ I18n.locale }',
-          format: 'dd/MM/yyyy',
-          startOfTheWeek: 1,
-        },
-      });
-    }
-  }
-
-  document.addEventListener('turbo:load', init_event_timepicker);
-  document.addEventListener('turbo:frame-load', init_event_timepicker);

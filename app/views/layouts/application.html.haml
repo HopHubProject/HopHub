@@ -56,10 +56,10 @@
                       =t('flagicon', locale: locale)
                       =t('language', locale: locale)
 
-            %li.nav-item
-              =link_to "#", class: "nav-link", id: "darkMode" do
+            %li.nav-item{ data: { controller: "dark-mode" } }
+              =link_to "#", class: "nav-link", data: { action: "click->dark-mode#toggle" } do
                 .navbar-icon
-                  %i.bi.bi-moon#darkModeIcon
+                  %i.bi.bi-moon{ data: { "dark-mode-target": "icon" } }
                 %span.d-lg-none
                   =t('theme')
 
@@ -67,7 +67,7 @@
       -if flash.any?
         .row
           .col-md-12
-            .flash
+            .flash{ data: { controller: "flash" } }
               -flash.each do |msg_type, message|
                 %div{ class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible fade show", role: "alert" }
                   %button.btn-close{type: 'button', "data-bs-dismiss": 'alert', "aria-label": "Close"}
@@ -116,55 +116,3 @@
           / Fourth Column
           .col-md-3.col-lg-3.col-xl-3.mx-auto.mt-3
 
-:javascript
-  document.addEventListener('turbo:load', () => {
-    function fadeOutEffect(fadeTarget) {
-        var fadeEffect = setInterval(function () {
-            if (!fadeTarget.style.opacity) {
-                fadeTarget.style.opacity = 1;
-            }
-            if (fadeTarget.style.opacity > 0) {
-                fadeTarget.style.opacity -= 0.2;
-            } else {
-                clearInterval(fadeEffect);
-                fadeTarget.remove();
-            }
-        }, 200);
-    }
-
-    const flash = document.querySelector('.flash');
-    if (flash) {
-      setTimeout(() => {
-        fadeOutEffect(flash);
-      }, 3000);
-    }
-
-    const success_flash = document.querySelector('.alert-success');
-    if (success_flash)
-      confetti();
-  });
-
-  document.updateDarkModeIcon = () => {
-    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
-      document.getElementById('darkModeIcon').classList.remove('bi-moon');
-      document.getElementById('darkModeIcon').classList.add('bi-sun');
-    } else {
-      document.getElementById('darkModeIcon').classList.remove('bi-sun');
-      document.getElementById('darkModeIcon').classList.add('bi-moon');
-    }
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    document.updateDarkModeIcon();
-  });
-
-  document.getElementById('darkMode').addEventListener('click', (e) => {
-    if (document.documentElement.getAttribute('data-bs-theme') == 'dark') {
-        document.documentElement.setAttribute('data-bs-theme', 'light')
-    } else {
-        document.documentElement.setAttribute('data-bs-theme', 'dark')
-    }
-
-    e.preventDefault();
-    document.updateDarkModeIcon();
-  });

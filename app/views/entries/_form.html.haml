@@ -1,7 +1,8 @@
 =turbo_frame_tag "entry_form" do
-  =simple_form_for [@event, @entry] do |f|
-    =f.hidden_field :latitude
-    =f.hidden_field :longitude
+  =simple_form_for [@event, @entry],
+    html: { data: { controller: "geocoder transport-collapse", "geocoder-url-value": postal_code_search_path } } do |f|
+    =f.hidden_field :latitude,  data: { "geocoder-target": "latitude" }
+    =f.hidden_field :longitude, data: { "geocoder-target": "longitude" }
     =f.hidden_field :token, value: params[:token]
 
     =f.input :name
@@ -9,29 +10,26 @@
       =f.input :email
     =f.input :direction, as: :select,
       collection: Entry::DIRECTIONS.map { |v| [t(v), v] }
-    =f.input :location
-    =f.input :country,
-      as: :select,
-      class: 'form-control',
-      collection: @countries,
-      wrapper: :horizontal_form_no_validation,
-      include_blank: false,
-      novalidate: true,
-      input_html: { required: false, novalidate: true }
+    =f.input :location,
+      input_html: { data: { "geocoder-target": "location", action: "input->geocoder#resolve" } }
+    =f.input :country, as: :select, class: 'form-control', collection: @countries,
+      wrapper: :horizontal_form_no_validation, include_blank: false, novalidate: true,
+      input_html: { required: false, novalidate: true, data: { "geocoder-target": "country", action: "input->geocoder#clear" } }
 
     =f.input :transport, as: :select,
       collection: Entry::TRANSPORTS.map { |v| [t("transport.#{v}"), v] },
       include_blank: true,
-      blank: t('simple_form.labels.entry.transport')
-    .collapse#carInputs
+      blank: t('simple_form.labels.entry.transport'),
+      input_html: { data: { "transport-collapse-target": "select", action: "change->transport-collapse#sync" } }
+    .collapse#carInputs{ data: { "transport-collapse-target": "panel" } }
       =f.input :driver, as: :boolean,
         label: t('simple_form.labels.entry.driver-needed'),
         hint: t('simple_form.hints.entry.driver-needed')
       =f.input :seats,
         hint: t('simple_form.hints.entry.seats-available')
-    =f.input :date,
-      as: :string,
-      input_html: { value: @entry.date&.strftime('%d/%m/%Y %H:%M') }
+    =f.input :date, as: :string,
+      input_html: { value: @entry.date&.strftime('%d/%m/%Y %H:%M'),
+                    data: { controller: "timepicker", "timepicker-locale-value": I18n.locale, "timepicker-max-date-value": @event.end_date } }
     =f.input :notes, input_html: { rows: 5 }
 
     -if method == :new
@@ -59,92 +57,3 @@
             class: 'btn btn-default btn-danger w-100 mt-1',
             role: 'button',
             data: { turbo_method: :delete, turbo_confirm: t('entry_delete.confirmation') }
-
-:javascript
-  init_entry_timepicker = (e) => {
-    const date = document.getElementById('entry_date');
-
-    if (date !== null) {
-      tempusDominus.extend(window.tempusDominus.plugins.bi_one.load);
-
-      new tempusDominus.TempusDominus(date, {
-        restrictions: {
-          minDate: new Date(),
-          maxDate: new Date('#{ escape_javascript(@event.end_date) }'),
-        },
-        localization: {
-          locale: '#{ I18n.locale }',
-          format: 'dd/MM/yyyy HH:mm',
-          startOfTheWeek: 1,
-        },
-      });
-    }
-  };
-
-  document.addEventListener('turbo:load', init_entry_timepicker);
-  document.addEventListener('turbo:frame-load', init_entry_timepicker);
-
-  init_collapse = () => {
-    const carInputsElement = document.getElementById('carInputs');
-    const transportSelect = document.getElementById('entry_transport');
-
-    if (carInputsElement !== null && transportSelect !== null) {
-      const carInputsCollapse = new bootstrap.Collapse(carInputsElement, { toggle: false });
-
-      const callback = () => {
-        if (transportSelect.value === 'car') {
-          carInputsCollapse.show();
-        } else {
-          carInputsCollapse.hide();
-        }
-      };
-
-      transportSelect.addEventListener('change', callback);
-      callback();
-    }
-  };
-
-  add_geocode_handler = () => {
-    console.log('Adding geocode handler');
-
-    if (window.entryGeocodeHandlerAdded === true) {
-      console.log('Geocode handler already added');
-      return;
-    }
-
-    const config = {
-      url: '#{j postal_code_search_path}',
-    };
-
-    const elements = {
-      locationInput: document.getElementById('entry_location'),
-      latitudeInput: document.getElementById('entry_latitude'),
-      longitudeInput: document.getElementById('entry_longitude'),
-      countryInput: document.getElementById('entry_country'),
-    };
-
-    if (!elements.locationInput || !elements.latitudeInput || !elements.longitudeInput) {
-      console.warn('Geocoding elements not found');
-      return;
-    }
-
-    elements.locationInput.addEventListener('input', (e) => {
-      resolveZipCode(elements.locationInput.value, elements, config);
-    });
-
-    elements.countryInput.addEventListener('input', (e) => {
-      elements.latitudeInput.value = '';
-      elements.longitudeInput.value = '';
-      elements.locationInput.value = '';
-    });
-
-    console.log('Geocode handler added');
-
-    window.entryGeocodeHandlerAdded = true;
-  };
-
-  document.addEventListener('turbo:load', init_collapse);
-  document.addEventListener('turbo:frame-load', init_collapse);
-
-  document.addEventListener('turbo:load', add_geocode_handler);
-  document.addEventListener('turbo:frame-load', add_geocode_handler);
