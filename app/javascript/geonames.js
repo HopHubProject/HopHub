@@ -57,5 +57,3 @@ export function resolveZipCode(s, elements, config) {
       });
   }
 }
-
-window.resolveZipCode = resolveZipCode;
