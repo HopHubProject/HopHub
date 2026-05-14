@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :entries, dependent: :destroy
+  has_many :ride_requests, dependent: :destroy
 
   validates_presence_of :name
   validates_length_of :name, maximum: 50

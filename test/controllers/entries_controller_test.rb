@@ -191,6 +191,9 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       x = entries(:owt1)
       x.update(confirmed_at: nil)
 
+      # remove ride requests so the only mail expected is the entry confirmation
+      RideRequest.where(event_id: x.event_id).delete_all
+
       get event_entry_confirm_url(x.event, x), params: { token: x.token, locale: locale }
       assert_redirected_to event_entry_url(x.event, x, locale: locale)
 
@@ -201,6 +204,52 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       mail = ActionMailer::Base.deliveries.last
       assert_equal [x.email], mail.to
       assert_match edit_event_entry_url(x.event, x, locale: locale, token: x.token), mail.body.to_s
+
+      # no ride requests matched, so flash and email should not mention notifications
+      I18n.with_locale(locale) do
+        assert_equal I18n.t('flash.entry_confirmed'), flash[:success]
+      end
+      assert_no_match(/notified|benachrichtigt|notificar/i, mail.body.to_s)
+    end
+
+    define_method "test_confirm_notifies_matching_ride_requests_#{locale}" do
+      x = entries(:owt1)
+      # ~9 km north of Berlin center (where rwt1/rwt2/rwt_tight_radius are located)
+      x.update(confirmed_at: nil, latitude: 52.60, longitude: 13.40, direction: "way_there")
+
+      # fixtures:
+      #  rwt1            confirmed way_there at Berlin, radius 20 → ~9 km away, MATCH
+      #  rwt2            confirmed way_there at Berlin, radius 100 → MATCH
+      #  rwt_tight_radius confirmed way_there at Berlin, radius 5 → 9 km > 5, NO MATCH
+      #  rwt_unconfirmed way_there but unconfirmed → NO MATCH
+      #  rwb1            confirmed way_back → NO MATCH
+      #  rwt_far         confirmed way_there at Munich, radius 10 → NO MATCH
+
+      get event_entry_confirm_url(x.event, x), params: { token: x.token, locale: locale }
+      assert_redirected_to event_entry_url(x.event, x, locale: locale)
+
+      # 1 entry-confirmation mail + 2 offer-matched mails
+      assert_equal 3, ActionMailer::Base.deliveries.size
+
+      recipients = ActionMailer::Base.deliveries.map { |m| m.to.first }
+      assert_includes recipients, x.email
+      assert_includes recipients, ride_requests(:rwt1).email
+      assert_includes recipients, ride_requests(:rwt2).email
+      assert_not_includes recipients, ride_requests(:rwt_tight_radius).email
+      assert_not_includes recipients, ride_requests(:rwt_unconfirmed).email
+      assert_not_includes recipients, ride_requests(:rwb1).email
+      assert_not_includes recipients, ride_requests(:rwt_far).email
+
+      # flash mentions the notified count
+      I18n.with_locale(locale) do
+        assert_equal I18n.t('flash.entry_confirmed_with_notifications', count: 2), flash[:success]
+      end
+
+      # the driver's confirmation mail mentions the notified count
+      confirmation_mail = ActionMailer::Base.deliveries.find { |m| m.to == [x.email] }
+      I18n.with_locale(x.locale || locale) do
+        assert_match I18n.t('mail.entry.confirmed.notified', count: 2), confirmation_mail.body.to_s
+      end
     end
 
     define_method "test_should_update_entry_${locale}" do

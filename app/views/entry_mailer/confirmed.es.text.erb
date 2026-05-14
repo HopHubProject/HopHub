@@ -7,6 +7,10 @@ Hola <%= @entry.name %>,
 Tu oferta para el evento "<%= @entry.event.name %>" ha sido confirmado y ahora está activo y se puede ver aquí:
 
     <%= event_entry_url(@entry.event, @entry) %>
+<% if @notified_count.to_i > 0 %>
+
+<%= t('mail.entry.confirmed.notified', count: @notified_count) %>
+<% end %>
 
 Si deseas editar o eliminar tu oferta, por favor usa el siguiente enlace secreto.
 Por favor, mantén este enlace para ti y no lo compartas con otros:

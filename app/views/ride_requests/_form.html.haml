@@ -1,0 +1,103 @@
+=turbo_frame_tag "ride_request_form" do
+  =simple_form_for [@event, @ride_request] do |f|
+    =f.hidden_field :latitude
+    =f.hidden_field :longitude
+
+    =f.input :email
+    =f.input :direction, as: :select,
+      collection: RideRequest::DIRECTIONS.map { |v| [t(v), v] }
+    =f.input :location
+    =f.input :country,
+      as: :select,
+      class: 'form-control',
+      collection: @countries,
+      wrapper: :horizontal_form_no_validation,
+      include_blank: false,
+      novalidate: true,
+      input_html: { required: false, novalidate: true }
+
+    =f.input :radius, as: :select,
+      collection: RideRequest::RADIUSES,
+      include_blank: false
+
+    =f.input :end_date,
+      as: :string,
+      input_html: { value: @ride_request.end_date&.strftime('%d/%m/%Y %H:%M') }
+
+    .row.mb-3
+      .col-sm-3
+      .col-sm-9
+        =render 'altcha/widget',
+          label: terms_and_conditions_prompt,
+          verified: terms_and_conditions_accepted,
+          error: @ride_request.errors[:altcha].any?
+        =f.error :altcha, class: 'altcha-error'
+
+    .row.mb-3
+      .col-sm-3
+      .col-sm-9.col-lg-3
+        =f.submit t('create_new_ride_request.title'), class: 'btn btn-primary w-100 mt-1'
+
+      .col-sm-9.col-lg-3
+        =link_to t('cancel'), event_path(@event),
+          class: 'btn btn-default btn-light w-100 mt-1', role: 'button'
+
+:javascript
+  init_ride_request_timepicker = (e) => {
+    const date = document.getElementById('ride_request_end_date');
+
+    if (date !== null) {
+      tempusDominus.extend(window.tempusDominus.plugins.bi_one.load);
+
+      new tempusDominus.TempusDominus(date, {
+        restrictions: {
+          minDate: new Date(),
+          maxDate: new Date('#{ escape_javascript(@event.end_date) }'),
+        },
+        localization: {
+          locale: '#{ I18n.locale }',
+          format: 'dd/MM/yyyy HH:mm',
+          startOfTheWeek: 1,
+        },
+      });
+    }
+  };
+
+  document.addEventListener('turbo:load', init_ride_request_timepicker);
+  document.addEventListener('turbo:frame-load', init_ride_request_timepicker);
+
+  add_ride_request_geocode_handler = () => {
+    if (window.rideRequestGeocodeHandlerAdded === true) {
+      return;
+    }
+
+    const config = {
+      url: '#{j postal_code_search_path}',
+    };
+
+    const elements = {
+      locationInput: document.getElementById('ride_request_location'),
+      latitudeInput: document.getElementById('ride_request_latitude'),
+      longitudeInput: document.getElementById('ride_request_longitude'),
+      countryInput: document.getElementById('ride_request_country'),
+    };
+
+    if (!elements.locationInput || !elements.latitudeInput || !elements.longitudeInput) {
+      return;
+    }
+
+    elements.locationInput.addEventListener('input', (e) => {
+      resolveZipCode(elements.locationInput.value, elements, config);
+    });
+
+    elements.countryInput.addEventListener('input', (e) => {
+      elements.latitudeInput.value = '';
+      elements.longitudeInput.value = '';
+      elements.locationInput.value = '';
+    });
+
+    window.rideRequestGeocodeHandlerAdded = true;
+  };
+
+  document.addEventListener('turbo:load', add_ride_request_geocode_handler);
+  document.addEventListener('turbo:frame-load', add_ride_request_geocode_handler);

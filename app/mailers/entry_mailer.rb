@@ -7,6 +7,7 @@ class EntryMailer < ApplicationMailer
 
   def confirmed
     @entry = params[:entry]
+    @notified_count = params[:notified_count].to_i
     mail(to: @entry.email,
          subject: t('mail.entry.confirmed.subject'))
   end

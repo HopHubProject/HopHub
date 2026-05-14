@@ -114,6 +114,34 @@ ActiveAdmin.register Event do
         column :notes
       end
     end
+
+    panel "Ride requests (way there)" do
+      table_for event.ride_requests.confirmed.where(direction: :way_there) do
+        column :id do |rr|
+          link_to rr.id, admin_ride_request_path(rr)
+        end
+        column :email
+        column :location
+        column :country
+        column :radius
+        column :end_date
+        column :created_at
+      end
+    end
+
+    panel "Ride requests (way back)" do
+      table_for event.ride_requests.confirmed.where(direction: :way_back) do
+        column :id do |rr|
+          link_to rr.id, admin_ride_request_path(rr)
+        end
+        column :email
+        column :location
+        column :country
+        column :radius
+        column :end_date
+        column :created_at
+      end
+    end
   end
 
   form do |f|

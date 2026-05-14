@@ -1,0 +1,88 @@
+rwt1:
+  id: "rwt1-id"
+  event_id: one
+  email: "rwt1@example.com"
+  direction: "way_there"
+  location: "10115"
+  country: "DE"
+  longitude: 13.40
+  latitude: 52.52
+  radius: 20
+  end_date: <%= 1.week.from_now.to_datetime %>
+  token: "rwt1-token"
+  confirmed_at: <%= 1.day.ago %>
+  locale: "en"
+
+rwt2:
+  id: "rwt2-id"
+  event_id: one
+  email: "rwt2@example.com"
+  direction: "way_there"
+  location: "10115"
+  country: "DE"
+  longitude: 13.40
+  latitude: 52.52
+  radius: 100
+  end_date: <%= 1.week.from_now.to_datetime %>
+  token: "rwt2-token"
+  confirmed_at: <%= 1.day.ago %>
+  locale: "en"
+
+rwb1:
+  id: "rwb1-id"
+  event_id: one
+  email: "rwb1@example.com"
+  direction: "way_back"
+  location: "20095"
+  country: "DE"
+  longitude: 10.00
+  latitude: 53.55
+  radius: 20
+  end_date: <%= 1.week.from_now.to_datetime %>
+  token: "rwb1-token"
+  confirmed_at: <%= 1.day.ago %>
+  locale: "en"
+
+rwt_unconfirmed:
+  id: "rwt-unc-id"
+  event_id: one
+  email: "unconfirmed@example.com"
+  direction: "way_there"
+  location: "10115"
+  country: "DE"
+  longitude: 13.40
+  latitude: 52.52
+  radius: 20
+  end_date: <%= 1.week.from_now.to_datetime %>
+  token: "rwt-unc-token"
+  locale: "en"
+
+rwt_far:
+  id: "rwt-far-id"
+  event_id: one
+  email: "far@example.com"
+  direction: "way_there"
+  location: "80331"
+  country: "DE"
+  longitude: 11.58
+  latitude: 48.13
+  radius: 10
+  end_date: <%= 1.week.from_now.to_datetime %>
+  token: "rwt-far-token"
+  confirmed_at: <%= 1.day.ago %>
+  locale: "en"
+
+rwt_tight_radius:
+  id: "rwt-tight-id"
+  event_id: one
+  email: "tight@example.com"
+  direction: "way_there"
+  location: "10115"
+  country: "DE"
+  longitude: 13.40
+  latitude: 52.52
+  radius: 5
+  end_date: <%= 1.week.from_now.to_datetime %>
+  token: "rwt-tight-token"
+  confirmed_at: <%= 1.day.ago %>
+  locale: "en"

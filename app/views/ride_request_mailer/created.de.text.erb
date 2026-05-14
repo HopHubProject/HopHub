@@ -1,0 +1,12 @@
+Hallo,
+
+Bitte bestätige deine Mitfahranfrage für das Event "<%= @ride_request.event.name %>" indem du auf den folgenden Link klickst:
+
+   <%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>
+
+Wir benachrichtigen dich per E-Mail, sobald ein passendes Angebot für dieses Event eingestellt wird.
+
+Falls du keine Ahnung hast, worum es in dieser E-Mail geht, ignoriere sie einfach und mach irgendwas anderes.
+
+
+Liebe Grüße vom HopHub-Team.

@@ -16,6 +16,8 @@ class EventsController < ApplicationController
     @way_back_count = @event.entries.confirmed.where(direction: :way_back).count
     @offers_count = @event.entries.confirmed.count
 
+    @ride_requests_by_direction = build_ride_requests_by_direction(@event)
+
     p = params.fetch(:entries_filter, ActionController::Parameters.new).permit(:location, :latitude, :longitude, :radius)
     @filter = EntriesFilter.new(p)
     @filter.country ||= @event.default_country
@@ -142,5 +144,20 @@ class EventsController < ApplicationController
 
   def altcha_params
     params.permit(:altcha)
+  end
+
+  def build_ride_requests_by_direction(event)
+    requests = event.ride_requests.confirmed
+    RideRequest::DIRECTIONS.each_with_object({}) do |direction, hash|
+      scoped = requests.where(direction: direction)
+      origins = scoped
+        .group(:location, :country)
+        .count
+        .map { |(location, country), count|
+          { count: count, label: [location, country].compact.reject(&:blank?).join(', ') }
+        }
+        .sort_by { |o| -o[:count] }
+      hash[direction.to_sym] = { total: scoped.count, origins: origins }
+    end
   end
 end

@@ -1,0 +1,12 @@
+Hi,
+
+Please confirm your ride request for the event "<%= @ride_request.event.name %>" by clicking on the following link:
+
+   <%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>
+
+We will email you when a matching offer is posted for this event.
+
+If you have no idea what this email is about, please ignore it and do something else.
+
+
+Kind regards from the HopHub platform.

@@ -33,10 +33,28 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+    panel "Recent Ride Requests" do
+      table_for RideRequest.confirmed.order("created_at desc").limit(5) do
+        column :id do |rr|
+          link_to rr.id, admin_ride_request_path(rr)
+        end
+        column :event do |rr|
+          link_to rr.event.name, admin_event_path(rr.event)
+        end
+        column :email
+        column :direction
+        column :location
+        column :country
+        column :radius
+        column :end_date
+      end
+    end
+
     div do
       panel "Currently active" do
         para "Events: #{Event.confirmed.count}"
         para "Entries: #{Entry.confirmed.count}"
+        para "Ride requests: #{RideRequest.confirmed.count}"
       end
     end
   end

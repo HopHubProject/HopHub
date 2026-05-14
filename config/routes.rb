@@ -28,6 +28,11 @@ Rails.application.routes.draw do
       delete 'destroy'
       post 'contact_emails'
     end
+
+    resources :ride_requests, path: :r, only: [:new, :create] do
+      get 'confirm'
+      delete 'destroy'
+    end
   end
 
   # WARNING: Only enable this route if your webserver ingress protects this

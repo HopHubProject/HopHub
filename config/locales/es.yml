@@ -127,6 +127,29 @@ es:
       ¿Quieres organizar el viaje tú mismo?
     search_for_people: Buscar compañeros de viaje
 
+  add_ride_request:
+    title: Busco un viaje
+    looking_for_ride: |
+      ¿Necesitas un viaje para este evento?
+
+  create_new_ride_request:
+    title: Dinos dónde estás
+    text: |
+      Dinos dónde estás y en qué dirección necesitas un viaje. Te enviaremos un
+      correo electrónico cuando se publique una oferta que coincida.
+
+  demand_signal:
+    title: Buscan un viaje
+    text: Al publicar una oferta, enviaremos un correo electrónico a cada persona listada abajo si la ubicación de tu oferta está dentro del radio que ha elegido.
+    way_there:
+      heading:
+        one: "1 persona busca un viaje al evento"
+        other: "%{count} personas buscan un viaje al evento"
+    way_back:
+      heading:
+        one: "1 persona busca un viaje de vuelta"
+        other: "%{count} personas buscan un viaje de vuelta"
+
   show_offers:
     title: Mostrar ofertas
     text: |
@@ -240,8 +263,18 @@ es:
         subject: "HopHub: Confirma tu entrada"
       confirmed:
         subject: "HopHub: Tu entrada ya está activa"
+        notified:
+          one: "Tu oferta acaba de notificar a 1 persona que buscaba un viaje desde tu zona. ¡Bien hecho!"
+          other: "Tu oferta acaba de notificar a %{count} personas que buscaban un viaje desde tu zona. ¡Bien hecho!"
       contact:
         subject: "HopHub: Nuevo mensaje"
+    ride_request:
+      created:
+        subject: "HopHub: Confirma tu solicitud de viaje"
+      confirmed:
+        subject: "HopHub: Tu solicitud de viaje ya está activa"
+      offer_matched:
+        subject: "HopHub: Se ha publicado una oferta que coincide"
     gdpr_inquiry:
       response:
         subject: "HopHub: Solicitud de GDPR"
@@ -259,8 +292,17 @@ es:
     entry_deleted: Tu entrada ha sido eliminada.
     entry_not_found: Entrada no encontrada.
     entry_confirmed: Tu dirección de correo electrónico ha sido confirmada. La entrada ya está activa.
+    entry_confirmed_with_notifications:
+      one: Tu dirección de correo electrónico ha sido confirmada. Acabamos de notificar a 1 persona que buscaba un viaje desde tu zona.
+      other: Tu dirección de correo electrónico ha sido confirmada. Acabamos de notificar a %{count} personas que buscaban un viaje desde tu zona.
     entry_already_confirmed: Tu dirección de correo electrónico ya ha sido confirmada.
     entry_contacted: Tu mensaje ha sido enviado. El destinatario ahora puede responder directamente.
+
+    ride_request_created: Tu solicitud de viaje ha sido creada. Recibirás un correo electrónico con un enlace para confirmar.
+    ride_request_deleted: Tu solicitud de viaje ha sido eliminada.
+    ride_request_not_found: Solicitud de viaje no encontrada.
+    ride_request_confirmed: Tu solicitud de viaje ha sido confirmada. Serás notificado cuando se publique una oferta que coincida.
+    ride_request_already_confirmed: Tu solicitud de viaje ya ha sido confirmada.
 
     gdpr_inquiry_created: Tu solicitud ha sido enviada. Recibirás un correo electrónico con más información en breve.
 
@@ -334,6 +376,14 @@ es:
         driver-offer: ¿Ofreces conducir?
         notes: Notas adicionales
 
+      ride_request:
+        email: Tu dirección de correo electrónico
+        direction: Dirección
+        location: Ubicación (código postal)
+        country: País
+        radius: Radio de búsqueda
+        end_date: Hora de llegada límite
+
       contact_email:
         from: Tu dirección de correo electrónico
         text: Tu mensaje
@@ -355,6 +405,17 @@ es:
           todas las ofertas del evento se eliminarán permanentemente después de esta fecha.
         default_country:
           Este es el país predeterminado para nuevas ofertas que se utilizará para búsquedas de códigos postales.
+
+      ride_request:
+        email: |
+          Tu dirección de correo electrónico no es visible para nadie.
+          La usamos para notificarte cuando se publique una oferta que coincida.
+          Debes confirmar tu dirección de correo electrónico antes de que tu solicitud esté activa.
+        direction: ¿Buscas un viaje al evento o de vuelta a casa?
+        location: El código postal donde quieres comenzar (ida) o donde quieres ir (vuelta).
+        country: El país donde se encuentra el código postal.
+        radius: ¿Hasta qué distancia estás dispuesto a viajar?
+        end_date: ¿Para cuándo quieres haber llegado a más tardar? Tu solicitud se eliminará automáticamente después de ese momento.
 
       entry:
         name: |

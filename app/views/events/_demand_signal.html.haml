@@ -1,0 +1,36 @@
+- buckets = @ride_requests_by_direction || {}
+
+- if buckets.values.any? { |b| b[:total].to_i > 0 }
+  .row.justify-content-center.my-3
+    .col-12.col-lg-9
+      .shadow.p-3.bg-body.rounded
+        %h2.mt-0.pt-0= t('demand_signal.title')
+        %p.mb-2.text-muted= t('demand_signal.text')
+
+        - RideRequest::DIRECTIONS.each do |direction|
+          - bucket = buckets[direction.to_sym]
+          - next if bucket.nil? || bucket[:total].to_i.zero?
+          - count = bucket[:total]
+          - heading = t("demand_signal.#{direction}.heading", count: count)
+
+          .demand-signal-bucket.mt-2
+            -if count > 50 || bucket[:origins].empty?
+              %b= heading
+            -else
+              .accordion{id: "demand-#{direction}-accordion"}
+                .accordion-item
+                  %h3.accordion-header.mt-0.pt-0{id: "demand-#{direction}-heading"}
+                    %button.accordion-button.collapsed{
+                      type: 'button',
+                      data: {bs_toggle: 'collapse', bs_target: "#demand-#{direction}-collapse"},
+                      aria: {expanded: 'false', controls: "demand-#{direction}-collapse"},
+                    }
+                      %span= heading
+                  .accordion-collapse.collapse{
+                    id: "demand-#{direction}-collapse",
+                    "aria-labelledby": "demand-#{direction}-heading",
+                  }
+                    .accordion-body
+                      %ul.list-unstyled.mb-0
+                        - bucket[:origins].each do |origin|
+                          %li= "#{origin[:count]}× #{origin[:label]}"

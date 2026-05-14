@@ -19,5 +19,15 @@ module CleanupHelper
     r.each do |entry|
         Rails.logger.info "Deleted unconfirmed entry #{entry.id} (#{entry.event.name})"
     end
+
+    r = RideRequest.unconfirmed.where("created_at < ?", DateTime.now-1.day).destroy_all
+    r.each do |ride_request|
+        Rails.logger.info "Deleted unconfirmed ride request #{ride_request.id} (#{ride_request.event.name})"
+    end
+
+    r = RideRequest.where("end_date < ?", DateTime.now).destroy_all
+    r.each do |ride_request|
+        Rails.logger.info "Deleted outdated ride request #{ride_request.id} (#{ride_request.event.name})"
+    end
   end
 end

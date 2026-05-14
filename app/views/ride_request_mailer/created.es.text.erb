@@ -1,0 +1,12 @@
+Hola,
+
+Por favor confirma tu solicitud de viaje para el evento "<%= @ride_request.event.name %>" haciendo clic en el siguiente enlace:
+
+   <%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>
+
+Te enviaremos un correo cuando se publique una oferta que coincida con tu solicitud.
+
+Si no sabes de qué se trata este correo, simplemente ignóralo y sigue con tu vida.
+
+
+Saludos del equipo de HopHub.

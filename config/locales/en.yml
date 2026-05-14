@@ -125,6 +125,29 @@ en:
     offer_yourself: |
       Are you organizing a ride yourself?
 
+  add_ride_request:
+    title: I'm looking for a ride
+    looking_for_ride: |
+      Need a ride to this event?
+
+  create_new_ride_request:
+    title: Tell us where you are
+    text: |
+      Tell us where you are and which direction you need a ride for.
+      We will email you when a matching offer is posted.
+
+  demand_signal:
+    title: Looking for a ride
+    text: Adding an offer will email each person below if your offer's location falls within the radius they chose.
+    way_there:
+      heading:
+        one: "1 person is looking for a ride to the event"
+        other: "%{count} people are looking for a ride to the event"
+    way_back:
+      heading:
+        one: "1 person is looking for a ride home"
+        other: "%{count} people are looking for a ride home"
+
   show_offers:
     title: Show offers
     text: |
@@ -241,9 +264,22 @@ en:
 
       confirmed:
         subject: "HopHub: Your entry is now active"
+        notified:
+          one: "Your offer just notified 1 person who was looking for a ride from your area. Nice work!"
+          other: "Your offer just notified %{count} people who were looking for a ride from your area. Nice work!"
 
       contact:
         subject: "HopHub: New message"
+
+    ride_request:
+      created:
+        subject: "HopHub: Please confirm your ride request"
+
+      confirmed:
+        subject: "HopHub: Your ride request is now active"
+
+      offer_matched:
+        subject: "HopHub: A matching ride offer has been posted"
 
     gdpr_inquiry:
       response:
@@ -262,8 +298,17 @@ en:
     entry_deleted: Your entry was deleted.
     entry_not_found: Entry not found.
     entry_confirmed: Your email address has been confirmed.
+    entry_confirmed_with_notifications:
+      one: Your email address has been confirmed. We just notified 1 person who was looking for a ride from your area.
+      other: Your email address has been confirmed. We just notified %{count} people who were looking for a ride from your area.
     entry_already_confirmed: Your email address has already been confirmed.
     entry_contacted: Your message has been sent. The recipient can now contact you directly.
+
+    ride_request_created: Your ride request was created. You will receive an email with a link to confirm.
+    ride_request_deleted: Your ride request was deleted.
+    ride_request_not_found: Ride request not found.
+    ride_request_confirmed: Your ride request has been confirmed. You will be notified when a matching offer is posted.
+    ride_request_already_confirmed: Your ride request has already been confirmed.
 
     gdpr_inquiry_created: Your inquiry has been sent. You will receive an email with further information shortly.
 
@@ -318,6 +363,14 @@ en:
         driver-offer: Offering to drive?
         notes: Additional notes
 
+      ride_request:
+        email: Your email address
+        direction: Direction
+        location: Location (zip code)
+        country: Country
+        radius: Search radius
+        end_date: Latest arrival time
+
       contact_email:
         from: Your email address
         text: Your message
@@ -340,6 +393,16 @@ en:
         default_country: |
           This is the default country for new offers and the filter box that will be used for
           zip code lookups.
+
+      ride_request:
+        email: |
+          Your email address will not be visible to anyone. We'll use it to email you when a matching offer is posted.
+          You'll have to confirm your email address before your request is active.
+        direction: Are you looking for a ride to the event or back home?
+        location: The zip code where you want to start (way there) or where you want to go (way back).
+        country: The country of the zip code.
+        radius: How far are you willing to travel?
+        end_date: When do you want to be there at the latest? Your request will be removed automatically after this point.
 
       entry:
         name: |

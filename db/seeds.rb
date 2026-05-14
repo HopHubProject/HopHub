@@ -72,4 +72,35 @@ end
 
     entry.save!
   end
+
+  ((i+1)*30).times do
+    random_coord = random_european_coord
+    pc = place_name_by_coordinates(random_coord[0], random_coord[1])
+
+    next if pc.nil?
+
+    location = "#{pc['postalCode']} #{pc['placeName']}"
+
+    radius = RideRequest::RADIUSES.sample.last
+
+    puts "Creating ride request for event #{event.name} at #{random_coord[0]}, #{random_coord[1]} (#{location}, radius #{radius} km)"
+
+    # 80% confirmed, 20% unconfirmed (to mirror real-world distribution)
+    confirmed_at = rand < 0.8 ? Faker::Time.between(from: DateTime.now-1.month, to: DateTime.now) : nil
+
+    ride_request = event.ride_requests.create(
+      direction: RideRequest::DIRECTIONS.sample,
+      email: Faker::Internet.email,
+      location: location,
+      country: 'DE',
+      latitude: random_coord[0],
+      longitude: random_coord[1],
+      radius: radius,
+      end_date: Faker::Time.between(from: DateTime.now+1.day, to: event.end_date),
+      locale: %w(en de es).sample,
+      confirmed_at: confirmed_at,
+    )
+
+    ride_request.save!
+  end
 end

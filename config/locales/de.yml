@@ -128,6 +128,30 @@ de:
       Willst du die Fahrt selbst organisieren?
     search_for_people: Suche nach Mitfahrenden
 
+  add_ride_request:
+    title: Ich suche eine Mitfahrgelegenheit
+    looking_for_ride: |
+      Suchst du eine Mitfahrgelegenheit?
+
+  create_new_ride_request:
+    title: Sag uns wo du bist
+    text: |
+      Sag uns, wo du bist und in welche Richtung du eine Mitfahrgelegenheit
+      brauchst. Wir benachrichtigen dich per E-Mail, sobald ein passendes
+      Angebot eingestellt wird.
+
+  demand_signal:
+    title: Mitfahrende gesucht
+    text: Wenn du ein Angebot einstellst, benachrichtigen wir jede unten aufgelistete Person per E-Mail, sofern der Standort deines Angebots innerhalb des von ihr gewählten Radius liegt.
+    way_there:
+      heading:
+        one: "1 Person sucht eine Mitfahrgelegenheit zum Event"
+        other: "%{count} Personen suchen eine Mitfahrgelegenheit zum Event"
+    way_back:
+      heading:
+        one: "1 Person sucht eine Mitfahrgelegenheit nach Hause"
+        other: "%{count} Personen suchen eine Mitfahrgelegenheit nach Hause"
+
   show_offers:
     title: Angebote anzeigen
     text: |
@@ -243,8 +267,18 @@ de:
         subject: "HopHub: Bitte bestätige deinen Eintrag"
       confirmed:
         subject: "HopHub: Dein Eintrag ist jetzt freigeschaltet"
+        notified:
+          one: "Dein Angebot hat soeben 1 Person benachrichtigt, die eine Mitfahrgelegenheit aus deiner Gegend gesucht hat. Klasse!"
+          other: "Dein Angebot hat soeben %{count} Personen benachrichtigt, die eine Mitfahrgelegenheit aus deiner Gegend gesucht haben. Klasse!"
       contact:
         subject: "HopHub: Neue Nachricht"
+    ride_request:
+      created:
+        subject: "HopHub: Bitte bestätige deine Mitfahranfrage"
+      confirmed:
+        subject: "HopHub: Deine Mitfahranfrage ist jetzt aktiv"
+      offer_matched:
+        subject: "HopHub: Ein passendes Mitfahrangebot wurde eingestellt"
     gdpr_inquiry:
       response:
         subject: "HopHub: Deine DSGVO-Anfrage"
@@ -262,8 +296,17 @@ de:
     entry_deleted: Dein Eintrag wurde gelöscht.
     entry_not_found: Eintrag nicht gefunden.
     entry_confirmed: Deine E-Mail-Adresse wurde bestätigt. Der Eintrag ist jetzt aktiv.
+    entry_confirmed_with_notifications:
+      one: Deine E-Mail-Adresse wurde bestätigt. Wir haben soeben 1 Person benachrichtigt, die eine Mitfahrgelegenheit aus deiner Gegend gesucht hat.
+      other: Deine E-Mail-Adresse wurde bestätigt. Wir haben soeben %{count} Personen benachrichtigt, die eine Mitfahrgelegenheit aus deiner Gegend gesucht haben.
     entry_already_confirmed: Deine E-Mail-Adresse wurde bereits bestätigt.
     entry_contacted: Deine Nachricht wurde gesendet. Der Empfänger kann sich jetzt bei dir melden.
+
+    ride_request_created: Deine Mitfahranfrage wurde erstellt. Du erhältst gleich eine E-Mail mit einem Link zur Bestätigung.
+    ride_request_deleted: Deine Mitfahranfrage wurde gelöscht.
+    ride_request_not_found: Mitfahranfrage nicht gefunden.
+    ride_request_confirmed: Deine Mitfahranfrage wurde bestätigt. Du wirst benachrichtigt, sobald ein passendes Angebot eingestellt wird.
+    ride_request_already_confirmed: Deine Mitfahranfrage wurde bereits bestätigt.
 
     gdpr_inquiry_created: Deine Anfrage wurde gesendet. Du erhältst gleich eine E-Mail mit weiteren Informationen.
 
@@ -309,11 +352,11 @@ de:
               invalid: ist ungültig
 
   simple_form:
-    yes: 'Ja'
-    no: 'Nein'
+    yes: "Ja"
+    no: "Nein"
     required:
       text: Pflichtfeld
-      mark: '*'
+      mark: "*"
     error_notification:
       default_message: "Bitte überprüfe die unten stehenden Probleme:"
     labels:
@@ -338,6 +381,14 @@ de:
         driver-offer: Kannst du fahren?
         notes: Zusätzliche Notizen
 
+      ride_request:
+        email: Deine E-Mail-Adresse
+        direction: Richtung
+        location: Ort (Postleitzahl)
+        country: Land
+        radius: Suchradius
+        end_date: Spätester Ankunftszeitpunkt
+
       contact_email:
         from: Deine E-Mail-Adresse
         text: Deine Nachricht
@@ -360,6 +411,17 @@ de:
         default_country: |
           Das Land, das beim Erstellen eines neuen Angebots und beim Angebotsfilter vorausgewählt ist
           und das für die Eingabe der Postleitzahl verwendet wird.
+
+      ride_request:
+        email: |
+          Deine E-Mail-Adresse ist für niemanden sichtbar.
+          Wir verwenden sie, um dich zu benachrichtigen, sobald ein passendes Angebot eingestellt wird.
+          Du musst deine E-Mail-Adresse bestätigen, bevor deine Anfrage aktiv ist.
+        direction: Suchst du eine Mitfahrgelegenheit zum Event oder nach Hause?
+        location: Bei welcher Postleitzahl soll deine Reise starten (Hinweg) bzw. enden (Rückweg)?
+        country: Das Land in dem sich die Postleitzahl befindet.
+        radius: Wie weit bist du bereit zu fahren?
+        end_date: Bis wann möchtest du spätestens da sein? Deine Anfrage wird nach diesem Zeitpunkt automatisch entfernt.
 
       entry:
         name: |
@@ -429,4 +491,19 @@ de:
   date:
     formats:
       long_with_dow: "%A, %d. %B %Y"
-    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    month_names:
+      [
+        ~,
+        Januar,
+        Februar,
+        März,
+        April,
+        Mai,
+        Juni,
+        Juli,
+        August,
+        September,
+        Oktober,
+        November,
+        Dezember,
+      ]

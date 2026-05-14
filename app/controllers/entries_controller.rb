@@ -69,8 +69,15 @@ class EntriesController < ApplicationController
 
     @entry.confirmed_at = Time.now
     @entry.save
-    EntryMailer.with(entry: @entry).confirmed.deliver
-    redirect_to event_entry_path(@event, @entry), flash: { success: t('flash.entry_confirmed') }
+    notified_count = notify_matching_ride_requests(@entry)
+    EntryMailer.with(entry: @entry, notified_count: notified_count).confirmed.deliver
+
+    flash_message = if notified_count > 0
+                      t('flash.entry_confirmed_with_notifications', count: notified_count)
+                    else
+                      t('flash.entry_confirmed')
+                    end
+    redirect_to event_entry_path(@event, @entry), flash: { success: flash_message }
   end
 
   def destroy
@@ -171,5 +178,23 @@ class EntriesController < ApplicationController
 
   def altcha_params
     params.permit(:altcha)
+  end
+
+  def notify_matching_ride_requests(entry)
+    return 0 unless entry.latitude.present? && entry.longitude.present?
+
+    candidates = entry.event.ride_requests.confirmed.where(direction: entry.direction)
+    origin = [entry.latitude, entry.longitude]
+    notified = 0
+
+    candidates.find_each do |ride_request|
+      next if ride_request.radius.blank?
+      next if ride_request.distance_to(origin) > ride_request.radius
+
+      RideRequestMailer.with(ride_request: ride_request, entry: entry).offer_matched.deliver
+      notified += 1
+    end
+
+    notified
   end
 end

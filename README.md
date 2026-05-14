@@ -25,14 +25,24 @@ a car as well for a common train ride, a bus trip, a bike tour or a walk.
 No login is required, only an email address. As soon as the email address is
 confirmed, the offer is shown on the website so others can see it.
 
+### Looking for a ride
+People that need a ride can submit a lightweight ride request: a direction
+(way there or way back), a zip code, a search radius, and a deadline for when
+they want to be there at the latest. The event page shows an anonymous,
+aggregated count of how many people are looking for a ride and from which
+regions, but no personal data. When a matching offer is posted later, all
+requesters whose location falls within their chosen radius of the offer are
+notified by email automatically. The driver gets a confirmation that says how
+many people their offer just notified.
+
 ### Get in touch
 When two parties match, they can get in touch with each other using a form
 on the website. The email address of the person reaching out is used as the
 Reply-To address, so the recipient can reply directly for further coordination.
 
 ### Leave no traces
-Offers and events that are no longer valid are automatically and permanently
-removed from the database.
+Offers, ride requests, and events that are no longer valid are automatically
+and permanently removed from the database.
 
 ## Features
 
@@ -42,12 +52,19 @@ This project takes care to be as data protection friendly as possible. It only s
 - Users can see events if they are provided with the link
 - Users can add offers to events
 - Users can see the offers of an event
+- Users can submit ride requests indicating where they are, how far they will
+  travel, and by when they want to be there
+- The event page shows an anonymous demand signal (per-direction counts and
+  per-region aggregates) so drivers can see if their offer is wanted
+- When a new offer is confirmed, all matching ride requests within their
+  chosen radius are notified by email
 - Users can contact other users through the platform via email
 - "Clean driver" feature: Offers by car can be set to "driver needed"
-- Events and offers are automatically deleted after they have passed
+- Events, offers, and ride requests are automatically deleted after they
+  have passed
 - Geonames is used to resolve locations to latitude and longitude
-- Admins can see all users, events and offers
-- Admins can delete users, events and offers
+- Admins can see all users, events, offers, and ride requests
+- Admins can delete users, events, offers, and ride requests
 - [Altcha](https://altcha.org) is integrated as captcha for all forms
 - Localization
 
@@ -153,7 +170,7 @@ The project features an integration with [Plausible](https://plausible.io/) for 
 
 ## Cleanup task
 
-The project features a cleanup task that has to be run periodically to remove old events and offers from the database.
+The project features a cleanup task that has to be run periodically to remove old events, offers, and ride requests from the database.
 The task is defined in the `lib/tasks/cleanup.rake` file and can be executed with the following command:
 
 ```sh
@@ -194,6 +211,24 @@ Consider the following aspects when crafting the privacy policy for your instanc
   - The "clean driver" flag
 - Entries are automatically deleted from the database after they have passed
 - Entries can be deleted manually by their creators
+- For ride requests, the following data is stored in the database:
+  - The ID of the ride request
+  - The email address of the requester
+  - The event ID of the event the request belongs to
+  - The direction (way there / way back)
+  - The location (zip code) and country
+  - The latitude and longitude resolved from the zip code
+  - The search radius (how far the requester is willing to travel)
+  - The latest acceptable arrival time
+  - The locale of the requester at submission time
+- Ride requests are automatically deleted from the database after their
+  latest acceptable arrival time has passed, or when the event ends
+- Ride requests can be deleted manually by their creators through a tokenized
+  link sent in the confirmation email
+- When a new offer is confirmed, ride requests for the same event and
+  direction whose chosen radius covers the offer's location receive a
+  notification email. The driver's email address is not shared with the
+  requester in this notification.
 - When a user contacts another user through the platform, the email address of the sender is used as the Reply-To address in the email. Neither the email address of the sender nor the text they write is stored in the database.
 - The GDPR information tool allows users to query the data stored in the database for a given email address. The tool sends an email to the given email address, containing a list of all events and offers that are associated with the email address with links to delete the data.
 - Geonames is used to resolve locations to latitude and longitude. The Geonames API is called with the location name and the Geonames username. The IP address of the client is not sent to the Geonames API. More information can be found in the [Geonames privacy policy](https://www.geonames.org/export/privacy.html).
@@ -228,7 +263,7 @@ If you find a bug or have a feature request, please report it in the issue track
 If you want to add a new language, please follow these steps:
 
 1. Add a new file in the `config/locales` directory. The file should be named after the language code (e.g. `en.yml` for English, `de.yml` for German, etc.). The file should contain a hash with the translations. The keys should be the same as in the `en.yml` file.
-2. Create new mailer views in the `app/views/event_mailer` and `app/views/entry_mailer` directories. The file names must contain the language code (e.g. `de` for German). The content should be the same as for the `en` versions.
+2. Create new mailer views in the `app/views/event_mailer`, `app/views/entry_mailer`, and `app/views/ride_request_mailer` directories. The file names must contain the language code (e.g. `de` for German). The content should be the same as for the `en` versions.
 3. Add the new language to `I18n.available_locales` in the `config/locales.rb` file.
 4. Open a pull request.
 
