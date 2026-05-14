@@ -14,6 +14,9 @@ ActiveAdmin.register_page "Dashboard" do
         column :entries do |event|
           event.entries.count
         end
+        column :ride_requests do |event|
+          event.ride_requests.count
+        end
       end
     end
 

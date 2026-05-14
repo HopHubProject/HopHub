@@ -56,6 +56,9 @@ ActiveAdmin.register Event do
       row :current_entries do |event|
         event.entries.count
       end
+      row :ride_requests do |event|
+        event.ride_requests.count
+      end
     end
   end
 
@@ -85,6 +88,9 @@ ActiveAdmin.register Event do
     column :confirmed_at
     column :offers do |event|
       event.offers.count
+    end
+    column :ride_requests do |event|
+      event.ride_requests.count
     end
   end
 
