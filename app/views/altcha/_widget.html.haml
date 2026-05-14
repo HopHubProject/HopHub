@@ -1,5 +1,32 @@
 %altcha-widget{
-  challengeurl: altcha_path(),
-  style: error ? '--altcha-color-border:var(--bs-form-invalid-border-color)' : '',
-  strings: "#{ { label: label, verified: verified }.to_json }",
+  challenge: Altcha.create_challenge.to_json,
+  language: 'en',
+  type: 'native',
+  style: error ? '--altcha-border-color:var(--bs-form-invalid-border-color)' : '',
 }
+
+:javascript
+  customElements.whenDefined('altcha-widget').then(() => {
+    globalThis.$altcha.i18n.set('en', {
+      ...(globalThis.$altcha.i18n.get('en') || {}),
+      label: #{label.to_json},
+      verified: #{verified.to_json}
+    });
+
+    // This is ugly: altcha v3 renders label/verified as escaped text; re-inject as HTML.
+    if (!globalThis.__altchaHtmlLabels) {
+      globalThis.__altchaHtmlLabels = true;
+      const reapply = () => {
+        const s = globalThis.$altcha.i18n.get('en') || {};
+        document.querySelectorAll('altcha-widget label').forEach((el) => {
+          const t = el.textContent.trim();
+          if (s.label && t === s.label.trim()) el.innerHTML = s.label;
+          else if (s.verified && t === s.verified.trim()) el.innerHTML = s.verified;
+        });
+      };
+      new MutationObserver(reapply).observe(document.documentElement, {
+        characterData: true, childList: true, subtree: true
+      });
+      reapply();
+    }
+  });

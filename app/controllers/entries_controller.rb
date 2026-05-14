@@ -123,7 +123,7 @@ class EntriesController < ApplicationController
   def verify_altcha
     return true if Rails.env.test?
 
-    AltchaSolution.verify_and_save(altcha_params[:altcha])
+    Altcha.(altcha_params[:altcha])
   end
 
   def set_geonames

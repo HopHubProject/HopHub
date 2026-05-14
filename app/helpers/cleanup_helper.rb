@@ -19,7 +19,5 @@ module CleanupHelper
     r.each do |entry|
         Rails.logger.info "Deleted unconfirmed entry #{entry.id} (#{entry.event.name})"
     end
-
-    AltchaSolution.cleanup
   end
 end

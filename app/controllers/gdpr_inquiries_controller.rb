@@ -36,7 +36,7 @@ class GdprInquiriesController < ApplicationController
   def verify_altcha
     return true if Rails.env.test?
 
-    AltchaSolution.verify_and_save(altcha_params[:altcha])
+    Altcha.verify(altcha_params[:altcha])
   end
 
   def inquiry_params

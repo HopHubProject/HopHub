@@ -156,33 +156,27 @@ a {
   box-shadow: 0 3px 10px 0 rgba(137, 156, 156, 0.75);
 }
 
-:root {
+altcha-widget {
   --altcha-border-width: var(--bs-border-width);
   --altcha-border-radius: var(--bs-border-radius);
-  --altcha-color-base: var(--bs-form-color);
-  --altcha-color-border: var(--bs-border-color);
-  --altcha-color-text: currentColor;
-  --altcha-color-border-focus: currentColor;
-  --altcha-color-error-text: var(--bs-form-invalid-color);
-  --altcha-color-footer-bg: var(--bs-body-bg);
+  --altcha-border-color: var(--bs-border-color);
+  --altcha-color-base: var(--bs-body-bg);
+  --altcha-color-base-content: var(--bs-body-color);
+  --altcha-color-error: var(--bs-form-invalid-color);
   --altcha-max-width: 100%;
-}
 
-.altcha-label label {
-  font-size: 1rem;
-  font-weight: normal;
-}
+  .altcha-checkbox-wrap > * {
+    display: block;
+  }
 
-.altcha-label {
-  padding-left: 1rem;
-}
+  .altcha-checkbox-wrap a {
+    color: var(--bs-link-color);
+    text-decoration: underline;
 
-.altcha-main {
-  margin-left: 0.7rem;
-}
-
-.altcha-main svg {
-  margin-top: 0.75rem;
+    &:hover {
+      color: var(--bs-link-hover-color);
+    }
+  }
 }
 
 .altcha-error {
@@ -191,4 +185,3 @@ a {
   font-size: 0.875em;
   color: var(--bs-form-invalid-color);
 }
-

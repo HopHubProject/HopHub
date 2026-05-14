@@ -10,7 +10,3 @@ num_entries{event_id="<%= e.id %>", status="unconfirmed"}                      <
 num_entries{event_id="<%= e.id %>", status="confirmed", direction="way_there"} <%= e.entries.confirmed.way_there.count %> <%= @timestamp %>
 num_entries{event_id="<%= e.id %>", status="confirmed", direction="way_back"}  <%= e.entries.confirmed.way_back.count %>  <%= @timestamp %>
 <% end %>
-
-# HELP num_altcha_solutions Total number of altcha solutions
-# TYPE num_altcha_solutions gauge
-num_altcha_solutions <%= AltchaSolution.count %> <%= @timestamp %>
