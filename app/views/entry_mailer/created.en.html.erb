@@ -1,0 +1,14 @@
+<h1>Please confirm your offer</h1>
+
+<p>Hi <%= @entry.name %>,</p>
+
+<p>Please confirm your offer for the event "<strong><%= @entry.event.name %></strong>" by clicking the button below:</p>
+
+<p><a href="<%= event_entry_confirm_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %>" class="button">Confirm offer</a></p>
+
+<p>If the button doesn't work, copy this link into your browser:</p>
+<div class="secret-link"><%= event_entry_confirm_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %></div>
+
+<p>If you have no idea what this email is about, please ignore it and do something else.</p>
+
+<p class="signoff">Kind regards from the HopHub platform.</p>

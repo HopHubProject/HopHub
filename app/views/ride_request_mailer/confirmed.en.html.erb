@@ -1,0 +1,17 @@
+<h1>Your ride request is active</h1>
+
+<p>Hi,</p>
+
+<p>Thanks for using HopHub!</p>
+
+<p>Your ride request for the event "<strong><%= @ride_request.event.name %></strong>" has been confirmed. We will email you when a matching offer is posted.</p>
+
+<p><a href="<%= event_url(@ride_request.event) %>" class="button">View event page</a></p>
+
+<p>If you no longer want to receive notifications for this request, you can delete it with this secret link. Please keep it to yourself:</p>
+
+<div class="secret-link"><%= event_ride_request_destroy_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %></div>
+
+<p>Your request will be automatically removed when the event ends.</p>
+
+<p class="signoff">Kind regards from the HopHub platform.</p>

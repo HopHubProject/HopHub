@@ -1,0 +1,17 @@
+<h1>Deine Mitfahranfrage ist aktiv</h1>
+
+<p>Hallo,</p>
+
+<p>Vielen Dank dass du HopHub benutzt!</p>
+
+<p>Deine Mitfahranfrage für das Event "<strong><%= @ride_request.event.name %></strong>" wurde bestätigt. Wir benachrichtigen dich per E-Mail, sobald ein passendes Angebot eingestellt wird.</p>
+
+<p><a href="<%= event_url(@ride_request.event) %>" class="button">Eventseite ansehen</a></p>
+
+<p>Wenn du keine Benachrichtigungen für diese Anfrage mehr erhalten möchtest, kannst du sie mit dem folgenden geheimen Link löschen. Bitte behalte diesen Link für dich:</p>
+
+<div class="secret-link"><%= event_ride_request_destroy_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %></div>
+
+<p>Deine Anfrage wird automatisch entfernt, wenn das Event endet.</p>
+
+<p class="signoff">Liebe Grüße vom HopHub-Team.</p>

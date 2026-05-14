@@ -1,0 +1,47 @@
+<h1>Antwort auf deine DSGVO-Anfrage</h1>
+
+<p>Hallo,</p>
+
+<p>Vielen Dank für deine DSGVO-Anfrage.</p>
+
+<% if @events.any? || @entries.any? %>
+  <p>Auf Dein Auskunftsverlangen vom <strong><%= l DateTime.now.to_date, format: :long, locale: I18n.locale %></strong> bestätigen wir Dir, dass wir als Verantwortliche die folgenden mit deiner Emailaddresse verbundenen Daten speichern und verarbeiten:</p>
+
+  <ul class="data-list">
+    <% @events.each do |event| %>
+      <li>
+        <strong>Event "<%= event.name %>"</strong> (<%= event.id %>), angelegt am <%= l event.created_at.to_date, format: :long, locale: I18n.locale %><br>
+        Um dieses Event zu löschen, benutze bitte den folgenden Link:
+        <div class="secret-link"><%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %></div>
+      </li>
+    <% end %>
+
+    <% @entries.each do |entry| %>
+      <li>
+        <strong>Eintrag vom <%= l entry.created_at.to_date, format: :long, locale: I18n.locale %></strong><br>
+        Transportmittel: <%= entry.transport %><br>
+        Ort: <%= entry.location %><br>
+        Um diesen Eintrag zu löschen, benutze bitte den folgenden Link:
+        <div class="secret-link"><%= edit_event_entry_url(entry.event, entry, token: entry.token, locale: I18n.locale) %></div>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>Verarbeitungszweck</h2>
+  <ul>
+    <% @events.each do |event| %>
+      <li>Organisation des Events "<%= event.name %>" (<%= event.id %>)</li>
+    <% end %>
+    <% @entries.each do |entry| %>
+      <li>Organisation des Eintrags "<%= entry.name %>" (<%= entry.id %>)</li>
+    <% end %>
+  </ul>
+
+  <p>Als betroffene Person hast Du das Recht, uns gegenüber nach Maßgabe des Art. 16 DSGVO eine Berichtigung und nach Maßgabe des Art. 17 DSGVO und § 35 BDSG die Löschung Deiner Daten zu verlangen. Benutze dazu bitte die oben genannten Links.</p>
+
+  <p>Du hast außerdem das Recht, nach Maßgabe des Art. 18 DSGVO die Verarbeitung Deiner Daten einschränken zu lassen. Da HopHub nur die Daten speichert, die für die Ausführung der Dienstleistung notwendig sind, ist eine Einschränkung der Verarbeitung nur durch Löschung der Daten möglich.</p>
+<% else %>
+  <p>Auf Dein Auskunftsverlangen vom <strong><%= l DateTime.now.to_date, format: :long, locale: I18n.locale %></strong> bestätigen wir Dir, dass wir als Verantwortliche keine mit deiner Emailaddresse verbundenen Daten speichern oder verarbeiten.</p>
+<% end %>
+
+<p class="signoff">Mit freundlichen Grüßen,<br>Das HopHub-Team.</p>

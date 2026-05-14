@@ -14,7 +14,7 @@ class RideRequestMailerTest < ActionMailer::TestCase
 
       mail = RideRequestMailer.with(ride_request: rr).created
       assert_equal [rr.email], mail.to
-      assert_match event_ride_request_confirm_url(rr.event, rr, token: rr.token, locale: locale), mail.body.to_s
+      assert_match event_ride_request_confirm_url(rr.event, rr, token: rr.token, locale: locale), mail.text_part.body.to_s
     end
 
     define_method("test_confirmed_to_request_email_with_destroy_link_#{locale}") do
@@ -23,8 +23,8 @@ class RideRequestMailerTest < ActionMailer::TestCase
 
       mail = RideRequestMailer.with(ride_request: rr).confirmed
       assert_equal [rr.email], mail.to
-      assert_match event_url(rr.event), mail.body.to_s
-      assert_match event_ride_request_destroy_url(rr.event, rr, token: rr.token, locale: locale), mail.body.to_s
+      assert_match event_url(rr.event), mail.text_part.body.to_s
+      assert_match event_ride_request_destroy_url(rr.event, rr, token: rr.token, locale: locale), mail.text_part.body.to_s
     end
 
     define_method("test_offer_matched_references_event_and_entry_#{locale}") do
@@ -34,9 +34,9 @@ class RideRequestMailerTest < ActionMailer::TestCase
 
       mail = RideRequestMailer.with(ride_request: rr, entry: entry).offer_matched
       assert_equal [rr.email], mail.to
-      assert_match event_entry_url(entry.event, entry, locale: locale), mail.body.to_s
-      assert_match event_url(rr.event, locale: locale), mail.body.to_s
-      assert_match event_ride_request_destroy_url(rr.event, rr, token: rr.token, locale: locale), mail.body.to_s
+      assert_match event_entry_url(entry.event, entry, locale: locale), mail.text_part.body.to_s
+      assert_match event_url(rr.event, locale: locale), mail.text_part.body.to_s
+      assert_match event_ride_request_destroy_url(rr.event, rr, token: rr.token, locale: locale), mail.text_part.body.to_s
     end
 
     define_method("test_subjects_localized_#{locale}") do

@@ -1,0 +1,23 @@
+<h1>Tu oferta está activa</h1>
+
+<p>Hola <%= @entry.name %>,</p>
+
+<p>¡Gracias por usar HopHub!</p>
+
+<p>Tu oferta para el evento "<strong><%= @entry.event.name %></strong>" ha sido confirmado y ahora está activo y se puede ver aquí:</p>
+
+<p><a href="<%= event_entry_url(@entry.event, @entry) %>" class="button">Ver tu oferta</a></p>
+
+<% if @notified_count.to_i > 0 %>
+  <p><%= t('mail.entry.confirmed.notified', count: @notified_count) %></p>
+<% end %>
+
+<p>Si deseas editar o eliminar tu oferta, por favor usa el siguiente enlace secreto. Por favor, mantén este enlace para ti y no lo compartas con otros:</p>
+
+<div class="secret-link"><%= edit_event_entry_url(@entry.event, @entry, token: @entry.token, locale: I18n.locale) %></div>
+
+<p>Tu entrada se eliminará automáticamente después de la fecha que hayas establecido, o cuando el evento termine.</p>
+
+<p>¡Disfruta del viaje, eres genial!</p>
+
+<p class="signoff">Saludos del equipo de HopHub.</p>

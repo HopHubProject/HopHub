@@ -1,0 +1,16 @@
+<h1>Bitte bestätige deine Mitfahranfrage</h1>
+
+<p>Hallo,</p>
+
+<p>Bitte bestätige deine Mitfahranfrage für das Event "<strong><%= @ride_request.event.name %></strong>" indem du auf den Button unten klickst:</p>
+
+<p><a href="<%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>" class="button">Anfrage bestätigen</a></p>
+
+<p>Falls der Button nicht funktioniert, kopiere den folgenden Link in deinen Browser:</p>
+<div class="secret-link"><%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %></div>
+
+<p>Wir benachrichtigen dich per E-Mail, sobald ein passendes Angebot für dieses Event eingestellt wird.</p>
+
+<p>Falls du keine Ahnung hast, worum es in dieser E-Mail geht, ignoriere sie einfach und mach irgendwas anderes.</p>
+
+<p class="signoff">Liebe Grüße vom HopHub-Team.</p>

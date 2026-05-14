@@ -1,0 +1,14 @@
+<h1>Bitte bestätige dein Event</h1>
+
+<p>Hallo,</p>
+
+<p>Bitte bestätige das Event "<strong><%= @event.name %></strong>" indem du auf den Button unten klickst:</p>
+
+<p><a href="<%= event_confirm_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>" class="button">Event bestätigen</a></p>
+
+<p>Falls der Button nicht funktioniert, kopiere den folgenden Link in deinen Browser:</p>
+<div class="secret-link"><%= event_confirm_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %></div>
+
+<p>Falls du keine Ahnung hast, worum es in dieser E-Mail geht, ignoriere sie einfach und mach irgendwas anderes.</p>
+
+<p class="signoff">Liebe Grüße vom HopHub-Team.</p>

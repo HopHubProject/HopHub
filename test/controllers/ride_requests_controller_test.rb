@@ -82,7 +82,7 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
       assert_equal 1, ActionMailer::Base.deliveries.size
       mail = ActionMailer::Base.deliveries.last
       assert_equal [rr.email], mail.to
-      assert_match event_ride_request_confirm_url(e, rr, token: rr.token, locale: locale), mail.body.to_s
+      assert_match event_ride_request_confirm_url(e, rr, token: rr.token, locale: locale), mail.text_part.body.to_s
     end
 
     define_method("test_confirm_redirects_for_unknown_request_#{locale}") do
@@ -113,7 +113,7 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
       assert_equal 1, ActionMailer::Base.deliveries.size
       mail = ActionMailer::Base.deliveries.last
       assert_equal [rr.email], mail.to
-      assert_match event_ride_request_destroy_url(rr.event, rr, token: rr.token, locale: locale), mail.body.to_s
+      assert_match event_ride_request_destroy_url(rr.event, rr, token: rr.token, locale: locale), mail.text_part.body.to_s
     end
 
     define_method("test_confirm_is_idempotent_for_already_confirmed_#{locale}") do

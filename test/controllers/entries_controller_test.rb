@@ -157,7 +157,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       mail = ActionMailer::Base.deliveries.last
       x = Entry.last
       assert_equal [x.email], mail.to
-      assert_match event_entry_confirm_url(e, x, token: x.token), mail.body.to_s
+      assert_match event_entry_confirm_url(e, x, token: x.token), mail.text_part.body.to_s
     end
 
     define_method "test_confirm_should_be_redirected_for_unknown_#{locale}" do
@@ -203,13 +203,13 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       assert_equal 1, ActionMailer::Base.deliveries.size
       mail = ActionMailer::Base.deliveries.last
       assert_equal [x.email], mail.to
-      assert_match edit_event_entry_url(x.event, x, locale: locale, token: x.token), mail.body.to_s
+      assert_match edit_event_entry_url(x.event, x, locale: locale, token: x.token), mail.text_part.body.to_s
 
       # no ride requests matched, so flash and email should not mention notifications
       I18n.with_locale(locale) do
         assert_equal I18n.t('flash.entry_confirmed'), flash[:success]
       end
-      assert_no_match(/notified|benachrichtigt|notificar/i, mail.body.to_s)
+      assert_no_match(/notified|benachrichtigt|notificar/i, mail.text_part.body.to_s)
     end
 
     define_method "test_confirm_notifies_matching_ride_requests_#{locale}" do
@@ -248,7 +248,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       # the driver's confirmation mail mentions the notified count
       confirmation_mail = ActionMailer::Base.deliveries.find { |m| m.to == [x.email] }
       I18n.with_locale(x.locale || locale) do
-        assert_match I18n.t('mail.entry.confirmed.notified', count: 2), confirmation_mail.body.to_s
+        assert_match I18n.t('mail.entry.confirmed.notified', count: 2), confirmation_mail.text_part.body.to_s
       end
     end
 
@@ -379,9 +379,9 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       mail = ActionMailer::Base.deliveries.last
       assert_equal [from], mail.reply_to
       assert_equal [x.email], mail.to
-      assert_match name, mail.body.to_s
-      assert_match text, mail.body.to_s
-      assert_match event_entry_url(x.event, x), mail.body.to_s
+      assert_match name, mail.text_part.body.to_s
+      assert_match text, mail.text_part.body.to_s
+      assert_match event_entry_url(x.event, x), mail.text_part.body.to_s
     end
   end
 end

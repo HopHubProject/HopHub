@@ -1,0 +1,19 @@
+<h1>Neue Nachricht auf HopHub</h1>
+
+<p>Hallo <%= @entry.name %>,</p>
+
+<p><strong><%= @name %></strong> hat dir eine Nachricht auf HopHub geschickt, und das ist der Inhalt:</p>
+
+<div class="quote"><%= @text %></div>
+
+<p>Du kannst auf diese Nachricht antworten, um direkt mit <%= @name %> zu kommunizieren.</p>
+
+<p>Dein Angebot für das Event "<strong><%= @entry.event.name %></strong>" ist weiterhin aktiv und hier sichtbar:</p>
+
+<p><a href="<%= event_entry_url(@entry.event, @entry) %>" class="button">Angebot ansehen</a></p>
+
+<p>Falls dein Angebot nicht mehr aktuell ist, benutze bitte den geheimen Link aus deiner Bestätigungsmail, um ihn zu bearbeiten oder zu löschen.</p>
+
+<p>Viel Spaß bei der gemeinsamen Fahrt, du bist toll!</p>
+
+<p class="signoff">Liebe Grüße vom HopHub-Team.</p>

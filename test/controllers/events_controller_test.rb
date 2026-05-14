@@ -115,7 +115,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       assert_equal 1, ActionMailer::Base.deliveries.size
       mail = ActionMailer::Base.deliveries.last
       assert_equal [e.admin_email], mail.to
-      assert_match event_confirm_url(e, locale: locale, admin_token: e.admin_token), mail.body.to_s
+      assert_match event_confirm_url(e, locale: locale, admin_token: e.admin_token), mail.text_part.body.to_s
     end
 
     define_method("test_should_not_get_confirm_for_nonexistant_event_#{locale}") do
@@ -148,8 +148,8 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       assert_equal 1, ActionMailer::Base.deliveries.size
       mail = ActionMailer::Base.deliveries.last
       assert_equal [e.admin_email], mail.to
-      assert_match event_url(e), mail.body.to_s
-      assert_match edit_event_url(e, locale: locale, admin_token: e.admin_token), mail.body.to_s
+      assert_match event_url(e), mail.text_part.body.to_s
+      assert_match edit_event_url(e, locale: locale, admin_token: e.admin_token), mail.text_part.body.to_s
 
       # No email should be sent when confirming an already confirmed event
       assert_no_difference('ActionMailer::Base.deliveries.size') do
