@@ -37,7 +37,7 @@ end
     name: Faker::Lorem.sentence(word_count: 3),
     description: Faker::Lorem.paragraph(sentence_count: 20),
     admin_email: Faker::Internet.email,
-    end_date: Faker::Date.between(from: DateTime.now, to: DateTime.now + 1.year),
+    end_date: Faker::Date.between(from: DateTime.now + 7.days, to: DateTime.now + 1.year),
     default_country: 'DE',
     confirmed_at: Faker::Date.between(from: DateTime.now-1.month, to: DateTime.now)
   )
@@ -60,7 +60,7 @@ end
       name: Faker::Name.name,
       email: Faker::Internet.email,
       phone: Faker::PhoneNumber.phone_number,
-      date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1.month),
+      date: Faker::Time.between(from: DateTime.now + 1.hour, to: event.end_date.to_time),
       location: location,
       latitude: random_coord[0],
       longitude: random_coord[1],
@@ -96,7 +96,7 @@ end
       latitude: random_coord[0],
       longitude: random_coord[1],
       radius: radius,
-      end_date: Faker::Time.between(from: DateTime.now+1.day, to: event.end_date),
+      end_date: Faker::Time.between(from: DateTime.now + 1.hour, to: event.end_date.to_time),
       locale: %w(en de es).sample,
       confirmed_at: confirmed_at,
     )
