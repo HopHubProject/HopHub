@@ -133,7 +133,7 @@ es:
       ¿Necesitas un viaje para este evento?
 
   create_new_ride_request:
-    title: Dinos dónde estás
+    title: Agregar solicitud
     text: |
       Dinos dónde estás y en qué dirección necesitas un viaje. Te enviaremos un
       correo electrónico cuando se publique una oferta que coincida.

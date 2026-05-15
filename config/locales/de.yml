@@ -134,14 +134,14 @@ de:
       Suchst du eine Mitfahrgelegenheit?
 
   create_new_ride_request:
-    title: Sag uns wo du bist
+    title: Anfrage aufgeben
     text: |
       Sag uns, wo du bist und in welche Richtung du eine Mitfahrgelegenheit
       brauchst. Wir benachrichtigen dich per E-Mail, sobald ein passendes
       Angebot eingestellt wird.
 
   demand_signal:
-    title: Mitfahrende gesucht
+    title: Fahrten gesucht
     text: Wenn du ein Angebot einstellst, benachrichtigen wir jede unten aufgelistete Person per E-Mail, sofern der Standort deines Angebots innerhalb des von ihr gewählten Radius liegt.
     way_there:
       heading:

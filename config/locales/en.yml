@@ -131,7 +131,7 @@ en:
       Need a ride to this event?
 
   create_new_ride_request:
-    title: Tell us where you are
+    title: Add ride request
     text: |
       Tell us where you are and which direction you need a ride for.
       We will email you when a matching offer is posted.
