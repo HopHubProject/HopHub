@@ -20,8 +20,11 @@ pin_all_from "app/javascript/controllers", under: "controllers", preload: false
 # reads them. To upgrade a pin, re-curl from a new jsdelivr URL and update the
 # version comment here. See README ("Updating vendored JS") for the exact URLs.
 #
-# Not pinned but also vendored: es-module-shims@1.8.3 — loaded as a plain <script>
-# in app/views/layouts/application.html.haml from vendor/javascript/es-module-shims.js.
+# Not pinned: es-module-shims@2.8.1 — loaded as a plain <script> from
+# cdn.jsdelivr.net in app/views/layouts/application.html.haml with an SRI
+# hash. Kept on the CDN because the local Sprockets pipeline truncates this
+# specific file in dev mode; the CDN URL is SRI-pinned so the byte content
+# is still verified by the browser.
 
 # popper + bootstrap are loaded eagerly from application.js because the global
 # navbar (dropdowns, collapse) needs them on every page.
