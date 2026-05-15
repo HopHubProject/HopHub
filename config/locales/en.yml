@@ -369,6 +369,7 @@ en:
         location: Location (zip code)
         country: Country
         radius: Search radius
+        start_date: Earliest departure time
         end_date: Latest arrival time
 
       contact_email:
@@ -402,6 +403,7 @@ en:
         location: The zip code where you want to start (way there) or where you want to go (way back).
         country: The country of the zip code.
         radius: How far are you willing to travel?
+        start_date: What is the earliest time you would like to travel?
         end_date: When do you want to be there at the latest? Your request will be removed automatically after this point.
 
       entry:

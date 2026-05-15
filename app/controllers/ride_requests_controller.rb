@@ -106,7 +106,7 @@ class RideRequestsController < ApplicationController
   end
 
   def ride_request_params
-    params.require(:ride_request).permit(:email, :direction, :location, :country, :latitude, :longitude, :radius, :end_date)
+    params.require(:ride_request).permit(:email, :direction, :location, :country, :latitude, :longitude, :radius, :start_date, :end_date)
   end
 
   def altcha_params

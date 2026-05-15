@@ -382,6 +382,7 @@ es:
         location: Ubicación (código postal)
         country: País
         radius: Radio de búsqueda
+        start_date: Hora de salida más temprana
         end_date: Hora de llegada límite
 
       contact_email:
@@ -415,6 +416,7 @@ es:
         location: El código postal donde quieres comenzar (ida) o donde quieres ir (vuelta).
         country: El país donde se encuentra el código postal.
         radius: ¿Hasta qué distancia estás dispuesto a viajar?
+        start_date: ¿Cuál es la hora más temprana a la que te gustaría viajar?
         end_date: ¿Para cuándo quieres haber llegado a más tardar? Tu solicitud se eliminará automáticamente después de ese momento.
 
       entry:

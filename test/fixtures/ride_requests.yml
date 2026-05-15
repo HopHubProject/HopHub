@@ -8,6 +8,7 @@ rwt1:
   longitude: 13.40
   latitude: 52.52
   radius: 20
+  start_date: <%= 1.day.ago.to_datetime %>
   end_date: <%= 1.week.from_now.to_datetime %>
   token: "rwt1-token"
   confirmed_at: <%= 1.day.ago %>
@@ -23,6 +24,7 @@ rwt2:
   longitude: 13.40
   latitude: 52.52
   radius: 100
+  start_date: <%= 1.day.ago.to_datetime %>
   end_date: <%= 1.week.from_now.to_datetime %>
   token: "rwt2-token"
   confirmed_at: <%= 1.day.ago %>
@@ -38,6 +40,7 @@ rwb1:
   longitude: 10.00
   latitude: 53.55
   radius: 20
+  start_date: <%= 1.day.ago.to_datetime %>
   end_date: <%= 1.week.from_now.to_datetime %>
   token: "rwb1-token"
   confirmed_at: <%= 1.day.ago %>
@@ -53,6 +56,7 @@ rwt_unconfirmed:
   longitude: 13.40
   latitude: 52.52
   radius: 20
+  start_date: <%= 1.day.ago.to_datetime %>
   end_date: <%= 1.week.from_now.to_datetime %>
   token: "rwt-unc-token"
   locale: "en"
@@ -67,6 +71,7 @@ rwt_far:
   longitude: 11.58
   latitude: 48.13
   radius: 10
+  start_date: <%= 1.day.ago.to_datetime %>
   end_date: <%= 1.week.from_now.to_datetime %>
   token: "rwt-far-token"
   confirmed_at: <%= 1.day.ago %>
@@ -82,7 +87,44 @@ rwt_tight_radius:
   longitude: 13.40
   latitude: 52.52
   radius: 5
+  start_date: <%= 1.day.ago.to_datetime %>
   end_date: <%= 1.week.from_now.to_datetime %>
   token: "rwt-tight-token"
+  confirmed_at: <%= 1.day.ago %>
+  locale: "en"
+
+# A rider in Berlin whose "latest arrival" is sooner than any candidate offer
+# would depart. Location and radius match rwt1 — only the end_date weeds it out.
+rwt_too_late:
+  id: "rwt-late-id"
+  event_id: one
+  email: "late@example.com"
+  direction: "way_there"
+  location: "10115"
+  country: "DE"
+  longitude: 13.40
+  latitude: 52.52
+  radius: 20
+  start_date: <%= 1.day.ago.to_datetime %>
+  end_date: <%= 1.hour.from_now.to_datetime %>
+  token: "rwt-late-token"
+  confirmed_at: <%= 1.day.ago %>
+  locale: "en"
+
+# A rider in Berlin who can't start travelling until after any candidate offer
+# departs. Location and radius match rwt1 — only the start_date weeds it out.
+rwt_too_early:
+  id: "rwt-early-id"
+  event_id: one
+  email: "early@example.com"
+  direction: "way_there"
+  location: "10115"
+  country: "DE"
+  longitude: 13.40
+  latitude: 52.52
+  radius: 20
+  start_date: <%= 2.weeks.from_now.to_datetime %>
+  end_date: <%= 3.weeks.from_now.to_datetime %>
+  token: "rwt-early-token"
   confirmed_at: <%= 1.day.ago %>
   locale: "en"

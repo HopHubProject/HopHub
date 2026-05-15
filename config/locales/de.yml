@@ -387,6 +387,7 @@ de:
         location: Ort (Postleitzahl)
         country: Land
         radius: Suchradius
+        start_date: Frühester Startzeitpunkt
         end_date: Spätester Ankunftszeitpunkt
 
       contact_email:
@@ -421,6 +422,7 @@ de:
         location: Bei welcher Postleitzahl soll deine Reise starten (Hinweg) bzw. enden (Rückweg)?
         country: Das Land in dem sich die Postleitzahl befindet.
         radius: Wie weit bist du bereit zu fahren?
+        start_date: Wann möchtest du frühestens losfahren?
         end_date: Bis wann möchtest du spätestens da sein? Deine Anfrage wird nach diesem Zeitpunkt automatisch entfernt.
 
       entry:

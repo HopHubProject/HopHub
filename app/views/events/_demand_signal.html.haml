@@ -33,4 +33,7 @@
                     .accordion-body
                       %ul.list-unstyled.mb-0
                         - bucket[:origins].each do |origin|
-                          %li= "#{origin[:count]}× #{origin[:label]}"
+                          %li
+                            = origin[:label]
+                            %i.bi.bi-plus-slash-minus.mx-1{ "aria-hidden": true }
+                            = "#{origin[:radius]}km (#{origin[:count]}x)"

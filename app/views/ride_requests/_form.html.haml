@@ -17,6 +17,10 @@
       collection: RideRequest::RADIUSES,
       include_blank: false
 
+    =f.input :start_date, as: :string,
+      input_html: { value: @ride_request.start_date&.strftime('%d/%m/%Y %H:%M'),
+                    data: { controller: "timepicker", "timepicker-locale-value": I18n.locale, "timepicker-max-date-value": @event.end_date } }
+
     =f.input :end_date, as: :string,
       input_html: { value: @ride_request.end_date&.strftime('%d/%m/%Y %H:%M'),
                     data: { controller: "timepicker", "timepicker-locale-value": I18n.locale, "timepicker-max-date-value": @event.end_date } }

@@ -26,8 +26,10 @@ class RideRequest < ActiveRecord::Base
   validates_presence_of :radius
   validates_inclusion_of :radius, in: RADIUSES.map { |_label, value| value }
 
+  validates_presence_of :start_date
   validates_presence_of :end_date
   validate :end_date_in_future
+  validate :start_date_before_end_date
 
   before_create :create_token
   before_create :create_id
@@ -60,7 +62,7 @@ class RideRequest < ActiveRecord::Base
   def self.ransackable_attributes(auth_object = nil)
     ["confirmed_at", "created_at", "direction", "email", "end_date",
      "event_id", "id", "country", "latitude", "longitude", "location",
-     "radius", "token", "locale", "updated_at"]
+     "radius", "start_date", "token", "locale", "updated_at"]
   end
 
   def create_id
@@ -74,6 +76,12 @@ class RideRequest < ActiveRecord::Base
   def end_date_in_future
     if end_date && end_date < Time.now
       errors.add(:end_date, "should not be in the past")
+    end
+  end
+
+  def start_date_before_end_date
+    if start_date && end_date && start_date > end_date
+      errors.add(:start_date, "must be before the latest arrival time")
     end
   end
 end

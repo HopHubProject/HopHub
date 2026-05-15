@@ -239,6 +239,8 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       assert_not_includes recipients, ride_requests(:rwt_unconfirmed).email
       assert_not_includes recipients, ride_requests(:rwb1).email
       assert_not_includes recipients, ride_requests(:rwt_far).email
+      assert_not_includes recipients, ride_requests(:rwt_too_late).email
+      assert_not_includes recipients, ride_requests(:rwt_too_early).email
 
       # flash mentions the notified count
       I18n.with_locale(locale) do
@@ -383,5 +385,36 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
       assert_match text, mail.text_part.body.to_s
       assert_match event_entry_url(x.event, x), mail.text_part.body.to_s
     end
+  end
+
+  test "confirm does not notify ride requests whose end_date is before the offer's date" do
+    x = entries(:owt1)
+    # Coordinates match rwt_too_late's Berlin location within radius — the
+    # only thing that should keep it out of the notification list is its
+    # near-immediate end_date relative to owt1's date (a week from now).
+    x.update(confirmed_at: nil, latitude: 52.52, longitude: 13.40, direction: "way_there")
+
+    rwt_too_late = ride_requests(:rwt_too_late)
+    assert rwt_too_late.end_date < x.date, "fixture sanity: rider's cutoff must be before offer's date"
+
+    get event_entry_confirm_url(x.event, x), params: { token: x.token }
+
+    recipients = ActionMailer::Base.deliveries.map { |m| m.to.first }
+    assert_not_includes recipients, rwt_too_late.email
+  end
+
+  test "confirm does not notify ride requests whose start_date is after the offer's date" do
+    x = entries(:owt1)
+    # Same Berlin coords + radius as rwt_too_early. Only its start_date
+    # (two weeks from now) excludes it — owt1.date is one week from now.
+    x.update(confirmed_at: nil, latitude: 52.52, longitude: 13.40, direction: "way_there")
+
+    rwt_too_early = ride_requests(:rwt_too_early)
+    assert rwt_too_early.start_date > x.date, "fixture sanity: rider's earliest departure must be after offer's date"
+
+    get event_entry_confirm_url(x.event, x), params: { token: x.token }
+
+    recipients = ActionMailer::Base.deliveries.map { |m| m.to.first }
+    assert_not_includes recipients, rwt_too_early.email
   end
 end

@@ -11,6 +11,7 @@ class RideRequestTest < ActiveSupport::TestCase
       latitude: 52.52,
       longitude: 13.40,
       radius: 20,
+      start_date: 1.hour.from_now,
       end_date: 1.week.from_now,
     )
 
@@ -20,11 +21,11 @@ class RideRequestTest < ActiveSupport::TestCase
     assert_nil rr.confirmed_at
   end
 
-  test "should require email, direction, location, country, lat, lng, radius, end_date" do
+  test "should require email, direction, location, country, lat, lng, radius, start_date, end_date" do
     rr = RideRequest.new(event: events(:one))
     assert_not rr.valid?
 
-    [:email, :direction, :location, :country, :latitude, :longitude, :radius, :end_date].each do |attr|
+    [:email, :direction, :location, :country, :latitude, :longitude, :radius, :start_date, :end_date].each do |attr|
       assert rr.errors.added?(attr, :blank), "expected :blank error on #{attr}, got #{rr.errors[attr].inspect}"
     end
   end
@@ -39,10 +40,28 @@ class RideRequestTest < ActiveSupport::TestCase
       latitude: 52.52,
       longitude: 13.40,
       radius: 20,
+      start_date: 1.day.ago,
       end_date: 1.day.ago,
     )
     assert_not rr.valid?
     assert_not_empty rr.errors[:end_date]
+  end
+
+  test "should reject start_date after end_date" do
+    rr = RideRequest.new(
+      event: events(:one),
+      direction: "way_there",
+      email: "x@example.com",
+      location: "10115",
+      country: "DE",
+      latitude: 52.52,
+      longitude: 13.40,
+      radius: 20,
+      start_date: 2.weeks.from_now,
+      end_date: 1.week.from_now,
+    )
+    assert_not rr.valid?
+    assert_not_empty rr.errors[:start_date]
   end
 
   test "should reject radius not in the allowed list" do
@@ -55,6 +74,7 @@ class RideRequestTest < ActiveSupport::TestCase
       latitude: 52.52,
       longitude: 13.40,
       radius: 7,
+      start_date: 1.hour.from_now,
       end_date: 1.week.from_now,
     )
     assert_not rr.valid?

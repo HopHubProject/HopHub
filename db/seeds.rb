@@ -96,6 +96,7 @@ end
       latitude: random_coord[0],
       longitude: random_coord[1],
       radius: radius,
+      start_date: DateTime.now,
       end_date: Faker::Time.between(from: DateTime.now + 1.hour, to: event.end_date.to_time),
       locale: %w(en de es).sample,
       confirmed_at: confirmed_at,

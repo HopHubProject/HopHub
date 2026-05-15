@@ -17,11 +17,12 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
         latitude: 52.52,
         longitude: 13.40,
         radius: 20,
+        start_date: 1.hour.from_now.strftime('%d/%m/%Y %H:%M'),
         end_date: 1.week.from_now.strftime('%d/%m/%Y %H:%M'),
       }
 
       # missing each required field in turn should be unprocessable
-      [:email, :direction, :location, :country, :latitude, :longitude, :radius, :end_date].each do |missing|
+      [:email, :direction, :location, :country, :latitude, :longitude, :radius, :start_date, :end_date].each do |missing|
         post event_ride_requests_url(e), params: {
           ride_request: base.merge(missing => nil),
           locale: locale
@@ -67,6 +68,7 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
             latitude: 52.52,
             longitude: 13.40,
             radius: 20,
+            start_date: 1.hour.from_now.strftime('%d/%m/%Y %H:%M'),
             end_date: 1.week.from_now.strftime('%d/%m/%Y %H:%M'),
           },
           locale: locale
@@ -155,15 +157,21 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
     get event_url(e)
     assert_response :success
 
-    # fixtures: rwt1, rwt2, rwt_tight_radius all from 10115/DE + rwt_far from 80331/DE = 4 way_there,
-    # rwb1 from 20095/DE = 1 way_back, rwt_unconfirmed is excluded
-    assert_match(/4 people are looking for a ride to the event/i, @response.body)
+    # way_there confirmed: rwt1 (20km), rwt2 (100km), rwt_tight_radius (5km),
+    # rwt_too_late (20km), rwt_too_early (20km) all from 10115/DE, plus
+    # rwt_far (10km) from 80331/DE = 6
+    # way_back confirmed: rwb1 (20km) from 20095/DE = 1
+    # rwt_unconfirmed is excluded
+    assert_match(/6 people are looking for a ride to the event/i, @response.body)
     assert_match(/1 person is looking for a ride home/i, @response.body)
 
-    # origins are inside the accordion bodies (present in HTML, hidden by CSS)
-    assert_match(/3× 10115, DE/, @response.body)
-    assert_match(/1× 80331, DE/, @response.body)
-    assert_match(/1× 20095, DE/, @response.body)
+    # origins are grouped by (location, country, radius) and rendered with a
+    # plus-slash-minus icon between the label and the radius
+    assert_match(/10115, DE.*bi-plus-slash-minus.*20km \(3x\)/m, @response.body)  # rwt1 + rwt_too_late + rwt_too_early
+    assert_match(/10115, DE.*bi-plus-slash-minus.*100km \(1x\)/m, @response.body) # rwt2
+    assert_match(/10115, DE.*bi-plus-slash-minus.*5km \(1x\)/m, @response.body)   # rwt_tight_radius
+    assert_match(/80331, DE.*bi-plus-slash-minus.*10km \(1x\)/m, @response.body)  # rwt_far
+    assert_match(/20095, DE.*bi-plus-slash-minus.*20km \(1x\)/m, @response.body)  # rwb1
 
     # the accordion structure is present (count <= 50)
     assert_match(/id="demand-way_there-collapse"/, @response.body)
@@ -193,6 +201,7 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
         latitude: 52.52,
         longitude: 13.40,
         radius: 20,
+        start_date: 1.hour.from_now,
         end_date: 1.week.from_now,
         locale: "en",
         confirmed_at: 1.day.ago,

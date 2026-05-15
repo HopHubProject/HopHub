@@ -152,12 +152,16 @@ class EventsController < ApplicationController
       scoped = requests.where(direction: direction)
       origins = scoped
         .unscope(:order)
-        .group(:location, :country)
+        .group(:location, :country, :radius)
         .count
-        .map { |(location, country), count|
-          { count: count, label: [location, country].compact.reject(&:blank?).join(', ') }
+        .map { |(location, country, radius), count|
+          {
+            count:  count,
+            label:  [location, country].compact.reject(&:blank?).join(', '),
+            radius: radius,
+          }
         }
-        .sort_by { |o| -o[:count] }
+        .sort_by { |o| [-o[:count], o[:radius].to_i] }
       hash[direction.to_sym] = { total: scoped.count, origins: origins }
     end
   end

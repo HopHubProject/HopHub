@@ -181,14 +181,21 @@ class EntriesController < ApplicationController
   end
 
   def notify_matching_ride_requests(entry)
-    return 0 unless entry.latitude.present? && entry.longitude.present?
+    return 0 unless entry.latitude.present? && entry.longitude.present? && entry.date.present?
 
-    candidates = entry.event.ride_requests.confirmed.where(direction: entry.direction)
+    # Direction, time-window, and "has a radius" are cheap to filter in SQL.
+    # The distance check stays in Ruby: geokit-rails' geo helpers compare
+    # against a constant radius, not against the per-row `radius` column.
+    candidates = entry.event.ride_requests.confirmed
+      .where(direction: entry.direction)
+      .where.not(radius: nil)
+      .where("start_date IS NULL OR start_date <= ?", entry.date)
+      .where("end_date   IS NULL OR end_date   >= ?", entry.date)
+
     origin = [entry.latitude, entry.longitude]
     notified = 0
 
     candidates.find_each do |ride_request|
-      next if ride_request.radius.blank?
       next if ride_request.distance_to(origin) > ride_request.radius
 
       RideRequestMailer.with(ride_request: ride_request, entry: entry).offer_matched.deliver

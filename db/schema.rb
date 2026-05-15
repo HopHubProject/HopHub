@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_14_140000) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_15_090000) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.integer "author_id"
     t.string "author_type"
@@ -84,6 +84,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_14_140000) do
     t.string "location"
     t.decimal "longitude", precision: 15, scale: 10
     t.integer "radius"
+    t.datetime "start_date"
     t.string "token"
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_ride_requests_on_event_id"
