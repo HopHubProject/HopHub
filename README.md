@@ -158,6 +158,7 @@ Source URLs (replace `<ver>` to upgrade):
 | `vendor/javascript/tempus-dominus-bi-one.js`      | `https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@<ver>/dist/plugins/bi-one.js`                            |
 | `vendor/javascript/altcha.js`                     | `https://cdn.jsdelivr.net/npm/altcha@<ver>/+esm`                                                                |
 | `vendor/javascript/confetti.js`                   | `https://cdn.jsdelivr.net/npm/canvas-confetti@<ver>/dist/confetti.browser.min.js`                               |
+| `vendor/javascript/es-module-shims.js`            | `https://cdn.jsdelivr.net/npm/es-module-shims@<ver>/dist/es-module-shims.min.js`                                |
 | `vendor/assets/stylesheets/tempus-dominus.css`    | `https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@<ver>/dist/css/tempus-dominus.min.css`                   |
 | `vendor/assets/stylesheets/bootstrap-icons.css.erb` | `https://cdn.jsdelivr.net/npm/bootstrap-icons@<ver>/font/bootstrap-icons.min.css` *(after download, replace the `url("fonts/...")` references with `<%= asset_path("bootstrap-icons.woff2") %>` / `.woff`)* |
 | `vendor/assets/fonts/bootstrap-icons.woff2`       | `https://cdn.jsdelivr.net/npm/bootstrap-icons@<ver>/font/fonts/bootstrap-icons.woff2`                           |
@@ -168,15 +169,6 @@ with fingerprinted filenames, so cache busting on upgrade is automatic.
 Subresource-Integrity (SRI) hashes are computed by Sprockets and emitted by
 `stylesheet_link_tag ..., integrity: true` and by importmap-rails for JS pins,
 so the browser will refuse to execute or apply a tampered file.
-
-**Exception:** `es-module-shims` is loaded directly from `cdn.jsdelivr.net` with
-a version-pinned URL and a hand-computed SRI hash (see
-`app/views/layouts/application.html.haml`). The local Sprockets pipeline
-truncates this particular file in dev for reasons we haven't fully traced;
-the CDN load sidesteps the issue without losing integrity verification, since
-the browser still refuses to execute the script if the bytes don't match the
-pinned SRI hash. `cdn.jsdelivr.net` is allowed in `script-src` in the CSP
-initializer for this reason.
 
 ## Run tests
 

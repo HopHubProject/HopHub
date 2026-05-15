@@ -15,10 +15,7 @@
     -if ENV['PLAUSIBLE_DOMAIN'].present? and ENV['PLAUSIBLE_SRC'].present?
       %script{defer: "", "data-domain": ENV['PLAUSIBLE_DOMAIN'], src: ENV['PLAUSIBLE_SRC']}
 
-    %script{ async: true,
-             src: "https://cdn.jsdelivr.net/npm/es-module-shims@2.8.1/dist/es-module-shims.min.js",
-             integrity: "sha384-dMda4TK2Rj22/MJZp1zFk07O48YwhByYou6Vm/d9EplUAhNmyucguevRwutPwQWW",
-             crossorigin: "anonymous" }
+    =javascript_include_tag "es-module-shims.js", async: "", integrity: true
     =javascript_importmap_tags
 
     -if @noindex == true
@@ -118,3 +115,4 @@
 
           / Fourth Column
           .col-md-3.col-lg-3.col-xl-3.mx-auto.mt-3
+

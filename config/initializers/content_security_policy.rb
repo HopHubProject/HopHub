@@ -22,16 +22,9 @@ Rails.application.configure do
     policy.font_src        :self
     policy.img_src         :self, :data, :https
     policy.object_src      :none
-    # es-module-shims is loaded from cdn.jsdelivr.net (SRI-pinned) because
-    # the local Sprockets pipeline truncates this particular file in dev;
-    # everything else in script-src is same-origin + nonce'd inline tags.
-    # `blob:` is needed because the shim rewrites importmap'd modules into
-    # blob URLs at runtime and re-imports them — those imports show up in
-    # script-src, and the shim's internal fetch of the blob shows up in
-    # connect-src.
-    policy.script_src      :self, :blob, "https://cdn.jsdelivr.net"
-    policy.style_src       :self, :blob, :unsafe_inline
-    policy.connect_src     :self, :blob
+    policy.script_src      :self
+    policy.style_src       :self, :unsafe_inline
+    policy.connect_src     :self
     policy.base_uri        :self
     policy.form_action     :self
     policy.frame_ancestors :none
