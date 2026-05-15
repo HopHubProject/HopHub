@@ -1,3 +1,36 @@
-$primary: #ff8a02;
+// Design tokens overridden BEFORE Bootstrap is imported. Anything that needs
+// the SCSS variable system (colors, radii, typography baseline) belongs here;
+// presentational rules layer on top in application.scss.
+
+// Brand
+$primary:                        #ff8a02;
+
+// Typography
+$font-family-sans-serif:         "Inter", system-ui, -apple-system, "Segoe UI",
+                                 Roboto, "Helvetica Neue", Arial, "Noto Sans",
+                                 sans-serif;
+$font-weight-base:               400;
+$headings-font-weight:           600;
+$headings-line-height:           1.2;
+$h1-font-size:                   2rem;
+$h2-font-size:                   1.5rem;
+$h3-font-size:                   1.25rem;
+$h4-font-size:                   1.125rem;
+
+// Surfaces
+$border-radius:                  0.625rem;
+$border-radius-sm:               0.4rem;
+$border-radius-lg:               0.875rem;
+
+// Cards (the legacy `.shadow.p-3.bg-body.rounded` blocks lean on Bootstrap's
+// card defaults indirectly; tightening these makes the new `.card-soft` look
+// consistent with anything Bootstrap renders natively.)
+$card-border-color:              rgba(0, 0, 0, 0.06);
+$card-cap-bg:                    transparent;
+
+// Links don't underline by default — feels closer to a modern app than to a
+// 1990s document.
+$link-decoration:                none;
+$link-hover-decoration:          underline;
 
 @import 'bootstrap';

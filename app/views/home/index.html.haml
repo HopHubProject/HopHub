@@ -1,23 +1,21 @@
-.row.justify-content-center.align-items-center
-  .col-12.col-lg-4.text-center.pt-4
-    =image_tag('hophub.png', alt: 'logo-hophub', width: '300', id: 'logo-hophub', class: 'd-inline-block align-text-top')
+.row.justify-content-center.text-center.py-3
+  .col-12.col-lg-6
+    =image_tag('hophub.png', alt: 'logo-hophub', width: '260', id: 'logo-hophub', class: 'd-inline-block')
+    %div
+      =link_to new_event_path, class: "btn btn-primary btn-lg" do
+        %i.bi.bi-calendar-plus.me-1
+        = t("create_event.title")
 
-.row.justify-content-center.mb-3
-  .col-12.col-lg-9.text-center
-    =link_to new_event_path, class: "btn btn-primary btn-lg my-3" do
-      %i.bi.bi-calendar-plus.me-1
-      = t("create_event.title")
-
-.row.justify-content-center
+.row.justify-content-center.mt-4
   .col-12.col-lg-9
-    .shadow.p-3.mb-5.bg-body.rounded
+    .card-soft.card-soft--accent.p-4.mb-4
       %h1= t('welcome.title')
       -t('welcome.text').each do |text|
-        %p= text
+        %p.mb-2= text
 
 .row.justify-content-center
   .col-12.col-lg-9
-    .shadow.p-3.mb-5.bg-body.rounded
+    .card-soft.p-4.mb-4
       %h1= t('how-it-works.title')
 
       .how-it-works
@@ -27,7 +25,7 @@
         %p=t('how-it-works.create-event.text')
 
         %h2
-          %i{class: "bi bi-gift"}
+          %i.bi.bi-gift
           =t('how-it-works.add-offer.title')
         %p=t('how-it-works.add-offer.text')
 
@@ -47,7 +45,7 @@
         %p=t('how-it-works.cleanup.text')
 
   .col-12.col-lg-9
-    .shadow.p-3.mb-5.bg-body.rounded
+    .card-soft.p-4.mb-4
       %h1= t('about.title')
       -t('about.text',
         tos: link_to(t('tos'), tos_path),
@@ -57,6 +55,6 @@
 
   -if @instance_info_text.present?
     .col-12.col-lg-9
-      .shadow.p-3.mb-5.bg-body.rounded
+      .card-soft.p-4.mb-4
         %h1= @instance_info_title
         = @instance_info_text.html_safe

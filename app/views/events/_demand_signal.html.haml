@@ -3,7 +3,7 @@
 - if buckets.values.any? { |b| b[:total].to_i > 0 }
   .row.justify-content-center.my-3
     .col-12.col-lg-9
-      .shadow.p-3.bg-body.rounded
+      .card-soft.card-soft--accent.p-3
         %h2.mt-0.pt-0= t('demand_signal.title')
         %p.mb-2.text-muted= t('demand_signal.text')
 

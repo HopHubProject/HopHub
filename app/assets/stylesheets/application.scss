@@ -1,6 +1,15 @@
+// Presentational rules. Bootstrap tokens that need to be set BEFORE the
+// framework is compiled live in application.bootstrap.scss; everything that
+// can sit on top of compiled Bootstrap belongs here.
+
+// ---------------------------------------------------------------------------
+// Page chrome
+// ---------------------------------------------------------------------------
+
 body, html {
   height: 100%;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition:
@@ -8,78 +17,133 @@ body, html {
     background-color 0.2s;
 }
 
+// Subtle texture on the page background so the soft cards have something to
+// sit on top of in light mode. The default (no attribute) is light, and the
+// dark-mode controller flips data-bs-theme to "dark" at runtime — the
+// override below drops the gradients in that case.
+body {
+  background:
+    radial-gradient(80rem 40rem at 100% -10%, rgba(255, 138, 2, 0.06), transparent 70%),
+    radial-gradient(60rem 30rem at -10% 110%, rgba(255, 58, 241, 0.04), transparent 70%),
+    var(--bs-body-bg);
+}
+
+[data-bs-theme="dark"] body {
+  background: var(--bs-body-bg);
+}
+
 #content {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
   min-height: 100vh;
 }
 
-footer a {
-  text-decoration: none;
-  display: block;
+// ---------------------------------------------------------------------------
+// Typography
+// ---------------------------------------------------------------------------
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.01em;
 }
 
-.how-it-works {
-  .row {
-    margin-top: 2rem;
-  }
-
-  i {
-    color: #ff8a02;
-    padding-right: 0.5rem;
-  }
-
-  .col-1 {
-    padding-right: 20px;
-    text-align: center;
-  }
+// Most pages put the page title in an h1 with no separator. A subtle tracking
+// adjustment + a touch more weight reads better at the new (smaller) size.
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 label {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .field-description {
-  font-size: 0.8rem;
-  color: #999;
+  font-size: 0.85rem;
+  color: var(--bs-secondary-color);
 }
 
-h1 {
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: bold;
+// ---------------------------------------------------------------------------
+// Buttons
+// ---------------------------------------------------------------------------
+
+// Drop the universal heavy drop shadow; reserve elevation for primary CTAs.
+.btn {
+  box-shadow: none;
+  font-weight: 500;
+  transition:
+    background-image 0.2s,
+    box-shadow 0.2s,
+    transform 0.06s;
 }
 
-h2 {
-  padding-top: 1rem;
-  text-transform: uppercase;
-  font-size: 1.3rem;
-  font-weight: bold;
+.btn:active {
+  transform: translateY(1px);
 }
 
-h3 {
-    padding-top: 1rem;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    font-weight: bold;
+// The brand gradient stays — but only when a primary button is engaged, and
+// no longer on outline-primary's resting state.
+.btn-primary {
+  box-shadow: 0 6px 16px -8px rgba(255, 138, 2, 0.55);
 }
 
-h4 {
-  padding-top: 1rem;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: bold;
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-primary:active,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus-visible,
+.btn-outline-primary:active {
+  background-image: linear-gradient(120deg, #ff3af1, #ff8b02);
+  border-color: transparent;
+  color: #fff;
 }
 
-.event-description > * {
-  transform: scale(0.9);
-  transform-origin: top left;
-  overflow: hidden;
+.btn-danger {
+  background-image: linear-gradient(120deg, #dc3545, #972430);
+  border-color: transparent;
 }
 
-abbr[title] {
-  text-decoration: none !important;
-  color: #aaa
+// ---------------------------------------------------------------------------
+// Soft cards
+//
+// Replaces the legacy `.shadow.p-3.bg-body.rounded` boilerplate found across
+// the views. Thin border on the resting state, very gentle elevation, and a
+// slightly lifted hover state for anything interactive.
+// ---------------------------------------------------------------------------
+
+.card-soft,
+.shadow.bg-body.rounded {
+  background-color: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius-lg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+// Override the Bootstrap utility shadow when paired with .bg-body.rounded so
+// existing markup picks up the new visual without HAML edits.
+.shadow.bg-body.rounded {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-bs-theme="dark"] .card-soft,
+[data-bs-theme="dark"] .shadow.bg-body.rounded {
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.card-soft--accent {
+  border-color: rgba(255, 138, 2, 0.4);
+  background-image:
+    linear-gradient(180deg, rgba(255, 138, 2, 0.06), transparent 60%);
+}
+
+// ---------------------------------------------------------------------------
+// Navbar / footer
+// ---------------------------------------------------------------------------
+
+.navbar {
+  border-bottom: 1px solid var(--bs-border-color);
+  backdrop-filter: saturate(150%) blur(8px);
+  background-color: rgba(var(--bs-body-bg-rgb), 0.85) !important;
 }
 
 .navbar-icon {
@@ -89,25 +153,121 @@ abbr[title] {
   display: inline-block;
 }
 
-.dropdown-menu-end {
-  right: auto; /* Reset the right position */
-  left: 0; /* Align to the left */
+footer {
+  border-top: 1px solid var(--bs-border-color);
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
-#content {
-  margin-top: 1rem;
+footer a {
+  text-decoration: none;
+  display: block;
+  padding: 0.15rem 0;
+  color: var(--bs-secondary-color);
 }
+
+footer a:hover {
+  color: var(--bs-link-hover-color);
+}
+
+// ---------------------------------------------------------------------------
+// Home page
+// ---------------------------------------------------------------------------
 
 #logo-hophub {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 8px 24px rgba(255, 138, 2, 0.18));
 }
 
-#entry-table hr {
-  margin-top: 1rem;
+.hero-headline {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #ff3af1, #ff8b02);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-#entry-table a.btn {
-  margin-top: 4px;
+.how-it-works {
+  .row {
+    margin-top: 1.5rem;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  h2 i {
+    color: var(--bs-primary);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Event page
+// ---------------------------------------------------------------------------
+
+.event-description > * {
+  // The legacy 0.9 transform was a hack to keep markdown-rendered text from
+  // overwhelming the page. With proper typography we can just lighten the body
+  // color instead.
+  color: var(--bs-body-color);
+}
+
+.event-description p:last-child {
+  margin-bottom: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Entry list
+// ---------------------------------------------------------------------------
+
+#entry-table {
+  hr {
+    margin: 0.75rem 0;
+    border-color: var(--bs-border-color);
+    opacity: 1;
+  }
+
+  a.btn {
+    margin-top: 4px;
+  }
+}
+
+.entry-row {
+  border-radius: var(--bs-border-radius);
+  transition: background-color 0.2s;
+}
+
+.entry-row:hover {
+  background-color: var(--bs-tertiary-bg);
+}
+
+.entry-row + .entry-row {
+  margin-top: 0.5rem;
+}
+
+.entry-summary {
+  // The accordion-button on the entry list row is doing layout work; drop the
+  // default arrow indicator + caret behaviour for a calmer look.
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0.75rem 1rem;
+  border-radius: var(--bs-border-radius);
+  width: 100%;
+}
+
+.entry-summary:not(.collapsed) {
+  background-color: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+  box-shadow: none;
+}
+
+.entry-summary:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(255, 138, 2, 0.25);
 }
 
 .entry-summary-grid {
@@ -127,33 +287,67 @@ abbr[title] {
   }
 }
 
-.entry-name  { grid-area: name; }
-.entry-time  { grid-area: time; white-space: nowrap; }
-.entry-route { grid-area: route; }
-
-.entry-row + .entry-row {
-  margin-top: 0.5rem;
+.entry-name {
+  grid-area: name;
 }
 
-a {
-  text-decoration: none;
+.entry-time {
+  grid-area: time;
+  white-space: nowrap;
+  color: var(--bs-secondary-color);
+  font-variant-numeric: tabular-nums;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-outline-primary:hover,
-.btn-outline-primary:focus,
-.btn-outline-primary:active {
-  background-image: linear-gradient(to right, #ff3af1, #ff8b02);
+.entry-route {
+  grid-area: route;
+  color: var(--bs-secondary-color);
 }
 
-.btn-danger {
-    background-image: linear-gradient(to right, #dc3545, #972430);
-  }
+.entry-route b {
+  color: var(--bs-body-color);
+}
 
-.btn {
-  box-shadow: 0 3px 10px 0 rgba(137, 156, 156, 0.75);
+// ---------------------------------------------------------------------------
+// Demand signal
+// ---------------------------------------------------------------------------
+
+.demand-signal-bucket .accordion-item {
+  background-color: transparent;
+  border: 0;
+}
+
+.demand-signal-bucket .accordion-button {
+  background-color: var(--bs-tertiary-bg);
+  border-radius: var(--bs-border-radius) !important;
+  box-shadow: none;
+  padding: 0.65rem 1rem;
+  font-weight: 500;
+}
+
+.demand-signal-bucket .accordion-body {
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+  color: var(--bs-secondary-color);
+}
+
+.demand-signal-bucket .accordion-body li {
+  padding: 0.15rem 0;
+}
+
+// ---------------------------------------------------------------------------
+// Misc
+// ---------------------------------------------------------------------------
+
+abbr[title] {
+  text-decoration: none !important;
+  color: var(--bs-secondary-color);
+}
+
+.dropdown-menu-end {
+  // Bootstrap aligns dropdown menus to .end via JS; the custom override the
+  // legacy CSS introduced fights that. Leave the framework alone.
+  right: 0;
+  left: auto;
 }
 
 altcha-widget {
