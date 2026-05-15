@@ -138,7 +138,7 @@ en:
 
   demand_signal:
     title: Looking for a ride
-    text: Adding an offer will email each person below if your offer's location falls within the radius they chose.
+    text: Adding an offer will email each person below if your offer's location falls within the radius they chose and your offer's date is inside their requested time window.
     way_there:
       heading:
         one: "1 person is looking for a ride to the event"

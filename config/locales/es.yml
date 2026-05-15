@@ -140,7 +140,7 @@ es:
 
   demand_signal:
     title: Buscan un viaje
-    text: Al publicar una oferta, enviaremos un correo electrónico a cada persona listada abajo si la ubicación de tu oferta está dentro del radio que ha elegido.
+    text: Al publicar una oferta, enviaremos un correo electrónico a cada persona listada abajo si la ubicación de tu oferta está dentro del radio que ha elegido y la hora de tu oferta cae dentro de su ventana de tiempo solicitada.
     way_there:
       heading:
         one: "1 persona busca un viaje al evento"

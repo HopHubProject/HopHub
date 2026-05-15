@@ -142,7 +142,7 @@ de:
 
   demand_signal:
     title: Fahrten gesucht
-    text: Wenn du ein Angebot einstellst, benachrichtigen wir jede unten aufgelistete Person per E-Mail, sofern der Standort deines Angebots innerhalb des von ihr gewählten Radius liegt.
+    text: Wenn du ein Angebot einstellst, benachrichtigen wir jede unten aufgelistete Person per E-Mail, sofern der Standort deines Angebots innerhalb des von ihr gewählten Radius und der Zeitpunkt innerhalb ihres gewünschten Zeitfensters liegt.
     way_there:
       heading:
         one: "1 Person sucht eine Mitfahrgelegenheit zum Event"
