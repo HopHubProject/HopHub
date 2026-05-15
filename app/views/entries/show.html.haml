@@ -29,6 +29,11 @@
                   %i.bi.bi-exclamation-triangle.mx-1
                   =t('driver-needed')
 
+        -unless [:bicycle, :foot].include?(@entry.transport.to_sym) || @entry.seats.to_i.zero?
+          %tr
+            %th= t('simple_form.labels.entry.seats')
+            %td= pluralize(@entry.seats, t('seat.one'), t('seat.other'))
+
         %tr
           -if @entry.is_way_there?
             %th=t('simple_form.labels.entry.starting-point')
