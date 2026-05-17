@@ -150,6 +150,35 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
       delete event_ride_request_destroy_url(e, "non-existing", locale: locale)
       assert_redirected_to event_path(e, locale: locale)
     end
+
+    # Regression: the link in the email is rendered as a regular href, so the
+    # browser issues a GET when the user clicks it. Previously only DELETE was
+    # routed, so the link 404'd. GET now lands on a small confirmation page
+    # that submits the actual DELETE through a real form.
+    define_method("test_get_on_destroy_url_renders_confirmation_form_#{locale}") do
+      rr = ride_requests(:rwt1)
+      get event_ride_request_destroy_url(rr.event, rr, token: rr.token, locale: locale)
+      assert_response :success
+
+      I18n.with_locale(locale) do
+        assert_match I18n.t('ride_request_delete.title'), @response.body
+        assert_match I18n.t('ride_request_delete.button'), @response.body
+      end
+
+      # The form posts DELETE back to the same URL with the token preserved.
+      assert_match(/action="[^"]*#{rr.id}\/destroy[^"]*token=#{rr.token}/, @response.body)
+      assert_match(/name="_method" (?:type="hidden" )?value="delete"/, @response.body)
+
+      # And the GET must not have deleted anything.
+      assert RideRequest.exists?(rr.id)
+    end
+
+    define_method("test_get_on_destroy_url_with_wrong_token_redirects_without_form_#{locale}") do
+      rr = ride_requests(:rwt1)
+      get event_ride_request_destroy_url(rr.event, rr, token: "wrong", locale: locale)
+      assert_redirected_to event_path(rr.event, locale: locale)
+      assert RideRequest.exists?(rr.id)
+    end
   end
 
   test "event show renders demand signal with per-direction counts and origins inside accordions" do

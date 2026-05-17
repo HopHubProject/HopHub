@@ -1,0 +1,15 @@
+.row.justify-content-center.my-3
+  .col-12.col-lg-9
+    .card-soft.card-soft--accent.p-4
+      %h1= t('ride_request_delete.title')
+      %p= t('ride_request_delete.text')
+
+      = button_to event_ride_request_destroy_path(@event, @ride_request, token: @ride_request.token),
+        method: :delete,
+        class: 'btn btn-danger' do
+        %i.bi.bi-trash.me-1
+        = t('ride_request_delete.button')
+
+      = link_to event_path(@event), class: 'btn btn-outline-secondary ms-2' do
+        %i.bi.bi-x-lg.me-1
+        = t('cancel')

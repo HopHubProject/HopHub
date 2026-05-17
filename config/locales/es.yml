@@ -192,6 +192,14 @@ es:
       ¿Estás seguro de que quieres eliminar esta entrada?
       Esta acción no se puede deshacer.
 
+  ride_request_delete:
+    title: Eliminar solicitud de viaje
+    text: |
+      ¿Estás seguro de que quieres eliminar tu solicitud de viaje? Ya no
+      recibirás notificaciones cuando se publiquen ofertas que coincidan.
+      Esta acción no se puede deshacer.
+    button: Eliminar mi solicitud
+
   create_new_offer:
     title: Crear nueva oferta
     text: |

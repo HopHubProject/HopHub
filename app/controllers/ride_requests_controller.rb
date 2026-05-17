@@ -1,8 +1,8 @@
 class RideRequestsController < ApplicationController
   before_action :find_event!
-  before_action :find_ride_request!, only: [ :destroy, :confirm ]
+  before_action :find_ride_request!, only: [ :destroy, :destroy_confirm, :confirm ]
   before_action :set_geonames, only: [ :new, :create ]
-  before_action :authenticate_user!, only: [ :destroy, :confirm ]
+  before_action :authenticate_user!, only: [ :destroy, :destroy_confirm, :confirm ]
   before_action :set_title
   before_action :set_meta_tags
 
@@ -52,6 +52,11 @@ class RideRequestsController < ApplicationController
     @ride_request.save
     RideRequestMailer.with(ride_request: @ride_request).confirmed.deliver
     redirect_to event_path(@event), flash: { success: t('flash.ride_request_confirmed') }
+  end
+
+  def destroy_confirm
+    # Renders the confirmation view; the actual deletion happens when the
+    # form on that view submits a DELETE to the same URL.
   end
 
   def destroy

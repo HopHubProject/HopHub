@@ -194,6 +194,14 @@ de:
       Bist du sicher, dass du diesen Eintrag löschen möchtest?
       Diese Aktion kann nicht rückgängig gemacht werden.
 
+  ride_request_delete:
+    title: Mitfahranfrage löschen
+    text: |
+      Bist du sicher, dass du deine Mitfahranfrage löschen möchtest? Du wirst
+      keine Benachrichtigungen mehr erhalten, wenn passende Angebote eingestellt
+      werden. Diese Aktion kann nicht rückgängig gemacht werden.
+    button: Mitfahranfrage löschen
+
   create_new_offer:
     title: Neues Angebot erstellen
     text: |

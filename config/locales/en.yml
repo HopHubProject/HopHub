@@ -190,6 +190,14 @@ en:
       Are you sure you want to delete this entry?
       This action cannot be undone.
 
+  ride_request_delete:
+    title: Delete ride request
+    text: |
+      Are you sure you want to delete your ride request? You will no longer
+      receive notifications when matching offers are posted.
+      This action cannot be undone.
+    button: Delete my ride request
+
   create_new_offer:
     title: Create new offer
     text: |

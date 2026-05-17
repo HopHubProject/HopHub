@@ -34,6 +34,11 @@ Rails.application.routes.draw do
 
     resources :ride_requests, path: :r, only: [:new, :create] do
       get 'confirm'
+      # GET on the destroy URL is what email-link clicks issue; it renders
+      # a small confirmation page with a real DELETE form. This prevents
+      # email-client prefetchers and antivirus URL scanners from
+      # silently deleting users' ride requests.
+      get 'destroy', action: :destroy_confirm, as: nil
       delete 'destroy'
     end
   end
