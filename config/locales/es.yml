@@ -444,6 +444,7 @@ es:
       entry:
         name: Ingresa tu nombre
         email: Ingresa tu dirección de correo electrónico
+        phone: "+34 123 456789"
         location: Ingresa un código postal
         date: Selecciona la fecha y hora de tu viaje
         notes: ¿Tienes alguna nota adicional? Compártela aquí.

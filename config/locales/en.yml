@@ -431,6 +431,7 @@ en:
       entry:
         name: Your name or pseudonym
         email: Your email address
+        phone: "+49 123 4567890"
         location: Enter a zip code
         date: Select the date and time of your trip
         notes: Got any additional notes? Share them here.

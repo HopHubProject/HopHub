@@ -450,6 +450,7 @@ de:
       entry:
         name: Dein Name oder ein Pseudonym
         email: Deine E-Mail-Adresse
+        phone: "+49 123 4567890"
         location: Gib eine Postleitzahl ein
         date: Wähle das Datum und die Uhrzeit deiner Reise
         notes: Noch irgendwas zu sagen? Hier ist Platz dafür.
