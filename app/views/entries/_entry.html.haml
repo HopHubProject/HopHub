@@ -36,11 +36,6 @@
   "aria-labelledby": "entry-#{entry.id}"}
   .col-12
     .accordion-body.py-2.ps-4
-      -unless entry.phone.blank?
-        %span
-          %i.bi.bi-telephone.me-2
-          =link_to entry.phone, "tel:#{entry.phone}"
-        %br
       -unless entry.notes.blank?
         %span
           %i.bi.bi-info-circle.me-2

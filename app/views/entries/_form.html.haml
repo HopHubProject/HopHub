@@ -8,6 +8,7 @@
     =f.input :name
     -if method == :new
       =f.input :email
+    =f.input :phone
     =f.input :direction, as: :select,
       collection: Entry::DIRECTIONS.map { |v| [t(v), v] }
     =f.input :location,
