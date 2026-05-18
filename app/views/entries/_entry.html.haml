@@ -34,15 +34,16 @@
 .row.accordion-collapse.collapse{
   id: "entry-details-#{entry.id}",
   "aria-labelledby": "entry-#{entry.id}"}
-  .accordion-body.py-2
-    -unless entry.phone.blank?
-      %span
-        %i.bi.bi-telephone.mx-2
-        =entry.phone
-      %br
-    -unless entry.notes.blank?
-      %span
-        %i.bi.bi-info-circle.mx-2
-        =auto_link entry.notes
-    .mt-2
-      =link_to t('entry_contact.title'), event_entry_path(entry.event, entry), class: 'btn btn-outline-primary btn-sm', role: 'button'
+  .col-12
+    .accordion-body.py-2.ps-4
+      -unless entry.phone.blank?
+        %span
+          %i.bi.bi-telephone.me-2
+          =link_to entry.phone, "tel:#{entry.phone}"
+        %br
+      -unless entry.notes.blank?
+        %span
+          %i.bi.bi-info-circle.me-2
+          =auto_link entry.notes
+      .mt-2
+        =link_to t('entry_contact.title'), event_entry_path(entry.event, entry), class: 'btn btn-outline-primary', role: 'button'
