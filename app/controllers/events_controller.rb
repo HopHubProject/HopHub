@@ -156,12 +156,13 @@ class EventsController < ApplicationController
         .count
         .map { |(location, country, radius), count|
           {
-            count:  count,
-            label:  [location, country].compact.reject(&:blank?).join(', '),
-            radius: radius,
+            count:    count,
+            label:    [location, country].compact.reject(&:blank?).join(', '),
+            location: location.to_s,
+            radius:   radius,
           }
         }
-        .sort_by { |o| [-o[:count], o[:radius].to_i] }
+        .sort_by { |o| [o[:location], o[:radius].to_i] }
       hash[direction.to_sym] = { total: scoped.count, origins: origins }
     end
   end
