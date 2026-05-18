@@ -4,7 +4,6 @@ es:
 
   languages: Idiomas
   github_project: Proyecto de GitHub
-  legal_notice: Aviso legal
   imprint: Imprint
   privacy_policy: Política de privacidad
   tos: Términos de servicio
@@ -72,12 +71,6 @@ es:
         Las ofertas, solicitudes y eventos se eliminan automáticamente de la base de datos
         una vez que su validez ha expirado.
 
-  hosting-an-event:
-    title: Crea tu propio evento
-    text: |
-      ¿Sabes de un evento al que la gente quiere ir en grupo?
-      Entonces crea un evento y comparte el enlace con los participantes.
-
   about:
     title: El proyecto
     text:
@@ -96,7 +89,6 @@ es:
   cancel: Cancelar
 
   transport:
-    any: Cualquiera
     car: Coche
     train: Tren
     bus: Autobús
@@ -111,8 +103,6 @@ es:
   way_back: Vuelta
 
   driver-needed: Este viaje busca un conductor
-  driver-offer: |
-    %{name} ofrece conducir un coche
 
   no_entries:
     title: No hay ofertas aún
@@ -125,12 +115,9 @@ es:
     title: Agregar nueva oferta
     offer_yourself: |
       ¿Quieres organizar el viaje tú mismo?
-    search_for_people: Buscar compañeros de viaje
 
   add_ride_request:
     title: Busco un viaje
-    looking_for_ride: |
-      ¿Necesitas un viaje para este evento?
 
   create_new_ride_request:
     title: Agregar solicitud
@@ -149,14 +136,6 @@ es:
       heading:
         one: "1 persona busca un viaje de vuelta"
         other: "%{count} personas buscan un viaje de vuelta"
-
-  show_offers:
-    title: Mostrar ofertas
-    text: |
-      ¿Preferirías unirte a otros en lugar de crear una oferta tú mismo?
-    current_offers:
-      one: Hay una oferta para este evento!
-      other: Hay %{count} ofertas para este evento!
 
   event: Evento
   seat:
@@ -210,11 +189,6 @@ es:
     title: Actualizar oferta
 
   entries:
-    text: |
-      Aquí encontrarás todas las %{type} para este evento.
-
-    none: No se encontraron entradas
-
     filter:
       title: Filtrar
       apply: Aplicar filtro
@@ -289,7 +263,6 @@ es:
 
   flash:
     event_created: Evento creado. Recibirás un correo electrónico con un enlace para confirmar.
-    event_updated: Evento actualizado.
     event_deleted: Evento eliminado.
     event_not_found: Evento no encontrado.
     event_confirmed: Tu dirección de correo electrónico ha sido confirmada. El evento ya está activo.
@@ -377,6 +350,7 @@ es:
         date: Fecha y hora
         transport: Medio de transporte
         direction: Dirección
+        starting-point: Punto de partida
         location: Ubicación (código postal)
         country: País
         seats: Número de asientos
@@ -448,11 +422,6 @@ es:
         driver-offer: |
           Si ofreces conducir a otras personas, marca esta casilla.
 
-          Any additional notes you want to share with others.
-          You can use this field to share your phone number, preferred way of contact, etc.
-          Please note that this information will be publicly shown on the web site.
-
-
         notes: |
           Cualquier nota adicional que quieras compartir con otros.
           Puedes usar este campo para compartir tu número de teléfono, forma de contacto preferida, etc.
@@ -469,7 +438,7 @@ es:
     placeholders:
       event:
         name: Tu nombre o seudónimo
-        email: Tu dirección de correo electrónico
+        description: ¿De qué trata el evento?
         admin_email: Ingresa tu dirección de correo electrónico
         end_date: ¿Cuándo finalizará el evento?
       entry:

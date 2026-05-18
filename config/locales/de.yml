@@ -4,7 +4,6 @@ de:
 
   languages: Sprachen
   github_project: GitHub-Projekt
-  legal_notice: Rechtliches
   imprint: Impressum
   privacy_policy: Datenschutzbestimmungen
   tos: Nutzungsbedingungen
@@ -73,12 +72,6 @@ de:
         Angebote und Events werden automatisch aus der Datenbank entfernt
         nachdem deren Gültigkeit vorüber ist.
 
-  hosting-an-event:
-    title: Erstelle dein eigenes Event
-    text: |
-      Du weißt von einer Veranstaltung, zu der Leute gemeinsam anreisen wollen?
-      Dann erstelle ein Event und teile den Link mit den Teilnehmenden.
-
   about:
     title: Das Projekt
     text:
@@ -97,7 +90,6 @@ de:
   cancel: Abbrechen
 
   transport:
-    any: Egal
     car: Auto
     train: Zug
     bus: Bus
@@ -112,8 +104,6 @@ de:
   way_back: Rückweg
 
   driver-needed: Für diese Fahrt wird ein:e Fahrer:in gesucht!
-  driver-offer: |
-    %{name} bietet an, das Auto zu fahren.
 
   no_entries:
     title: Noch keine Angebote
@@ -126,12 +116,9 @@ de:
     title: Neues Angebot aufgeben
     offer_yourself: |
       Willst du die Fahrt selbst organisieren?
-    search_for_people: Suche nach Mitfahrenden
 
   add_ride_request:
     title: Ich suche eine Mitfahrgelegenheit
-    looking_for_ride: |
-      Suchst du eine Mitfahrgelegenheit?
 
   create_new_ride_request:
     title: Anfrage aufgeben
@@ -151,14 +138,6 @@ de:
       heading:
         one: "1 Person sucht eine Mitfahrgelegenheit nach Hause"
         other: "%{count} Personen suchen eine Mitfahrgelegenheit nach Hause"
-
-  show_offers:
-    title: Angebote anzeigen
-    text: |
-      Willst du dich doch lieber anderen anschließen, anstatt selbst ein Angebot zu erstellen?
-    current_offers:
-      one: Es gibt derzeit ein Angebot für dieses Event!
-      other: Es gibt derzeit %{count} Angebote für dieses Event!
 
   event: Event
   seat:
@@ -213,11 +192,6 @@ de:
     title: Angebot aktualisieren
 
   entries:
-    text: |
-      Hier findest du alle %{type} für dieses Event.
-
-    none: Keine Einträge gefunden
-
     filter:
       title: Filtern
       apply: Filter anwenden
@@ -293,7 +267,6 @@ de:
 
   flash:
     event_created: Event erstellt. Du erhältst gleich eine E-Mail mit einem Link zur Bestätigung.
-    event_updated: Event aktualisiert.
     event_deleted: Event gelöscht.
     event_not_found: Event nicht gefunden.
     event_confirmed: Deine E-Mail-Adresse wurde bestätigt. Das Event ist jetzt aktiv.
@@ -482,9 +455,9 @@ de:
         notes: Noch irgendwas zu sagen? Hier ist Platz dafür.
       entries_filter:
         location: Postleitzahl
-        contact_email:
-          name: Name oder Pseudonym
-          from: E-Mail-Adresse
+      contact_email:
+        name: Name oder Pseudonym
+        from: E-Mail-Adresse
 
     errors:
       entry:

@@ -4,7 +4,6 @@ en:
 
   languages: Languages
   github_project: GitHub project
-  legal_notice: Legal notice
   imprint: Imprint
   privacy_policy: Privacy policy
   tos: Terms of service
@@ -71,12 +70,6 @@ en:
         Offers and events are automatically and permanently removed
         from the database after they have expired.
 
-  hosting-an-event:
-    title: Create your own event
-    text: |
-      You know of an even where many people plan to arrive jointly?
-      Then create an event and share the link with the participants.
-
   about:
     title: The project
     text:
@@ -95,7 +88,6 @@ en:
   cancel: Cancel
 
   transport:
-    any: Any
     car: Car
     train: Train
     bus: Bus
@@ -110,8 +102,6 @@ en:
   way_back: Way back
 
   driver-needed: This ride needs a driver!
-  driver-offer: |
-    %{name} offers to drive a car
 
   no_entries:
     title: No offers yet
@@ -127,8 +117,6 @@ en:
 
   add_ride_request:
     title: I'm looking for a ride
-    looking_for_ride: |
-      Need a ride to this event?
 
   create_new_ride_request:
     title: Add ride request
@@ -147,14 +135,6 @@ en:
       heading:
         one: "1 person is looking for a ride home"
         other: "%{count} people are looking for a ride home"
-
-  show_offers:
-    title: Show offers
-    text: |
-      Rather join a ride than offer one yourself?
-    current_offers:
-      one: There is currently one offer for this event!
-      other: There are currently %{count} offers for this event!
 
   event: Event
   seat:
@@ -209,11 +189,6 @@ en:
     title: Update offer
 
   entries:
-    text: |
-      Here you can see all %{type} for this event.
-
-    none: No entries found
-
     filter:
       title: Filter
       apply: Apply filter
@@ -295,7 +270,6 @@ en:
 
   flash:
     event_created: Event created. You will receive an email with a link to confirm.
-    event_updated: Event updated.
     event_deleted: Event deleted.
     event_not_found: Event not found.
     event_confirmed: Your email address has been confirmed. The event is now active.
