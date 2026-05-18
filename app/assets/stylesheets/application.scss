@@ -277,18 +277,25 @@ footer a:hover {
   gap: 0.25rem 1rem;
   grid-template-columns: auto 1fr;
   grid-template-areas:
-    "name  name"
-    "time  route";
+    "time      name"
+    "transport transport"
+    "route     route";
 
   @media (min-width: 768px) {
-    grid-template-columns: 3fr auto 6fr;
-    grid-template-areas: "name time route";
+    grid-template-columns: 4rem 3fr 10rem 6fr;
+    grid-template-areas: "time name transport route";
     align-items: baseline;
   }
 }
 
 .offer-name {
   grid-area: name;
+}
+
+.offer-transport {
+  grid-area: transport;
+  white-space: nowrap;
+  color: var(--bs-secondary-color);
 }
 
 .offer-time {

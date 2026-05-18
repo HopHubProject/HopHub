@@ -8,12 +8,13 @@
       .offer-summary-grid
         .offer-name
           %b=offer.name
+        .offer-transport
+          %i{class: icon_class_for_transport(offer.transport)}
+          %span=t("transport.#{offer.transport}")
           -unless [:bicycle, :foot].include? offer.transport.to_sym or offer.seats == 0
-            %span.text-muted.ms-1
-              ="– #{pluralize(offer.seats, t('seat.one'), t('seat.other'))}"
-          %span.ms-2
-            %i{class: icon_class_for_transport(offer.transport)}
-            %span.ms-1=t("transport.#{offer.transport}")
+            %span.ms-2
+              %i.bi.bi-person
+              %span=offer.seats
         .offer-time
           =l offer.date, format: :time
         .offer-route
