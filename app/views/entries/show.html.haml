@@ -42,6 +42,11 @@
 
           %td= @entry.location
 
+        -if @entry.phone.present?
+          %tr
+            %th= t('activerecord.fields.entry.phone')
+            %td= link_to @entry.phone, "tel:#{@entry.phone}"
+
         %tr
           %th= t('activerecord.fields.entry.notes')
           %td= auto_link @entry.notes
