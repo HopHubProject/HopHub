@@ -18,18 +18,17 @@
           =l entry.date, format: :time
         .entry-route
           -if entry.is_way_there?
-            =entry.location
+            %b=entry.location
             →
-            %b=entry.event.name
+            =entry.event.name
           -else
-            %b=entry.event.name
+            =entry.event.name
             →
-            =entry.location
+            %b=entry.location
           -if entry.transport.to_sym == :car && entry.driver?
             %div
-              %b
-                %i.bi.bi-exclamation-triangle.me-1
-                =t('driver-needed')
+              %i.bi.bi-exclamation-triangle.me-1
+              =t('driver-needed')
 
 .row.accordion-collapse.collapse{
   id: "entry-details-#{entry.id}",

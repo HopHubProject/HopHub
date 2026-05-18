@@ -25,9 +25,8 @@
             -if @entry.transport.to_sym == :car
               -if @entry.driver?
                 %br
-                %b
-                  %i.bi.bi-exclamation-triangle.mx-1
-                  =t('driver-needed')
+                %i.bi.bi-exclamation-triangle.mx-1
+                =t('driver-needed')
 
         -unless [:bicycle, :foot].include?(@entry.transport.to_sym) || @entry.seats.to_i.zero?
           %tr
