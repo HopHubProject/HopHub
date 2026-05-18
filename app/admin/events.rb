@@ -53,8 +53,8 @@ ActiveAdmin.register Event do
       row :updated_at
       row :confirmed_at
       row :seats_added_total
-      row :current_entries do |event|
-        event.entries.count
+      row :current_offers do |event|
+        event.offers.count
       end
       row :ride_requests do |event|
         event.ride_requests.count
@@ -87,7 +87,7 @@ ActiveAdmin.register Event do
     column :created_at
     column :confirmed_at
     column :offers do |event|
-      event.offers.count
+      event.confirmed_offers.count
     end
     column :ride_requests do |event|
       event.ride_requests.count
@@ -96,9 +96,9 @@ ActiveAdmin.register Event do
 
   show do
     panel "Offers (way there)" do
-      table_for event.offers_way_there do
-        column :id do |entry|
-          link_to entry.id, admin_entry_path(entry)
+      table_for event.confirmed_offers_way_there do
+        column :id do |offer|
+          link_to offer.id, admin_offer_path(offer)
         end
         column :name
         column :seats
@@ -109,9 +109,9 @@ ActiveAdmin.register Event do
     end
 
     panel "Offers (way back)" do
-      table_for event.offers_way_back do
-        column :id do |entry|
-          link_to entry.id, admin_entry_path(entry)
+      table_for event.confirmed_offers_way_back do
+        column :id do |offer|
+          link_to offer.id, admin_offer_path(offer)
         end
         column :name
         column :seats

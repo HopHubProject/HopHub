@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get 'confirm'
     delete 'destroy'
 
-    resources :entries, path: :x do
+    resources :offers, path: :x do
       get 'confirm'
       delete 'destroy'
       post 'contact_emails'

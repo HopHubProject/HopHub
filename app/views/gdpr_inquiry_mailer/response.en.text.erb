@@ -2,7 +2,7 @@ Hi,
 
 Thanks a lot for your GDPR inquiry request.
 
-<% if @events.any? || @entries.any? %>
+<% if @events.any? || @offers.any? %>
 In response to your request for information on <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %>, we confirm that we,
 as the responsible party, store and process the following data
 associated with your email address:
@@ -13,12 +13,12 @@ associated with your email address:
 
 <% end %>
 
-<% @entries.each do |entry| %>
-* Entry from <%= l entry.created_at.to_date, format: :long, locale: I18n.locale %>
-  Transport: <%= entry.transport %>
-  Location: <%= entry.location %>
+<% @offers.each do |offer| %>
+* Offer from <%= l offer.created_at.to_date, format: :long, locale: I18n.locale %>
+  Transport: <%= offer.transport %>
+  Location: <%= offer.location %>
 
-  To delete this entry, please use the following link: <%= edit_event_entry_url(entry.event, entry, token: entry.token, locale: I18n.locale) %>
+  To delete this offer, please use the following link: <%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>
 
 <% end %>
 
@@ -28,8 +28,8 @@ We process this data to fulfill the following purposes:
 - Organization of the event "<%= event.name %>" (<%= event.id %>)
 <% end %>
 
-<% @entries.each do |entry| %>
-- Organization of the entry "<%= entry.name %>" (<%= entry.id %>)
+<% @offers.each do |offer| %>
+- Organization of the offer "<%= offer.name %>" (<%= offer.id %>)
 <% end %>
 
 As the data subject, you have the right to request us to correct your

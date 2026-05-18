@@ -1,0 +1,43 @@
+.offer-row.row.g-2.align-items-stretch{id: "offer-#{offer.id}"}
+  .col-12
+    %button.accordion-button.collapsed.offer-summary{
+      type: 'button',
+      data: {bs_toggle: 'collapse', bs_target: "#offer-details-#{offer.id}"},
+      aria: {expanded: 'false', controls: "offer-details-#{offer.id}"},
+    }
+      .offer-summary-grid
+        .offer-name
+          %b=offer.name
+          -unless [:bicycle, :foot].include? offer.transport.to_sym or offer.seats == 0
+            %span.text-muted.ms-1
+              ="– #{pluralize(offer.seats, t('seat.one'), t('seat.other'))}"
+          %span.ms-2
+            %i{class: icon_class_for_transport(offer.transport)}
+            %span.ms-1=t("transport.#{offer.transport}")
+        .offer-time
+          =l offer.date, format: :time
+        .offer-route
+          -if offer.is_way_there?
+            %b=offer.location
+            →
+            =offer.event.name
+          -else
+            =offer.event.name
+            →
+            %b=offer.location
+          -if offer.transport.to_sym == :car && offer.driver?
+            %div
+              %i.bi.bi-exclamation-triangle.me-1
+              =t('driver-needed')
+
+.row.accordion-collapse.collapse{
+  id: "offer-details-#{offer.id}",
+  "aria-labelledby": "offer-#{offer.id}"}
+  .col-12
+    .accordion-body.py-2.ps-4
+      -unless offer.notes.blank?
+        %span
+          %i.bi.bi-info-circle.me-2
+          =auto_link offer.notes
+      .mt-2
+        =link_to t('offer_contact.title'), event_offer_path(offer.event, offer), class: 'btn btn-outline-primary', role: 'button'

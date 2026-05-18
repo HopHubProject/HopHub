@@ -11,8 +11,8 @@ ActiveAdmin.register_page "Dashboard" do
         column :name
         column :description
         column :end_date
-        column :entries do |event|
-          event.entries.count
+        column :offers do |event|
+          event.offers.count
         end
         column :ride_requests do |event|
           event.ride_requests.count
@@ -20,13 +20,13 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
-    panel "Recent Entries" do
-      table_for Entry.confirmed.order("created_at asc").limit(5) do
-        column :id do |entry|
-          link_to entry.id, admin_entry_path(entry)
+    panel "Recent Offers" do
+      table_for Offer.confirmed.order("created_at asc").limit(5) do
+        column :id do |offer|
+          link_to offer.id, admin_offer_path(offer)
         end
-        column :event do |entry|
-          link_to entry.event.name, admin_event_path(entry.event)
+        column :event do |offer|
+          link_to offer.event.name, admin_event_path(offer.event)
         end
         column :name
         column :seats
@@ -56,7 +56,7 @@ ActiveAdmin.register_page "Dashboard" do
     div do
       panel "Currently active" do
         para "Events: #{Event.confirmed.count}"
-        para "Entries: #{Entry.confirmed.count}"
+        para "Offers: #{Offer.confirmed.count}"
         para "Ride requests: #{RideRequest.confirmed.count}"
       end
     end

@@ -4,7 +4,7 @@
 
 <p>¡Buenas noticias! Se ha publicado una nueva oferta de viaje que coincide con tu solicitud para el evento "<strong><%= @ride_request.event.name %></strong>".</p>
 
-<p><a href="<%= event_entry_url(@entry.event, @entry, locale: I18n.locale) %>" class="button">Ver la oferta</a></p>
+<p><a href="<%= event_offer_url(@offer.event, @offer, locale: I18n.locale) %>" class="button">Ver la oferta</a></p>
 
 <p>Puede haber más ofertas también — mira todas las ofertas para este evento aquí:</p>
 

@@ -17,7 +17,7 @@ class RideRequestMailer < ApplicationMailer
 
   def offer_matched
     @ride_request = params[:ride_request]
-    @entry = params[:entry]
+    @offer = params[:offer]
     I18n.with_locale(@ride_request.locale) do
       mail(to: @ride_request.email,
            subject: t('mail.ride_request.offer_matched.subject'))

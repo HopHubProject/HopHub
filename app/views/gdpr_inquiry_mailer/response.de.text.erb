@@ -2,7 +2,7 @@ Hallo,
 
 Vielen Dank für deine DSGVO-Anfrage.
 
-<% if @events.any? || @entries.any? %>
+<% if @events.any? || @offers.any? %>
 Auf Dein Auskunftsverlangen vom <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %> bestätigen wir Dir,
 dass wir als Verantwortliche die folgenden mit deiner Emailaddresse
 verbundenen Daten speichern und verarbeiten:
@@ -13,12 +13,12 @@ verbundenen Daten speichern und verarbeiten:
 
 <% end %>
 
-<% @entries.each do |entry| %>
-* Eintrag vom <%= l entry.created_at.to_date, format: :long, locale: I18n.locale %>
-  Transportmittel: <%= entry.transport %>
-  Ort: <%= entry.location %>
+<% @offers.each do |offer| %>
+* Angebot vom <%= l offer.created_at.to_date, format: :long, locale: I18n.locale %>
+  Transportmittel: <%= offer.transport %>
+  Ort: <%= offer.location %>
 
-  Um diesen Eintrag zu löschen, benutze bitte den folgenden Link: <%= edit_event_entry_url(entry.event, entry, token: entry.token, locale: I18n.locale) %>
+  Um diesen Angebot zu löschen, benutze bitte den folgenden Link: <%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>
 
 <% end %>
 
@@ -28,8 +28,8 @@ Wir verarbeiten diese Daten, um die folgenden Zwecke zu erfüllen:
 - Organisation des Events "<%= event.name %>" (<%= event.id %>)
 <% end %>
 
-<% @entries.each do |entry| %>
-- Organisation des Eintrags "<%= entry.name %>" (<%= entry.id %>)
+<% @offers.each do |offer| %>
+- Organisation des Angebots "<%= offer.name %>" (<%= offer.id %>)
 <% end %>
 
 Als betroffene Person hast Du das Recht, uns gegenüber nach Maßgabe des

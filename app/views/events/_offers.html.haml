@@ -1,0 +1,24 @@
+.row.justify-content-center
+  .col-12.col-lg-12
+    #offer-table
+      -last_date = nil
+      -@paginated_offers.each do |offer|
+        -if last_date == offer.date.to_date
+          .row
+            .col-12.col-md-12
+              %hr
+        -else
+          -last_date = offer.date.to_date
+          .row
+            .col-12.col-md-12
+              %h2.mt-3=l offer.date.to_date, format: :long_with_dow
+
+        =render offer
+
+  .col-12.col-lg-12
+    .container.d-flex.align-items-center.justify-content-center.py-3
+      =paginate @paginated_offers, theme: 'bootstrap-5',
+        pagination_class: "pagination flex-wrap justify-content-center",
+        nav_class: "d-inline-block"
+
+.col-12.col-lg-3

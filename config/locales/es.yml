@@ -15,7 +15,7 @@ es:
       default: HopHub es una plataforma de viajes compartidos para eventos.
       event: |
         Ofertas de viaje para %{event_name} en HopHub.
-      entry: |
+      offer: |
         Oferta de viaje de %{name} para %{event_name} en HopHub.
 
   terms_and_conditions:
@@ -52,7 +52,7 @@ es:
         Esto se aplica a plazas en coche, pero también a viajes compartidos en tren, autobús, bicicleta o a pie.
         No es necesario registrarse, solo se requiere una dirección de correo electrónico a
         la que enviaremos un correo electrónico de confirmación.
-        Una vez confirmado, la entrada se mostrará.
+        Una vez confirmado, la oferta se mostrará.
     match:
       title: Contactar
       text: |
@@ -104,7 +104,7 @@ es:
 
   driver-needed: Este viaje busca un conductor
 
-  no_entries:
+  no_offers:
     title: No hay ofertas aún
     text: |
       Parece que nadie ha añadido una oferta para este evento todavía.
@@ -165,10 +165,10 @@ es:
       Todas las ofertas también se eliminarán permanentemente.
       Esta acción no se puede deshacer.
 
-  entry_delete:
-    title: Eliminar entrada
+  offer_delete:
+    title: Eliminar oferta
     confirmation: |
-      ¿Estás seguro de que quieres eliminar esta entrada?
+      ¿Estás seguro de que quieres eliminar esta oferta?
       Esta acción no se puede deshacer.
 
   ride_request_delete:
@@ -188,7 +188,7 @@ es:
   update_offer:
     title: Actualizar oferta
 
-  entries:
+  offers:
     filter:
       title: Filtrar
       apply: Aplicar filtro
@@ -197,7 +197,7 @@ es:
       active: |
         El filtro coincide con %{n} de %{total} ofertas.
 
-  entry_contact:
+  offer_contact:
     title: Contacto
     send: Enviar correo
     text: |
@@ -240,11 +240,11 @@ es:
         subject: "HopHub: Confirma tu evento"
       confirmed:
         subject: "HopHub: Tu evento ya está activo"
-    entry:
+    offer:
       created:
-        subject: "HopHub: Confirma tu entrada"
+        subject: "HopHub: Confirma tu oferta"
       confirmed:
-        subject: "HopHub: Tu entrada ya está activa"
+        subject: "HopHub: Tu oferta ya está activa"
         notified:
           one: "Tu oferta acaba de notificar a 1 persona que buscaba un viaje desde tu zona. ¡Bien hecho!"
           other: "Tu oferta acaba de notificar a %{count} personas que buscaban un viaje desde tu zona. ¡Bien hecho!"
@@ -268,16 +268,16 @@ es:
     event_confirmed: Tu dirección de correo electrónico ha sido confirmada. El evento ya está activo.
     event_already_confirmed: Tu dirección de correo electrónico ya ha sido confirmada.
 
-    entry_created: Tu entrada ha sido creada. Recibirás un correo electrónico con un enlace para confirmar.
-    entry_updated: Tu entrada ha sido actualizada.
-    entry_deleted: Tu entrada ha sido eliminada.
-    entry_not_found: Entrada no encontrada.
-    entry_confirmed: Tu dirección de correo electrónico ha sido confirmada. La entrada ya está activa.
-    entry_confirmed_with_notifications:
+    offer_created: Tu oferta ha sido creada. Recibirás un correo electrónico con un enlace para confirmar.
+    offer_updated: Tu oferta ha sido actualizada.
+    offer_deleted: Tu oferta ha sido eliminada.
+    offer_not_found: Oferta no encontrada.
+    offer_confirmed: Tu dirección de correo electrónico ha sido confirmada. La oferta ya está activa.
+    offer_confirmed_with_notifications:
       one: Tu dirección de correo electrónico ha sido confirmada. Acabamos de notificar a 1 persona que buscaba un viaje desde tu zona.
       other: Tu dirección de correo electrónico ha sido confirmada. Acabamos de notificar a %{count} personas que buscaban un viaje desde tu zona.
-    entry_already_confirmed: Tu dirección de correo electrónico ya ha sido confirmada.
-    entry_contacted: Tu mensaje ha sido enviado. El destinatario ahora puede responder directamente.
+    offer_already_confirmed: Tu dirección de correo electrónico ya ha sido confirmada.
+    offer_contacted: Tu mensaje ha sido enviado. El destinatario ahora puede responder directamente.
 
     ride_request_created: Tu solicitud de viaje ha sido creada. Recibirás un correo electrónico con un enlace para confirmar.
     ride_request_deleted: Tu solicitud de viaje ha sido eliminada.
@@ -290,7 +290,7 @@ es:
   activerecord:
     models:
       event: Evento
-      entry: Entrada
+      offer: Oferta
     fields:
       event:
         id: ID
@@ -298,7 +298,7 @@ es:
         description: Descripción
         admin_email: Correo electrónico del administrador
         end_date: Fecha de finalización
-      entry:
+      offer:
         name: Nombre
         email: Correo electrónico
         phone: Teléfono
@@ -343,7 +343,7 @@ es:
         admin_email: Correo electrónico del administrador
         end_date: Fecha de finalización
 
-      entry:
+      offer:
         name: Tu nombre
         email: Tu dirección de correo electrónico
         phone: Tu número de teléfono
@@ -401,7 +401,7 @@ es:
         start_date: ¿Cuál es la hora más temprana a la que te gustaría viajar?
         end_date: ¿Para cuándo quieres haber llegado a más tardar? Tu solicitud se eliminará automáticamente después de ese momento.
 
-      entry:
+      offer:
         name: |
           Tu nombre, tal como se mostrará públicamente en el sitio web.
           No tiene que ser tu nombre real, un seudónimo está totalmente bien.
@@ -441,21 +441,21 @@ es:
         description: ¿De qué trata el evento?
         admin_email: Ingresa tu dirección de correo electrónico
         end_date: ¿Cuándo finalizará el evento?
-      entry:
+      offer:
         name: Ingresa tu nombre
         email: Ingresa tu dirección de correo electrónico
         phone: "+34 123 456789"
         location: Ingresa un código postal
         date: Selecciona la fecha y hora de tu viaje
         notes: ¿Tienes alguna nota adicional? Compártela aquí.
-      entries_filter:
+      offers_filter:
         location: Código postal
       contact_email:
         name: Nombre o seudónimo
         from: Dirección de correo electrónico
 
     errors:
-      entry:
+      offer:
         location:
           invalid: Por favor, introduce un código postal válido.
 

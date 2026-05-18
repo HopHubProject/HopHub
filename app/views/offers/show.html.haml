@@ -1,0 +1,93 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1
+      =t('offer')
+
+      ="(" + t(@offer.direction) + ") — "
+      =@offer.name
+
+    %table.table.table-striped
+      %tbody
+        %tr
+          %th= t('activerecord.fields.offer.name')
+          %td= @offer.name
+
+        %tr
+          %th= t('activerecord.fields.offer.date')
+          %td= l @offer.date, format: :long
+
+        %tr
+          %th= t('simple_form.labels.offer.transport')
+          %td
+            %i.mx-1{class: icon_class_for_transport(@offer.transport)}
+            =t("transport.#{@offer.transport}")
+
+            -if @offer.transport.to_sym == :car
+              -if @offer.driver?
+                %br
+                %i.bi.bi-exclamation-triangle.mx-1
+                =t('driver-needed')
+
+        -unless [:bicycle, :foot].include?(@offer.transport.to_sym) || @offer.seats.to_i.zero?
+          %tr
+            %th= t('simple_form.labels.offer.seats')
+            %td= pluralize(@offer.seats, t('seat.one'), t('seat.other'))
+
+        %tr
+          -if @offer.is_way_there?
+            %th=t('simple_form.labels.offer.starting-point')
+          -else
+            %th=t('simple_form.labels.offer.location')
+
+          %td= @offer.location
+
+        %tr
+          %th= t('activerecord.fields.offer.notes')
+          %td= auto_link @offer.notes
+
+        -if @offer.phone.present?
+          %tr
+            %th= t('activerecord.fields.offer.phone')
+            %td
+              =link_to "tel:#{@offer.phone}", class: 'btn btn-outline-primary btn-sm' do
+                %i.bi.bi-telephone.me-1
+                =@offer.phone
+
+    =turbo_frame_tag 'offer_contact' do
+      =simple_form_for [@event, @offer, @contact_email] do |f|
+        %h2=t('offer_contact.title')
+        %p= t('offer_contact.text', name: @offer.name)
+
+        =f.input :name, hint: t('simple_form.hints.contact_email.name', name: @offer.name)
+        =f.input :from, hint: t('simple_form.hints.contact_email.from', name: @offer.name)
+        =f.input :text, as: :text,
+          input_html: { rows: 5 },
+          hint: t('simple_form.hints.contact_email.text', name: @offer.name)
+
+        .row.mb-3
+          .col-sm-3
+          .col-sm-9
+            %p
+              %bi.bi-exclamation-triangle.mx-1.inline-block
+              %small
+                =t('offer_contact.warning', name: @offer.name)
+
+        .row.mb-3
+          .col-sm-3
+          .col-sm-9
+            =render 'altcha/widget',
+              label: terms_and_conditions_prompt,
+              verified: terms_and_conditions_accepted,
+              error: @event.errors[:altcha].any?
+            =f.error :altcha, class: 'altcha-error'
+
+        .row.mb-3
+          .col-sm-3
+          .col-sm-9.col-lg-3
+            =f.submit t('offer_contact.send'), class: 'btn btn-primary w-100 mt-1'
+
+          .col-sm-9.col-lg-3
+            =link_to event_offers_path(@offer.event, direction: @offer.direction),
+              class: 'btn btn-default btn-outline-primary w-100 mt-1', role: 'button' do
+              %i.bi.bi-arrow-left
+              =@event.name

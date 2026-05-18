@@ -1,0 +1,73 @@
+ActiveAdmin.register Offer do
+  permit_params :id, :offer_id, :email, :direction, :seats, :date, :location, :notes, :confirmed_at, :token
+
+  scope :all, default: true
+  scope :in_future
+  scope :confirmed
+  scope :unconfirmed
+  scope :way_there
+  scope :way_back
+
+  member_action :confirm, method: :post do
+    offer = Offer.find(params[:id])
+    offer.update(confirmed_at: Time.now)
+    offer.save(validate: false)
+    redirect_to admin_offer_path(offer)
+  end
+
+  action_item :confirm, only: :show do
+    if resource.confirmed_at.nil?
+      link_to "Confirm", confirm_admin_offer_path(resource), method: :post, class: "action-item-button"
+    end
+  end
+
+  member_action :unconfirm, method: :post do
+    offer = Offer.find(params[:id])
+    offer.update(confirmed_at: nil)
+    offer.save(validate: false)
+    redirect_to admin_offer_path(offer)
+  end
+
+  action_item :unconfirm, only: :show do
+    unless resource.confirmed_at.nil?
+      link_to "Unconfirm", unconfirm_admin_offer_path(resource), method: :post, class: "action-item-button"
+    end
+  end
+
+  member_action :resend_confirmation, method: :post do
+    offer = Offer.find(params[:id])
+    OfferMailer.with(offer: offer).confirmed.deliver
+    redirect_to admin_offer_path(offer)
+  end
+
+  action_item :resend_confirmation, only: :show do
+    link_to "Resend confirmation", resend_confirmation_admin_offer_path(resource), method: :post, class: "action-item-button"
+  end
+
+  index do
+    selectable_column
+    column :id do |offer|
+      link_to offer.id, admin_offer_path(offer)
+    end
+    column :event do |offer|
+      link_to offer.event.name, admin_event_path(offer.event)
+    end
+    column :date
+    column :location
+    column :transport
+    column :seats
+    column :direction
+  end
+
+  sidebar "Public links", only: :show do
+    attributes_table_for offer do
+      row :public_link do |offer|
+        link_to event_offer_path(offer.event, offer), event_offer_path(offer.event, offer)
+      end
+
+      row :public_edit_link do |offer|
+        link_to edit_event_offer_path(offer.event, offer), edit_event_offer_path(offer.event, offer, token: offer.token)
+      end
+    end
+  end
+end

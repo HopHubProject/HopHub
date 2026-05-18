@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 // Resets every target field's value, then re-submits the closest form via
-// Turbo. Used by the entries-filter "Clear" button to drop all filter state
+// Turbo. Used by the offers-filter "Clear" button to drop all filter state
 // and refetch the unfiltered list.
 //
 // Usage on the button:

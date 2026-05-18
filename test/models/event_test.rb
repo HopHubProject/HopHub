@@ -86,22 +86,22 @@ class EventTest < ActiveSupport::TestCase
   end
 
   # ---------------------------------------------------------------------------
-  # offers / offers_way_there / offers_way_back
+  # confirmed_offers / confirmed_offers_way_there / confirmed_offers_way_back
   # ---------------------------------------------------------------------------
 
-  test "offers returns confirmed entries" do
+  test "confirmed_offers returns only confirmed offers" do
     event = events(:one)
-    confirmed_ids = event.entries.where.not(confirmed_at: nil).pluck(:id).sort
-    assert_equal confirmed_ids, event.offers.pluck(:id).sort
+    confirmed_ids = event.offers.where.not(confirmed_at: nil).pluck(:id).sort
+    assert_equal confirmed_ids, event.confirmed_offers.pluck(:id).sort
   end
 
-  test "offers_way_there / offers_way_back partition by direction" do
+  test "confirmed_offers_way_there / confirmed_offers_way_back partition by direction" do
     event = events(:one)
-    assert_includes     event.offers_way_there.map(&:id), entries(:owt1).id
-    assert_not_includes event.offers_way_there.map(&:id), entries(:owb1).id
+    assert_includes     event.confirmed_offers_way_there.map(&:id), offers(:owt1).id
+    assert_not_includes event.confirmed_offers_way_there.map(&:id), offers(:owb1).id
 
-    assert_includes     event.offers_way_back.map(&:id),  entries(:owb1).id
-    assert_not_includes event.offers_way_back.map(&:id),  entries(:owt1).id
+    assert_includes     event.confirmed_offers_way_back.map(&:id),  offers(:owb1).id
+    assert_not_includes event.confirmed_offers_way_back.map(&:id),  offers(:owt1).id
   end
 
   # ---------------------------------------------------------------------------
@@ -127,14 +127,14 @@ class EventTest < ActiveSupport::TestCase
   # Dependents
   # ---------------------------------------------------------------------------
 
-  test "destroying an event destroys its entries and ride_requests" do
+  test "destroying an event destroys its offers and ride_requests" do
     event = events(:one)
-    entry_ids   = event.entries.pluck(:id)
+    entry_ids   = event.offers.pluck(:id)
     request_ids = event.ride_requests.pluck(:id)
     assert entry_ids.any? && request_ids.any?, "fixture sanity"
 
     event.destroy
-    assert_equal 0, Entry.where(id: entry_ids).count
+    assert_equal 0, Offer.where(id: entry_ids).count
     assert_equal 0, RideRequest.where(id: request_ids).count
   end
 

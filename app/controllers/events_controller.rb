@@ -12,21 +12,21 @@ class EventsController < ApplicationController
     description = markdown.render(@event.description)
     @description = ActionController::Base.helpers.sanitize(description)
 
-    @way_there_count = @event.entries.confirmed.where(direction: :way_there).count
-    @way_back_count = @event.entries.confirmed.where(direction: :way_back).count
-    @offers_count = @event.entries.confirmed.count
+    @way_there_count = @event.offers.confirmed.where(direction: :way_there).count
+    @way_back_count = @event.offers.confirmed.where(direction: :way_back).count
+    @offers_count = @event.offers.confirmed.count
 
     @ride_requests_by_direction = build_ride_requests_by_direction(@event)
 
-    p = params.fetch(:entries_filter, ActionController::Parameters.new).permit(:location, :latitude, :longitude, :radius)
-    @filter = EntriesFilter.new(p)
+    p = params.fetch(:offers_filter, ActionController::Parameters.new).permit(:location, :latitude, :longitude, :radius)
+    @filter = OffersFilter.new(p)
     @filter.country ||= @event.default_country
 
     Rails.logger.info "Filter params: #{p.inspect}"
 
-    @entries = @event.entries.confirmed.in_future
-    @filtered_entries = @filter.apply(@entries)
-    @paginated_entries = @filtered_entries.page(params[:page])
+    @offers = @event.offers.confirmed.in_future
+    @filtered_offers = @filter.apply(@offers)
+    @paginated_offers = @filtered_offers.page(params[:page])
   end
 
   def index

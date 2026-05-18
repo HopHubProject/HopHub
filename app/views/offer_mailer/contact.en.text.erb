@@ -1,0 +1,20 @@
+Hi <%= @offer.name %>,
+
+<%= @name %> has sent you a message on HopHub, and this is what they said:
+
+----------------------------------------
+<%= @text %>
+----------------------------------------
+
+You can reply to this message to answer directly to <%= @name %>.
+
+Your offer for the event "<%= @offer.event.name %>" is still active and visible here:
+
+    <%= event_offer_url(@offer.event, @offer) %>
+
+In case your offer is no longer up to date or relevant, please use the secret link from your confirmation email to edit or delete it.
+
+Happy sharing, you are awesome!
+
+
+Kind regards from the HopHub platform.

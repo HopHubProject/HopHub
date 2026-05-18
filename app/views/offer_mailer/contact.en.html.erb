@@ -1,0 +1,19 @@
+<h1>New message on HopHub</h1>
+
+<p>Hi <%= @offer.name %>,</p>
+
+<p><strong><%= @name %></strong> has sent you a message on HopHub, and this is what they said:</p>
+
+<div class="quote"><%= @text %></div>
+
+<p>You can reply to this email to answer directly to <%= @name %>.</p>
+
+<p>Your offer for the event "<strong><%= @offer.event.name %></strong>" is still active and visible here:</p>
+
+<p><a href="<%= event_offer_url(@offer.event, @offer) %>" class="button">View your offer</a></p>
+
+<p>In case your offer is no longer up to date or relevant, please use the secret link from your confirmation email to edit or delete it.</p>
+
+<p>Happy sharing, you are awesome!</p>
+
+<p class="signoff">Kind regards from the HopHub platform.</p>

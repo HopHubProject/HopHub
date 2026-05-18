@@ -4,7 +4,7 @@
 
 <p>Gute Nachricht! Ein neues Mitfahrangebot wurde eingestellt, das zu deiner Anfrage für das Event "<strong><%= @ride_request.event.name %></strong>" passt.</p>
 
-<p><a href="<%= event_entry_url(@entry.event, @entry, locale: I18n.locale) %>" class="button">Angebot ansehen</a></p>
+<p><a href="<%= event_offer_url(@offer.event, @offer, locale: I18n.locale) %>" class="button">Angebot ansehen</a></p>
 
 <p>Möglicherweise gibt es weitere Angebote – alle Angebote für dieses Event findest du hier:</p>
 

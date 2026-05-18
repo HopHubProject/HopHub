@@ -222,10 +222,10 @@ footer a:hover {
 }
 
 // ---------------------------------------------------------------------------
-// Entry list
+// Offer list
 // ---------------------------------------------------------------------------
 
-#entry-table {
+#offer-table {
   hr {
     margin: 0.75rem 0;
     border-color: var(--bs-border-color);
@@ -237,21 +237,21 @@ footer a:hover {
   }
 }
 
-.entry-row {
+.offer-row {
   border-radius: var(--bs-border-radius);
   transition: background-color 0.2s;
 }
 
-.entry-row:hover {
+.offer-row:hover {
   background-color: var(--bs-tertiary-bg);
 }
 
-.entry-row + .entry-row {
+.offer-row + .offer-row {
   margin-top: 0.5rem;
 }
 
-.entry-summary {
-  // The accordion-button on the entry list row is doing layout work; drop the
+.offer-summary {
+  // The accordion-button on the offer list row is doing layout work; drop the
   // default arrow indicator + caret behaviour for a calmer look.
   background-color: transparent;
   box-shadow: none;
@@ -260,17 +260,17 @@ footer a:hover {
   width: 100%;
 }
 
-.entry-summary:not(.collapsed) {
+.offer-summary:not(.collapsed) {
   background-color: var(--bs-tertiary-bg);
   color: var(--bs-body-color);
   box-shadow: none;
 }
 
-.entry-summary:focus-visible {
+.offer-summary:focus-visible {
   box-shadow: 0 0 0 0.25rem rgba(255, 138, 2, 0.25);
 }
 
-.entry-summary-grid {
+.offer-summary-grid {
   display: grid;
   width: 100%;
   text-align: left;
@@ -287,23 +287,23 @@ footer a:hover {
   }
 }
 
-.entry-name {
+.offer-name {
   grid-area: name;
 }
 
-.entry-time {
+.offer-time {
   grid-area: time;
   white-space: nowrap;
   color: var(--bs-secondary-color);
   font-variant-numeric: tabular-nums;
 }
 
-.entry-route {
+.offer-route {
   grid-area: route;
   color: var(--bs-secondary-color);
 }
 
-.entry-route b {
+.offer-route b {
   color: var(--bs-body-color);
 }
 

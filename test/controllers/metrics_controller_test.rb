@@ -7,16 +7,16 @@ class MetricsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "text/plain, ", @response.media_type
   end
 
-  test "should expose entry counts per confirmed event and direction" do
+  test "should expose offer counts per confirmed event and direction" do
     e = events(:one)
     get metrics_url
     assert_response :success
 
     body = @response.body
-    assert_match(/^# TYPE num_entries gauge$/, body)
-    assert_match(/num_entries\{event_id="#{e.id}", status="unconfirmed"\}/, body)
-    assert_match(/num_entries\{event_id="#{e.id}", status="confirmed", direction="way_there"\}/, body)
-    assert_match(/num_entries\{event_id="#{e.id}", status="confirmed", direction="way_back"\}/, body)
+    assert_match(/^# TYPE num_offers gauge$/, body)
+    assert_match(/num_offers\{event_id="#{e.id}", status="unconfirmed"\}/, body)
+    assert_match(/num_offers\{event_id="#{e.id}", status="confirmed", direction="way_there"\}/, body)
+    assert_match(/num_offers\{event_id="#{e.id}", status="confirmed", direction="way_back"\}/, body)
   end
 
   test "should expose ride request counts per confirmed event and direction" do

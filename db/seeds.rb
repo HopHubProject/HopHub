@@ -52,11 +52,11 @@ end
 
     location = "#{pc['postalCode']} #{pc['placeName']}"
 
-    puts "Creating entry for event #{event.name} at coordinates #{random_coord[0]}, #{random_coord[1]} with location '#{location}'"
+    puts "Creating offer for event #{event.name} at coordinates #{random_coord[0]}, #{random_coord[1]} with location '#{location}'"
 
-    entry = event.entries.create(
-      transport: Entry::TRANSPORTS.sample,
-      direction: Entry::DIRECTIONS.sample,
+    offer = event.offers.create(
+      transport: Offer::TRANSPORTS.sample,
+      direction: Offer::DIRECTIONS.sample,
       name: Faker::Name.name,
       email: Faker::Internet.email,
       phone: Faker::PhoneNumber.phone_number,
@@ -70,7 +70,7 @@ end
       confirmed_at: Faker::Date.between(from: DateTime.now-1.month, to: DateTime.now)
     )
 
-    entry.save!
+    offer.save!
   end
 
   ((i+1)*30).times do

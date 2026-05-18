@@ -4,7 +4,7 @@
 
 <p>Good news! A new ride offer was posted that matches your request for the event "<strong><%= @ride_request.event.name %></strong>".</p>
 
-<p><a href="<%= event_entry_url(@entry.event, @entry, locale: I18n.locale) %>" class="button">View the offer</a></p>
+<p><a href="<%= event_offer_url(@offer.event, @offer, locale: I18n.locale) %>" class="button">View the offer</a></p>
 
 <p>There may be more offers as well — see all offers for this event here:</p>
 

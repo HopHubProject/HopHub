@@ -28,7 +28,7 @@ class RideRequestsController < ApplicationController
       redirect_to @event, flash: { success: t('flash.ride_request_created') }
     else
       if @ride_request.errors[:latitude].any? || @ride_request.errors[:longitude].any?
-        @ride_request.errors.add(:location, t('simple_form.errors.entry.location.invalid'))
+        @ride_request.errors.add(:location, t('simple_form.errors.offer.location.invalid'))
       end
 
       @ride_request.country ||= @event.default_country

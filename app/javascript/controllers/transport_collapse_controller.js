@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 // Shows/hides a Bootstrap collapse panel based on the value of a select.
-// On the entries form, this reveals car-specific inputs (seats, driver) when
+// On the offers form, this reveals car-specific inputs (seats, driver) when
 // transport is "car".
 //
 // Usage:

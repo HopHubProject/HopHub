@@ -11,11 +11,11 @@
 
 = render 'demand_signal'
 
-=turbo_frame_tag 'entry' do
+=turbo_frame_tag 'offer' do
   .row.justify-content-center.my-4
     .col-12.col-md-8.col-lg-6.text-center
       %p.lead.mb-2= t('add_offer.offer_yourself')
-      =link_to new_event_entry_path(@event), class: 'btn btn-primary btn-lg px-4', role: 'button' do
+      =link_to new_event_offer_path(@event), class: 'btn btn-primary btn-lg px-4', role: 'button' do
         %i.bi.bi-plus-lg.me-1
         =t('add_offer.title')
       .mt-3
@@ -23,14 +23,14 @@
           %i.bi.bi-hand-thumbs-up.me-1
           =t('add_ride_request.title')
 
-  -if @entries.any?
-    -if @entries.count > 5
+  -if @offers.any?
+    -if @offers.count > 5
       =render 'filter_form', event: @event
 
-    -if @filtered_entries.any?
-      =render 'entries'
+    -if @filtered_offers.any?
+      =render 'offers'
   -else
     .row.justify-content-center
       .col-12.col-lg-9.text-center
-        %h2= t('no_entries.title')
-        %p.mb-0= t('no_entries.text')
+        %h2= t('no_offers.title')
+        %p.mb-0= t('no_offers.text')

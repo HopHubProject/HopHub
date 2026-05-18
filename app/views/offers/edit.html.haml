@@ -1,0 +1,7 @@
+.row.justify-content-center
+  .col-12.col-lg-9
+    %h1
+      =t('update_offer.title')
+      ="(" + t(@offer.direction) + ")"
+
+    =render partial: "form", locals: { submit_text: t('update_offer.title'), method: :update }

@@ -19,9 +19,9 @@ class GdprInquiriesController < ApplicationController
     end
 
     @events = Event.where("admin_email LIKE ?", @inquiry.email)
-    @entries = Entry.where("email LIKE ?", @inquiry.email)
+    @offers = Offer.where("email LIKE ?", @inquiry.email)
 
-    GdprInquiryMailer.with(inquiry: @inquiry, events: @events, entries: @entries).response.deliver
+    GdprInquiryMailer.with(inquiry: @inquiry, events: @events, offers: @offers).response.deliver
 
     redirect_to root_path, flash: { success: t('flash.gdpr_inquiry_created') }
   end

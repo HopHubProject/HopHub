@@ -4,7 +4,7 @@
 
 <p>Thanks a lot for your GDPR inquiry request.</p>
 
-<% if @events.any? || @entries.any? %>
+<% if @events.any? || @offers.any? %>
   <p>In response to your request for information on <strong><%= l DateTime.now.to_date, format: :long, locale: I18n.locale %></strong>, we confirm that we, as the responsible party, store and process the following data associated with your email address:</p>
 
   <ul class="data-list">
@@ -16,13 +16,13 @@
       </li>
     <% end %>
 
-    <% @entries.each do |entry| %>
+    <% @offers.each do |offer| %>
       <li>
-        <strong>Entry from <%= l entry.created_at.to_date, format: :long, locale: I18n.locale %></strong><br>
-        Transport: <%= entry.transport %><br>
-        Location: <%= entry.location %><br>
-        To delete this entry, please use the following link:
-        <div class="secret-link"><%= edit_event_entry_url(entry.event, entry, token: entry.token, locale: I18n.locale) %></div>
+        <strong>Offer from <%= l offer.created_at.to_date, format: :long, locale: I18n.locale %></strong><br>
+        Transport: <%= offer.transport %><br>
+        Location: <%= offer.location %><br>
+        To delete this offer, please use the following link:
+        <div class="secret-link"><%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %></div>
       </li>
     <% end %>
   </ul>
@@ -32,8 +32,8 @@
     <% @events.each do |event| %>
       <li>Organization of the event "<%= event.name %>" (<%= event.id %>)</li>
     <% end %>
-    <% @entries.each do |entry| %>
-      <li>Organization of the entry "<%= entry.name %>" (<%= entry.id %>)</li>
+    <% @offers.each do |offer| %>
+      <li>Organization of the offer "<%= offer.name %>" (<%= offer.id %>)</li>
     <% end %>
   </ul>
 

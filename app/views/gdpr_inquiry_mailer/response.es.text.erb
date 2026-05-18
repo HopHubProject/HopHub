@@ -2,7 +2,7 @@ Hola,
 
 Gracias por tu solicitud de información sobre la RGPD.
 
-<% if @events.any? || @entries.any? %>
+<% if @events.any? || @offers.any? %>
 En respuesta a tu solicitud de información sobre <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %>, te confirmamos que nosotros,
 como responsable, almacenamos y procesamos los siguientes datos
 asociados con tu dirección de correo electrónico:
@@ -13,12 +13,12 @@ asociados con tu dirección de correo electrónico:
 
 <% end %>
 
-<% @entries.each do |entry| %>
-* Entrada del <%= l entry.created_at.to_date, format: :long, locale: I18n.locale %>
-  Transporte: <%= entry.transport %>
-  Lugar: <%= entry.location %>
+<% @offers.each do |offer| %>
+* Oferta del <%= l offer.created_at.to_date, format: :long, locale: I18n.locale %>
+  Transporte: <%= offer.transport %>
+  Lugar: <%= offer.location %>
 
-  Para borrar esta entrada, por favor utiliza el siguiente enlace: <%= edit_event_entry_url(entry.event, entry, token: entry.token, locale: I18n.locale) %>
+  Para borrar esta oferta, por favor utiliza el siguiente enlace: <%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>
 
 <% end %>
 
@@ -28,8 +28,8 @@ Procesamos estos datos para cumplir con los siguientes propósitos:
 - Organización del evento "<%= event.name %>" (<%= event.id %>)
 <% end %>
 
-<% @entries.each do |entry| %>
-- Organización de la entrada "<%= entry.name %>" (<%= entry.id %>)
+<% @offers.each do |offer| %>
+- Organización de la oferta "<%= offer.name %>" (<%= offer.id %>)
 <% end %>
 
 Como sujeto de datos, tienes el derecho de solicitarnos que corrijamos

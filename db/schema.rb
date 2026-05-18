@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_15_090000) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_18_120000) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.integer "author_id"
     t.string "author_type"
@@ -35,7 +35,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_15_090000) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "entries", id: :string, force: :cascade do |t|
+  create_table "events", id: :string, force: :cascade do |t|
+    t.string "admin_email"
+    t.string "admin_token"
+    t.datetime "confirmed_at"
+    t.datetime "created_at", null: false
+    t.string "default_country"
+    t.text "description"
+    t.datetime "end_date"
+    t.string "name"
+    t.integer "seats_added_total", default: 0, null: false
+    t.boolean "shadow_banned", default: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "offers", id: :string, force: :cascade do |t|
     t.datetime "confirmed_at"
     t.datetime "created_at", null: false
     t.datetime "date"
@@ -54,21 +68,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_15_090000) do
     t.string "token"
     t.string "transport"
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_entries_on_event_id"
-  end
-
-  create_table "events", id: :string, force: :cascade do |t|
-    t.string "admin_email"
-    t.string "admin_token"
-    t.datetime "confirmed_at"
-    t.datetime "created_at", null: false
-    t.string "default_country"
-    t.text "description"
-    t.datetime "end_date"
-    t.string "name"
-    t.integer "seats_added_total", default: 0, null: false
-    t.boolean "shadow_banned", default: false
-    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_offers_on_event_id"
   end
 
   create_table "ride_requests", id: :string, force: :cascade do |t|

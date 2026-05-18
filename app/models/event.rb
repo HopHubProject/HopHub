@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :entries, dependent: :destroy
+  has_many :offers, dependent: :destroy
   has_many :ride_requests, dependent: :destroy
 
   validates_presence_of :name
@@ -25,16 +25,16 @@ class Event < ActiveRecord::Base
     confirmed_at.present?
   end
 
-  def offers
-    entries.confirmed
+  def confirmed_offers
+    offers.confirmed
   end
 
-  def offers_way_there
-    entries.confirmed.in_future.way_there
+  def confirmed_offers_way_there
+    offers.confirmed.in_future.way_there
   end
 
-  def offers_way_back
-    entries.confirmed.in_future.way_back
+  def confirmed_offers_way_back
+    offers.confirmed.in_future.way_back
   end
 
   before_create :create_admin_token
@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
   private
 
   def self.ransackable_associations(auth_object = nil)
-    ["entries", "ride_requests"]
+    ["offers", "ride_requests"]
   end
 
   def self.ransackable_attributes(auth_object = nil)

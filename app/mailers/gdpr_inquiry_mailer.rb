@@ -2,7 +2,7 @@ class GdprInquiryMailer < ApplicationMailer
   def response
     @inquiry = params[:inquiry]
     @events = params[:events]
-    @entries = params[:entries]
+    @offers = params[:offers]
 
     mail(to: @inquiry.email,
          bcc: ENV["HOPHUB_MAIL_GDPR_RESPONSE_BCC"],

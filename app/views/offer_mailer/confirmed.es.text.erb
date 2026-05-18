@@ -1,0 +1,25 @@
+# translate to spanish!
+
+Hola <%= @offer.name %>,
+
+¡Gracias por usar HopHub!
+
+Tu oferta para el evento "<%= @offer.event.name %>" ha sido confirmado y ahora está activo y se puede ver aquí:
+
+    <%= event_offer_url(@offer.event, @offer) %>
+<% if @notified_count.to_i > 0 %>
+
+<%= t('mail.offer.confirmed.notified', count: @notified_count) %>
+<% end %>
+
+Si deseas editar o eliminar tu oferta, por favor usa el siguiente enlace secreto.
+Por favor, mantén este enlace para ti y no lo compartas con otros:
+
+    <%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>
+
+Tu oferta se eliminará automáticamente después de la fecha que hayas establecido, o cuando el evento termine.
+
+¡Disfruta del viaje, eres genial!
+
+
+Saludos del equipo de HopHub.

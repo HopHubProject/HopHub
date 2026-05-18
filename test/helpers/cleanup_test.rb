@@ -11,14 +11,14 @@ class CleanupTest < ActionDispatch::IntegrationTest
     assert_nil Event.find_by(id: event.id)
   end
 
-  test "should remove outdated entries" do
-    entry = entries(:owt1)
-    entry.date = DateTime.now-4.hours
-    entry.save(validate: false)
+  test "should remove outdated offers" do
+    offer = offers(:owt1)
+    offer.date = DateTime.now-4.hours
+    offer.save(validate: false)
 
     ApplicationController.helpers.cleanup
 
-    assert_nil Entry.find_by(id: entry.id)
+    assert_nil Offer.find_by(id: offer.id)
   end
 
   test "should remove unconfirmed events" do
@@ -32,14 +32,14 @@ class CleanupTest < ActionDispatch::IntegrationTest
     assert_nil Event.find_by(id: event.id)
   end
 
-  test "should remove unconfirmed entries" do
-    entry = entries(:owt1)
-    entry.created_at = DateTime.now-1.days
-    entry.confirmed_at = nil
-    entry.save
+  test "should remove unconfirmed offers" do
+    offer = offers(:owt1)
+    offer.created_at = DateTime.now-1.days
+    offer.confirmed_at = nil
+    offer.save
 
     ApplicationController.helpers.cleanup
 
-    assert_nil Entry.find_by(id: entry.id)
+    assert_nil Offer.find_by(id: offer.id)
   end
 end

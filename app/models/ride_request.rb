@@ -9,7 +9,7 @@ class RideRequest < ActiveRecord::Base
 
   DIRECTIONS = %w(way_there way_back)
 
-  RADIUSES = EntriesFilter::RADIUSES
+  RADIUSES = OffersFilter::RADIUSES
 
   validates_presence_of :event_id
   validates_presence_of :email

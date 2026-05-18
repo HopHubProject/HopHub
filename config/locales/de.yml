@@ -15,7 +15,7 @@ de:
       default: HopHub ist eine Mitfahr-Plattform für Veranstaltungen.
       event: |
         Mitfahr-Angebote für %{event_name} auf HopHub.
-      entry: |
+      offer: |
         Mitfahr-Angebot von %{name} für %{event_name} auf HopHub.
 
   terms_and_conditions:
@@ -53,7 +53,7 @@ de:
         einstellen. Das gilt für Plätze im Auto, aber auch für gemeinsames Reisen mit
         dem Zug, Bus, Fahrrad oder zu Fuß.
         Dafür ist keine Anmeldung erforderlich, nur eine E-Mail-Adresse, an die wir eine
-        Bestätigungsmail senden. Nach erfolgter Bestätigung wird der Eintrag angezeigt.
+        Bestätigungsmail senden. Nach erfolgter Bestätigung wird das Angebot angezeigt.
     match:
       title: Nimm Kontakt auf
       text: |
@@ -105,7 +105,7 @@ de:
 
   driver-needed: Für diese Fahrt wird ein:e Fahrer:in gesucht!
 
-  no_entries:
+  no_offers:
     title: Noch keine Angebote
     text: |
       Scheinbar hat noch niemand ein Angebot für dieses Event hinzugefügt.
@@ -167,10 +167,10 @@ de:
       Alle Angebote werden ebenfalls dauerhaft gelöscht.
       Diese Aktion kann nicht rückgängig gemacht werden.
 
-  entry_delete:
-    title: Eintrag löschen
+  offer_delete:
+    title: Angebot löschen
     confirmation: |
-      Bist du sicher, dass du diesen Eintrag löschen möchtest?
+      Bist du sicher, dass du dieses Angebot löschen möchtest?
       Diese Aktion kann nicht rückgängig gemacht werden.
 
   ride_request_delete:
@@ -191,7 +191,7 @@ de:
   update_offer:
     title: Angebot aktualisieren
 
-  entries:
+  offers:
     filter:
       title: Filtern
       apply: Filter anwenden
@@ -200,7 +200,7 @@ de:
       active: |
         Filter matcht %{n} von %{total} Angeboten.
 
-  entry_contact:
+  offer_contact:
     title: Kontakt
     send: Mail senden
     text: |
@@ -244,11 +244,11 @@ de:
         subject: "HopHub: Bitte bestätige dein Event"
       confirmed:
         subject: "HopHub: Dein Event ist jetzt freigeschaltet"
-    entry:
+    offer:
       created:
-        subject: "HopHub: Bitte bestätige deinen Eintrag"
+        subject: "HopHub: Bitte bestätige dein Angebot"
       confirmed:
-        subject: "HopHub: Dein Eintrag ist jetzt freigeschaltet"
+        subject: "HopHub: Dein Angebot ist jetzt freigeschaltet"
         notified:
           one: "Dein Angebot hat soeben 1 Person benachrichtigt, die eine Mitfahrgelegenheit aus deiner Gegend gesucht hat. Klasse!"
           other: "Dein Angebot hat soeben %{count} Personen benachrichtigt, die eine Mitfahrgelegenheit aus deiner Gegend gesucht haben. Klasse!"
@@ -272,16 +272,16 @@ de:
     event_confirmed: Deine E-Mail-Adresse wurde bestätigt. Das Event ist jetzt aktiv.
     event_already_confirmed: Deine E-Mail-Adresse wurde bereits bestätigt.
 
-    entry_created: Dein Eintrag wurde erstellt. Du erhältst gleich eine E-Mail mit einem Link zur Bestätigung.
-    entry_updated: Dein Eintrag wurde aktualisiert.
-    entry_deleted: Dein Eintrag wurde gelöscht.
-    entry_not_found: Eintrag nicht gefunden.
-    entry_confirmed: Deine E-Mail-Adresse wurde bestätigt. Der Eintrag ist jetzt aktiv.
-    entry_confirmed_with_notifications:
+    offer_created: Dein Angebot wurde erstellt. Du erhältst gleich eine E-Mail mit einem Link zur Bestätigung.
+    offer_updated: Dein Angebot wurde aktualisiert.
+    offer_deleted: Dein Angebot wurde gelöscht.
+    offer_not_found: Angebot nicht gefunden.
+    offer_confirmed: Deine E-Mail-Adresse wurde bestätigt. Das Angebot ist jetzt aktiv.
+    offer_confirmed_with_notifications:
       one: Deine E-Mail-Adresse wurde bestätigt. Wir haben soeben 1 Person benachrichtigt, die eine Mitfahrgelegenheit aus deiner Gegend gesucht hat.
       other: Deine E-Mail-Adresse wurde bestätigt. Wir haben soeben %{count} Personen benachrichtigt, die eine Mitfahrgelegenheit aus deiner Gegend gesucht haben.
-    entry_already_confirmed: Deine E-Mail-Adresse wurde bereits bestätigt.
-    entry_contacted: Deine Nachricht wurde gesendet. Der Empfänger kann sich jetzt bei dir melden.
+    offer_already_confirmed: Deine E-Mail-Adresse wurde bereits bestätigt.
+    offer_contacted: Deine Nachricht wurde gesendet. Der Empfänger kann sich jetzt bei dir melden.
 
     ride_request_created: Deine Mitfahranfrage wurde erstellt. Du erhältst gleich eine E-Mail mit einem Link zur Bestätigung.
     ride_request_deleted: Deine Mitfahranfrage wurde gelöscht.
@@ -294,7 +294,7 @@ de:
   activerecord:
     models:
       event: Event
-      entry: Eintrag
+      offer: Angebot
     fields:
       event:
         id: ID
@@ -302,7 +302,7 @@ de:
         description: Beschreibung
         admin_email: Admin-E-Mail
         end_date: Enddatum
-      entry:
+      offer:
         name: Name
         email: E-Mail-Adresse
         phone: Telefonnummer
@@ -347,7 +347,7 @@ de:
         admin_email: Admin-E-Mail
         end_date: Enddatum
 
-      entry:
+      offer:
         name: Dein Name
         email: Deine E-Mail-Adresse
         phone: Deine Telefonnummer
@@ -406,7 +406,7 @@ de:
         start_date: Wann möchtest du frühestens losfahren?
         end_date: Bis wann möchtest du spätestens da sein? Deine Anfrage wird nach diesem Zeitpunkt automatisch entfernt.
 
-      entry:
+      offer:
         name: |
           Dein Name, wie er auf der Website öffentlich angezeigt werden soll.
           Das muss nicht dein richtiger Name sein, ein Pseudonym ist voll okay.
@@ -447,21 +447,21 @@ de:
         description: Worum geht es bei diesem Event?
         admin_email: Gib deine E-Mail-Adresse ein
         end_date: Wann ist das Event vorbei?
-      entry:
+      offer:
         name: Dein Name oder ein Pseudonym
         email: Deine E-Mail-Adresse
         phone: "+49 123 4567890"
         location: Gib eine Postleitzahl ein
         date: Wähle das Datum und die Uhrzeit deiner Reise
         notes: Noch irgendwas zu sagen? Hier ist Platz dafür.
-      entries_filter:
+      offers_filter:
         location: Postleitzahl
       contact_email:
         name: Name oder Pseudonym
         from: E-Mail-Adresse
 
     errors:
-      entry:
+      offer:
         location:
           invalid: Bitte gib eine gültige Postleitzahl ein.
 

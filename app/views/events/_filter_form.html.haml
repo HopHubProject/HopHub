@@ -5,11 +5,11 @@
       .accordion-item
         %h2.accordion-header.pt-0#filterHeading
           %button.accordion-button{type: "button", "data-bs-toggle": "collapse", "data-bs-target": "#filterCollapse", "aria-expanded": filter_active, "aria-controls": "filterCollapse", class: ("collapsed" unless filter_active)}
-            %h3.pt-2= t('entries.filter.title')
+            %h3.pt-2= t('offers.filter.title')
         #filterCollapse.accordion-collapse.collapse{class: ("show" if filter_active), "aria-labelledby": "filterHeading", "data-bs-parent": "#filterAccordion"}
           .accordion-body
             %p
-              =t('entries.filter.text')
+              =t('offers.filter.text')
 
             =simple_form_for @filter, url: event_path(@event), method: :get,
               html: { class: 'mb-1', data: { controller: "geocoder filter-clear", "geocoder-url-value": postal_code_search_path } } do |f|
@@ -36,7 +36,7 @@
                     as: :select,
                     class: 'form-control',
                     label: false,
-                    collection: EntriesFilter::RADIUSES,
+                    collection: OffersFilter::RADIUSES,
                     wrapper: :horizontal_form_no_validation,
                     include_blank: false,
                     novalidate: true,
@@ -44,13 +44,13 @@
                     required: false
 
                 .col-12.col-md-3.text-center
-                  =f.submit t('entries.filter.apply'), class: 'btn btn-primary mx-2', formnovalidate: true
+                  =f.submit t('offers.filter.apply'), class: 'btn btn-primary mx-2', formnovalidate: true
 
                   %button.btn.btn-secondary{ type: "button", data: { action: "click->filter-clear#clear" } }
-                    =t('entries.filter.clear')
+                    =t('offers.filter.clear')
 
               -if @filter.active?
                 .col-12.col-md-12.text-center
                   .row
                     %p.mt-3.mb-0.text-muted
-                      =t('entries.filter.active', n: @filtered_entries.count, total: @entries.count)
+                      =t('offers.filter.active', n: @filtered_offers.count, total: @offers.count)

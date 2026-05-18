@@ -57,12 +57,12 @@ class GdprControllerTest < ActionDispatch::IntegrationTest
       assert_match edit_event_url(event, locale: locale, admin_token: event.admin_token), mail.text_part.body.to_s
     end
 
-    define_method("test_should_create_positive_entry_gdpr_#{locale}") do
-      entry = entries(:owt1)
+    define_method("test_should_create_positive_offer_gdpr_#{locale}") do
+      offer = offers(:owt1)
 
       post gdpr_inquiries_url, params: {
         gdpr_inquiry: {
-          email: entry.email,
+          email: offer.email,
         },
         locale: locale
       }
@@ -71,9 +71,9 @@ class GdprControllerTest < ActionDispatch::IntegrationTest
 
       assert_equal 1, ActionMailer::Base.deliveries.size
       mail = ActionMailer::Base.deliveries.last
-      assert_equal [entry.email], mail.to
-      assert_match entry.name, mail.text_part.body.to_s
-      assert_match edit_event_entry_url(entry.event, entry, locale: locale, token: entry.token), mail.text_part.body.to_s
+      assert_equal [offer.email], mail.to
+      assert_match offer.name, mail.text_part.body.to_s
+      assert_match edit_event_offer_url(offer.event, offer, locale: locale, token: offer.token), mail.text_part.body.to_s
     end
   end
 end
