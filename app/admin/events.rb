@@ -101,8 +101,8 @@ ActiveAdmin.register Event do
   end
 
   show do
-    panel "Offers (way there) (#{event.offers.confirmed.way_there.count})" do
-      table_for event.offers.confirmed.way_there do
+    panel "Offers (way there) (#{event.offers.way_there.count})" do
+      table_for event.offers.way_there do
         column :id do |offer|
           link_to offer.id, admin_offer_path(offer)
         end
@@ -115,8 +115,8 @@ ActiveAdmin.register Event do
       end
     end
 
-    panel "Offers (way back) (#{event.offers.confirmed.way_back.count})" do
-      table_for event.offers.confirmed.way_back do
+    panel "Offers (way back) (#{event.offers.way_back.count})" do
+      table_for event.offers.way_back do
         column :id do |offer|
           link_to offer.id, admin_offer_path(offer)
         end
@@ -129,8 +129,8 @@ ActiveAdmin.register Event do
       end
     end
 
-    panel "Ride requests (way there) (#{event.ride_requests.confirmed.way_there.count})" do
-      table_for event.ride_requests.confirmed.way_there do
+    panel "Ride requests (way there) (#{event.ride_requests.way_there.count})" do
+      table_for event.ride_requests.way_there do
         column :id do |rr|
           link_to rr.id, admin_ride_request_path(rr)
         end
@@ -143,8 +143,8 @@ ActiveAdmin.register Event do
       end
     end
 
-    panel "Ride requests (way back) (#{event.ride_requests.confirmed.way_back.count})" do
-      table_for event.ride_requests.confirmed.way_back do
+    panel "Ride requests (way back) (#{event.ride_requests.way_back.count})" do
+      table_for event.ride_requests.way_back do
         column :id do |rr|
           link_to rr.id, admin_ride_request_path(rr)
         end
