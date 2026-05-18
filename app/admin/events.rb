@@ -53,11 +53,17 @@ ActiveAdmin.register Event do
       row :updated_at
       row :confirmed_at
       row :seats_added_total
-      row :current_offers do |event|
-        event.offers.count
+      row :number_of_confirmed_offers do |event|
+        event.offers.confirmed.count
       end
-      row :ride_requests do |event|
-        event.ride_requests.count
+      row :number_of_unconfirmed_offers do |event|
+        event.offers.unconfirmed.count
+      end
+      row :number_of_confirmed_ride_requests do |event|
+        event.ride_requests.confirmed.count
+      end
+      row :number_of_unconfirmed_ride_requests do |event|
+        event.ride_requests.unconfirmed.count
       end
     end
   end
@@ -95,8 +101,8 @@ ActiveAdmin.register Event do
   end
 
   show do
-    panel "Offers (way there)" do
-      table_for event.confirmed_offers_way_there do
+    panel "Offers (way there) (#{event.offers.confirmed.way_there.count})" do
+      table_for event.offers.confirmed.way_there do
         column :id do |offer|
           link_to offer.id, admin_offer_path(offer)
         end
@@ -105,11 +111,12 @@ ActiveAdmin.register Event do
         column :date
         column :location
         column :notes
+        column :confirmed_at
       end
     end
 
-    panel "Offers (way back)" do
-      table_for event.confirmed_offers_way_back do
+    panel "Offers (way back) (#{event.offers.confirmed.way_back.count})" do
+      table_for event.offers.confirmed.way_back do
         column :id do |offer|
           link_to offer.id, admin_offer_path(offer)
         end
@@ -118,11 +125,12 @@ ActiveAdmin.register Event do
         column :date
         column :location
         column :notes
+        column :confirmed_at
       end
     end
 
-    panel "Ride requests (way there)" do
-      table_for event.ride_requests.confirmed.where(direction: :way_there) do
+    panel "Ride requests (way there) (#{event.ride_requests.confirmed.way_there.count})" do
+      table_for event.ride_requests.confirmed.way_there do
         column :id do |rr|
           link_to rr.id, admin_ride_request_path(rr)
         end
@@ -131,12 +139,12 @@ ActiveAdmin.register Event do
         column :country
         column :radius
         column :end_date
-        column :created_at
+        column :confirmed_at
       end
     end
 
-    panel "Ride requests (way back)" do
-      table_for event.ride_requests.confirmed.where(direction: :way_back) do
+    panel "Ride requests (way back) (#{event.ride_requests.confirmed.way_back.count})" do
+      table_for event.ride_requests.confirmed.way_back do
         column :id do |rr|
           link_to rr.id, admin_ride_request_path(rr)
         end
@@ -145,7 +153,7 @@ ActiveAdmin.register Event do
         column :country
         column :radius
         column :end_date
-        column :created_at
+        column :confirmed_at
       end
     end
   end
