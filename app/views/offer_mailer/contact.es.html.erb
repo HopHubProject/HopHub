@@ -12,6 +12,9 @@
 
 <p><a href="<%= event_offer_url(@offer.event, @offer) %>" class="button">Ver tu oferta</a></p>
 
+<p>Si el botón no funciona, copia este enlace en tu navegador:</p>
+<div class="secret-link"><a href="<%= event_offer_url(@offer.event, @offer) %>"><%= event_offer_url(@offer.event, @offer) %></a></div>
+
 <p>Si tu oferta ya no es válido, por favor usa el enlace secreto de tu correo de confirmación para editarlo o eliminarlo.</p>
 
 <p>¡Disfruta del viaje, eres genial!</p>

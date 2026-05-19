@@ -10,8 +10,14 @@
 
 <p><a href="<%= event_url(@event) %>" class="button">Ver página del evento</a></p>
 
+<p>Si el botón no funciona, copia este enlace en tu navegador:</p>
+<div class="secret-link"><a href="<%= event_url(@event) %>"><%= event_url(@event) %></a></div>
+
 <p>Si deseas actualizar o eliminar el evento, utiliza el siguiente enlace secreto. Por favor, mantén este enlace para ti y no lo compartas con otros:</p>
 
+<p><a href="<%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>" class="button">Editar evento</a></p>
+
+<p>Si el botón no funciona, copia este enlace en tu navegador:</p>
 <div class="secret-link"><a href="<%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>"><%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %></a></div>
 
 <p>El evento y todas sus ofertas y solicitudes se eliminarán automáticamente después de la fecha de finalización configurada (<strong><%= l @event.end_date.to_date, format: :long, locale: I18n.locale %></strong>).</p>

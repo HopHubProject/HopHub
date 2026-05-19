@@ -12,6 +12,9 @@
 
 <p><a href="<%= event_offer_url(@offer.event, @offer) %>" class="button">Angebot ansehen</a></p>
 
+<p>Falls der Button nicht funktioniert, kopiere den folgenden Link in deinen Browser:</p>
+<div class="secret-link"><a href="<%= event_offer_url(@offer.event, @offer) %>"><%= event_offer_url(@offer.event, @offer) %></a></div>
+
 <p>Falls dein Angebot nicht mehr aktuell ist, benutze bitte den geheimen Link aus deiner Bestätigungsmail, um ihn zu bearbeiten oder zu löschen.</p>
 
 <p>Viel Spaß bei der gemeinsamen Fahrt, du bist toll!</p>

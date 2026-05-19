@@ -11,7 +11,9 @@
     <% @events.each do |event| %>
       <li>
         <strong>Event "<%= event.name %>"</strong> (<%= event.id %>), angelegt am <%= l event.created_at.to_date, format: :long, locale: I18n.locale %><br>
-        Um dieses Event zu löschen, benutze bitte den folgenden Link:
+        Um dieses Event zu löschen, benutze bitte den folgenden Button:
+        <p><a href="<%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>" class="button">Event löschen</a></p>
+        <p>Falls der Button nicht funktioniert, kopiere den folgenden Link in deinen Browser:</p>
         <div class="secret-link"><a href="<%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>"><%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %></a></div>
       </li>
     <% end %>
@@ -21,7 +23,9 @@
         <strong>Angebot vom <%= l offer.created_at.to_date, format: :long, locale: I18n.locale %></strong><br>
         Transportmittel: <%= offer.transport %><br>
         Ort: <%= offer.location %><br>
-        Um diesen Angebot zu löschen, benutze bitte den folgenden Link:
+        Um dieses Angebot zu löschen, benutze bitte den folgenden Button:
+        <p><a href="<%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>" class="button">Angebot löschen</a></p>
+        <p>Falls der Button nicht funktioniert, kopiere den folgenden Link in deinen Browser:</p>
         <div class="secret-link"><a href="<%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>"><%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %></a></div>
       </li>
     <% end %>

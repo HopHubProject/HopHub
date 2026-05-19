@@ -8,12 +8,18 @@
 
 <p><a href="<%= event_offer_url(@offer.event, @offer) %>" class="button">Angebot ansehen</a></p>
 
+<p>Falls der Button nicht funktioniert, kopiere den folgenden Link in deinen Browser:</p>
+<div class="secret-link"><a href="<%= event_offer_url(@offer.event, @offer) %>"><%= event_offer_url(@offer.event, @offer) %></a></div>
+
 <% if @notified_count.to_i > 0 %>
   <p><%= t('mail.offer.confirmed.notified', count: @notified_count) %></p>
 <% end %>
 
 <p>Wenn du dein Angebot bearbeiten oder löschen möchtest, benutze bitte den folgenden geheimen Link. Bitte behalte diesen Link für dich und teile ihn nicht mit anderen:</p>
 
+<p><a href="<%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>" class="button">Angebot bearbeiten</a></p>
+
+<p>Falls der Button nicht funktioniert, kopiere den folgenden Link in deinen Browser:</p>
 <div class="secret-link"><a href="<%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>"><%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %></a></div>
 
 <p>Dein Angebot wird automatisch nach dem von dir gesetzten Datum gelöscht, oder wenn das Event endet.</p>

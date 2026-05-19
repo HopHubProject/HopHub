@@ -12,6 +12,9 @@
 
 <p><a href="<%= event_offer_url(@offer.event, @offer) %>" class="button">View your offer</a></p>
 
+<p>If the button doesn't work, copy this link into your browser:</p>
+<div class="secret-link"><a href="<%= event_offer_url(@offer.event, @offer) %>"><%= event_offer_url(@offer.event, @offer) %></a></div>
+
 <p>In case your offer is no longer up to date or relevant, please use the secret link from your confirmation email to edit or delete it.</p>
 
 <p>Happy sharing, you are awesome!</p>

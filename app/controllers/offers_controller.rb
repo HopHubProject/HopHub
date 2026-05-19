@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
   before_action :find_event!
   before_action :find_offer!, only: [ :show, :edit, :update, :destroy, :confirm, :contact_emails ]
-  before_action :set_geonames, only: [ :new, :create, :edit ]
+  before_action :set_geonames, only: [ :new, :create, :edit, :update ]
   before_action :check_confirmed!, only: [ :show ]
   before_action :authenticate_user!, only: [ :edit, :update, :destroy, :confirm ]
   before_action :set_title
@@ -13,6 +13,10 @@ class OffersController < ApplicationController
 
   def show
     @contact_email = ContactEmail.new
+  end
+
+  def edit
+    @offer.country ||= @event.default_country
   end
 
   def new

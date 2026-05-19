@@ -11,7 +11,9 @@
     <% @events.each do |event| %>
       <li>
         <strong>Event "<%= event.name %>"</strong> (<%= event.id %>), created on <%= l event.created_at.to_date, format: :long, locale: I18n.locale %><br>
-        To delete this event, please use the following link:
+        To delete this event, please use the following button:
+        <p><a href="<%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>" class="button">Delete event</a></p>
+        <p>If the button doesn't work, copy this link into your browser:</p>
         <div class="secret-link"><a href="<%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>"><%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %></a></div>
       </li>
     <% end %>
@@ -21,7 +23,9 @@
         <strong>Offer from <%= l offer.created_at.to_date, format: :long, locale: I18n.locale %></strong><br>
         Transport: <%= offer.transport %><br>
         Location: <%= offer.location %><br>
-        To delete this offer, please use the following link:
+        To delete this offer, please use the following button:
+        <p><a href="<%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>" class="button">Delete offer</a></p>
+        <p>If the button doesn't work, copy this link into your browser:</p>
         <div class="secret-link"><a href="<%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>"><%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %></a></div>
       </li>
     <% end %>
