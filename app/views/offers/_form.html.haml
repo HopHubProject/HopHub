@@ -8,7 +8,9 @@
     =f.input :name
     -if method == :new
       =f.input :email
-    =f.input :phone
+
+    =render 'offers/contacts_section', f: f
+
     =f.input :direction, as: :select,
       collection: Offer::DIRECTIONS.map { |v| [t(v), v] }
     =f.input :location,

@@ -1,0 +1,19 @@
+phone_owt1:
+  offer: owt1
+  kind: phone
+  value: "+491234567890"
+
+signal_owt1:
+  offer: owt1
+  kind: signal
+  value: "yourname.42"
+
+whatsapp_owt1:
+  offer: owt1
+  kind: whatsapp
+  value: "+491234567890"
+
+telegram_owt1:
+  offer: owt1
+  kind: telegram
+  value: "@yourname"

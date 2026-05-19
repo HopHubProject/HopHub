@@ -200,6 +200,7 @@ de:
       active: |
         Filter matcht %{n} von %{total} Angeboten.
 
+  add_contact: Kontakt hinzufügen
   offer_contact:
     title: Kontakt
     send: Mail senden
@@ -208,6 +209,17 @@ de:
     warning: |
       Diese Informationen werden an %{name} gesendet und nicht in der Datenbank von HopHub gespeichert.
       HopHub hat keine Kontrolle darüber, was %{name} mit diesen Informationen macht.
+    kind:
+      phone: Telefon
+      signal: Signal
+      whatsapp: WhatsApp
+      telegram: Telegram
+    hint:
+      intro: Trage hier alle Messenger ein, über die andere dich erreichen können. Telefonnummern müssen mit + und Ländervorwahl beginnen (z.B. +491234567890). Signal und Telegram akzeptieren auch einen Nutzernamen.
+      phone: Optional. Telefonnummer — muss mit + und Ländervorwahl beginnen (z.B. +491234567890).
+      signal: Optional. Dein Signal-Nutzername (z.B. deinname.42) oder eine Telefonnummer — Telefonnummern müssen mit + und Ländervorwahl beginnen (z.B. +491234567890).
+      whatsapp: Optional. WhatsApp-Telefonnummer — muss mit + und Ländervorwahl beginnen (z.B. +491234567890).
+      telegram: Optional. Telegram-Nutzername (z.B. @deinname) oder Telefonnummer — Telefonnummern müssen mit + und Ländervorwahl beginnen (z.B. +491234567890).
 
   gdpr_inquiry:
     title: DSGVO-Anfrage
@@ -305,7 +317,6 @@ de:
       offer:
         name: Name
         email: E-Mail-Adresse
-        phone: Telefonnummer
         date: Zeitpunkt
         starting-point: Start
         destination: Ziel
@@ -350,7 +361,6 @@ de:
       offer:
         name: Dein Name
         email: Deine E-Mail-Adresse
-        phone: Deine Telefonnummer
         date: Datum und Uhrzeit
         direction: Richtung
         transport: Verkehrsmittel
@@ -415,7 +425,6 @@ de:
           Deine E-Mail-Adresse ist für niemanden sichtbar.
           Wir verwenden sie, um dir eine E-Mail zu senden, sobald jemand Kontakt mit dir aufnehmen möchte.
           Du musst deine E-Mail-Adresse bestätigen, bevor dein Angebot auf der Website angezeigt wird.
-        phone: Eine Telefonnummer ist optional. Wenn du sie angibst, wird sie anderen angezeigt.
         date: Datum und Uhrzeit, zu der du deine Reise beginnen möchtest.
         direction: Die Richtung, in die du reisen möchtest.
         location: Bei welcher Postleitzahl soll die Reise starten (Hinweg) bzw. enden (Rückweg)?
@@ -450,7 +459,6 @@ de:
       offer:
         name: Dein Name oder ein Pseudonym
         email: Deine E-Mail-Adresse
-        phone: "+49 123 4567890"
         location: Gib eine Postleitzahl ein
         date: Wähle das Datum und die Uhrzeit deiner Reise
         notes: Noch irgendwas zu sagen? Hier ist Platz dafür.

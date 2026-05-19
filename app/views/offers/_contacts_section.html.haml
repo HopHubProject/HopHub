@@ -1,0 +1,16 @@
+.row.mb-3{data: { controller: "offer-contacts" }}
+  %label.col-sm-3.col-form-label= t('offer_contact.title')
+  .col-sm-9
+    %div{data: { "offer-contacts-target": "list" }}
+      =f.fields_for :offer_contacts do |c|
+        =render 'contact_fields', f: c
+
+    %template{data: { "offer-contacts-target": "template" }}
+      =f.fields_for :offer_contacts, OfferContact.new(kind: OfferContact::KINDS.first), child_index: "NEW_RECORD" do |c|
+        =render 'contact_fields', f: c
+
+    %button.btn.btn-outline-secondary.btn-sm.mt-1{type: 'button', data: { action: "click->offer-contacts#add" }}
+      %i.bi.bi-plus-lg.me-1
+      =t('add_contact')
+
+    .form-text= t('offer_contact.hint.intro')

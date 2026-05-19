@@ -1,5 +1,6 @@
 ActiveAdmin.register Offer do
-  permit_params :id, :offer_id, :email, :direction, :seats, :date, :location, :country, :notes, :confirmed_at, :token
+  permit_params :id, :offer_id, :email, :direction, :seats, :date, :location, :country, :notes, :confirmed_at, :token,
+                offer_contacts_attributes: [:id, :kind, :value, :_destroy]
 
   scope :all, default: true
   scope :in_future
@@ -68,6 +69,40 @@ ActiveAdmin.register Offer do
 
       row :public_edit_link do |offer|
         link_to edit_event_offer_path(offer.event, offer), edit_event_offer_path(offer.event, offer, token: offer.token)
+      end
+    end
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :event
+      row :name
+      row :email
+      row :direction
+      row :transport
+      row :driver
+      row :seats
+      row :date
+      row :location
+      row :country
+      row :latitude
+      row :longitude
+      row :notes
+      row :confirmed_at
+      row :token
+      row :locale
+      row :created_at
+      row :updated_at
+    end
+
+    panel "Contacts" do
+      table_for offer.offer_contacts do
+        column :kind
+        column :value
+        column :link do |c|
+          link_to c.value, c.link, target: '_blank', rel: 'noopener' if c.link.present?
+        end
       end
     end
   end

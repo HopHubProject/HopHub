@@ -197,6 +197,7 @@ es:
       active: |
         El filtro coincide con %{n} de %{total} ofertas.
 
+  add_contact: Añadir contacto
   offer_contact:
     title: Contacto
     send: Enviar correo
@@ -205,6 +206,17 @@ es:
     warning: |
       Esta información se enviará a %{name} y no se almacenará en la base de datos.
       HopHub no tiene control sobre lo que %{name} hace con esta información.
+    kind:
+      phone: Teléfono
+      signal: Signal
+      whatsapp: WhatsApp
+      telegram: Telegram
+    hint:
+      intro: Añade aquí los mensajeros donde la gente pueda contactarte. Los números de teléfono deben comenzar con + y el prefijo de país (por ejemplo, +491234567890). Signal y Telegram también aceptan un nombre de usuario.
+      phone: Opcional. Número de teléfono — debe comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
+      signal: Opcional. Tu usuario de Signal (por ejemplo, tunombre.42) o un número de teléfono — los números deben comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
+      whatsapp: Opcional. Número de WhatsApp — debe comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
+      telegram: Opcional. Usuario de Telegram (por ejemplo, @tunombre) o número de teléfono — los números deben comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
 
   gdpr_inquiry:
     title: Solicitud de GDPR
@@ -301,7 +313,6 @@ es:
       offer:
         name: Nombre
         email: Correo electrónico
-        phone: Teléfono
         date: Fecha
         starting-point: Punto de partida
         destination: Destino
@@ -346,7 +357,6 @@ es:
       offer:
         name: Tu nombre
         email: Tu dirección de correo electrónico
-        phone: Tu número de teléfono
         date: Fecha y hora
         transport: Medio de transporte
         direction: Dirección
@@ -410,7 +420,6 @@ es:
           Tu dirección de correo electrónico no es visible para nadie.
           La usamos para enviarte un correo electrónico una vez que alguien quiera ponerse en contacto contigo.
           Debes confirmar tu dirección de correo electrónico antes de que tu oferta se muestre en el sitio web.
-        phone: Un número de teléfono es opcional. Si lo proporcionas, se mostrará a otros.
         date: Fecha y hora en la que quieres comenzar tu viaje.
         direction: La dirección en la que quieres viajar.
         location: El código postal donde quieres comenzar (ida) o donde quieres ir (vuelta).
@@ -444,7 +453,6 @@ es:
       offer:
         name: Ingresa tu nombre
         email: Ingresa tu dirección de correo electrónico
-        phone: "+34 123 456789"
         location: Ingresa un código postal
         date: Selecciona la fecha y hora de tu viaje
         notes: ¿Tienes alguna nota adicional? Compártela aquí.

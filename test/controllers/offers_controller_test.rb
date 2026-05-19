@@ -262,7 +262,6 @@ class OffersControllerTest < ActionDispatch::IntegrationTest
           offer: {
             name: b.name,
             transport: b.transport,
-            phone: b.phone,
             date: b.date,
             driver: b.driver,
             location: b.location,
@@ -280,7 +279,6 @@ class OffersControllerTest < ActionDispatch::IntegrationTest
       a.reload
 
       assert_equal a.transport, b.transport
-      assert_equal a.phone, b.phone
       assert_equal a.date, b.date
       assert_equal a.driver, b.driver
       assert_equal a.location, b.location

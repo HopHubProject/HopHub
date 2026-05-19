@@ -44,13 +44,14 @@
             %th= t('activerecord.fields.offer.notes')
             %td= auto_link @offer.notes
 
-        -if @offer.phone.present?
+        -if @offer.offer_contacts.any?
           %tr
-            %th= t('activerecord.fields.offer.phone')
+            %th= t('offer_contact.title')
             %td
-              =link_to "tel:#{@offer.phone}", class: 'btn btn-outline-primary btn-sm' do
-                %i.bi.bi-telephone.me-1
-                =@offer.phone
+              -@offer.offer_contacts.each do |contact|
+                =link_to contact.link, class: 'btn btn-outline-primary btn-sm me-2 mb-1', target: '_blank', rel: 'noopener' do
+                  %i.me-1{class: icon_class_for_contact_kind(contact.kind)}
+                  =contact.value
 
     =turbo_frame_tag 'offer_contact' do
       =simple_form_for [@event, @offer, @contact_email] do |f|

@@ -197,6 +197,7 @@ en:
       active: |
         Filter matches %{n} offers out of %{total}.
 
+  add_contact: Add contact
   offer_contact:
     title: Contact
     send: Send message
@@ -205,6 +206,17 @@ en:
     warning: |
       This information will be sent to %{name} via email. We do not store it in our database.
       HopHub has no control over what %{name} does with this information.
+    kind:
+      phone: Phone
+      signal: Signal
+      whatsapp: WhatsApp
+      telegram: Telegram
+    hint:
+      intro: Add any messengers people can reach you on. Phone numbers must start with + and the country code (e.g. +491234567890). Signal and Telegram also accept a username.
+      phone: Optional. Phone number — must start with a + and country code (e.g. +491234567890).
+      signal: Optional. Your Signal username (e.g. yourname.42) or phone number — phone numbers must start with a + and country code (e.g. +491234567890).
+      whatsapp: Optional. WhatsApp phone number — must start with a + and country code (e.g. +491234567890).
+      telegram: Optional. Telegram username (e.g. @yourname) or phone number — phone numbers must start with a + and country code (e.g. +491234567890).
 
   gdpr_inquiry:
     title: GDPR inquiry
@@ -396,7 +408,6 @@ en:
         email: |
           Your email address will not be visible to anyone. We'll use it to send you an email once somebody wants to contact you.
           You'll have to confirm your email address before your offer is shown on the web site.
-        phone: A phone number is optional. If you fill it in, it will be shown to others.
         date: The date and time you want to start your trip.
         direction: The direction of your journey.
         location: The zip code where you want to start (way there) or where you want to go (way back).
@@ -431,7 +442,6 @@ en:
       offer:
         name: Your name or pseudonym
         email: Your email address
-        phone: "+49 123 4567890"
         location: Enter a zip code
         date: Select the date and time of your trip
         notes: Got any additional notes? Share them here.

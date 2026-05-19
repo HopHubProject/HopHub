@@ -40,21 +40,24 @@ module ApplicationHelper
   end
 
   def icon_class_for_transport(t)
-    case t.to_sym
-    when :any
-      'bi bi-asterisk'
-    when :car
-      'bi bi-car-front'
-    when :train
-      'bi bi-train-front'
-    when :bus
-      'bi bi-bus-front'
-    when :bicycle
-      'bi bi-bicycle'
-    when :foot
-      'bi bi-person-walking'
-    else
-      'bi bi-star'
+    case t.to_s
+    when 'any'     then 'bi bi-asterisk'
+    when 'car'     then 'bi bi-car-front'
+    when 'train'   then 'bi bi-train-front'
+    when 'bus'     then 'bi bi-bus-front'
+    when 'bicycle' then 'bi bi-bicycle'
+    when 'foot'    then 'bi bi-person-walking'
+    else                'bi bi-star'
+    end
+  end
+
+  def icon_class_for_contact_kind(kind)
+    case kind.to_s
+    when 'phone'    then 'bi bi-telephone'
+    when 'signal'   then 'bi bi-signal'
+    when 'whatsapp' then 'bi bi-whatsapp'
+    when 'telegram' then 'bi bi-telegram'
+    else                  'bi bi-chat'
     end
   end
 end

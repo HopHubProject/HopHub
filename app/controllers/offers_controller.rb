@@ -172,12 +172,37 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:name, :email, :transport, :phone, :driver,
-                                  :direction, :date, :location, :country, :latitude, :longitude, :seats, :notes)
+    filter_blank_offer_contacts!
+    params.require(:offer).permit(:name, :email, :transport, :driver,
+                                  :direction, :date, :location, :country, :latitude, :longitude, :seats, :notes,
+                                  offer_contacts_attributes: [:id, :kind, :value, :_destroy])
   end
 
   def offer_update_params
-    params.require(:offer).permit(:name, :transport, :phone, :date, :driver, :location, :country, :latitude, :longitude, :seats, :notes)
+    filter_blank_offer_contacts!
+    params.require(:offer).permit(:name, :transport, :date, :driver, :location, :country, :latitude, :longitude, :seats, :notes,
+                                  offer_contacts_attributes: [:id, :kind, :value, :_destroy])
+  end
+
+  # Blank value:
+  #   - persisted contact -> mark for destruction
+  #   - new contact       -> drop the row entirely
+  def filter_blank_offer_contacts!
+    contacts = params.dig(:offer, :offer_contacts_attributes)
+    return if contacts.blank?
+
+    keys_to_drop = []
+    contacts.each do |key, attrs|
+      next if attrs[:value].to_s.strip.present?
+
+      if attrs[:id].present?
+        attrs[:_destroy] = "1"
+      else
+        keys_to_drop << key
+      end
+    end
+
+    keys_to_drop.each { |k| contacts.delete(k) }
   end
 
   def altcha_params

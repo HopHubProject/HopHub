@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_19_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_19_140000) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.integer "author_id"
     t.string "author_type"
@@ -49,6 +49,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_19_120000) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "offer_contacts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "kind", null: false
+    t.string "offer_id", null: false
+    t.datetime "updated_at", null: false
+    t.string "value", null: false
+    t.index ["offer_id"], name: "index_offer_contacts_on_offer_id"
+  end
+
   create_table "offers", id: :string, force: :cascade do |t|
     t.datetime "confirmed_at"
     t.string "country"
@@ -64,7 +73,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_19_120000) do
     t.decimal "longitude", precision: 15, scale: 10
     t.string "name"
     t.text "notes"
-    t.string "phone"
     t.integer "seats"
     t.string "token"
     t.string "transport"
@@ -91,5 +99,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_19_120000) do
     t.index ["event_id"], name: "index_ride_requests_on_event_id"
   end
 
+  add_foreign_key "offer_contacts", "offers"
   add_foreign_key "ride_requests", "events"
 end

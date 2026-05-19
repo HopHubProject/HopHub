@@ -1,0 +1,19 @@
+.row.g-2.mb-2.align-items-center{data: {"offer-contacts-target": "row"}}
+  -if f.object.persisted?
+    =f.hidden_field :id
+    =f.hidden_field :_destroy, value: "0", data: {"offer-contacts-target": "destroyFlag"}
+  .col-auto
+    %i.fs-5{class: icon_class_for_contact_kind(f.object.kind || OfferContact::KINDS.first), data: {"offer-contacts-target": "icon"}}
+  .col-sm-3
+    =f.select :kind,
+      OfferContact::KINDS.map { |k| [t("offer_contact.kind.#{k}"), k] },
+      {},
+      class: 'form-select form-select-sm',
+      data: { action: "change->offer-contacts#updateIcon" }
+  .col
+    =f.text_field :value,
+      class: 'form-control form-control-sm',
+      placeholder: '+491234567890'
+  .col-auto
+    %button.btn.btn-sm.btn-outline-danger{type: 'button', data: { action: "click->offer-contacts#remove" }, "aria-label": t('offer_delete.title')}
+      %i.bi.bi-trash

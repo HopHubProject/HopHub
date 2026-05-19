@@ -1,5 +1,8 @@
 class Offer < ActiveRecord::Base
   belongs_to :event
+  has_many :offer_contacts, dependent: :destroy
+
+  accepts_nested_attributes_for :offer_contacts, allow_destroy: true
 
   acts_as_mappable default_units:   :kms,
                    default_formula: :sphere,
@@ -60,13 +63,13 @@ class Offer < ActiveRecord::Base
   private
 
   def self.ransackable_associations(auth_object = nil)
-    ["event"]
+    ["event", "offer_contacts"]
   end
 
   def self.ransackable_attributes(auth_object = nil)
     ["confirmed_at", "country", "created_at", "date", "direction", "email",
      "event_id", "id", "id_value", "transport", "longitude", "latitude", "location",
-     "driver", "name", "notes", "phone", "seats", "token", "locale", "updated_at"]
+     "driver", "name", "notes", "seats", "token", "locale", "updated_at"]
   end
 
   def increase_event_offers_count

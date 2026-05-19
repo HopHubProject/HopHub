@@ -2,7 +2,6 @@ owt1:
   event_id: one
   name: "person c"
   email: "c@example.com"
-  phone: "123456789"
   direction: "way_there"
   seats: 1
   date: <%= 1.week.from_now.to_datetime %>
@@ -18,7 +17,6 @@ owb1:
   event_id: one
   name: "person d"
   email: "d@example.com"
-  phone: "123456789"
   direction: "way_back"
   seats: 1
   date: <%= 1.week.from_now.to_datetime %>
