@@ -1,5 +1,5 @@
 ActiveAdmin.register Offer do
-  permit_params :id, :offer_id, :email, :direction, :seats, :date, :location, :notes, :confirmed_at, :token
+  permit_params :id, :offer_id, :email, :direction, :seats, :date, :location, :country, :notes, :confirmed_at, :token
 
   scope :all, default: true
   scope :in_future
@@ -54,6 +54,7 @@ ActiveAdmin.register Offer do
     end
     column :date
     column :location
+    column :country
     column :transport
     column :seats
     column :direction

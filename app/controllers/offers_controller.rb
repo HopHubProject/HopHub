@@ -169,11 +169,11 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:name, :email, :transport, :phone, :driver,
-                                  :direction, :date, :location, :latitude, :longitude, :seats, :notes)
+                                  :direction, :date, :location, :country, :latitude, :longitude, :seats, :notes)
   end
 
   def offer_update_params
-    params.require(:offer).permit(:name, :transport, :phone, :date, :driver, :location, :latitude, :longitude, :seats, :notes)
+    params.require(:offer).permit(:name, :transport, :phone, :date, :driver, :location, :country, :latitude, :longitude, :seats, :notes)
   end
 
   def altcha_params

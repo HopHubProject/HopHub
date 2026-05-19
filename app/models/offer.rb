@@ -1,6 +1,5 @@
 class Offer < ActiveRecord::Base
   belongs_to :event
-  attr_accessor :country
 
   acts_as_mappable default_units:   :kms,
                    default_formula: :sphere,
@@ -65,7 +64,7 @@ class Offer < ActiveRecord::Base
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["confirmed_at", "created_at", "date", "direction", "email",
+    ["confirmed_at", "country", "created_at", "date", "direction", "email",
      "event_id", "id", "id_value", "transport", "longitude", "latitude", "location",
      "driver", "name", "notes", "phone", "seats", "token", "locale", "updated_at"]
   end

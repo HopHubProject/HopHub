@@ -110,6 +110,7 @@ ActiveAdmin.register Event do
         column :seats
         column :date
         column :location
+        column :country
         column :notes
         column :confirmed_at
       end
@@ -124,6 +125,7 @@ ActiveAdmin.register Event do
         column :seats
         column :date
         column :location
+        column :country
         column :notes
         column :confirmed_at
       end

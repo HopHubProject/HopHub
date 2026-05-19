@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_18_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_19_120000) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.integer "author_id"
     t.string "author_type"
@@ -51,6 +51,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_18_120000) do
 
   create_table "offers", id: :string, force: :cascade do |t|
     t.datetime "confirmed_at"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "date"
     t.string "direction"
