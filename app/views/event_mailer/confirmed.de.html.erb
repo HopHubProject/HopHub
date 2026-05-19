@@ -12,7 +12,7 @@
 
 <p>Falls du das Event aktualisieren oder löschen möchtest, benutze bitte den folgenden geheimen Link. Bitte behalte diesen Link für dich und teile ihn nicht mit anderen:</p>
 
-<div class="secret-link"><%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %></div>
+<div class="secret-link"><a href="<%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>"><%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %></a></div>
 
 <p>Das Event und alle seine Angebote und Gesuche werden automatisch nach dem konfigurierten Enddatum (<strong><%= l @event.end_date.to_date, format: :long, locale: I18n.locale %></strong>) gelöscht.</p>
 

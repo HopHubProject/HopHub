@@ -12,7 +12,7 @@
       <li>
         <strong>Event "<%= event.name %>"</strong> (<%= event.id %>), angelegt am <%= l event.created_at.to_date, format: :long, locale: I18n.locale %><br>
         Um dieses Event zu löschen, benutze bitte den folgenden Link:
-        <div class="secret-link"><%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %></div>
+        <div class="secret-link"><a href="<%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>"><%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %></a></div>
       </li>
     <% end %>
 
@@ -22,7 +22,7 @@
         Transportmittel: <%= offer.transport %><br>
         Ort: <%= offer.location %><br>
         Um diesen Angebot zu löschen, benutze bitte den folgenden Link:
-        <div class="secret-link"><%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %></div>
+        <div class="secret-link"><a href="<%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>"><%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %></a></div>
       </li>
     <% end %>
   </ul>

@@ -14,7 +14,7 @@
 
 <p>Wenn du dein Angebot bearbeiten oder löschen möchtest, benutze bitte den folgenden geheimen Link. Bitte behalte diesen Link für dich und teile ihn nicht mit anderen:</p>
 
-<div class="secret-link"><%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %></div>
+<div class="secret-link"><a href="<%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>"><%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %></a></div>
 
 <p>Dein Angebot wird automatisch nach dem von dir gesetzten Datum gelöscht, oder wenn das Event endet.</p>
 

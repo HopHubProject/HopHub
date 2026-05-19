@@ -7,7 +7,7 @@
 <p><a href="<%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>" class="button">Confirmar solicitud</a></p>
 
 <p>Si el botón no funciona, copia este enlace en tu navegador:</p>
-<div class="secret-link"><%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %></div>
+<div class="secret-link"><a href="<%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>"><%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %></a></div>
 
 <p>Te enviaremos un correo cuando se publique una oferta que coincida con tu solicitud.</p>
 
