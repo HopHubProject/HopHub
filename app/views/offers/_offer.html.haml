@@ -41,4 +41,4 @@
           %i.bi.bi-info-circle.me-2
           =auto_link offer.notes
       .mt-2
-        =link_to t('offer_contact.title'), event_offer_path(offer.event, offer), class: 'btn btn-outline-primary', role: 'button'
+        =link_to t('offer_contact.title'), event_offer_path(offer.event, offer), class: 'btn btn-outline-primary', role: 'button', data: { turbo_frame: '_top' }

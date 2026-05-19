@@ -19,19 +19,17 @@
         %tr
           %th= t('simple_form.labels.offer.transport')
           %td
-            %i.mx-1{class: icon_class_for_transport(@offer.transport)}
-            =t("transport.#{@offer.transport}")
+            %i{class: icon_class_for_transport(@offer.transport)}
+            %span.ms-1=t("transport.#{@offer.transport}")
+            -unless [:bicycle, :foot].include?(@offer.transport.to_sym) || @offer.seats.to_i.zero?
+              %span.ms-2
+                %i.bi.bi-person
+                %span=@offer.seats
 
-            -if @offer.transport.to_sym == :car
-              -if @offer.driver?
-                %br
-                %i.bi.bi-exclamation-triangle.mx-1
-                =t('driver-needed')
-
-        -unless [:bicycle, :foot].include?(@offer.transport.to_sym) || @offer.seats.to_i.zero?
-          %tr
-            %th= t('simple_form.labels.offer.seats')
-            %td= pluralize(@offer.seats, t('seat.one'), t('seat.other'))
+            -if @offer.transport.to_sym == :car && @offer.driver?
+              %br
+              %i.bi.bi-exclamation-triangle.me-1
+              =t('driver-needed')
 
         %tr
           -if @offer.is_way_there?
@@ -41,9 +39,10 @@
 
           %td= @offer.location
 
-        %tr
-          %th= t('activerecord.fields.offer.notes')
-          %td= auto_link @offer.notes
+        -unless @offer.notes.blank?
+          %tr
+            %th= t('activerecord.fields.offer.notes')
+            %td= auto_link @offer.notes
 
         -if @offer.phone.present?
           %tr
