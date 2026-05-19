@@ -48,8 +48,13 @@ class OfferContactTest < ActiveSupport::TestCase
   end
 
   # ---- signal -------------------------------------------------------------
-  test "signal accepts phone numbers and username.NN" do
-    ["+491234567890", "yourname.42", "cool_user.999"].each do |v|
+  test "signal accepts phone numbers, username.NN, and signal.me/#eu/ links" do
+    [
+      "+491234567890",
+      "yourname.42",
+      "cool_user.999",
+      "https://signal.me/#eu/abc-DEF_123",
+    ].each do |v|
       c = OfferContact.new(offer: @offer, kind: "signal", value: v)
       assert c.valid?, "expected #{v.inspect} to be valid"
     end
@@ -59,6 +64,13 @@ class OfferContactTest < ActiveSupport::TestCase
     %w[yourname yourname.1 +12].each do |v|
       c = OfferContact.new(offer: @offer, kind: "signal", value: v)
       assert_not c.valid?
+    end
+  end
+
+  test "signal rejects unrelated https URLs" do
+    %w[https://signal.me/#p/+491234567890 https://example.com/#eu/abc].each do |v|
+      c = OfferContact.new(offer: @offer, kind: "signal", value: v)
+      assert_not c.valid?, "expected #{v.inspect} to be invalid"
     end
   end
 
@@ -103,6 +115,20 @@ class OfferContactTest < ActiveSupport::TestCase
   test "signal username link uses #u/" do
     c = OfferContact.new(offer: @offer, kind: "signal", value: "yourname.42")
     assert_equal "https://signal.me/#u/yourname.42", c.link
+  end
+
+  test "signal share link is passed through as-is" do
+    c = OfferContact.new(offer: @offer, kind: "signal", value: "https://signal.me/#eu/abc-DEF_123")
+    assert_equal "https://signal.me/#eu/abc-DEF_123", c.link
+  end
+
+  test "display_value returns 'Signal' for share links and the value otherwise" do
+    eu = OfferContact.new(offer: @offer, kind: "signal", value: "https://signal.me/#eu/abc-DEF_123")
+    user = OfferContact.new(offer: @offer, kind: "signal", value: "yourname.42")
+    phone = OfferContact.new(offer: @offer, kind: "phone", value: "+491234567890")
+    assert_equal "Signal", eu.display_value
+    assert_equal "yourname.42", user.display_value
+    assert_equal "+491234567890", phone.display_value
   end
 
   test "whatsapp link strips the + sign" do

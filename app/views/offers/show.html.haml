@@ -51,7 +51,7 @@
               -@offer.offer_contacts.each do |contact|
                 =link_to contact.link, class: 'btn btn-outline-primary btn-sm me-2 mb-1', target: '_blank', rel: 'noopener' do
                   %i.me-1{class: icon_class_for_contact_kind(contact.kind)}
-                  =contact.value
+                  =contact.display_value
 
     =turbo_frame_tag 'offer_contact' do
       =simple_form_for [@event, @offer, @contact_email] do |f|

@@ -214,7 +214,7 @@ es:
     hint:
       intro: Añade aquí los mensajeros donde la gente pueda contactarte. Los números de teléfono deben comenzar con + y el prefijo de país (por ejemplo, +491234567890). Signal y Telegram también aceptan un nombre de usuario.
       phone: Opcional. Número de teléfono — debe comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
-      signal: Opcional. Tu usuario de Signal (por ejemplo, tunombre.42) o un número de teléfono — los números deben comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
+      signal: Opcional. Tu usuario de Signal (por ejemplo, tunombre.42), un número de teléfono (debe comenzar con + y el prefijo de país, por ejemplo +491234567890) o tu enlace personal de Signal (https://signal.me/#eu/...).
       whatsapp: Opcional. Número de WhatsApp — debe comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
       telegram: Opcional. Usuario de Telegram (por ejemplo, @tunombre) o número de teléfono — los números deben comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
 

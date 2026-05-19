@@ -3,14 +3,20 @@ class OfferContact < ApplicationRecord
 
   KINDS = %w(phone signal whatsapp telegram).freeze
 
-  PHONE_PATTERN    = /\A\+[\d\s\-()]{6,}\z/.freeze
-  SIGNAL_PATTERN   = /\A(\+[\d\s\-()]{6,}|[a-zA-Z0-9_]{2,32}\.\d{2,})\z/.freeze
-  WHATSAPP_PATTERN = /\A\+[\d\s\-()]{6,}\z/.freeze
-  TELEGRAM_PATTERN = /\A(\+[\d\s\-()]{6,}|@?[a-zA-Z][a-zA-Z0-9_]{4,31})\z/.freeze
+  PHONE_PATTERN     = /\A\+[\d\s\-()]{6,}\z/.freeze
+  SIGNAL_EU_PATTERN = %r{\Ahttps://signal\.me/\#eu/[A-Za-z0-9_\-]+\z}.freeze
+  SIGNAL_PATTERN    = %r{\A(\+[\d\s\-()]{6,}|[a-zA-Z0-9_]{2,32}\.\d{2,}|https://signal\.me/\#eu/[A-Za-z0-9_\-]+)\z}.freeze
+  WHATSAPP_PATTERN  = /\A\+[\d\s\-()]{6,}\z/.freeze
+  TELEGRAM_PATTERN  = /\A(\+[\d\s\-()]{6,}|@?[a-zA-Z][a-zA-Z0-9_]{4,31})\z/.freeze
 
   validates :kind, presence: true, inclusion: { in: KINDS }
   validates :value, presence: true
   validate :validate_value_format
+
+  def display_value
+    return "Signal" if kind == "signal" && value.to_s.match?(SIGNAL_EU_PATTERN)
+    value
+  end
 
   def link
     return nil if value.blank?
@@ -19,7 +25,9 @@ class OfferContact < ApplicationRecord
     when "phone"
       "tel:#{normalized_phone}"
     when "signal"
-      if value.start_with?("+")
+      if value.match?(SIGNAL_EU_PATTERN)
+        value
+      elsif value.start_with?("+")
         "https://signal.me/#p/#{normalized_phone}"
       else
         "https://signal.me/#u/#{value}"
