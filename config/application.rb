@@ -17,6 +17,11 @@ module HopHub
     config.autoload_lib(ignore: %w(assets tasks))
 
     config.time_zone = "UTC"
+
+    # No image_processing/vips/mini_magick installed and we don't generate
+    # image variants; disable the processor so boot doesn't warn about it.
+    config.active_storage.variant_processor = :disabled
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
