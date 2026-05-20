@@ -215,11 +215,15 @@ class OffersController < ApplicationController
     # Direction, time-window, and "has a radius" are cheap to filter in SQL.
     # The distance check stays in Ruby: geokit-rails' geo helpers compare
     # against a constant radius, not against the per-row `radius` column.
+    # reorder(nil) drops RideRequest's default_scope order: find_each batches
+    # by primary key and would otherwise warn that the scoped order is ignored.
+    # Notification order is irrelevant here.
     candidates = offer.event.ride_requests.confirmed
       .where(direction: offer.direction)
       .where.not(radius: nil)
       .where("start_date IS NULL OR start_date <= ?", offer.date)
       .where("end_date   IS NULL OR end_date   >= ?", offer.date)
+      .reorder(nil)
 
     origin = [offer.latitude, offer.longitude]
     notified = 0
