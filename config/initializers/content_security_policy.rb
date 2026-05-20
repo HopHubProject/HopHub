@@ -25,6 +25,10 @@ Rails.application.configure do
     policy.script_src      :self
     policy.style_src       :self, :unsafe_inline
     policy.connect_src     :self
+    # Altcha runs its proof-of-work in a Web Worker spawned from a blob: URL.
+    # Without an explicit worker-src this falls back to default-src ('self'),
+    # which blocks blob: and breaks the captcha once the policy is enforced.
+    policy.worker_src      :self, :blob
     policy.base_uri        :self
     policy.form_action     :self
     policy.frame_ancestors :none
