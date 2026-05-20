@@ -85,7 +85,7 @@ ActiveAdmin.register Offer do
     column :transport
     column :seats
     column :direction
-    column(:contacts) { |offer| offer.offer_contacts.size }
+    column(:contacts) { |offer| offer.offer_contacts.map(&:kind).uniq.join(", ") }
   end
 
   sidebar "Public links", only: :show do
