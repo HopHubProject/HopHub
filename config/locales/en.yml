@@ -208,15 +208,19 @@ en:
       HopHub has no control over what %{name} does with this information.
     kind:
       phone: Phone
+      sms: SMS
       signal: Signal
       whatsapp: WhatsApp
       telegram: Telegram
+      instagram: Instagram
     hint:
       intro: Add any messengers people can reach you on. Phone numbers must start with + and the country code (e.g. +491234567890). Signal and Telegram also accept a username.
       phone: Optional. Phone number — must start with a + and country code (e.g. +491234567890).
+      sms: Optional. Phone number for SMS — must start with a + and country code (e.g. +491234567890).
       signal: Optional. Your Signal username (e.g. yourname.42), phone number (must start with + and country code, e.g. +491234567890), or your personal Signal share link (https://signal.me/#eu/...).
       whatsapp: Optional. WhatsApp phone number — must start with a + and country code (e.g. +491234567890).
       telegram: Optional. Telegram username (e.g. @yourname) or phone number — phone numbers must start with a + and country code (e.g. +491234567890).
+      instagram: Optional. Your Instagram username (e.g. @yourname) or profile link (https://instagram.com/yourname).
 
   gdpr_inquiry:
     title: GDPR inquiry

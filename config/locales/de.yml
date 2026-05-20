@@ -211,15 +211,19 @@ de:
       HopHub hat keine Kontrolle darüber, was %{name} mit diesen Informationen macht.
     kind:
       phone: Telefon
+      sms: SMS
       signal: Signal
       whatsapp: WhatsApp
       telegram: Telegram
+      instagram: Instagram
     hint:
       intro: Trage hier alle Messenger ein, über die andere dich erreichen können. Telefonnummern müssen mit + und Ländervorwahl beginnen (z.B. +491234567890). Signal und Telegram akzeptieren auch einen Nutzernamen.
       phone: Optional. Telefonnummer — muss mit + und Ländervorwahl beginnen (z.B. +491234567890).
+      sms: Optional. Telefonnummer für SMS — muss mit + und Ländervorwahl beginnen (z.B. +491234567890).
       signal: Optional. Dein Signal-Nutzername (z.B. deinname.42), eine Telefonnummer (muss mit + und Ländervorwahl beginnen, z.B. +491234567890) oder dein persönlicher Signal-Link (https://signal.me/#eu/...).
       whatsapp: Optional. WhatsApp-Telefonnummer — muss mit + und Ländervorwahl beginnen (z.B. +491234567890).
       telegram: Optional. Telegram-Nutzername (z.B. @deinname) oder Telefonnummer — Telefonnummern müssen mit + und Ländervorwahl beginnen (z.B. +491234567890).
+      instagram: Optional. Dein Instagram-Nutzername (z.B. @deinname) oder Profil-Link (https://instagram.com/deinname).
 
   gdpr_inquiry:
     title: DSGVO-Anfrage

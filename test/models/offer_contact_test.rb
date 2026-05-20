@@ -98,6 +98,35 @@ class OfferContactTest < ActiveSupport::TestCase
     end
   end
 
+  # ---- sms ----------------------------------------------------------------
+  test "sms requires a phone number with + and country code" do
+    c = OfferContact.new(offer: @offer, kind: "sms", value: "+491234567890")
+    assert c.valid?
+
+    c.value = "491234567890"
+    assert_not c.valid?
+  end
+
+  # ---- instagram ----------------------------------------------------------
+  test "instagram accepts usernames, @usernames and profile URLs" do
+    [
+      "yourname",
+      "@your.name_42",
+      "https://instagram.com/yourname",
+      "https://www.instagram.com/yourname/",
+    ].each do |v|
+      c = OfferContact.new(offer: @offer, kind: "instagram", value: v)
+      assert c.valid?, "expected #{v.inspect} to be valid: #{c.errors.full_messages}"
+    end
+  end
+
+  test "instagram rejects unrelated URLs and illegal characters" do
+    ["https://example.com/yourname", "your name", "a" * 31].each do |v|
+      c = OfferContact.new(offer: @offer, kind: "instagram", value: v)
+      assert_not c.valid?, "expected #{v.inspect} to be invalid"
+    end
+  end
+
   # ---------------------------------------------------------------------------
   # #link
   # ---------------------------------------------------------------------------
@@ -105,6 +134,28 @@ class OfferContactTest < ActiveSupport::TestCase
   test "phone link is tel: with normalized digits" do
     c = OfferContact.new(offer: @offer, kind: "phone", value: "+49 123-4567890")
     assert_equal "tel:+491234567890", c.link
+  end
+
+  test "sms link is sms: with normalized digits" do
+    c = OfferContact.new(offer: @offer, kind: "sms", value: "+49 123-4567890")
+    assert_equal "sms:+491234567890", c.link
+  end
+
+  test "instagram link points to the profile and strips @, www and URL forms" do
+    {
+      "yourname"                            => "https://instagram.com/yourname",
+      "@yourname"                           => "https://instagram.com/yourname",
+      "https://instagram.com/yourname"      => "https://instagram.com/yourname",
+      "https://www.instagram.com/yourname/" => "https://instagram.com/yourname",
+    }.each do |input, expected|
+      c = OfferContact.new(offer: @offer, kind: "instagram", value: input)
+      assert_equal expected, c.link, "for input #{input.inspect}"
+    end
+  end
+
+  test "instagram display_value is the @handle regardless of input form" do
+    c = OfferContact.new(offer: @offer, kind: "instagram", value: "https://www.instagram.com/yourname/")
+    assert_equal "@yourname", c.display_value
   end
 
   test "signal phone link uses #p/ with normalized digits" do

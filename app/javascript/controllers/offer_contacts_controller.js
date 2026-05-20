@@ -16,10 +16,12 @@ import { Controller } from "@hotwired/stimulus"
 //   the remove button: data-action="click->offer-contacts#remove"
 //   the add button:    data-action="click->offer-contacts#add"
 const ICON_MAP = {
-  phone:    "bi-telephone",
-  signal:   "bi-signal",
-  whatsapp: "bi-whatsapp",
-  telegram: "bi-telegram",
+  phone:     "bi-telephone",
+  sms:       "bi-chat-text",
+  signal:    "bi-signal",
+  whatsapp:  "bi-whatsapp",
+  telegram:  "bi-telegram",
+  instagram: "bi-instagram",
 }
 
 export default class extends Controller {

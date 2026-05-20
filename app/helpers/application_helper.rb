@@ -53,10 +53,12 @@ module ApplicationHelper
 
   def icon_class_for_contact_kind(kind)
     case kind.to_s
-    when 'phone'    then 'bi bi-telephone'
-    when 'signal'   then 'bi bi-signal'
-    when 'whatsapp' then 'bi bi-whatsapp'
-    when 'telegram' then 'bi bi-telegram'
+    when 'phone'     then 'bi bi-telephone'
+    when 'sms'       then 'bi bi-chat-text'
+    when 'signal'    then 'bi bi-signal'
+    when 'whatsapp'  then 'bi bi-whatsapp'
+    when 'telegram'  then 'bi bi-telegram'
+    when 'instagram' then 'bi bi-instagram'
     else                  'bi bi-chat'
     end
   end
