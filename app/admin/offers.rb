@@ -45,6 +45,31 @@ ActiveAdmin.register Offer do
     link_to "Resend confirmation", resend_confirmation_admin_offer_path(resource), method: :post, class: "action-item-button"
   end
 
+  form do |f|
+    f.inputs "Offer" do
+      f.input :email
+      f.input :direction, as: :select, collection: Offer::DIRECTIONS
+      f.input :seats
+      f.input :date
+      f.input :location
+      # Render as a plain text input: the default Formtastic :country input
+      # requires the country_select plugin, which we don't use.
+      f.input :country, as: :string
+      f.input :notes
+      f.input :confirmed_at
+      f.input :token
+    end
+
+    f.inputs "Contacts" do
+      f.has_many :offer_contacts, allow_destroy: true, new_record: true do |c|
+        c.input :kind, as: :select, collection: OfferContact::KINDS
+        c.input :value
+      end
+    end
+
+    f.actions
+  end
+
   index do
     selectable_column
     column :id do |offer|
