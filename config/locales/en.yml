@@ -214,13 +214,13 @@ en:
       telegram: Telegram
       instagram: Instagram
     hint:
-      intro: Add any messengers people can reach you on. Phone numbers must start with + and the country code (e.g. +491234567890). Signal and Telegram also accept a username.
+      intro: Add any messengers people can reach you on. Phone numbers must start with + and the country code (e.g. +491234567890). Signal and Telegram also accept a username. For Instagram, enter only your account name, not a profile link.
       phone: Optional. Phone number — must start with a + and country code (e.g. +491234567890).
       sms: Optional. Phone number for SMS — must start with a + and country code (e.g. +491234567890).
       signal: Optional. Your Signal username (e.g. yourname.42), phone number (must start with + and country code, e.g. +491234567890), or your personal Signal share link (https://signal.me/#eu/...).
       whatsapp: Optional. WhatsApp phone number — must start with a + and country code (e.g. +491234567890).
       telegram: Optional. Telegram username (e.g. @yourname) or phone number — phone numbers must start with a + and country code (e.g. +491234567890).
-      instagram: Optional. Your Instagram username (e.g. @yourname) or profile link (https://instagram.com/yourname).
+      instagram: Optional. Only your Instagram account name (e.g. @yourname or yourname) — not a profile link.
 
   gdpr_inquiry:
     title: GDPR inquiry

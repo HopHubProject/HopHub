@@ -217,13 +217,13 @@ de:
       telegram: Telegram
       instagram: Instagram
     hint:
-      intro: Trage hier alle Messenger ein, über die andere dich erreichen können. Telefonnummern müssen mit + und Ländervorwahl beginnen (z.B. +491234567890). Signal und Telegram akzeptieren auch einen Nutzernamen.
+      intro: Trage hier alle Messenger ein, über die andere dich erreichen können. Telefonnummern müssen mit + und Ländervorwahl beginnen (z.B. +491234567890). Signal und Telegram akzeptieren auch einen Nutzernamen. Für Instagram gib nur deinen Kontonamen an, keinen Profil-Link.
       phone: Optional. Telefonnummer — muss mit + und Ländervorwahl beginnen (z.B. +491234567890).
       sms: Optional. Telefonnummer für SMS — muss mit + und Ländervorwahl beginnen (z.B. +491234567890).
       signal: Optional. Dein Signal-Nutzername (z.B. deinname.42), eine Telefonnummer (muss mit + und Ländervorwahl beginnen, z.B. +491234567890) oder dein persönlicher Signal-Link (https://signal.me/#eu/...).
       whatsapp: Optional. WhatsApp-Telefonnummer — muss mit + und Ländervorwahl beginnen (z.B. +491234567890).
       telegram: Optional. Telegram-Nutzername (z.B. @deinname) oder Telefonnummer — Telefonnummern müssen mit + und Ländervorwahl beginnen (z.B. +491234567890).
-      instagram: Optional. Dein Instagram-Nutzername (z.B. @deinname) oder Profil-Link (https://instagram.com/deinname).
+      instagram: Optional. Nur dein Instagram-Kontoname (z.B. @deinname oder deinname) — kein Profil-Link.
 
   gdpr_inquiry:
     title: DSGVO-Anfrage

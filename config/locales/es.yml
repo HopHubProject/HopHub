@@ -214,13 +214,13 @@ es:
       telegram: Telegram
       instagram: Instagram
     hint:
-      intro: Añade aquí los mensajeros donde la gente pueda contactarte. Los números de teléfono deben comenzar con + y el prefijo de país (por ejemplo, +491234567890). Signal y Telegram también aceptan un nombre de usuario.
+      intro: Añade aquí los mensajeros donde la gente pueda contactarte. Los números de teléfono deben comenzar con + y el prefijo de país (por ejemplo, +491234567890). Signal y Telegram también aceptan un nombre de usuario. Para Instagram, introduce solo tu nombre de cuenta, no un enlace al perfil.
       phone: Opcional. Número de teléfono — debe comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
       sms: Opcional. Número de teléfono para SMS — debe comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
       signal: Opcional. Tu usuario de Signal (por ejemplo, tunombre.42), un número de teléfono (debe comenzar con + y el prefijo de país, por ejemplo +491234567890) o tu enlace personal de Signal (https://signal.me/#eu/...).
       whatsapp: Opcional. Número de WhatsApp — debe comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
       telegram: Opcional. Usuario de Telegram (por ejemplo, @tunombre) o número de teléfono — los números deben comenzar con un + y el prefijo de país (por ejemplo, +491234567890).
-      instagram: Opcional. Tu usuario de Instagram (por ejemplo, @tunombre) o enlace al perfil (https://instagram.com/tunombre).
+      instagram: Opcional. Solo tu nombre de cuenta de Instagram (por ejemplo, @tunombre o tunombre) — no un enlace al perfil.
 
   gdpr_inquiry:
     title: Solicitud de GDPR

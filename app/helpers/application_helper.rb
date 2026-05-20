@@ -62,4 +62,16 @@ module ApplicationHelper
     else                  'bi bi-chat'
     end
   end
+
+  def placeholder_for_contact_kind(kind)
+    case kind.to_s
+    when 'phone'     then '+491234567890'
+    when 'sms'       then '+491234567890'
+    when 'signal'    then 'yourname.42'
+    when 'whatsapp'  then '+491234567890'
+    when 'telegram'  then '@yourname'
+    when 'instagram' then '@yourname'
+    else                  ''
+    end
+  end
 end

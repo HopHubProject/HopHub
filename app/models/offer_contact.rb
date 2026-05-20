@@ -9,7 +9,7 @@ class OfferContact < ApplicationRecord
   SIGNAL_PATTERN    = %r{\A(\+[\d\s\-()]{6,}|[a-zA-Z0-9_]{2,32}\.\d{2,}|https://signal\.me/\#eu/[A-Za-z0-9_\-]+)\z}.freeze
   WHATSAPP_PATTERN  = /\A\+[\d\s\-()]{6,}\z/.freeze
   TELEGRAM_PATTERN  = /\A(\+[\d\s\-()]{6,}|@?[a-zA-Z][a-zA-Z0-9_]{4,31})\z/.freeze
-  INSTAGRAM_PATTERN = %r{\A(@?[A-Za-z0-9._]{1,30}|https?://(www\.)?instagram\.com/[A-Za-z0-9._]{1,30}/?)\z}.freeze
+  INSTAGRAM_PATTERN = /\A@?[A-Za-z0-9._]{1,30}\z/.freeze
 
   validates :kind, presence: true, inclusion: { in: KINDS }
   validates :value, presence: true
@@ -68,10 +68,7 @@ class OfferContact < ApplicationRecord
   end
 
   def instagram_handle
-    value.to_s
-         .sub(%r{\Ahttps?://(www\.)?instagram\.com/}, "")
-         .delete_prefix("@")
-         .delete_suffix("/")
+    value.to_s.delete_prefix("@")
   end
 
   def validate_value_format

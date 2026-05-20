@@ -108,20 +108,21 @@ class OfferContactTest < ActiveSupport::TestCase
   end
 
   # ---- instagram ----------------------------------------------------------
-  test "instagram accepts usernames, @usernames and profile URLs" do
-    [
-      "yourname",
-      "@your.name_42",
-      "https://instagram.com/yourname",
-      "https://www.instagram.com/yourname/",
-    ].each do |v|
+  test "instagram accepts an account name with an optional @" do
+    ["yourname", "@your.name_42"].each do |v|
       c = OfferContact.new(offer: @offer, kind: "instagram", value: v)
       assert c.valid?, "expected #{v.inspect} to be valid: #{c.errors.full_messages}"
     end
   end
 
-  test "instagram rejects unrelated URLs and illegal characters" do
-    ["https://example.com/yourname", "your name", "a" * 31].each do |v|
+  test "instagram rejects profile links, spaces and too-long names" do
+    [
+      "https://instagram.com/yourname",
+      "https://www.instagram.com/yourname/",
+      "instagram.com/yourname",
+      "your name",
+      "a" * 31,
+    ].each do |v|
       c = OfferContact.new(offer: @offer, kind: "instagram", value: v)
       assert_not c.valid?, "expected #{v.inspect} to be invalid"
     end
@@ -141,21 +142,19 @@ class OfferContactTest < ActiveSupport::TestCase
     assert_equal "sms:+491234567890", c.link
   end
 
-  test "instagram link points to the profile and strips @, www and URL forms" do
+  test "instagram link points to the profile and strips a leading @" do
     {
-      "yourname"                            => "https://instagram.com/yourname",
-      "@yourname"                           => "https://instagram.com/yourname",
-      "https://instagram.com/yourname"      => "https://instagram.com/yourname",
-      "https://www.instagram.com/yourname/" => "https://instagram.com/yourname",
+      "yourname"  => "https://instagram.com/yourname",
+      "@yourname" => "https://instagram.com/yourname",
     }.each do |input, expected|
       c = OfferContact.new(offer: @offer, kind: "instagram", value: input)
       assert_equal expected, c.link, "for input #{input.inspect}"
     end
   end
 
-  test "instagram display_value is the @handle regardless of input form" do
-    c = OfferContact.new(offer: @offer, kind: "instagram", value: "https://www.instagram.com/yourname/")
-    assert_equal "@yourname", c.display_value
+  test "instagram display_value is the @handle" do
+    assert_equal "@yourname", OfferContact.new(offer: @offer, kind: "instagram", value: "yourname").display_value
+    assert_equal "@yourname", OfferContact.new(offer: @offer, kind: "instagram", value: "@yourname").display_value
   end
 
   test "signal phone link uses #p/ with normalized digits" do

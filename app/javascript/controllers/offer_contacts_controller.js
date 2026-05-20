@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Dynamic add/remove for OfferContact rows in the offer form. Clones a
 // <template> element on add, marks persisted rows for _destroy on remove,
-// and updates a row's icon when its kind <select> changes.
+// and updates a row's icon and value placeholder when its kind <select>
+// changes.
 //
 // Usage in the form:
 //   data-controller="offer-contacts"
@@ -11,8 +12,10 @@ import { Controller } from "@hotwired/stimulus"
 // Each row inside the list:
 //   data-offer-contacts-target="row"
 //   data-offer-contacts-target="icon"          (the icon element to update)
+//   data-offer-contacts-target="value"         (the value input to re-placeholder)
 //   data-offer-contacts-target="destroyFlag"   (hidden _destroy field, persisted rows only)
-//   the kind <select>: data-action="change->offer-contacts#updateIcon"
+//   the kind <select>: data-action="change->offer-contacts#kindChanged"
+//     each <option> carries data-placeholder with an example value
 //   the remove button: data-action="click->offer-contacts#remove"
 //   the add button:    data-action="click->offer-contacts#add"
 const ICON_MAP = {
@@ -48,16 +51,20 @@ export default class extends Controller {
     }
   }
 
-  updateIcon(event) {
+  kindChanged(event) {
     const select = event.target
     const row = select.closest("[data-offer-contacts-target='row']")
     if (!row) return
 
     const icon = row.querySelector("[data-offer-contacts-target='icon']")
-    if (!icon) return
+    if (icon) {
+      Object.values(ICON_MAP).forEach((cls) => icon.classList.remove(cls))
+      const next = ICON_MAP[select.value]
+      if (next) icon.classList.add(next)
+    }
 
-    Object.values(ICON_MAP).forEach((cls) => icon.classList.remove(cls))
-    const next = ICON_MAP[select.value]
-    if (next) icon.classList.add(next)
+    const value = row.querySelector("[data-offer-contacts-target='value']")
+    const option = select.selectedOptions[0]
+    if (value && option) value.placeholder = option.dataset.placeholder || ""
   }
 }
