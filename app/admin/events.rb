@@ -113,6 +113,7 @@ ActiveAdmin.register Event do
         column :country
         column :notes
         column :confirmed_at
+        column(:contacts) { |offer| offer.offer_contacts.size }
       end
     end
 
@@ -128,6 +129,7 @@ ActiveAdmin.register Event do
         column :country
         column :notes
         column :confirmed_at
+        column(:contacts) { |offer| offer.offer_contacts.size }
       end
     end
 

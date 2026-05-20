@@ -78,12 +78,14 @@ ActiveAdmin.register Offer do
     column :event do |offer|
       link_to offer.event.name, admin_event_path(offer.event)
     end
+    column :name
     column :date
     column :location
     column :country
     column :transport
     column :seats
     column :direction
+    column(:contacts) { |offer| offer.offer_contacts.size }
   end
 
   sidebar "Public links", only: :show do
