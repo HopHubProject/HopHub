@@ -1,4 +1,4 @@
-.row.justify-content-center
+.row.justify-content-center{data: { scroll_reset: true }}
   .col-12.col-lg-9
     %h1
       =t('offer')
@@ -88,6 +88,7 @@
 
           .col-sm-9.col-lg-3
             =link_to event_offers_path(@offer.event, direction: @offer.direction),
-              class: 'btn btn-default btn-outline-primary w-100 mt-1', role: 'button' do
+              class: 'btn btn-default btn-outline-primary w-100 mt-1', role: 'button',
+              data: { back_to_event: true } do
               %i.bi.bi-arrow-left
               =@event.name
