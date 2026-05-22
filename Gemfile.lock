@@ -327,7 +327,7 @@ GEM
       netrc (~> 0.8)
     rexml (3.4.4)
     rubyzip (3.3.0)
-    sass-embedded (1.99.0-x86_64-linux-gnu)
+    sass-embedded (1.100.0-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc-embedded (1.80.8)
       sass-embedded (~> 1.80)
