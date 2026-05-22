@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }.merge options
   end
 
+  protect_from_forgery with: :exception
+
+  rescue_from ActionController::InvalidAuthenticityToken do
+    redirect_back(
+      fallback_location: root_path,
+      alert: "CSRF failed. Please try again."
+    )
+  end
+
   private
 
   def locale_for_request
