@@ -55,8 +55,12 @@
 
     =turbo_frame_tag 'offer_contact' do
       =simple_form_for [@event, @offer, @contact_email] do |f|
-        %h2=t('offer_contact.title')
-        %p= t('offer_contact.text', name: @offer.name)
+        -if @offer.offer_contacts.any?
+          %h2=t('offer_contact.title_alternative')
+          %p= t('offer_contact.text_alternative', name: @offer.name)
+        -else
+          %h2=t('offer_contact.title')
+          %p= t('offer_contact.text', name: @offer.name)
 
         =f.input :name, hint: t('simple_form.hints.contact_email.name', name: @offer.name)
         =f.input :from, hint: t('simple_form.hints.contact_email.from', name: @offer.name)

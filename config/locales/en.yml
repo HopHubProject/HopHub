@@ -52,6 +52,12 @@ en:
         a car as well for a common train ride, a bus trip, a bike tour or a walk.
         No login is required, only an email address. As soon as the email address is
         confirmed, the offer is shown on the website so others can see it.
+    ride-request:
+      title: Looking for a ride?
+      text: |
+        If no matching offer exists yet, you can post a ride request instead.
+        Tell us roughly where you are and when you'd like to travel, and we'll
+        email you as soon as someone posts an offer that matches.
     match:
       title: Get in touch
       text: |
@@ -200,9 +206,13 @@ en:
   add_contact: Add contact
   offer_contact:
     title: Contact
+    title_alternative: Or contact by email
     send: Send message
     text: |
       Please fill in the form to contact %{name}.
+    text_alternative: |
+      Or, if you'd rather not use the contact options above, fill in this form
+      to reach %{name} by email instead.
     warning: |
       This information will be sent to %{name} via email. We do not store it in our database.
       HopHub has no control over what %{name} does with this information.

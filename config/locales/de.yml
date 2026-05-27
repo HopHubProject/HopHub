@@ -54,6 +54,12 @@ de:
         dem Zug, Bus, Fahrrad oder zu Fuß.
         Dafür ist keine Anmeldung erforderlich, nur eine E-Mail-Adresse, an die wir eine
         Bestätigungsmail senden. Nach erfolgter Bestätigung wird das Angebot angezeigt.
+    ride-request:
+      title: Suchst du eine Mitfahrgelegenheit?
+      text: |
+        Wenn noch kein passendes Angebot existiert, kannst du stattdessen eine
+        Mitfahranfrage stellen. Sag uns ungefähr, wo du bist und wann du reisen möchtest –
+        wir schicken dir eine E-Mail, sobald jemand ein passendes Angebot einstellt.
     match:
       title: Nimm Kontakt auf
       text: |
@@ -203,9 +209,13 @@ de:
   add_contact: Kontakt hinzufügen
   offer_contact:
     title: Kontakt
+    title_alternative: Oder per E-Mail kontaktieren
     send: Mail senden
     text: |
       Bitte fülle das Formular aus, um %{name} zu kontaktieren.
+    text_alternative: |
+      Oder fülle dieses Formular aus, um %{name} stattdessen per E-Mail zu erreichen,
+      falls du die obigen Kontaktmöglichkeiten nicht nutzen möchtest.
     warning: |
       Diese Informationen werden an %{name} gesendet und nicht in der Datenbank von HopHub gespeichert.
       HopHub hat keine Kontrolle darüber, was %{name} mit diesen Informationen macht.

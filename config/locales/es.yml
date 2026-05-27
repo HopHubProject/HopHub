@@ -53,6 +53,12 @@ es:
         No es necesario registrarse, solo se requiere una dirección de correo electrónico a
         la que enviaremos un correo electrónico de confirmación.
         Una vez confirmado, la oferta se mostrará.
+    ride-request:
+      title: ¿Buscas un viaje?
+      text: |
+        Si aún no existe una oferta que te sirva, puedes publicar una solicitud de viaje.
+        Dinos aproximadamente dónde estás y cuándo te gustaría viajar, y te enviaremos
+        un correo electrónico en cuanto alguien publique una oferta que coincida.
     match:
       title: Contactar
       text: |
@@ -200,9 +206,13 @@ es:
   add_contact: Añadir contacto
   offer_contact:
     title: Contacto
+    title_alternative: O contactar por correo electrónico
     send: Enviar correo
     text: |
       Por favor, completa el formulario para contactar a %{name}.
+    text_alternative: |
+      O, si prefieres no usar las opciones de contacto anteriores, completa
+      este formulario para contactar a %{name} por correo electrónico.
     warning: |
       Esta información se enviará a %{name} y no se almacenará en la base de datos.
       HopHub no tiene control sobre lo que %{name} hace con esta información.
