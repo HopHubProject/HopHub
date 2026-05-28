@@ -63,9 +63,10 @@ de:
     match:
       title: Nimm Kontakt auf
       text: |
-        Bei einem Match können Personen mittels eines Webformulars auf der Website in Kontakt
-        treten. Die E-Mail-Adresse des Kontaktaufnehmenden wird als Antwortadresse verwendet,
-        damit die Empfängerin direkt antworten kann.
+        Bei einem Match können Personen miteinander in Kontakt treten. Angebote können Messenger
+        angeben, sodass du direkt darüber Kontakt aufnehmen kannst. Alternativ kannst du ein
+        Webformular auf der Website nutzen; die E-Mail-Adresse des Kontaktaufnehmenden wird als
+        Antwortadresse verwendet, damit die Empfängerin direkt antworten kann.
     no-indexing:
       title: Keine Indizierung durch Suchmaschinen
       text: |

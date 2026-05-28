@@ -61,9 +61,10 @@ en:
     match:
       title: Get in touch
       text: |
-        When two parties match, they can get in touch with each other using a form
-        on the website. The email address of the person reaching out is used as the
-        Reply-To address, so the recipient can reply directly for further coordination.
+        When two parties match, they can get in touch with each other. Offers may list
+        messengers, so you can reach out directly there. You can also use a form on the
+        website; the email address of the person reaching out is used as the Reply-To
+        address, so the recipient can reply directly for further coordination.
     no-indexing:
       title: No indexing by search engines
       text: |
