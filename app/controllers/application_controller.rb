@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
   private
 
   def locale_for_request
-    return params[:locale] if params[:locale].present?
+    param_locale = params[:locale]
+    return param_locale if param_locale.present? && I18n.available_locales.include?(param_locale.to_sym)
 
     http_locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first rescue nil
     return http_locale if http_locale and I18n.available_locales.include? http_locale.to_sym

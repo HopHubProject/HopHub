@@ -26,4 +26,12 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
   end
+
+  def test_unavailable_locale_falls_back_to_english
+    get root_url, params: { locale: 'xx' }
+    assert_response :success
+
+    c = Content.for('instance-info', :en)
+    assert_match c.content, @response.body
+  end
 end
