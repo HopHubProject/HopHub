@@ -20,38 +20,40 @@ class GeonamesControllerTest < ActionDispatch::IntegrationTest
     GeonamesHelper.send(:define_method, :postal_code_search, method)
   end
 
-  test "returns 400 when postal_code is missing" do
-    get postal_code_search_url, params: { country_code: "DE" }
-    assert_response :bad_request
-    body = JSON.parse(@response.body)
-    assert body["error"].present?
-    assert_nil @last_call_args, "helper should not be invoked when params are invalid"
-  end
+  I18n.available_locales.each do |locale|
+    define_method("test_returns_400_when_postal_code_is_missing_#{locale}") do
+      get postal_code_search_url, params: { country_code: "DE", locale: locale }
+      assert_response :bad_request
+      body = JSON.parse(@response.body)
+      assert body["error"].present?
+      assert_nil @last_call_args, "helper should not be invoked when params are invalid"
+    end
 
-  test "returns 400 when country_code is missing" do
-    get postal_code_search_url, params: { postal_code: "10115" }
-    assert_response :bad_request
-    body = JSON.parse(@response.body)
-    assert body["error"].present?
-    assert_nil @last_call_args
-  end
+    define_method("test_returns_400_when_country_code_is_missing_#{locale}") do
+      get postal_code_search_url, params: { postal_code: "10115", locale: locale }
+      assert_response :bad_request
+      body = JSON.parse(@response.body)
+      assert body["error"].present?
+      assert_nil @last_call_args
+    end
 
-  test "returns 400 when both params are blank strings" do
-    get postal_code_search_url, params: { postal_code: "", country_code: "" }
-    assert_response :bad_request
-    assert_nil @last_call_args
-  end
+    define_method("test_returns_400_when_both_params_are_blank_strings_#{locale}") do
+      get postal_code_search_url, params: { postal_code: "", country_code: "", locale: locale }
+      assert_response :bad_request
+      assert_nil @last_call_args
+    end
 
-  test "delegates to the helper and renders the result as JSON" do
-    get postal_code_search_url, params: { postal_code: "10115", country_code: "DE" }
-    assert_response :success
-    assert_equal "application/json", @response.media_type
-    assert_equal %w[10115 DE], @last_call_args
+    define_method("test_delegates_to_the_helper_and_renders_the_result_as_json_#{locale}") do
+      get postal_code_search_url, params: { postal_code: "10115", country_code: "DE", locale: locale }
+      assert_response :success
+      assert_equal "application/json", @response.media_type
+      assert_equal %w[10115 DE], @last_call_args
 
-    body = JSON.parse(@response.body)
-    assert_equal 1, body.size
-    assert_equal "10115", body.first["postalCode"]
-    assert_equal "Berlin", body.first["placeName"]
-    assert_equal "DE", body.first["countryCode"]
+      body = JSON.parse(@response.body)
+      assert_equal 1, body.size
+      assert_equal "10115", body.first["postalCode"]
+      assert_equal "Berlin", body.first["placeName"]
+      assert_equal "DE", body.first["countryCode"]
+    end
   end
 end
