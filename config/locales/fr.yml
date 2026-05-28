@@ -1,0 +1,516 @@
+fr:
+  language: Français
+  flagicon: 🇫🇷
+
+  languages: Langues
+  github_project: Projet GitHub
+  imprint: Mentions légales
+  privacy_policy: Politique de confidentialité
+  tos: Conditions d'utilisation
+  theme: Thème
+  home: Accueil
+
+  meta:
+    description:
+      default: HopHub est une plateforme de covoiturage pour les événements.
+      event: |
+        Offres de covoiturage pour %{event_name} sur HopHub.
+      offer: |
+        Offre de covoiturage de %{name} pour %{event_name} sur HopHub.
+
+  terms_and_conditions:
+    prompt: |
+      J'ai lu et j'accepte les %{tos} et la %{privacy_policy}.
+      Je confirme également que je ne suis pas un robot. Selon ton appareil,
+      la vérification peut prendre un instant.
+    accepted: |
+      Les %{tos} et la %{privacy_policy} ont été lues et acceptées.
+      Et tu n'es pas un robot non plus. Parfait.
+    error: |
+      Merci de confirmer que tu as lu et accepté les conditions d'utilisation et la politique de confidentialité.
+      Vérifie aussi encore une fois que tu n'es pas un robot.
+
+  welcome:
+    title: Qu'est-ce que c'est ?
+    text:
+      - |
+        HopHub est une plateforme de covoiturage qui veut simplifier les trajets
+        partagés vers les événements et ainsi rendre le monde un peu meilleur. Que
+        vous remplissiez la voiture, partagiez un billet de train, preniez le bus
+        ensemble, planifiiez une sortie à vélo ou veniez à pied.
+
+  how-it-works:
+    title: Comment ça marche ?
+    create-event:
+      title: Crée un événement
+      text: |
+        Tu crées un nouvel événement et tu partages le lien avec les personnes
+        susceptibles d'y participer. Seules les personnes disposant du lien peuvent voir l'événement.
+    add-offer:
+      title: Propose un covoiturage
+      text: |
+        Les personnes qui souhaitent proposer un trajet peuvent maintenant publier une offre.
+        Cela vaut pour les places en voiture, mais aussi pour un trajet partagé en train,
+        en bus, à vélo ou à pied.
+        Aucune inscription n'est nécessaire, juste une adresse e-mail à laquelle nous envoyons un
+        e-mail de confirmation. Une fois la confirmation effectuée, l'offre est affichée.
+    ride-request:
+      title: Tu cherches un covoiturage ?
+      text: |
+        Si aucune offre correspondante n'existe encore, tu peux à la place publier une
+        demande de covoiturage. Dis-nous à peu près où tu es et quand tu souhaites voyager –
+        nous t'enverrons un e-mail dès que quelqu'un publie une offre correspondante.
+    match:
+      title: Prends contact
+      text: |
+        En cas de correspondance, les personnes peuvent entrer en contact les unes avec les autres.
+        Les offres peuvent indiquer des messageries, afin que tu puisses prendre contact
+        directement par ce biais. Tu peux aussi utiliser un formulaire web sur le site ;
+        l'adresse e-mail de la personne qui prend contact est utilisée comme adresse de réponse,
+        afin que la destinataire puisse répondre directement.
+    no-indexing:
+      title: Pas d'indexation par les moteurs de recherche
+      text: |
+        Les moteurs de recherche comme Google ou Bing sont invités, à l'aide de balises spéciales,
+        à ne pas indexer les événements et les offres associées.
+        Seules les personnes disposant du lien peuvent voir les événements.
+    cleanup:
+      title: Ne laisse aucune trace
+      text: |
+        Les offres et les événements sont automatiquement supprimés de la base de données
+        une fois leur validité expirée.
+
+  about:
+    title: Le projet
+    text:
+      - |
+        HopHub est un projet open source développé par des bénévoles.
+        Nous ne sommes pas une entreprise et n'avons aucun intérêt commercial.
+        Nous ne t'embêtons pas avec de la publicité et ne transmettons aucune donnée à des tiers.
+        Seules les données absolument nécessaires au fonctionnement de la plateforme
+        sont conservées. Plus d'informations dans notre %{privacy_policy} et nos %{tos}.
+      - |
+        Si tu veux signaler un bug, proposer une fonctionnalité, ajouter une traduction ou
+        soumettre une PR, tu trouveras le code source sur %{github_project}.
+      - |
+        HopHub est entièrement gratuit et le restera toujours.
+
+  cancel: Annuler
+
+  transport:
+    car: Voiture
+    train: Train
+    bus: Bus
+    bicycle: Vélo
+    foot: À pied
+    other: Autre
+
+  offer: Offre
+  offers: Offres
+
+  way_there: Aller
+  way_back: Retour
+
+  driver-needed: Un·e conducteur·rice est recherché·e pour ce trajet !
+
+  no_offers:
+    title: Pas encore d'offres
+    text: |
+      Il semble que personne n'ait encore ajouté d'offre pour cet événement.
+      Pas d'inquiétude, c'est tout à fait normal pour les nouveaux événements.
+      Tu peux soit attendre que quelqu'un crée une offre, soit en ajouter une toi-même.
+
+  add_offer:
+    title: Publier une nouvelle offre
+    offer_yourself: |
+      Tu veux organiser le trajet toi-même ?
+
+  add_ride_request:
+    title: Je cherche un covoiturage
+
+  create_new_ride_request:
+    title: Publier une demande
+    text: |
+      Dis-nous où tu es et dans quelle direction tu as besoin d'un covoiturage.
+      Nous te préviendrons par e-mail dès qu'une offre correspondante est publiée.
+
+  demand_signal:
+    title: Trajets recherchés
+    text: Si tu publies une offre, nous prévenons par e-mail chaque personne listée ci-dessous, à condition que le lieu de ton offre se trouve dans le rayon qu'elle a choisi et que l'horaire corresponde à son créneau souhaité.
+    way_there:
+      heading:
+        one: "1 personne cherche un covoiturage vers l'événement"
+        other: "%{count} personnes cherchent un covoiturage vers l'événement"
+    way_back:
+      heading:
+        one: "1 personne cherche un covoiturage pour rentrer"
+        other: "%{count} personnes cherchent un covoiturage pour rentrer"
+
+  event: Événement
+  seat:
+    one: place
+    other: places
+
+  create_event:
+    title: Créer un événement
+    text: |
+      Merci de saisir les détails de ton événement. Tu recevras un e-mail avec
+      un lien vers la page d'administration pour modifier certains de ces détails plus tard.
+
+  event_valid_until: L'événement est valable jusqu'au %{date}
+
+  edit_event:
+    title: Modifier l'événement
+    text: |
+      Merci de saisir les détails pour ajuster ton événement.
+
+  update_event:
+    title: Mettre à jour l'événement
+
+  event_delete:
+    title: Supprimer l'événement
+    confirmation: |
+      Es-tu sûr·e de vouloir supprimer cet événement ?
+      Toutes les offres seront également supprimées définitivement.
+      Cette action est irréversible.
+
+  offer_delete:
+    title: Supprimer l'offre
+    confirmation: |
+      Es-tu sûr·e de vouloir supprimer cette offre ?
+      Cette action est irréversible.
+
+  ride_request_delete:
+    title: Supprimer la demande de covoiturage
+    text: |
+      Es-tu sûr·e de vouloir supprimer ta demande de covoiturage ? Tu ne recevras
+      plus de notifications lorsqu'une offre correspondante est publiée.
+      Cette action est irréversible.
+    button: Supprimer la demande de covoiturage
+
+  create_new_offer:
+    title: Créer une nouvelle offre
+    text: |
+      Merci de saisir les détails de ton offre. D'autres personnes pourront
+      prendre contact avec toi via le site dès que tu auras confirmé
+      ton adresse e-mail.
+
+  update_offer:
+    title: Mettre à jour l'offre
+
+  offers:
+    filter:
+      title: Filtrer
+      apply: Appliquer le filtre
+      clear: Réinitialiser
+      text: Filtre les offres de cet événement par lieu et rayon.
+      active: |
+        Le filtre correspond à %{n} offres sur %{total}.
+
+  add_contact: Ajouter un contact
+  offer_contact:
+    title: Contact
+    title_alternative: Ou contacter par e-mail
+    send: Envoyer l'e-mail
+    text: |
+      Merci de remplir le formulaire pour contacter %{name}.
+    text_alternative: |
+      Ou remplis ce formulaire pour joindre %{name} par e-mail à la place,
+      si tu ne souhaites pas utiliser les options de contact ci-dessus.
+    warning: |
+      Ces informations seront envoyées à %{name} et ne seront pas conservées dans la base de données de HopHub.
+      HopHub n'a aucun contrôle sur ce que %{name} fait de ces informations.
+    kind:
+      phone: Téléphone
+      sms: SMS
+      signal: Signal
+      whatsapp: WhatsApp
+      telegram: Telegram
+      instagram: Instagram
+    hint:
+      intro: Indique ici toutes les messageries par lesquelles d'autres peuvent te joindre. Les numéros de téléphone doivent commencer par + et l'indicatif du pays (par ex. +491234567890). Signal et Telegram acceptent aussi un nom d'utilisateur. Pour Instagram, indique seulement ton nom de compte, pas de lien de profil.
+      phone: Facultatif. Numéro de téléphone — doit commencer par + et l'indicatif du pays (par ex. +491234567890).
+      sms: Facultatif. Numéro de téléphone pour SMS — doit commencer par + et l'indicatif du pays (par ex. +491234567890).
+      signal: Facultatif. Ton nom d'utilisateur Signal (par ex. tonnom.42), un numéro de téléphone (doit commencer par + et l'indicatif du pays, par ex. +491234567890) ou ton lien Signal personnel (https://signal.me/#eu/...).
+      whatsapp: Facultatif. Numéro de téléphone WhatsApp — doit commencer par + et l'indicatif du pays (par ex. +491234567890).
+      telegram: Facultatif. Nom d'utilisateur Telegram (par ex. @tonnom) ou numéro de téléphone — les numéros de téléphone doivent commencer par + et l'indicatif du pays (par ex. +491234567890).
+      instagram: Facultatif. Seulement ton nom de compte Instagram (par ex. @tonnom ou tonnom) — pas de lien de profil.
+
+  gdpr_inquiry:
+    title: Demande RGPD
+    text:
+      - |
+        HopHub ne conserve que les données nécessaires au fonctionnement de la plateforme.
+        Toutes les données sont automatiquement supprimées dès qu'elles ne sont plus nécessaires.
+        Concrètement, cela signifie que les événements ainsi que toutes leurs offres sont
+        définitivement supprimés après la date de fin de l'événement. Les offres sont
+        également supprimées dès qu'elles ne sont plus valables.
+      - |
+        Si tu souhaites une copie de tes données ou leur suppression,
+        merci de remplir le formulaire. Nous t'enverrons un e-mail avec toutes les informations
+        enregistrées sous cette adresse e-mail dans notre base de données, ainsi que des liens pour
+        les supprimer.
+      - |
+        L'adresse e-mail que tu indiques ici sera utilisée uniquement pour répondre à ta demande
+        puis supprimée.
+    links: |
+      Tu trouveras plus d'informations dans notre %{privacy_policy} et nos %{tos}.
+    send: Envoyer la demande
+
+  views:
+    pagination:
+      previous: "‹"
+      next: "›"
+      first: "«"
+      last: "»"
+      truncate: "&hellip;"
+
+  mail:
+    event:
+      created:
+        subject: "HopHub : Merci de confirmer ton événement"
+      confirmed:
+        subject: "HopHub : Ton événement est maintenant activé"
+    offer:
+      created:
+        subject: "HopHub : Merci de confirmer ton offre"
+      confirmed:
+        subject: "HopHub : Ton offre est maintenant activée"
+        notified:
+          one: "Ton offre vient de prévenir 1 personne qui cherchait un covoiturage dans ta région. Génial !"
+          other: "Ton offre vient de prévenir %{count} personnes qui cherchaient un covoiturage dans ta région. Génial !"
+      contact:
+        subject: "HopHub : Nouveau message"
+    ride_request:
+      created:
+        subject: "HopHub : Merci de confirmer ta demande de covoiturage"
+      confirmed:
+        subject: "HopHub : Ta demande de covoiturage est maintenant active"
+      offer_matched:
+        subject: "HopHub : Une offre de covoiturage correspondante a été publiée"
+    gdpr_inquiry:
+      response:
+        subject: "HopHub : Ta demande RGPD"
+
+  flash:
+    event_created: Événement créé. Tu vas bientôt recevoir un e-mail avec un lien de confirmation.
+    event_deleted: Événement supprimé.
+    event_not_found: Événement introuvable.
+    event_confirmed: Ton adresse e-mail a été confirmée. L'événement est maintenant actif.
+    event_already_confirmed: Ton adresse e-mail a déjà été confirmée.
+
+    offer_created: Ton offre a été créée. Tu vas bientôt recevoir un e-mail avec un lien de confirmation.
+    offer_updated: Ton offre a été mise à jour.
+    offer_deleted: Ton offre a été supprimée.
+    offer_not_found: Offre introuvable.
+    offer_confirmed: Ton adresse e-mail a été confirmée. L'offre est maintenant active.
+    offer_confirmed_with_notifications:
+      one: Ton adresse e-mail a été confirmée. Nous venons de prévenir 1 personne qui cherchait un covoiturage dans ta région.
+      other: Ton adresse e-mail a été confirmée. Nous venons de prévenir %{count} personnes qui cherchaient un covoiturage dans ta région.
+    offer_already_confirmed: Ton adresse e-mail a déjà été confirmée.
+    offer_contacted: Ton message a été envoyé. Le destinataire peut maintenant te répondre.
+
+    ride_request_created: Ta demande de covoiturage a été créée. Tu vas bientôt recevoir un e-mail avec un lien de confirmation.
+    ride_request_deleted: Ta demande de covoiturage a été supprimée.
+    ride_request_not_found: Demande de covoiturage introuvable.
+    ride_request_confirmed: Ta demande de covoiturage a été confirmée. Tu seras prévenu·e dès qu'une offre correspondante est publiée.
+    ride_request_already_confirmed: Ta demande de covoiturage a déjà été confirmée.
+
+    gdpr_inquiry_created: Ta demande a été envoyée. Tu vas bientôt recevoir un e-mail avec plus d'informations.
+
+  activerecord:
+    models:
+      event: Événement
+      offer: Offre
+    fields:
+      event:
+        id: ID
+        name: Nom
+        description: Description
+        admin_email: E-mail de l'administrateur
+        end_date: Date de fin
+      offer:
+        name: Nom
+        email: Adresse e-mail
+        date: Horaire
+        starting-point: Départ
+        destination: Destination
+        seats: Places
+        notes: Notes supplémentaires
+    errors:
+      models:
+        event:
+          attributes:
+            id:
+              blank: ne peut pas être vide
+              invalid: n'est pas un ID valide
+              taken: est déjà utilisé
+            name:
+              blank: ne peut pas être vide
+              invalid: est invalide
+            description:
+              blank: ne peut pas être vide
+              invalid: est invalide
+            admin_email:
+              blank: ne peut pas être vide
+              invalid: est invalide
+            end_date:
+              blank: ne peut pas être vide
+              invalid: est invalide
+
+  simple_form:
+    yes: "Oui"
+    no: "Non"
+    required:
+      text: Champ obligatoire
+      mark: "*"
+    error_notification:
+      default_message: "Merci de vérifier les problèmes ci-dessous :"
+    labels:
+      event:
+        name: Nom de l'événement
+        description: Description
+        admin_email: E-mail de l'administrateur
+        end_date: Date de fin
+
+      offer:
+        name: Ton nom
+        email: Ton adresse e-mail
+        date: Date et heure
+        direction: Direction
+        transport: Moyen de transport
+        starting-point: Départ
+        location: Lieu (code postal)
+        country: Pays
+        seats: Nombre de places
+        driver-needed: Conducteur·rice recherché·e ?
+        driver-offer: Peux-tu conduire ?
+        notes: Notes supplémentaires
+
+      ride_request:
+        email: Ton adresse e-mail
+        direction: Direction
+        location: Lieu (code postal)
+        country: Pays
+        radius: Rayon de recherche
+        start_date: Heure de départ au plus tôt
+        end_date: Heure d'arrivée au plus tard
+
+      contact_email:
+        from: Ton adresse e-mail
+        text: Ton message
+
+    hints:
+      event:
+        name: |
+          C'est le nom de l'événement qui sera affiché sur la page de l'événement.
+          Nous l'utilisons aussi pour générer l'URL de l'événement.
+        description: |
+          La description est également affichée sur la page de l'événement et peut donner aux visiteurs un peu de contexte sur l'événement.
+          Tu peux utiliser %{markdown} dans ce champ pour mettre en forme le texte.
+        admin_email: |
+          Cette adresse e-mail est utilisée pour t'envoyer une confirmation et un lien d'administration.
+          Elle n'est pas affichée sur le site. Nous la conservons uniquement tant que l'événement est actif,
+          puis elle est définitivement supprimée.
+        end_date: |
+          Tous les détails de cet événement, y compris l'adresse e-mail indiquée, ainsi que
+          toutes les offres de l'événement seront définitivement supprimés après cette date.
+        default_country: |
+          Le pays présélectionné lors de la création d'une nouvelle offre et dans le filtre des offres,
+          et qui est utilisé pour la saisie du code postal.
+
+      ride_request:
+        email: |
+          Ton adresse e-mail n'est visible par personne.
+          Nous l'utilisons pour te prévenir dès qu'une offre correspondante est publiée.
+          Tu dois confirmer ton adresse e-mail avant que ta demande soit active.
+        direction: Cherches-tu un covoiturage vers l'événement ou pour rentrer ?
+        location: À quel code postal ton trajet doit-il commencer (aller) ou se terminer (retour) ?
+        country: Le pays dans lequel se trouve le code postal.
+        radius: Jusqu'où es-tu prêt·e à te déplacer ?
+        start_date: Quand souhaites-tu partir au plus tôt ?
+        end_date: À quelle heure souhaites-tu arriver au plus tard ? Ta demande sera automatiquement supprimée après ce moment.
+
+      offer:
+        name: |
+          Ton nom, tel qu'il sera affiché publiquement sur le site.
+          Ce n'est pas forcément ton vrai nom, un pseudonyme convient tout à fait.
+        transport: Le moyen de transport que tu veux utiliser.
+        email: |
+          Ton adresse e-mail n'est visible par personne.
+          Nous l'utilisons pour t'envoyer un e-mail dès que quelqu'un souhaite prendre contact avec toi.
+          Tu dois confirmer ton adresse e-mail avant que ton offre soit affichée sur le site.
+        date: Date et heure auxquelles tu souhaites commencer ton trajet.
+        direction: La direction dans laquelle tu souhaites voyager.
+        location: À quel code postal le trajet doit-il commencer (aller) ou se terminer (retour) ?
+        country: Le pays dans lequel se trouve le code postal.
+        seats-available: Le nombre de places disponibles.
+        seats-needed: Le nombre de places nécessaires.
+        driver-needed: |
+          Cherche-t-on encore une personne pour conduire la voiture sur ce trajet ? Si oui, coche cette case.
+        driver-offer: |
+          Pourrais-tu envisager de conduire la voiture ?
+        notes: |
+          Toutes les notes supplémentaires que tu souhaites partager publiquement avec d'autres.
+          Tu peux aussi indiquer ici ton numéro de téléphone, ton mode de contact préféré ou
+          d'autres informations. Note bien que tout ce que tu indiques ici
+          est visible publiquement.
+
+      contact_email:
+        name: |
+          Ton nom sera transmis dans l'e-mail à %{name}.
+        from: |
+          Ton adresse e-mail sera transmise à %{name} et utilisée comme adresse de réponse,
+          afin que vous puissiez poursuivre votre communication en dehors de HopHub.
+        text: |
+          Ton message à %{name}. Sois aimable et donne autant d'informations que possible.
+
+    placeholders:
+      event:
+        name: Donne un nom à ton événement
+        description: De quoi parle cet événement ?
+        admin_email: Saisis ton adresse e-mail
+        end_date: Quand l'événement se termine-t-il ?
+      offer:
+        name: Ton nom ou un pseudonyme
+        email: Ton adresse e-mail
+        location: Saisis un code postal
+        date: Choisis la date et l'heure de ton trajet
+        notes: Encore quelque chose à dire ? Il y a de la place ici.
+      offers_filter:
+        location: Code postal
+      contact_email:
+        name: Nom ou pseudonyme
+        from: Adresse e-mail
+
+    errors:
+      offer:
+        location:
+          invalid: Merci de saisir un code postal valide.
+
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%d/%m %H:%M"
+      long: "%d %B %Y %H:%M"
+      time: "%H:%M"
+
+  date:
+    formats:
+      long_with_dow: "%A %d %B %Y"
+    month_names:
+      [
+        ~,
+        janvier,
+        février,
+        mars,
+        avril,
+        mai,
+        juin,
+        juillet,
+        août,
+        septembre,
+        octobre,
+        novembre,
+        décembre,
+      ]

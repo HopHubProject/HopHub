@@ -1,0 +1,20 @@
+Bonjour <%= @offer.name %>,
+
+<%= @name %> t'a envoyé un message sur HopHub, et en voici le contenu :
+
+----------------------------------------
+<%= @text %>
+----------------------------------------
+
+Tu peux répondre à ce message pour communiquer directement avec <%= @name %>.
+
+Ton offre pour l'événement "<%= @offer.event.name %>" est toujours active et visible ici :
+
+    <%= event_offer_url(@offer.event, @offer) %>
+
+Si ton offre n'est plus d'actualité, utilise le lien secret de ton e-mail de confirmation pour la modifier ou la supprimer.
+
+Bonne route ensemble, tu es génial·e !
+
+
+À bientôt, l'équipe HopHub.

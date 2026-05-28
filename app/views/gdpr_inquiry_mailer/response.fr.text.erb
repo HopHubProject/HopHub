@@ -1,0 +1,52 @@
+Bonjour,
+
+Merci pour votre demande RGPD.
+
+<% if @events.any? || @offers.any? %>
+Suite à votre demande d'accès du <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %>, nous vous confirmons
+qu'en tant que responsable du traitement, nous stockons et traitons les
+données suivantes associées à votre adresse e-mail :
+
+<% @events.each do |event| %>
+* Événement "<%= event.name %>" (<%= event.id %>), créé le <%= l event.created_at.to_date, format: :long, locale: I18n.locale %>
+  Pour supprimer cet événement, utilisez le lien suivant : <%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>
+
+<% end %>
+
+<% @offers.each do |offer| %>
+* Offre du <%= l offer.created_at.to_date, format: :long, locale: I18n.locale %>
+  Moyen de transport : <%= offer.transport %>
+  Lieu : <%= offer.location %>
+
+  Pour supprimer cette offre, utilisez le lien suivant : <%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>
+
+<% end %>
+
+Nous traitons ces données pour les finalités suivantes :
+
+<% @events.each do |event| %>
+- Organisation de l'événement "<%= event.name %>" (<%= event.id %>)
+<% end %>
+
+<% @offers.each do |offer| %>
+- Organisation de l'offre "<%= offer.name %>" (<%= offer.id %>)
+<% end %>
+
+En tant que personne concernée, vous avez le droit d'exiger de notre part
+une rectification conformément à l'art. 16 du RGPD et la suppression de vos
+données conformément à l'art. 17 du RGPD.
+Pour cela, utilisez les liens indiqués ci-dessus.
+
+Vous avez également le droit de demander la limitation du traitement de vos
+données conformément à l'art. 18 du RGPD. Comme HopHub ne stocke que les
+données nécessaires à la fourniture du service, une limitation du traitement
+n'est possible que par la suppression des données.
+
+<% else %>
+Suite à votre demande d'accès du <%= l DateTime.now.to_date, format: :long, locale: I18n.locale %>, nous vous confirmons
+qu'en tant que responsable du traitement, nous ne stockons ni ne traitons
+aucune donnée associée à votre adresse e-mail.
+<% end %>
+
+Cordialement,
+L'équipe HopHub.

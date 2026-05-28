@@ -1,0 +1,9 @@
+Bonjour <%= @offer.name %>,
+
+Merci de confirmer ton offre pour l'événement "<%= @offer.event.name %>" en cliquant sur le lien suivant :
+
+   <%= event_offer_confirm_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>
+
+Si tu n'as aucune idée de quoi parle cet e-mail, ignore-le simplement et fais autre chose.
+
+À bientôt, l'équipe HopHub.

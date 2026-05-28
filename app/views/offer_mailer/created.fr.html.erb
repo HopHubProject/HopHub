@@ -1,0 +1,14 @@
+<h1>Merci de confirmer ton offre</h1>
+
+<p>Bonjour <%= @offer.name %>,</p>
+
+<p>Merci de confirmer ton offre pour l'événement "<strong><%= @offer.event.name %></strong>" en cliquant sur le bouton ci-dessous :</p>
+
+<p><a href="<%= event_offer_confirm_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>" class="button">Confirmer l'offre</a></p>
+
+<p>Si le bouton ne fonctionne pas, copie le lien suivant dans ton navigateur :</p>
+<div class="secret-link"><a href="<%= event_offer_confirm_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>"><%= event_offer_confirm_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %></a></div>
+
+<p>Si tu n'as aucune idée de quoi parle cet e-mail, ignore-le simplement et fais autre chose.</p>
+
+<p class="signoff">À bientôt, l'équipe HopHub.</p>

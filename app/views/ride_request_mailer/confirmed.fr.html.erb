@@ -1,0 +1,24 @@
+<h1>Ta demande de covoiturage est active</h1>
+
+<p>Bonjour,</p>
+
+<p>Merci d'utiliser HopHub !</p>
+
+<p>Ta demande de covoiturage pour l'événement "<strong><%= @ride_request.event.name %></strong>" a été confirmée. Nous te préviendrons par e-mail dès qu'une offre correspondante est publiée.</p>
+
+<p><a href="<%= event_url(@ride_request.event) %>" class="button">Voir la page de l'événement</a></p>
+
+<p>Si le bouton ne fonctionne pas, copie le lien suivant dans ton navigateur :</p>
+<div class="secret-link"><a href="<%= event_url(@ride_request.event) %>"><%= event_url(@ride_request.event) %></a></div>
+
+<p>Si tu ne souhaites plus recevoir de notifications pour cette demande, tu peux la supprimer avec le lien secret suivant. Garde ce lien pour toi :</p>
+
+<% destroy_url = event_ride_request_destroy_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>
+<p><a href="<%= destroy_url %>" class="button">Supprimer la demande de covoiturage</a></p>
+
+<p>Si le bouton ne fonctionne pas, copie le lien suivant dans ton navigateur :</p>
+<div class="secret-link"><a href="<%= destroy_url %>"><%= destroy_url %></a></div>
+
+<p>Ta demande sera automatiquement supprimée lorsque l'événement se termine.</p>
+
+<p class="signoff">À bientôt, l'équipe HopHub.</p>

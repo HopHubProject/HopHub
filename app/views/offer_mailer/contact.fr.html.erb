@@ -1,0 +1,22 @@
+<h1>Nouveau message sur HopHub</h1>
+
+<p>Bonjour <%= @offer.name %>,</p>
+
+<p><strong><%= @name %></strong> t'a envoyé un message sur HopHub, et en voici le contenu :</p>
+
+<div class="quote"><%= @text %></div>
+
+<p>Tu peux répondre à ce message pour communiquer directement avec <%= @name %>.</p>
+
+<p>Ton offre pour l'événement "<strong><%= @offer.event.name %></strong>" est toujours active et visible ici :</p>
+
+<p><a href="<%= event_offer_url(@offer.event, @offer) %>" class="button">Voir l'offre</a></p>
+
+<p>Si le bouton ne fonctionne pas, copie le lien suivant dans ton navigateur :</p>
+<div class="secret-link"><a href="<%= event_offer_url(@offer.event, @offer) %>"><%= event_offer_url(@offer.event, @offer) %></a></div>
+
+<p>Si ton offre n'est plus d'actualité, utilise le lien secret de ton e-mail de confirmation pour la modifier ou la supprimer.</p>
+
+<p>Bonne route ensemble, tu es génial·e !</p>
+
+<p class="signoff">À bientôt, l'équipe HopHub.</p>

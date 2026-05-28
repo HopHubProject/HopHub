@@ -1,0 +1,51 @@
+<h1>Réponse à votre demande RGPD</h1>
+
+<p>Bonjour,</p>
+
+<p>Merci pour votre demande RGPD.</p>
+
+<% if @events.any? || @offers.any? %>
+  <p>Suite à votre demande d'accès du <strong><%= l DateTime.now.to_date, format: :long, locale: I18n.locale %></strong>, nous vous confirmons qu'en tant que responsable du traitement, nous stockons et traitons les données suivantes associées à votre adresse e-mail :</p>
+
+  <ul class="data-list">
+    <% @events.each do |event| %>
+      <li>
+        <strong>Événement "<%= event.name %>"</strong> (<%= event.id %>), créé le <%= l event.created_at.to_date, format: :long, locale: I18n.locale %><br>
+        Pour supprimer cet événement, utilisez le bouton suivant :
+        <p><a href="<%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>" class="button">Supprimer l'événement</a></p>
+        <p>Si le bouton ne fonctionne pas, copiez le lien suivant dans votre navigateur :</p>
+        <div class="secret-link"><a href="<%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %>"><%= edit_event_url(event, admin_token: event.admin_token, locale: I18n.locale) %></a></div>
+      </li>
+    <% end %>
+
+    <% @offers.each do |offer| %>
+      <li>
+        <strong>Offre du <%= l offer.created_at.to_date, format: :long, locale: I18n.locale %></strong><br>
+        Moyen de transport : <%= offer.transport %><br>
+        Lieu : <%= offer.location %><br>
+        Pour supprimer cette offre, utilisez le bouton suivant :
+        <p><a href="<%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>" class="button">Supprimer l'offre</a></p>
+        <p>Si le bouton ne fonctionne pas, copiez le lien suivant dans votre navigateur :</p>
+        <div class="secret-link"><a href="<%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %>"><%= edit_event_offer_url(offer.event, offer, token: offer.token, locale: I18n.locale) %></a></div>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>Finalité du traitement</h2>
+  <ul>
+    <% @events.each do |event| %>
+      <li>Organisation de l'événement "<%= event.name %>" (<%= event.id %>)</li>
+    <% end %>
+    <% @offers.each do |offer| %>
+      <li>Organisation de l'offre "<%= offer.name %>" (<%= offer.id %>)</li>
+    <% end %>
+  </ul>
+
+  <p>En tant que personne concernée, vous avez le droit d'exiger de notre part une rectification conformément à l'art. 16 du RGPD et la suppression de vos données conformément à l'art. 17 du RGPD. Pour cela, utilisez les liens indiqués ci-dessus.</p>
+
+  <p>Vous avez également le droit de demander la limitation du traitement de vos données conformément à l'art. 18 du RGPD. Comme HopHub ne stocke que les données nécessaires à la fourniture du service, une limitation du traitement n'est possible que par la suppression des données.</p>
+<% else %>
+  <p>Suite à votre demande d'accès du <strong><%= l DateTime.now.to_date, format: :long, locale: I18n.locale %></strong>, nous vous confirmons qu'en tant que responsable du traitement, nous ne stockons ni ne traitons aucune donnée associée à votre adresse e-mail.</p>
+<% end %>
+
+<p class="signoff">Cordialement,<br>L'équipe HopHub.</p>

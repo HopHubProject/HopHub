@@ -1,0 +1,27 @@
+<h1>Ton événement est activé</h1>
+
+<p>Bonjour,</p>
+
+<p>Merci d'utiliser HopHub !</p>
+
+<p>L'événement "<strong><%= @event.name %></strong>" a été confirmé et est maintenant actif.</p>
+
+<p>Merci de partager le lien suivant avec les personnes susceptibles de participer :</p>
+
+<p><a href="<%= event_url(@event) %>" class="button">Voir la page de l'événement</a></p>
+
+<p>Si le bouton ne fonctionne pas, copie le lien suivant dans ton navigateur :</p>
+<div class="secret-link"><a href="<%= event_url(@event) %>"><%= event_url(@event) %></a></div>
+
+<p>Si tu souhaites mettre à jour ou supprimer l'événement, utilise le lien secret suivant. Garde ce lien pour toi et ne le partage avec personne :</p>
+
+<p><a href="<%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>" class="button">Modifier l'événement</a></p>
+
+<p>Si le bouton ne fonctionne pas, copie le lien suivant dans ton navigateur :</p>
+<div class="secret-link"><a href="<%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>"><%= edit_event_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %></a></div>
+
+<p>L'événement et toutes ses offres et demandes seront automatiquement supprimés après la date de fin configurée (<strong><%= l @event.end_date.to_date, format: :long, locale: I18n.locale %></strong>).</p>
+
+<p>Merci de partager, tu es génial·e !</p>
+
+<p class="signoff">À bientôt, l'équipe HopHub.</p>

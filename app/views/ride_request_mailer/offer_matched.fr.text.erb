@@ -1,0 +1,18 @@
+Bonjour,
+
+Bonne nouvelle ! Une nouvelle offre de covoiturage vient d'être publiée et correspond à ta demande pour l'événement "<%= @ride_request.event.name %>".
+
+Tu peux la voir ici :
+
+    <%= event_offer_url(@offer.event, @offer, locale: I18n.locale) %>
+
+Il y a peut-être d'autres offres – tu trouveras toutes les offres pour cet événement ici :
+
+    <%= event_url(@ride_request.event, locale: I18n.locale) %>
+
+Si tu ne souhaites plus recevoir de notifications pour cette demande, tu peux la supprimer avec le lien secret suivant :
+
+<%= event_ride_request_destroy_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>
+
+
+À bientôt, l'équipe HopHub.

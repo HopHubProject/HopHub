@@ -1,0 +1,29 @@
+<h1>Ton offre est activée</h1>
+
+<p>Bonjour <%= @offer.name %>,</p>
+
+<p>Merci d'utiliser HopHub !</p>
+
+<p>Ton offre pour l'événement "<strong><%= @offer.event.name %></strong>" a été confirmée et est maintenant active et visible ici :</p>
+
+<p><a href="<%= event_offer_url(@offer.event, @offer) %>" class="button">Voir l'offre</a></p>
+
+<p>Si le bouton ne fonctionne pas, copie le lien suivant dans ton navigateur :</p>
+<div class="secret-link"><a href="<%= event_offer_url(@offer.event, @offer) %>"><%= event_offer_url(@offer.event, @offer) %></a></div>
+
+<% if @notified_count.to_i > 0 %>
+  <p><%= t('mail.offer.confirmed.notified', count: @notified_count) %></p>
+<% end %>
+
+<p>Si tu souhaites modifier ou supprimer ton offre, utilise le lien secret suivant. Garde ce lien pour toi et ne le partage avec personne :</p>
+
+<p><a href="<%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>" class="button">Modifier l'offre</a></p>
+
+<p>Si le bouton ne fonctionne pas, copie le lien suivant dans ton navigateur :</p>
+<div class="secret-link"><a href="<%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %>"><%= edit_event_offer_url(@offer.event, @offer, token: @offer.token, locale: I18n.locale) %></a></div>
+
+<p>Ton offre sera automatiquement supprimée après la date que tu as définie, ou lorsque l'événement se termine.</p>
+
+<p>Bon covoiturage, tu es génial·e !</p>
+
+<p class="signoff">À bientôt, l'équipe HopHub.</p>

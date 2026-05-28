@@ -1,0 +1,10 @@
+Bonjour,
+
+Merci de confirmer l'événement "<%= @event.name %>" en cliquant sur le lien suivant :
+
+   <%= event_confirm_url(@event, admin_token: @event.admin_token, locale: I18n.locale) %>
+
+Si tu n'as aucune idée de quoi parle cet e-mail, ignore-le simplement et fais autre chose.
+
+
+À bientôt, l'équipe HopHub.

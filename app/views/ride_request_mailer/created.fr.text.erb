@@ -1,0 +1,12 @@
+Bonjour,
+
+Merci de confirmer ta demande de covoiturage pour l'événement "<%= @ride_request.event.name %>" en cliquant sur le lien suivant :
+
+   <%= event_ride_request_confirm_url(@ride_request.event, @ride_request, token: @ride_request.token, locale: I18n.locale) %>
+
+Nous te préviendrons par e-mail dès qu'une offre correspondante est publiée pour cet événement.
+
+Si tu n'as aucune idée de quoi parle cet e-mail, ignore-le simplement et fais autre chose.
+
+
+À bientôt, l'équipe HopHub.
