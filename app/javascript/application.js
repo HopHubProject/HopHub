@@ -7,7 +7,6 @@ import "popper"
 import "bootstrap"
 
 document.addEventListener("turbo:frame-missing", (event) => {
-  console.log("turbo:frame-missing", event)
   const { detail: { response, visit } } = event;
   event.preventDefault();
   visit(response.url);

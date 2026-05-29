@@ -16,8 +16,6 @@ export function resolveZipCode(s, elements, config) {
     const countryCode = elements.countryInput.value;
     const url = `${config.url}&postal_code=${encodeURIComponent(s)}&country_code=${encodeURIComponent(countryCode)}`;
 
-    console.log('Fetching zip lookup for:', s, 'with country code:', countryCode);
-
     fetch(url)
       .then(response => response.json())
       .then(postalCodes => {
@@ -41,8 +39,6 @@ export function resolveZipCode(s, elements, config) {
             elements.latitudeInput.value = result.lat;
             elements.longitudeInput.value = result.lng;
             dropdown.remove();
-
-            console.log('Selected zip code: ' + v + ' (' + result.lat + ', ' + result.lng + ')');
           });
 
           li.appendChild(a);
