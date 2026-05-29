@@ -75,13 +75,13 @@ class RideRequest < ActiveRecord::Base
 
   def end_date_in_future
     if end_date && end_date < Time.now
-      errors.add(:end_date, "should not be in the past")
+      errors.add(:end_date, :in_past)
     end
   end
 
   def start_date_before_end_date
     if start_date && end_date && start_date > end_date
-      errors.add(:start_date, "must be before the latest arrival time")
+      errors.add(:start_date, :after_latest_arrival)
     end
   end
 end

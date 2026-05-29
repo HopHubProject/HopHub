@@ -4,7 +4,7 @@ class GdprInquiry
   attr_accessor :email
 
   validates_presence_of :email
-  validates_format_of :email, with: /\A[\w\-\.]+@([\w-]+\.)+[\w-]{2,}\z/
+  validates_format_of :email, with: /\A[\w\-\.\+]+@([\w-]+\.)+[\w-]{2,}\z/
 
   def to_key
     nil

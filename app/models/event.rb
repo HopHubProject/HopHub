@@ -76,7 +76,7 @@ class Event < ActiveRecord::Base
 
   def end_date_in_future
     if self.end_date and self.end_date < Time.now
-      self.errors.add(:end_date, "should not be in the past")
+      self.errors.add(:end_date, :in_past)
     end
   end
 end

@@ -86,7 +86,7 @@ class Offer < ActiveRecord::Base
 
   def date_in_future
     if self.date and self.date < Time.now
-      self.errors.add(:date, "should not be in the past")
+      self.errors.add(:date, :in_past)
     end
   end
 end

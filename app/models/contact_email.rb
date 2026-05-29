@@ -7,7 +7,7 @@ class ContactEmail
   validates_length_of :name, maximum: 100
 
   validates_presence_of :from
-  validates_format_of :from, with: /\A[\w\-\.]+@([\w-]+\.)+[\w-]{2,}\z/
+  validates_format_of :from, with: /\A[\w\-\.\+]+@([\w-]+\.)+[\w-]{2,}\z/
 
   validates_presence_of :text
   validates_length_of :text, maximum: 1000
