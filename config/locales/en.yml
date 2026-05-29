@@ -168,7 +168,7 @@ en:
     title: Delete event
     confirmation: |
       Are you sure you want to delete this event?
-      All offers will be deleted permanently as well.
+      All offers and ride requests will be deleted permanently as well.
       This action cannot be undone.
 
   offer_delete:
@@ -239,8 +239,8 @@ en:
       - |
         HopHub only stores data that is necessary for the operation of the platform.
         All data is automatically deleted once it is no longer needed. Specifically,
-        this means that events including all offers are permanently deleted
-        after the end date of the event. Offers are also deleted once they
+        this means that events including all offers and ride requests are permanently
+        deleted after the end date of the event. Offers are also deleted once they
         are no longer valid.
       - |
         If you wish to have a copy of your data or have your data deleted, please fill out the form.
@@ -356,6 +356,7 @@ en:
         description: Description
         admin_email: Admin email
         end_date: End date
+        default_country: Default country
 
       offer:
         name: Your name
@@ -399,7 +400,7 @@ en:
           After the event has ended, the email address will be deleted permanently.
         end_date: |
           All details about the event, including your email address as well as
-          all offers of the event will be deleted permanently after this date.
+          all offers and ride requests of the event will be deleted permanently after this date.
         default_country: |
           This is the default country for new offers and the filter box that will be used for
           zip code lookups.

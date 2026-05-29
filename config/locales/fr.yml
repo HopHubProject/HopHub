@@ -171,7 +171,7 @@ fr:
     title: Supprimer l'événement
     confirmation: |
       Es-tu sûr·e de vouloir supprimer cet événement ?
-      Toutes les offres seront également supprimées définitivement.
+      Toutes les offres et demandes de covoiturage seront également supprimées définitivement.
       Cette action est irréversible.
 
   offer_delete:
@@ -242,8 +242,8 @@ fr:
       - |
         HopHub ne conserve que les données nécessaires au fonctionnement de la plateforme.
         Toutes les données sont automatiquement supprimées dès qu'elles ne sont plus nécessaires.
-        Concrètement, cela signifie que les événements ainsi que toutes leurs offres sont
-        définitivement supprimés après la date de fin de l'événement. Les offres sont
+        Concrètement, cela signifie que les événements ainsi que toutes leurs offres et demandes
+        de covoiturage sont définitivement supprimés après la date de fin de l'événement. Les offres sont
         également supprimées dès qu'elles ne sont plus valables.
       - |
         Si tu souhaites une copie de tes données ou leur suppression,
@@ -372,6 +372,7 @@ fr:
         description: Description
         admin_email: E-mail de l'administrateur
         end_date: Date de fin
+        default_country: Pays par défaut
 
       offer:
         name: Ton nom
@@ -414,7 +415,7 @@ fr:
           puis elle est définitivement supprimée.
         end_date: |
           Tous les détails de cet événement, y compris l'adresse e-mail indiquée, ainsi que
-          toutes les offres de l'événement seront définitivement supprimés après cette date.
+          toutes les offres et demandes de covoiturage de l'événement seront définitivement supprimés après cette date.
         default_country: |
           Le pays présélectionné lors de la création d'une nouvelle offre et dans le filtre des offres,
           et qui est utilisé pour la saisie du code postal.

@@ -169,7 +169,7 @@ es:
     title: Eliminar evento
     confirmation: |
       ¿Estás seguro de que quieres eliminar este evento?
-      Todas las ofertas también se eliminarán permanentemente.
+      Todas las ofertas y solicitudes también se eliminarán permanentemente.
       Esta acción no se puede deshacer.
 
   offer_delete:
@@ -239,7 +239,7 @@ es:
       - |
         HopHub solo almacena datos que son necesarios para el funcionamiento de la plataforma.
         Todos los datos se eliminan automáticamente una vez que ya no son necesarios. Específicamente,
-        esto significa que los eventos, incluidas todas las ofertas, se eliminan permanentemente
+        esto significa que los eventos, incluidas todas las ofertas y solicitudes, se eliminan permanentemente
         después de la fecha de finalización del evento. Las ofertas también se eliminan una vez
         que ya no son válidas.
       - |
@@ -368,6 +368,7 @@ es:
         description: Descripción
         admin_email: Correo electrónico del administrador
         end_date: Fecha de finalización
+        default_country: País predeterminado
 
       offer:
         name: Tu nombre
@@ -410,7 +411,7 @@ es:
           Después de que el evento haya finalizado, la dirección de correo electrónico se eliminará permanentemente.
         end_date: |
           Todas las detalles sobre el evento, incluyendo tu dirección de correo electrónico así como
-          todas las ofertas del evento se eliminarán permanentemente después de esta fecha.
+          todas las ofertas y solicitudes del evento se eliminarán permanentemente después de esta fecha.
         default_country:
           Este es el país predeterminado para nuevas ofertas que se utilizará para búsquedas de códigos postales.
 

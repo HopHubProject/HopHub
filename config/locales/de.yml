@@ -171,7 +171,7 @@ de:
     title: Event löschen
     confirmation: |
       Bist du sicher, dass du dieses Event löschen möchtest?
-      Alle Angebote werden ebenfalls dauerhaft gelöscht.
+      Alle Angebote und Mitfahranfragen werden ebenfalls dauerhaft gelöscht.
       Diese Aktion kann nicht rückgängig gemacht werden.
 
   offer_delete:
@@ -242,8 +242,8 @@ de:
       - |
         HopHub speichert nur die Daten, die für den Betrieb der Plattform notwendig sind.
         Alle Daten werden automatisch gelöscht, nachdem sie nicht mehr benötigt werden.
-        Konkret bedeutet das, dass Events mitsamt aller Angebote nach dem
-        Enddatum des Events dauerhaft gelöscht werden. Angebote werden
+        Konkret bedeutet das, dass Events mitsamt aller Angebote und Mitfahranfragen
+        nach dem Enddatum des Events dauerhaft gelöscht werden. Angebote werden
         ebenfalls gelöscht, sobald sie nicht mehr gültig sind.
       - |
         Wenn du eine Kopie deiner Daten oder eine Löschung deiner Daten wünschst,
@@ -372,6 +372,7 @@ de:
         description: Beschreibung
         admin_email: Admin-E-Mail
         end_date: Enddatum
+        default_country: Standardland
 
       offer:
         name: Dein Name
@@ -414,7 +415,7 @@ de:
           danach wird sie dauerhaft gelöscht.
         end_date: |
           Alle Details zu diesem Event inklusive der angegebenen E-Mail-Adresse sowie
-          alle Angebote des Events werden nach diesem Datum dauerhaft gelöscht.
+          alle Angebote und Mitfahranfragen des Events werden nach diesem Datum dauerhaft gelöscht.
         default_country: |
           Das Land, das beim Erstellen eines neuen Angebots und beim Angebotsfilter vorausgewählt ist
           und das für die Eingabe der Postleitzahl verwendet wird.
