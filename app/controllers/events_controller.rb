@@ -22,8 +22,6 @@ class EventsController < ApplicationController
     @filter = OffersFilter.new(p)
     @filter.country ||= @event.default_country
 
-    Rails.logger.info "Filter params: #{p.inspect}"
-
     @offers = @event.offers.confirmed.in_future
     @filtered_offers = @filter.apply(@offers)
     @paginated_offers = @filtered_offers.page(params[:page])
@@ -81,10 +79,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event.update(event_update_params)
-
-    if @event.save
-      redirect_to @event, flash: { success: 'Event was successfully updated.' }
+    if @event.update(event_update_params)
+      redirect_to @event, flash: { success: t('flash.event_updated') }
     else
       render 'edit', status: :unprocessable_content
     end
