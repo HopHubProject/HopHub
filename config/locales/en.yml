@@ -103,7 +103,6 @@ en:
     other: Other
 
   offer: Offer
-  offers: Offers
 
   way_there: Way there
   way_back: Way back
@@ -297,6 +296,7 @@ en:
 
   flash:
     event_created: Event created. You will receive an email with a link to confirm.
+    event_updated: Your event was updated.
     event_deleted: Event deleted.
     event_not_found: Event not found.
     event_confirmed: Your email address has been confirmed. The event is now active.
@@ -471,6 +471,11 @@ en:
       offer:
         location:
           invalid: Please enter a valid zip code.
+
+  errors:
+    messages:
+      in_past: should not be in the past
+      after_latest_arrival: must be before the latest arrival time
 
   time:
     formats:

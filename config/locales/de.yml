@@ -105,7 +105,6 @@ de:
     other: Sonstiges
 
   offer: Angebot
-  offers: Angebote
 
   way_there: Hinweg
   way_back: Rückweg
@@ -294,6 +293,7 @@ de:
 
   flash:
     event_created: Event erstellt. Du erhältst gleich eine E-Mail mit einem Link zur Bestätigung.
+    event_updated: Dein Event wurde aktualisiert.
     event_deleted: Event gelöscht.
     event_not_found: Event nicht gefunden.
     event_confirmed: Deine E-Mail-Adresse wurde bestätigt. Das Event ist jetzt aktiv.
@@ -488,6 +488,11 @@ de:
       offer:
         location:
           invalid: Bitte gib eine gültige Postleitzahl ein.
+
+  errors:
+    messages:
+      in_past: darf nicht in der Vergangenheit liegen
+      after_latest_arrival: muss vor dem spätesten Ankunftszeitpunkt liegen
 
   time:
     formats:

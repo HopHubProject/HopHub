@@ -104,7 +104,6 @@ es:
     other: Otro
 
   offer: Oferta
-  offers: Ofertas
 
   way_there: Ida
   way_back: Vuelta
@@ -290,6 +289,7 @@ es:
 
   flash:
     event_created: Evento creado. Recibirás un correo electrónico con un enlace para confirmar.
+    event_updated: Tu evento ha sido actualizado.
     event_deleted: Evento eliminado.
     event_not_found: Evento no encontrado.
     event_confirmed: Tu dirección de correo electrónico ha sido confirmada. El evento ya está activo.
@@ -482,6 +482,11 @@ es:
       offer:
         location:
           invalid: Por favor, introduce un código postal válido.
+
+  errors:
+    messages:
+      in_past: no debe estar en el pasado
+      after_latest_arrival: debe ser anterior a la hora de llegada más tardía
 
   time:
     formats:

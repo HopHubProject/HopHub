@@ -106,7 +106,6 @@ fr:
     other: Autre
 
   offer: Offre
-  offers: Offres
 
   way_there: Aller
   way_back: Retour
@@ -294,6 +293,7 @@ fr:
 
   flash:
     event_created: Événement créé. Tu vas bientôt recevoir un e-mail avec un lien de confirmation.
+    event_updated: Ton événement a été mis à jour.
     event_deleted: Événement supprimé.
     event_not_found: Événement introuvable.
     event_confirmed: Ton adresse e-mail a été confirmée. L'événement est maintenant actif.
@@ -488,6 +488,11 @@ fr:
       offer:
         location:
           invalid: Merci de saisir un code postal valide.
+
+  errors:
+    messages:
+      in_past: ne doit pas être dans le passé
+      after_latest_arrival: doit être antérieur à l'heure d'arrivée la plus tardive
 
   time:
     formats:
