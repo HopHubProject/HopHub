@@ -3,15 +3,19 @@ import "altcha"
 
 // Installs altcha v3 i18n strings that contain HTML (rendered by Rails as
 // trusted i18n) and then patches the rendered <altcha-widget> labels in
-// place, since altcha v3 escapes its label/verified text. A single
-// MutationObserver per page reapplies the substitution whenever altcha
-// re-renders. Multiple widgets on a page share the same observer.
+// place, since altcha v3 escapes its label/verified text.
+//
+// The i18n strings are (re)installed on every connect so that switching the
+// page locale via Turbo — which swaps the DOM without a full reload — updates
+// the widget to the new locale's strings. The MutationObserver that reapplies
+// the HTML substitution after altcha re-renders is installed once per page and
+// always reads the latest strings, so a single observer serves every widget.
 //
 // Usage on the .altcha-widget wrapper:
 //   data-controller="altcha-widget"
 //   data-altcha-widget-label-value="<html ok'd label>"
 //   data-altcha-widget-verified-value="<html ok'd verified label>"
-let labelsInstalled = false
+let observerInstalled = false
 
 export default class extends Controller {
   static values = {
@@ -20,9 +24,6 @@ export default class extends Controller {
   }
 
   connect() {
-    if (labelsInstalled) return
-    labelsInstalled = true
-
     window.customElements.whenDefined("altcha-widget").then(() => {
       const $altcha = window.globalThis.$altcha
       if (!$altcha) return
@@ -42,9 +43,12 @@ export default class extends Controller {
         })
       }
 
-      new MutationObserver(reapply).observe(document.documentElement, {
-        characterData: true, childList: true, subtree: true,
-      })
+      if (!observerInstalled) {
+        observerInstalled = true
+        new MutationObserver(reapply).observe(document.documentElement, {
+          characterData: true, childList: true, subtree: true,
+        })
+      }
       reapply()
     })
   }
