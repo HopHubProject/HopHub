@@ -2,8 +2,6 @@ require "test_helper"
 
 class OffersControllerTest < ActionDispatch::IntegrationTest
   I18n.available_locales.each do |locale|
-    puts "Testing locale: #{locale}"
-
     define_method("test_should_not_get_index_#{locale}") do
       e = events(:one)
       get event_offers_url(e, locale: locale)
