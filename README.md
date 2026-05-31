@@ -36,9 +36,13 @@ notified by email automatically. The driver gets a confirmation that says how
 many people their offer just notified.
 
 ### Get in touch
-When two parties match, they can get in touch with each other using a form
-on the website. The email address of the person reaching out is used as the
-Reply-To address, so the recipient can reply directly for further coordination.
+If you've posted a ride request, you'll be automatically emailed as soon as an
+offer matching your route and time window is posted, so you don't have to keep
+checking the page. When two parties match, they can get in touch with each
+other. Offers may list messengers, so you can reach out directly there. You can
+also use a form on the website; the email address of the person reaching out is
+used as the Reply-To address, so the recipient can reply directly for further
+coordination.
 
 ### Leave no traces
 Offers, ride requests, and events that are no longer valid are automatically
@@ -59,14 +63,16 @@ This project takes care to be as data protection friendly as possible. It only s
 - When a new offer is confirmed, all matching ride requests within their
   chosen radius are notified by email
 - Users can contact other users through the platform via email
+- Offers can carry messenger contacts (phone, SMS, Signal, WhatsApp,
+  Telegram, Instagram) so people can reach out off-platform directly
 - "Clean driver" feature: Offers by car can be set to "driver needed"
 - Events, offers, and ride requests are automatically deleted after they
   have passed
-- Geonames is used to resolve locations to latitude and longitude
-- Admins can see all users, events, offers, and ride requests
-- Admins can delete users, events, offers, and ride requests
+- Geonames is used to resolve postal codes to latitude and longitude
+- An ActiveAdmin interface at `/admin` lets operators view and delete
+  events, offers, ride requests, and CMS content
 - [Altcha](https://altcha.org) is integrated as captcha for all forms
-- Localization
+- Localized in English, German, Spanish, and French
 
 ## Installation
 
@@ -99,8 +105,8 @@ bundle exec rails server
 ## Configuration
 
 The following table lists all environment variables that are used by the application.
-You can set them in some env file magic, export them in your shell or use the Cuberfile
-to deploy on k8s.
+Set them in an env file, export them in your shell, or wire them into your deployment
+mechanism of choice.
 
 | Environment variable              | Description                                                                     |
 |-----------------------------------|---------------------------------------------------------------------------------|
@@ -109,7 +115,7 @@ to deploy on k8s.
 | `GEONAMES_USERNAME`               | A Geonames username. Obtain one from https://www.geonames.org/login             |
 | `HOPHUB_BASE_URL`                 | The base URL for the Rails installation                                         |
 | `HOPHUB_DATABASE_USERNAME`        | The username for the SQL database                                               |
-| `HOPHUB_DATABASE_PASSWORD`        | The passwort for the SQL database                                               |
+| `HOPHUB_DATABASE_PASSWORD`        | The password for the SQL database                                               |
 | `HOPHUB_DATABASE_HOST`            | The SQL database host name                                                      |
 | `HOPHUB_DATABASE_PORT`            | The SQL database host port                                                      |
 | `HOPHUB_DATABASE_NAME`            | The name of the SQL database                                                    |
@@ -128,10 +134,18 @@ to deploy on k8s.
 
 ### HTTP routes
 
-Please make sure to protect the `/admin` path with through something like HTTP basic auth or other methods in your deployed HTTP server.
+Please make sure to protect the `/admin` path through something like HTTP basic auth or other methods in your deployed HTTP server.
 The application itself does not manage user accounts and roles, and without external protection all data is public.
 
-Similarily, the the `/metrics` and `/up` paths are probably also something you want to protect.
+Similarly, the `/metrics` and `/up` paths are probably also something you want to protect.
+
+## Deploying with Docker Compose
+
+A reference [`docker-compose.yaml`](docker-compose.yaml) is included for self-hosting the app together with its runtime dependencies. It brings up three services — a Postgres database, a Valkey instance for the Rails cache, and the app itself from the prebuilt image `ghcr.io/hophubproject/hophub:main` (exposed on port 3000). Before bringing the stack up, edit the file (or supply an env file) to replace the placeholder values for at minimum `SECRET_KEY_BASE`, `ALTCHA_HMAC_KEY`, `GEONAMES_USERNAME`, `HOPHUB_BASE_URL`, `HOPHUB_DATABASE_PASSWORD`, and your SMTP credentials — see [Configuration](#configuration) for the full list. Then run `docker compose up -d`, and on first boot prepare the database with `docker compose exec app bin/rails db:prepare`.
+
+The app is then reachable at [http://localhost:3000](http://localhost:3000) for demo purposes. Put a TLS-terminating reverse proxy in front of that port for any real deployment.
+
+Note that the `/admin` route **must be protected** at the ingress level (e.g. HTTP Basic auth, an IP allowlist, or your provider's auth) — the app itself has no user accounts or roles, so without external protection the admin interface is wide open. The `/metrics` and `/up` endpoints are also worth restricting.
 
 ## Updating vendored JavaScript and CSS
 
@@ -178,7 +192,7 @@ bundle exec rails test
 
 ## Geonames
 
-The project uses the [Geonames](https://www.geonames.org/) API to resolve locations to latitude and longitude. You need to create a Geonames account and set the `GEONAMES_USERNAME` environment variable to your username. The Geonames API is called with the location name and the Geonames username. The communication with the Geonames API is done through the Rails backend, hence the IP address of the client is not sent to the Geonames API. This means that the Geonames API does not track the IP address of the client, which is a privacy-friendly approach.
+The project uses the [Geonames](https://www.geonames.org/) API to resolve postal codes to latitude and longitude. You need to create a Geonames account and set the `GEONAMES_USERNAME` environment variable to your username. The Geonames API is called server-side with the postal code, country code, and the Geonames username, so the IP address of the client is never sent to Geonames — it only ever sees the application's IP.
 
 ## Caching
 
@@ -214,7 +228,7 @@ The task is defined in the `lib/tasks/cleanup.rake` file and can be executed wit
 bundle exec rails hophub:cleanup
 ```
 
-The Kubernetes deployment will add a cronjob that runs this task every hour.
+Wire it into cron, a systemd timer, or your deployment platform's scheduler.
 
 ## Data privacy
 
@@ -236,18 +250,20 @@ Consider the following aspects when crafting the privacy policy for your instanc
   - The ID of the offer
   - The email address of the creator of the offer
   - The name/pseudonym of the creator of the offer
-  - The optional phone number of the creator of the offer
+  - For each messenger contact the creator added: the kind (phone, SMS,
+    Signal, WhatsApp, Telegram, or Instagram) and the value the creator
+    provided
   - The event ID of the event the offer belongs to
-  - The type of the offer
+  - The direction (way there / way back)
   - The number of seats available or needed
-  - The mode of transportation (car, train, bus, bike, walk)
-  - The departure/arrival location
+  - The mode of transportation (car, train, bus, bicycle, walk, other)
+  - The departure/arrival location and country
   - The departure/arrival date and time
   - The departure/arrival latitude and longitude
-  - The message of the creator of the entry
+  - The notes of the creator of the offer
   - The "clean driver" flag
-- Entries are automatically deleted from the database after they have passed
-- Entries can be deleted manually by their creators
+- Offers are automatically deleted from the database after they have passed
+- Offers can be deleted manually by their creators
 - For ride requests, the following data is stored in the database:
   - The ID of the ride request
   - The email address of the requester
@@ -279,7 +295,7 @@ The project features a GDPR information tool that allows users to query the data
 ## Metrics
 
 The `/metrics` route can be used to query statistical data from the HopHub instance in a format suitable for consumption by [Prometheus](https://prometheus.io/).
-The `/up` route can be used for healt checks of the instance with something like [Kubernetes](https://kubernetes.io/).
+The `/up` route can be used for health checks of the instance with something like [Kubernetes](https://kubernetes.io/).
 
 ## Contributing
 
@@ -300,8 +316,8 @@ If you find a bug or have a feature request, please report it in the issue track
 If you want to add a new language, please follow these steps:
 
 1. Add a new file in the `config/locales` directory. The file should be named after the language code (e.g. `en.yml` for English, `de.yml` for German, etc.). The file should contain a hash with the translations. The keys should be the same as in the `en.yml` file.
-2. Create new mailer views in the `app/views/event_mailer`, `app/views/entry_mailer`, and `app/views/ride_request_mailer` directories. The file names must contain the language code (e.g. `de` for German). The content should be the same as for the `en` versions.
-3. Add the new language to `I18n.available_locales` in the `config/locales.rb` file.
+2. Create new mailer views in the `app/views/event_mailer`, `app/views/offer_mailer`, `app/views/ride_request_mailer`, and `app/views/gdpr_inquiry_mailer` directories. The file names must contain the language code (e.g. `de` for German). The content should be the same as for the `en` versions.
+3. Add the new language to `I18n.available_locales` in `config/initializers/locale.rb`.
 4. Open a pull request.
 
 ## Donations
