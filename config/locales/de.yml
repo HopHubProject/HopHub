@@ -63,10 +63,13 @@ de:
     match:
       title: Nimm Kontakt auf
       text: |
-        Bei einem Match können Personen miteinander in Kontakt treten. Angebote können Messenger
-        angeben, sodass du direkt darüber Kontakt aufnehmen kannst. Alternativ kannst du ein
-        Webformular auf der Website nutzen; die E-Mail-Adresse des Kontaktaufnehmenden wird als
-        Antwortadresse verwendet, damit die Empfängerin direkt antworten kann.
+        Wenn du eine Mitfahranfrage gestellt hast, erhältst du automatisch eine E-Mail, sobald
+        ein Angebot eingestellt wird, das zu deiner Route und deinem Zeitfenster passt – du
+        musst also nicht ständig auf der Seite nachschauen. Bei einem Match können Personen
+        miteinander in Kontakt treten. Angebote können Messenger angeben, sodass du direkt
+        darüber Kontakt aufnehmen kannst. Alternativ kannst du ein Webformular auf der Website
+        nutzen; die E-Mail-Adresse des Kontaktaufnehmenden wird als Antwortadresse verwendet,
+        damit die Empfängerin direkt antworten kann.
     no-indexing:
       title: Keine Indizierung durch Suchmaschinen
       text: |
@@ -76,7 +79,7 @@ de:
     cleanup:
       title: Hinterlasse keine Spuren
       text: |
-        Angebote und Events werden automatisch aus der Datenbank entfernt
+        Angebote, Mitfahranfragen und Events werden automatisch aus der Datenbank entfernt
         nachdem deren Gültigkeit vorüber ist.
 
   about:

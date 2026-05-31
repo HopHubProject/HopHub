@@ -62,10 +62,13 @@ es:
     match:
       title: Contactar
       text: |
-        En caso de coincidencia, las personas pueden ponerse en contacto. Las ofertas pueden incluir
-        mensajeros, para que puedas ponerte en contacto directamente por allí. También puedes usar un
-        formulario web en el sitio; la dirección de correo electrónico del contacto se utiliza como
-        dirección de respuesta para que el destinatario pueda responder directamente.
+        Si has publicado una solicitud de viaje, recibirás un correo electrónico automáticamente
+        en cuanto se publique una oferta que coincida con tu ruta y tu franja horaria, así no
+        tienes que volver a comprobar la página. En caso de coincidencia, las personas pueden
+        ponerse en contacto. Las ofertas pueden incluir mensajeros, para que puedas ponerte en
+        contacto directamente por allí. También puedes usar un formulario web en el sitio; la
+        dirección de correo electrónico del contacto se utiliza como dirección de respuesta para
+        que el destinatario pueda responder directamente.
     no-indexing:
       title: No indexar por motores de búsqueda
       text: |

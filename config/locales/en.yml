@@ -61,10 +61,12 @@ en:
     match:
       title: Get in touch
       text: |
-        When two parties match, they can get in touch with each other. Offers may list
-        messengers, so you can reach out directly there. You can also use a form on the
-        website; the email address of the person reaching out is used as the Reply-To
-        address, so the recipient can reply directly for further coordination.
+        If you've posted a ride request, you'll be automatically emailed as soon as an
+        offer matching your route and time window is posted, so you don't have to keep
+        checking the page. When two parties match, they can get in touch with each other.
+        Offers may list messengers, so you can reach out directly there. You can also use
+        a form on the website; the email address of the person reaching out is used as
+        the Reply-To address, so the recipient can reply directly for further coordination.
     no-indexing:
       title: No indexing by search engines
       text: |
@@ -74,7 +76,7 @@ en:
     cleanup:
       title: Leave no traces
       text: |
-        Offers and events are automatically and permanently removed
+        Offers, ride requests, and events are automatically and permanently removed
         from the database after they have expired.
 
   about:

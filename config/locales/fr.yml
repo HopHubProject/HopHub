@@ -63,11 +63,13 @@ fr:
     match:
       title: Prends contact
       text: |
-        En cas de correspondance, les personnes peuvent entrer en contact les unes avec les autres.
-        Les offres peuvent indiquer des messageries, afin que tu puisses prendre contact
-        directement par ce biais. Tu peux aussi utiliser un formulaire web sur le site ;
-        l'adresse e-mail de la personne qui prend contact est utilisée comme adresse de réponse,
-        afin que la destinataire puisse répondre directement.
+        Si tu as publié une demande de covoiturage, tu reçois automatiquement un e-mail dès
+        qu'une offre correspondant à ton trajet et à ta fenêtre horaire est publiée — pas besoin
+        de revenir vérifier la page. En cas de correspondance, les personnes peuvent entrer en
+        contact les unes avec les autres. Les offres peuvent indiquer des messageries, afin que
+        tu puisses prendre contact directement par ce biais. Tu peux aussi utiliser un formulaire
+        web sur le site ; l'adresse e-mail de la personne qui prend contact est utilisée comme
+        adresse de réponse, afin que la destinataire puisse répondre directement.
     no-indexing:
       title: Pas d'indexation par les moteurs de recherche
       text: |
@@ -77,8 +79,8 @@ fr:
     cleanup:
       title: Ne laisse aucune trace
       text: |
-        Les offres et les événements sont automatiquement supprimés de la base de données
-        une fois leur validité expirée.
+        Les offres, les demandes de covoiturage et les événements sont automatiquement supprimés
+        de la base de données une fois leur validité expirée.
 
   about:
     title: Le projet
