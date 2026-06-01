@@ -72,7 +72,7 @@ class EventsController < ApplicationController
     @event.confirmed_at = Time.now
     @event.save
     EventMailer.with(event: @event).confirmed.deliver
-    redirect_to event_path(@event), flash: { success: t('flash.event_confirmed') }
+    redirect_to event_path(@event), flash: { success: t('flash.event_confirmed'), celebrate: true }
   end
 
   def edit

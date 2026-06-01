@@ -71,8 +71,9 @@
       -if flash.any?
         .row
           .col-md-12
-            .flash{ data: { controller: "flash" } }
+            .flash{ data: { controller: "flash", "flash-celebrate-value": (!!flash[:celebrate]).to_s } }
               -flash.each do |msg_type, message|
+                -next if msg_type.to_sym == :celebrate
                 %div{ class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible fade show", role: "alert" }
                   %button.btn-close{type: 'button', "data-bs-dismiss": 'alert', "aria-label": "Close"}
                   %span=message

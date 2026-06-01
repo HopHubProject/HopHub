@@ -51,7 +51,7 @@ class RideRequestsController < ApplicationController
     @ride_request.confirmed_at = Time.now
     @ride_request.save
     RideRequestMailer.with(ride_request: @ride_request).confirmed.deliver
-    redirect_to event_path(@event), flash: { success: t('flash.ride_request_confirmed') }
+    redirect_to event_path(@event), flash: { success: t('flash.ride_request_confirmed'), celebrate: true }
   end
 
   def destroy_confirm

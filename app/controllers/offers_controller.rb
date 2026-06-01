@@ -81,7 +81,7 @@ class OffersController < ApplicationController
                     else
                       t('flash.offer_confirmed')
                     end
-    redirect_to event_offer_path(@event, @offer), flash: { success: flash_message }
+    redirect_to event_offer_path(@event, @offer), flash: { success: flash_message, celebrate: true }
   end
 
   def destroy

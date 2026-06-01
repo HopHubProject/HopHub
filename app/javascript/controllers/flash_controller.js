@@ -2,17 +2,22 @@ import { Controller } from "@hotwired/stimulus"
 import "confetti"
 
 // Fades the flash container out after a delay and removes it from the DOM.
-// If the flash contains a success alert (the controller's element has a child
-// with .alert-success), fires a one-off confetti burst on connect.
+// Fires a one-off confetti burst on connect only when the server explicitly
+// opted in via data-flash-celebrate-value="true" (set on confirmation flows,
+// not on every successful action).
 //
 // Usage on the .flash wrapper:
 //   data-controller="flash"
 //   data-flash-fade-after-value="3000"
+//   data-flash-celebrate-value="true"   // optional; default false
 export default class extends Controller {
-  static values = { fadeAfter: { type: Number, default: 3000 } }
+  static values = {
+    fadeAfter: { type: Number, default: 3000 },
+    celebrate: Boolean,
+  }
 
   connect() {
-    if (this.element.querySelector(".alert-success") && typeof window.confetti === "function") {
+    if (this.celebrateValue && this.element.querySelector(".alert-success") && typeof window.confetti === "function") {
       window.confetti()
     }
     this.timeout = setTimeout(() => this.fadeOut(), this.fadeAfterValue)
