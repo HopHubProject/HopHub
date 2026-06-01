@@ -326,7 +326,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.4.4)
-    rubyzip (3.3.0)
+    rubyzip (3.3.1)
     sass-embedded (1.100.0-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
     sassc-embedded (1.80.8)
