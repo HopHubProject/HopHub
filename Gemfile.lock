@@ -410,7 +410,7 @@ DEPENDENCIES
   letter_opener
   pg
   puma (>= 5.0)
-  rails (~> 8.0)
+  rails (~> 8.1)
   rails-i18n
   rails_autolink
   redcarpet
