@@ -39,29 +39,26 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 gem "haml"
-gem 'bootstrap', '~> 5.3', '>= 5.3.2'
-gem 'dartsass-rails', '~> 0.5.0'
-gem 'dartsass-sprockets', '~> 3.1'
-gem 'simple_form'
-gem 'activeadmin', "4.0.0.beta22"
-gem 'base64'
-gem 'redcarpet'
-gem 'rails_autolink'
-gem 'geokit-rails'
-gem 'rest-client'
-gem 'dalli'
+gem "bootstrap", "~> 5.3", ">= 5.3.2"
+gem "dartsass-rails", "~> 0.5.0"
+gem "dartsass-sprockets", "~> 3.1"
+gem "simple_form"
+gem "activeadmin", "4.0.0.beta22"
+gem "base64"
+gem "redcarpet"
+gem "rails_autolink"
+gem "geokit-rails"
+gem "rest-client"
+gem "dalli"
 
-gem 'cuber', git: 'https://github.com/zonque/cuber-gem.git', branch: 'k3s'
-gem 'exception_notification'
+gem "cuber", git: "https://github.com/zonque/cuber-gem.git", branch: "k3s"
+gem "exception_notification"
 
-gem 'altcha-rails'
-gem 'kaminari'
-gem 'bootstrap5-kaminari-views'
+gem "altcha-rails"
+gem "kaminari"
+gem "bootstrap5-kaminari-views"
 
-gem 'rails-i18n'
-
-gem 'faker'
-gem 'brakeman', require: false
+gem "rails-i18n"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -69,6 +66,7 @@ gem 'brakeman', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem "faker"
 end
 
 group :development do
@@ -83,16 +81,18 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'letter_opener'
+  gem "letter_opener"
+
+  gem "brakeman", require: false
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'simplecov'
+  gem "simplecov"
 end
 
 group :production do
-  gem 'pg'
+  gem "pg"
 end
