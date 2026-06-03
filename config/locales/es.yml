@@ -12,7 +12,7 @@ es:
 
   meta:
     description:
-      default: HopHub es una plataforma de viajes compartidos para eventos.
+      default: Coordinación privada de viajes compartidos para eventos — emparejamiento automático, sin registro, sin seguimiento.
       event: |
         Ofertas de viaje para %{event_name} en HopHub.
       offer: |
@@ -32,11 +32,13 @@ es:
 
   welcome:
     title: ¿Qué es esto?
+    tagline: Coordinación privada de viajes compartidos para eventos — sin registro.
     text:
       - |
-        HopHub es una plataforma de viajes compartidos que facilita el viaje conjunto a eventos
-        y con ello pretende hacer un mundo un poco mejor. No importa si llenas el coche, compartes
-        un billete de tren, viajas en autobús, planeas un paseo en bicicleta o caminas.
+        Publica una oferta o una solicitud de viaje sin necesidad de registrarte. Las emparejamos
+        automáticamente y te enviamos un correo electrónico en cuanto algo encaje — ya sea que
+        llenes el coche, compartas un billete de tren, vayas en autobús, en bicicleta o a pie.
+        Sin registro, sin seguimiento.
 
   how-it-works:
     title: ¿Cómo funciona?

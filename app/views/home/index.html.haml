@@ -1,6 +1,7 @@
 .row.justify-content-center.text-center.py-3
   .col-12.col-lg-6
     =image_tag('hophub.png', alt: 'logo-hophub', width: '260', id: 'logo-hophub', class: 'd-inline-block')
+    %p.hero-headline.mt-3.mb-4= t('welcome.tagline')
     %div
       =link_to new_event_path, class: "btn btn-primary btn-lg" do
         %i.bi.bi-calendar-plus.me-1

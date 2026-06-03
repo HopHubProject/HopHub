@@ -12,7 +12,7 @@ en:
 
   meta:
     description:
-      default: HopHub is a ride sharing platform for events.
+      default: Private ride coordination for events — automatic matching, no sign-up, no tracking.
       event: |
         Ride offers for %{event_name} on HopHub.
       offer: |
@@ -32,11 +32,12 @@ en:
 
   welcome:
     title: What is this?
+    tagline: Private ride coordination for events — no sign-up required.
     text:
       - |
-        HopHub is a ride sharing platform that aims to simplify common commutes to and from events
-        and thereby make the world a little bit better. No matter if you fill up your car,
-        share a train ticket, arrive by bus, plan a bike tour or walk.
+        Post an offer or a ride request without signing up. We match them automatically and
+        email you when something fits — whether you're filling the car, sharing a train ticket,
+        taking the bus, biking, or walking. No sign-up, no tracking.
 
   how-it-works:
     title: How does it work?

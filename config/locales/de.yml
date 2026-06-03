@@ -12,7 +12,7 @@ de:
 
   meta:
     description:
-      default: HopHub ist eine Mitfahr-Plattform für Veranstaltungen.
+      default: Private Mitfahrkoordination für Events — automatisches Matching, keine Anmeldung, kein Tracking.
       event: |
         Mitfahr-Angebote für %{event_name} auf HopHub.
       offer: |
@@ -32,12 +32,13 @@ de:
 
   welcome:
     title: Was ist das?
+    tagline: Private Mitfahrkoordination für Events — ganz ohne Anmeldung.
     text:
       - |
-        HopHub ist eine Mitfahr-Plattform, die gemeinsames Anreisen zu Veranstaltungen
-        vereinfachen und damit die Welt ein bisschen besser machen will. Ganz egal, ob
-        ihr das Auto vollmacht, euch ein Zugticket teilt, gemeinsam Bus fahrt, eine
-        Fahrradtour plant oder zu Fuß geht.
+        Stelle ein Angebot oder eine Mitfahranfrage ein, ganz ohne Anmeldung. Wir matchen sie
+        automatisch und schicken dir eine E-Mail, sobald etwas passt — egal ob du das Auto
+        vollmachst, ein Zugticket teilst, den Bus nimmst, Rad fährst oder zu Fuß gehst. Keine
+        Anmeldung, kein Tracking.
 
   how-it-works:
     title: Wie funktioniert das?

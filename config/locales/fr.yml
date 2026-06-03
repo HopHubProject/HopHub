@@ -12,7 +12,7 @@ fr:
 
   meta:
     description:
-      default: HopHub est une plateforme de covoiturage pour les événements.
+      default: Coordination privée de covoiturage pour événements — appariement automatique, sans inscription, sans suivi.
       event: |
         Offres de covoiturage pour %{event_name} sur HopHub.
       offer: |
@@ -32,12 +32,13 @@ fr:
 
   welcome:
     title: Qu'est-ce que c'est ?
+    tagline: Coordination privée de covoiturage pour événements — sans inscription.
     text:
       - |
-        HopHub est une plateforme de covoiturage qui veut simplifier les trajets
-        partagés vers les événements et ainsi rendre le monde un peu meilleur. Que
-        vous remplissiez la voiture, partagiez un billet de train, preniez le bus
-        ensemble, planifiiez une sortie à vélo ou veniez à pied.
+        Publie une offre ou une demande de covoiturage, sans inscription. Nous les associons
+        automatiquement et t'envoyons un e-mail dès que quelque chose correspond — que tu
+        remplisses la voiture, partages un billet de train, prennes le bus, fasses du vélo ou
+        viennes à pied. Aucune inscription, aucun suivi.
 
   how-it-works:
     title: Comment ça marche ?
