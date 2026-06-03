@@ -4,9 +4,10 @@
 
 <img src="app/assets/images/hophub.png" />
 
-HopHub is a ride sharing platform that aims to simplify common commutes to and from events
-and thereby make the world a little bit better. No matter if you fill up your car,
-share a train ticket, arrive by bus, plan a bike tour or walk.
+HopHub is private ride coordination for events — no sign-up required. Post a ride
+offer or a ride request — no tracking, no third-party cookies — and HopHub matches
+them automatically and emails everyone when something fits, whether you're filling
+the car, sharing a train ticket, taking the bus, biking, or walking.
 
 This project is implemented using Ruby on Rails.
 
