@@ -36,6 +36,6 @@ pin "bootstrap", preload: true                             # @5.3.8
 # importmap-rails from emitting a modulepreload link for them on every page.
 pin "tempus-dominus",         preload: false               # @eonasdan/tempus-dominus@6.10.4
 pin "tempus-dominus-bi-one",  preload: false               # @eonasdan/tempus-dominus@6.10.4 (plugins/bi-one)
-pin "altcha",                 preload: false               # @3.0.9
+pin "altcha",                 preload: false               # @3.0.11
 pin "confetti",               preload: false               # canvas-confetti@1.9.4
 pin "geonames",               preload: false               # local (app/javascript/geonames.js)
