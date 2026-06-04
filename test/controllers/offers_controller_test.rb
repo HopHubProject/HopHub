@@ -383,6 +383,21 @@ class OffersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "update persists a changed direction" do
+    a = offers(:owt1)
+    assert_equal "way_there", a.direction
+
+    put event_offer_url(a.event, a), params: {
+      offer: { direction: "way_back" },
+      token: a.token
+    }
+
+    assert_redirected_to [a.event, a]
+
+    a.reload
+    assert_equal "way_back", a.direction
+  end
+
   test "confirm does not notify ride requests whose end_date is before the offer's date" do
     x = offers(:owt1)
     # Coordinates match rwt_too_late's Berlin location within radius — the

@@ -180,7 +180,7 @@ class OffersController < ApplicationController
 
   def offer_update_params
     filter_blank_offer_contacts!
-    params.require(:offer).permit(:name, :transport, :date, :driver, :location, :country, :latitude, :longitude, :seats, :notes,
+    params.require(:offer).permit(:name, :transport, :direction, :date, :driver, :location, :country, :latitude, :longitude, :seats, :notes,
                                   offer_contacts_attributes: [:id, :kind, :value, :_destroy])
   end
 
