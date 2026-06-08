@@ -5,23 +5,34 @@
       %i.bi.bi-calendar
       =t('event_valid_until', date: l(@event.end_date.to_date, format: :long_with_dow))
 
+    %p.text-muted.mt-2.mb-0= t('travel.subtitle')
+
     .card-soft.p-3.mt-3
       .event-description
         =@description.html_safe
 
-= render 'demand_signal'
-
 =turbo_frame_tag 'offer' do
   .row.justify-content-center.my-4
-    .col-12.col-md-8.col-lg-6.text-center
-      %p.lead.mb-2= t('add_offer.offer_yourself')
-      =link_to new_event_offer_path(@event), class: 'btn btn-primary btn-lg px-4', role: 'button' do
-        %i.bi.bi-plus-lg.me-1
-        =t('add_offer.title')
-      .mt-3
-        =link_to new_event_ride_request_path(@event), class: 'btn btn-outline-secondary btn-lg px-4', role: 'button' do
-          %i.bi.bi-hand-thumbs-up.me-1
-          =t('add_ride_request.title')
+    .col-12.col-lg-9
+      .row.g-3.justify-content-center.align-items-stretch
+        .col-12.col-md-6
+          .card-soft.card-soft--accent.p-4.h-100.text-center.d-flex.flex-column
+            %h3.mt-0= t('travel.offer.title')
+            %p.flex-grow-1= t('travel.offer.text', event: @event.name)
+            %div
+              =link_to new_event_offer_path(@event), class: 'btn btn-primary btn-lg px-4', role: 'button' do
+                %i.bi.bi-people.me-1
+                =t('travel.offer.button')
+        .col-12.col-md-6
+          .card-soft.p-4.h-100.text-center.d-flex.flex-column
+            %h3.mt-0= t('travel.request.title')
+            %p.flex-grow-1= t('travel.request.text')
+            %div
+              =link_to new_event_ride_request_path(@event), class: 'btn btn-outline-secondary btn-lg px-4', role: 'button' do
+                %i.bi.bi-hand-thumbs-up.me-1
+                =t('travel.request.button')
+
+  = render 'demand_signal'
 
   -if @offers.any?
     -if @offers.count > 5
@@ -33,4 +44,4 @@
     .row.justify-content-center
       .col-12.col-lg-9.text-center
         %h2= t('no_offers.title')
-        %p.mb-0= t('no_offers.text')
+        %p.mb-0= t('no_offers.text', event: @event.name)

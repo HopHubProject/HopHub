@@ -116,19 +116,30 @@ de:
   driver-needed: Für diese Fahrt wird ein:e Fahrer:in gesucht!
 
   no_offers:
-    title: Noch keine Angebote
+    title: Sei die erste Person, die eine Fahrt hinzufügt
     text: |
-      Scheinbar hat noch niemand ein Angebot für dieses Event hinzugefügt.
-      Keine Sorge, das ist bei neuen Events ganz normal.
-      Du kannst entweder warten, bis jemand ein Angebot erstellt, oder selbst eines hinzufügen.
+      Noch keine Fahrten — das ist bei neuen Events ganz normal. Wenn du zu
+      %{event} fährst, füge deine Fahrt hinzu, und andere können mitkommen.
 
-  add_offer:
-    title: Neues Angebot aufgeben
-    offer_yourself: |
-      Willst du die Fahrt selbst organisieren?
-
-  add_ride_request:
-    title: Ich suche eine Mitfahrgelegenheit
+  travel:
+    subtitle: |
+      Alle hier fahren zu diesem Event — du reist also mit anderen Teilnehmenden,
+      nicht mit Fremden. Teile deine Fahrt oder finde eine bei jemandem, der
+      ohnehin hinfährt.
+    offer:
+      title: Ich fahre — andere können mitkommen
+      text: |
+        Mit dem Auto, Zug, Bus oder Rad unterwegs? Füge deine Fahrt hinzu, damit
+        andere auf dem Weg zu %{event} mitkommen können. Freie Plätze füllen,
+        Kosten teilen und nicht allein fahren.
+      button: Fahrt hinzufügen
+    request:
+      title: Ich suche eine Mitfahrgelegenheit
+      text: |
+        Sag uns ungefähr, wo du startest und wann du da sein musst. Wir
+        benachrichtigen dich per E-Mail, sobald jemand auf deinem Weg eine Fahrt
+        hinzufügt — du musst nicht ständig nachschauen.
+      button: Mitfahrt finden
 
   create_new_ride_request:
     title: Anfrage aufgeben
@@ -138,16 +149,18 @@ de:
       Angebot eingestellt wird.
 
   demand_signal:
-    title: Fahrten gesucht
-    text: Wenn du ein Angebot einstellst, benachrichtigen wir jede unten aufgelistete Person per E-Mail, sofern der Standort deines Angebots innerhalb des von ihr gewählten Radius und der Zeitpunkt innerhalb ihres gewünschten Zeitfensters liegt.
+    title:
+      one: "1 Person sucht bereits eine Mitfahrgelegenheit"
+      other: "%{count} Personen suchen bereits eine Mitfahrgelegenheit"
+    text: Wenn du zu diesem Event fährst, könntest du jemanden mitnehmen. Füge deine Fahrt hinzu, und wir benachrichtigen sofort alle unten aufgeführten Personen per E-Mail, deren Startpunkt innerhalb des von ihnen gewählten Radius liegt und deren Zeitfenster zu deiner Fahrt passt.
     way_there:
       heading:
-        one: "1 Person sucht eine Mitfahrgelegenheit zum Event"
-        other: "%{count} Personen suchen eine Mitfahrgelegenheit zum Event"
+        one: "1 Person sucht noch eine Mitfahrgelegenheit zum Event"
+        other: "%{count} Personen suchen noch eine Mitfahrgelegenheit zum Event"
     way_back:
       heading:
-        one: "1 Person sucht eine Mitfahrgelegenheit nach Hause"
-        other: "%{count} Personen suchen eine Mitfahrgelegenheit nach Hause"
+        one: "1 Person sucht noch eine Mitfahrgelegenheit nach Hause"
+        other: "%{count} Personen suchen noch eine Mitfahrgelegenheit nach Hause"
 
   event: Event
   seat:
@@ -192,11 +205,11 @@ de:
     button: Mitfahranfrage löschen
 
   create_new_offer:
-    title: Neues Angebot erstellen
+    title: Fahrt hinzufügen
     text: |
-      Bitte gib die Details zu deinem Angebot ein. Andere Menschen
-      können über die Website Kontakt mit dir aufnehmen, sobald du
-      deine E-Mail-Adresse bestätigt hast.
+      Füge unten deine Fahrt hinzu, damit andere, die zum Event fahren, mitkommen
+      können. Sobald du deine E-Mail-Adresse bestätigt hast, wird deine Fahrt
+      angezeigt und andere können Kontakt mit dir aufnehmen.
 
   update_offer:
     title: Angebot aktualisieren

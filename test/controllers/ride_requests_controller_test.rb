@@ -191,8 +191,8 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
     # rwt_far (10km) from 80331/DE = 6
     # way_back confirmed: rwb1 (20km) from 20095/DE = 1
     # rwt_unconfirmed is excluded
-    assert_match(/6 people are looking for a ride to the event/i, @response.body)
-    assert_match(/1 person is looking for a ride home/i, @response.body)
+    assert_match(/6 people still need a ride to the event/i, @response.body)
+    assert_match(/1 person still needs a ride home/i, @response.body)
 
     # origins are grouped by (location, country, radius) and rendered with a
     # plus-slash-minus icon between the label and the radius
@@ -241,7 +241,7 @@ class RideRequestsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     # count is shown
-    assert_match(/51 people are looking for a ride to the event/i, @response.body)
+    assert_match(/51 people still need a ride to the event/i, @response.body)
     # but the way_there accordion collapse element is suppressed
     assert_no_match(/id="demand-way_there-collapse"/, @response.body)
     # the small way_back bucket still gets an accordion

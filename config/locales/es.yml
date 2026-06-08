@@ -116,19 +116,29 @@ es:
   driver-needed: Este viaje busca un conductor
 
   no_offers:
-    title: No hay ofertas aún
+    title: Sé la primera persona en añadir un viaje
     text: |
-      Parece que nadie ha añadido una oferta para este evento todavía.
-      No te preocupes, esto es normal para eventos nuevos.
-      Puedes esperar a que otros añadan una oferta o agregar una tú mismo.
+      Aún no hay viajes — es normal en un evento nuevo. Si vas a %{event}, añade
+      el tuyo y otros podrán acompañarte.
 
-  add_offer:
-    title: Agregar nueva oferta
-    offer_yourself: |
-      ¿Quieres organizar el viaje tú mismo?
-
-  add_ride_request:
-    title: Busco un viaje
+  travel:
+    subtitle: |
+      Todos aquí van a este evento, así que viajarás con otros asistentes, no con
+      desconocidos. Comparte tu viaje o encuentra uno con alguien que ya va.
+    offer:
+      title: Yo voy — otros pueden acompañarme
+      text: |
+        ¿Vas en coche, tren, autobús o bici? Añade tu viaje para que otras
+        personas que van a %{event} puedan acompañarte. Llena los asientos libres,
+        comparte los gastos y no viajes solo.
+      button: Añadir mi viaje
+    request:
+      title: Necesito un viaje
+      text: |
+        Dinos más o menos desde dónde sales y cuándo necesitas llegar. Te
+        avisaremos por correo en cuanto alguien que va en tu dirección añada un
+        viaje — no hace falta que estés pendiente.
+      button: Buscar un viaje
 
   create_new_ride_request:
     title: Agregar solicitud
@@ -137,16 +147,18 @@ es:
       correo electrónico cuando se publique una oferta que coincida.
 
   demand_signal:
-    title: Buscan un viaje
-    text: Al publicar una oferta, enviaremos un correo electrónico a cada persona listada abajo si la ubicación de tu oferta está dentro del radio que ha elegido y la hora de tu oferta cae dentro de su ventana de tiempo solicitada.
+    title:
+      one: "1 persona ya está buscando un viaje"
+      other: "%{count} personas ya están buscando un viaje"
+    text: Si vas a este evento, podrías llevar a alguien contigo. Añade tu viaje y avisaremos al instante por correo a todas las personas de abajo cuyo punto de partida esté dentro del radio que eligieron y cuyo horario coincida con el tuyo.
     way_there:
       heading:
-        one: "1 persona busca un viaje al evento"
-        other: "%{count} personas buscan un viaje al evento"
+        one: "1 persona todavía necesita un viaje al evento"
+        other: "%{count} personas todavía necesitan un viaje al evento"
     way_back:
       heading:
-        one: "1 persona busca un viaje de vuelta"
-        other: "%{count} personas buscan un viaje de vuelta"
+        one: "1 persona todavía necesita un viaje de vuelta"
+        other: "%{count} personas todavía necesitan un viaje de vuelta"
 
   event: Evento
   seat:
@@ -191,10 +203,11 @@ es:
     button: Eliminar mi solicitud
 
   create_new_offer:
-    title: Crear nueva oferta
+    title: Añadir tu viaje
     text: |
-      Por favor, introduce los detalles de tu oferta. Recibirás un correo electrónico con
-      un enlace para confirmar tu oferta. Una vez confirmado, la oferta se mostrará en el sitio web.
+      Añade tu viaje abajo para que otras personas que van al evento puedan
+      acompañarte. Una vez que confirmes tu correo electrónico, tu viaje aparecerá
+      y la gente podrá ponerse en contacto contigo.
 
   update_offer:
     title: Actualizar oferta

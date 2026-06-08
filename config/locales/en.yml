@@ -113,19 +113,30 @@ en:
   driver-needed: This ride needs a driver!
 
   no_offers:
-    title: No offers yet
+    title: Be the first to add a ride
     text: |
-      It seems that nobody has added an offer for this event yet.
-      Don't worry, this is normal for new events.
-      You can either wait for others to add an offer or add one yourself.
+      No rides yet — that's normal for a new event. If you're heading to %{event},
+      add yours and others going can join you.
 
-  add_offer:
-    title: Add a new offer
-    offer_yourself: |
-      Are you organizing a ride yourself?
-
-  add_ride_request:
-    title: I'm looking for a ride
+  travel:
+    subtitle: |
+      Everyone here is going to this event — so you'll be travelling with fellow
+      attendees, not strangers. Share your ride, or find one with someone who's
+      already going.
+    offer:
+      title: I'm going — others can join my ride
+      text: |
+        Driving, or taking the train, bus or bike? Add your ride so others heading
+        to %{event} can come along. Fill empty seats, split the cost, and skip the
+        solo trip.
+      button: Add my ride
+    request:
+      title: I need a ride
+      text: |
+        Tell us roughly where you're starting and when you need to be there. We'll
+        email you the moment someone going your way adds a ride — no need to keep
+        checking back.
+      button: Find a ride
 
   create_new_ride_request:
     title: Add ride request
@@ -134,16 +145,18 @@ en:
       We will email you when a matching offer is posted.
 
   demand_signal:
-    title: Looking for a ride
-    text: Adding an offer will email each person below if your offer's location falls within the radius they chose and your offer's date is inside their requested time window.
+    title:
+      one: "1 person is already looking for a ride"
+      other: "%{count} people are already looking for a ride"
+    text: If you're heading to this event, you could take someone with you. Add your ride and we'll instantly email everyone below whose starting point is within the radius they set and whose timing matches yours.
     way_there:
       heading:
-        one: "1 person is looking for a ride to the event"
-        other: "%{count} people are looking for a ride to the event"
+        one: "1 person still needs a ride to the event"
+        other: "%{count} people still need a ride to the event"
     way_back:
       heading:
-        one: "1 person is looking for a ride home"
-        other: "%{count} people are looking for a ride home"
+        one: "1 person still needs a ride home"
+        other: "%{count} people still need a ride home"
 
   event: Event
   seat:
@@ -188,11 +201,11 @@ en:
     button: Delete my ride request
 
   create_new_offer:
-    title: Create new offer
+    title: Add your ride
     text: |
-      Please fill in the form below and.
-      People will be able to contact you through the web site once
-      you have confirmed your email address.
+      Add your ride below so others going to the event can join you. Once you've
+      confirmed your email address, your ride will be listed and people can get
+      in touch with you.
 
   update_offer:
     title: Update offer

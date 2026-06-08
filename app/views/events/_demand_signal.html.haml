@@ -1,10 +1,11 @@
 - buckets = @ride_requests_by_direction || {}
+- total = buckets.values.sum { |b| b[:total].to_i }
 
-- if buckets.values.any? { |b| b[:total].to_i > 0 }
+- if total > 0
   .row.justify-content-center.my-3
     .col-12.col-lg-9
       .card-soft.card-soft--accent.p-3
-        %h2.mt-0.pt-0= t('demand_signal.title')
+        %h2.mt-0.pt-0= t('demand_signal.title', count: total)
         %p.mb-2.text-muted= t('demand_signal.text')
 
         - RideRequest::DIRECTIONS.each do |direction|

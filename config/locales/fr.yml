@@ -116,19 +116,30 @@ fr:
   driver-needed: Un·e conducteur·rice est recherché·e pour ce trajet !
 
   no_offers:
-    title: Pas encore d'offres
+    title: Sois la première personne à ajouter un trajet
     text: |
-      Il semble que personne n'ait encore ajouté d'offre pour cet événement.
-      Pas d'inquiétude, c'est tout à fait normal pour les nouveaux événements.
-      Tu peux soit attendre que quelqu'un crée une offre, soit en ajouter une toi-même.
+      Pas encore de trajets — c'est normal pour un nouvel événement. Si tu vas à
+      %{event}, ajoute le tien et d'autres pourront t'accompagner.
 
-  add_offer:
-    title: Publier une nouvelle offre
-    offer_yourself: |
-      Tu veux organiser le trajet toi-même ?
-
-  add_ride_request:
-    title: Je cherche un covoiturage
+  travel:
+    subtitle: |
+      Tout le monde ici va à cet événement — tu voyageras donc avec d'autres
+      participants, pas avec des inconnus. Partage ton trajet ou trouves-en un
+      avec quelqu'un qui y va déjà.
+    offer:
+      title: J'y vais — d'autres peuvent m'accompagner
+      text: |
+        En voiture, en train, en bus ou à vélo ? Ajoute ton trajet pour que
+        d'autres personnes qui vont à %{event} puissent t'accompagner. Remplis les
+        sièges libres, partage les frais et ne voyage pas seul.
+      button: Ajouter mon trajet
+    request:
+      title: Je cherche un trajet
+      text: |
+        Dis-nous à peu près d'où tu pars et quand tu dois arriver. Nous te
+        préviendrons par e-mail dès que quelqu'un qui va dans ta direction ajoute
+        un trajet — pas besoin de vérifier sans cesse.
+      button: Trouver un trajet
 
   create_new_ride_request:
     title: Publier une demande
@@ -137,16 +148,18 @@ fr:
       Nous te préviendrons par e-mail dès qu'une offre correspondante est publiée.
 
   demand_signal:
-    title: Trajets recherchés
-    text: Si tu publies une offre, nous prévenons par e-mail chaque personne listée ci-dessous, à condition que le lieu de ton offre se trouve dans le rayon qu'elle a choisi et que l'horaire corresponde à son créneau souhaité.
+    title:
+      one: "1 personne cherche déjà un trajet"
+      other: "%{count} personnes cherchent déjà un trajet"
+    text: Si tu vas à cet événement, tu pourrais emmener quelqu'un. Ajoute ton trajet et nous préviendrons aussitôt par e-mail toutes les personnes ci-dessous dont le point de départ se trouve dans le rayon qu'elles ont choisi et dont les horaires correspondent aux tiens.
     way_there:
       heading:
-        one: "1 personne cherche un covoiturage vers l'événement"
-        other: "%{count} personnes cherchent un covoiturage vers l'événement"
+        one: "1 personne cherche encore un trajet vers l'événement"
+        other: "%{count} personnes cherchent encore un trajet vers l'événement"
     way_back:
       heading:
-        one: "1 personne cherche un covoiturage pour rentrer"
-        other: "%{count} personnes cherchent un covoiturage pour rentrer"
+        one: "1 personne cherche encore un trajet pour rentrer"
+        other: "%{count} personnes cherchent encore un trajet pour rentrer"
 
   event: Événement
   seat:
@@ -191,11 +204,11 @@ fr:
     button: Supprimer la demande de covoiturage
 
   create_new_offer:
-    title: Créer une nouvelle offre
+    title: Ajouter ton trajet
     text: |
-      Merci de saisir les détails de ton offre. D'autres personnes pourront
-      prendre contact avec toi via le site dès que tu auras confirmé
-      ton adresse e-mail.
+      Ajoute ton trajet ci-dessous pour que d'autres personnes qui vont à
+      l'événement puissent t'accompagner. Une fois ton adresse e-mail confirmée,
+      ton trajet sera affiché et les gens pourront te contacter.
 
   update_offer:
     title: Mettre à jour l'offre
