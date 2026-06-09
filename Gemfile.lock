@@ -110,6 +110,9 @@ GEM
     brakeman (8.0.4)
       racc
     builder (3.3.0)
+    bundler-audit (0.9.3)
+      bundler (>= 1.2.0)
+      thor (~> 1.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -228,7 +231,7 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
-    msgpack (1.8.1)
+    msgpack (1.8.2)
     net-imap (0.6.4)
       date
       net-protocol
@@ -395,6 +398,7 @@ DEPENDENCIES
   bootstrap (~> 5.3, >= 5.3.2)
   bootstrap5-kaminari-views
   brakeman
+  bundler-audit
   capybara
   cuber!
   dalli

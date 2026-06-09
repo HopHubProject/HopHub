@@ -49,6 +49,8 @@ jobs:
         uses: ruby/setup-ruby@12fd324f1d0b43274fdc8130f6980590a667c455  # v1.312.0
         with:
           bundler-cache: true
+      - name: Security audit dependencies
+        run: bundle exec bundle-audit check --update
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
 

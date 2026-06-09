@@ -84,6 +84,9 @@ group :development do
   gem "letter_opener"
 
   gem "brakeman", require: false
+
+  # Scan Gemfile.lock for gems with known vulnerabilities [https://github.com/rubysec/bundler-audit]
+  gem "bundler-audit", require: false
 end
 
 group :test do
