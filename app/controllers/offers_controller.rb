@@ -231,7 +231,11 @@ class OffersController < ApplicationController
     candidates.find_each do |ride_request|
       next if ride_request.distance_to(origin) > ride_request.radius
 
-      RideRequestMailer.with(ride_request: ride_request, offer: offer).offer_matched.deliver
+      # Shadow-banned events still count matches (so the banned user's view is
+      # unchanged) but suppress the outbound notification, mirroring #contact_emails.
+      unless offer.event.shadow_banned?
+        RideRequestMailer.with(ride_request: ride_request, offer: offer).offer_matched.deliver
+      end
       notified += 1
     end
 

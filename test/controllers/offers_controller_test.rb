@@ -398,6 +398,41 @@ class OffersControllerTest < ActionDispatch::IntegrationTest
     assert_equal "way_back", a.direction
   end
 
+  # Ride-requestor notifications are sent if and only if the event is NOT
+  # shadow banned. Exercises both directions of the biconditional. Each offer
+  # can only be confirmed once, so a distinct offer is used per branch.
+  test "ride requestors are notified iff the event is not shadow banned" do
+    rider_emails = [ride_requests(:rwt1).email, ride_requests(:rwt2).email]
+
+    # Confirm a way_there offer at Berlin coords (rwt1/rwt2 are within radius)
+    # and return which of the rider emails were notified.
+    notified_riders = lambda do |offer, banned|
+      offer.update!(confirmed_at: nil, latitude: 52.60, longitude: 13.40, direction: "way_there")
+      offer.event.update!(shadow_banned: banned)
+      ActionMailer::Base.deliveries.clear
+      get event_offer_confirm_url(offer.event, offer), params: { token: offer.token }
+      rider_emails & ActionMailer::Base.deliveries.map { |m| m.to.first }
+    end
+
+    assert_equal rider_emails.sort, notified_riders.call(offers(:owb1), false).sort,
+      "non-banned event must notify matching ride requestors"
+    assert_empty notified_riders.call(offers(:owt1), true),
+      "shadow-banned event must not notify any ride requestors"
+  end
+
+  test "confirm does not notify ride requests when the event is shadow banned" do
+    x = offers(:owt1)
+    # Same Berlin coords + radius as rwt1/rwt2 — they would match if not banned.
+    x.update(confirmed_at: nil, latitude: 52.60, longitude: 13.40, direction: "way_there")
+    x.event.update!(shadow_banned: true)
+
+    get event_offer_confirm_url(x.event, x), params: { token: x.token }
+
+    recipients = ActionMailer::Base.deliveries.map { |m| m.to.first }
+    assert_not_includes recipients, ride_requests(:rwt1).email
+    assert_not_includes recipients, ride_requests(:rwt2).email
+  end
+
   test "confirm does not notify ride requests whose end_date is before the offer's date" do
     x = offers(:owt1)
     # Coordinates match rwt_too_late's Berlin location within radius — the
