@@ -194,7 +194,7 @@ bundle exec rails test
 ## Geonames
 
 The project uses the [Geonames](https://www.geonames.org/) API to resolve postal codes to latitude and longitude. You need to create a Geonames account and set the `GEONAMES_USERNAME` environment variable to your username. The Geonames API is called server-side with the postal code, country code, and the Geonames username, so the IP address of the client is never sent to Geonames — it only ever sees the application's IP.
-Don't forget to click the button to enable the free services. Otherwise the geoinformation won't load properly. Go to https://www.geonames.org/manageaccount and at the bottom of the form there is a section called "Free Web Services" Just click the button and you're done.
+Don't forget to click the button to enable the free services. Otherwise the geoinformation won't load properly. Go to https://www.geonames.org/manageaccount and at the bottom of the form there is a section called "Free Web Services". Just click the button and you're done.
 
 ## Caching
 
