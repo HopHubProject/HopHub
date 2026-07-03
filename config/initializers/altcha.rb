@@ -2,7 +2,7 @@
 
 Altcha.setup do |config|
   if Rails.env.production?
-    config.max_number = 50_000
+    config.max_number = 500_000
   else
     config.max_number = 2
   end
