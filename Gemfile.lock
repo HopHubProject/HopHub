@@ -164,7 +164,7 @@ GEM
     google-protobuf (4.35.1-x86_64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    haml (7.2.0)
+    haml (7.2.2)
       temple (>= 0.8.2)
       thor
       tilt
@@ -345,7 +345,7 @@ GEM
     simple_form (5.4.1)
       actionpack (>= 7.0)
       activemodel (>= 7.0)
-    simplecov (1.0.1)
+    simplecov (1.0.3)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
