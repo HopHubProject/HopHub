@@ -128,7 +128,7 @@ GEM
     connection_pool (3.0.2)
     crass (1.0.7)
     csv (3.3.5)
-    dalli (5.0.5)
+    dalli (5.0.6)
       logger
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
@@ -164,7 +164,7 @@ GEM
     google-protobuf (4.35.1-x86_64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    haml (7.2.0)
+    haml (7.2.2)
       temple (>= 0.8.2)
       thor
       tilt
@@ -345,7 +345,7 @@ GEM
     simple_form (5.4.1)
       actionpack (>= 7.0)
       activemodel (>= 7.0)
-    simplecov (1.0.1)
+    simplecov (1.0.3)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -357,7 +357,7 @@ GEM
     sqlite3 (2.9.5-x86_64-linux-gnu)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
-    temple (0.10.4)
+    temple (0.10.6)
     thor (1.5.0)
     tilt (2.8.0)
     timeout (0.6.1)
