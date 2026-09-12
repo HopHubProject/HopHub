@@ -38,6 +38,12 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# the json gem released a 3.0 major version that made opts a keyword argument on JSON.parse instead
+# of accepting a positional options hash. ActiveSupport::Messages::Metadata#deserialize_from_json
+# (in activesupport 8.1.3.1) still calls JSON.parse(payload, some_hash) the old, positional way.
+# Pin json back to a 2.x release in your Gemfile until Rails ships a compatible activesupport patch.
+gem "json", "~> 2.9"
+
 gem "haml"
 gem "bootstrap", "~> 5.3", ">= 5.3.2"
 gem "dartsass-rails", "~> 0.5.0"
