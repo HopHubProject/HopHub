@@ -54,7 +54,7 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activeadmin (4.0.0.beta22)
+    activeadmin (4.0.0.beta23)
       arbre (~> 2.0)
       csv
       formtastic (>= 6.0)
@@ -301,7 +301,7 @@ GEM
       tsort (>= 0.2)
       zeitwerk (~> 2.6)
     rake (13.4.2)
-    ransack (4.4.1)
+    ransack (5.0.2)
       activerecord (>= 7.2)
       activesupport (>= 7.2)
       i18n
@@ -387,7 +387,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activeadmin (= 4.0.0.beta22)
+  activeadmin (= 4.0.0.beta23)
   altcha-rails
   base64
   bootsnap
