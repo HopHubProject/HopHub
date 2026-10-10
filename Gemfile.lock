@@ -107,7 +107,7 @@ GEM
     bootstrap5-kaminari-views (0.0.1)
       kaminari (>= 0.13)
       rails (>= 3.1)
-    brakeman (8.0.6)
+    brakeman (8.1.0)
       racc
     builder (3.3.0)
     bundler-audit (0.9.3)
@@ -128,7 +128,7 @@ GEM
     connection_pool (3.0.2)
     crass (1.0.7)
     csv (3.3.6)
-    dalli (5.1.1)
+    dalli (5.2.2)
       logger
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
@@ -245,7 +245,7 @@ GEM
     nio4r (2.7.5)
     nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
-    pg (1.6.3-x86_64-linux)
+    pg (1.7.0-x86_64-linux)
     popper_js (2.11.8)
     pp (0.6.4)
       prettyprint
