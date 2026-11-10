@@ -192,7 +192,7 @@ GEM
       prism (>= 1.3.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.21.2)
+    json (3.1.0)
     kaminari (1.3.3)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.3.3)
@@ -404,7 +404,7 @@ DEPENDENCIES
   geokit-rails
   haml
   importmap-rails
-  json (~> 2.9)
+  json (~> 3.1)
   kaminari
   letter_opener
   pg
